@@ -14,9 +14,9 @@ public interface MemberDAO {
 	// 로그인
 	public MemberVO loginCheck(MemberVO vo);
 	// 회원정보수정 폼
-	public MemberVO memberSelect(String userid);
+	public MemberVO memberSelect(String user_id);
 	// 회원정보수정 DB
 	public int memberUpdate(MemberVO vo);
 	// 아이디중복검사
-	public int idCheck(String userid);
+	public int idCheck(String user_id);
 }

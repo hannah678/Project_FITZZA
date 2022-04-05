@@ -9,38 +9,32 @@ import com.team.fitzza.vo.MemberVO;
 
 @Service
 public class MemberServiceImpl implements MemberService{
-
 	@Inject
 	MemberDAO dao;
 	
 	@Override
 	public int memberInsert(MemberVO vo) {
-		// TODO Auto-generated method stub
 		return dao.memberInsert(vo);
 	}
 
 	@Override
 	public MemberVO loginCheck(MemberVO vo) {
-		// TODO Auto-generated method stub
-		return null;
+		return dao.loginCheck(vo);
 	}
 
 	@Override
-	public MemberVO memberSelect(String userid) {
-		// TODO Auto-generated method stub
-		return null;
+	public MemberVO memberSelect(String user_id) {
+		return dao.memberSelect(user_id);
 	}
 
 	@Override
 	public int memberUpdate(MemberVO vo) {
-		// TODO Auto-generated method stub
-		return 0;
+		return dao.memberUpdate(vo);
 	}
 
 	@Override
-	public int idCheck(String userid) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int idCheck(String user_id) {
+		return dao.idCheck(user_id);
 	}
 
 }
