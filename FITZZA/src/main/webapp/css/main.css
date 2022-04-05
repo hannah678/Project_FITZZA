@@ -71,7 +71,7 @@ header {
     background-color: #fff;
 }
 #notice_bar img {
-    margin:10px 100px 0 390px;
+   /*  margin:10px 100px 0 390px; */
 }
 #notice_bar MARQUEE{
     width: 1020px;
