@@ -1,0 +1,514 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans+KR|ZCOOL+QingKe+HuangYou');
+*{
+	margin:0;
+	padding:0;
+	text-decoration: none;
+	box-sizing: border-box;
+    list-style-type:none;
+}
+
+header>nav>ul{
+	list-style-type: none;
+}
+
+.logo{
+	height : 80px;
+	font-size : 1.5em;
+	/*background:yellow; 확인용*/
+	text-align:center;
+	padding-top:10px;
+	font-family: 'ZCOOL QingKe HuangYou', cursive;
+}
+
+.bottom{
+	height:80px;
+	width:100%;
+	background-color: pink;
+	text-align: center;
+}
+
+header{
+	width:100%;
+	height:80px;
+	background-color:#000;
+	text-align:center;
+	line-height:80px;
+	position:relative;
+	z-index:100;
+	font-family: 'ZCOOL QingKe HuangYou', cursive;
+}
+header>nav{
+	height:80px;
+}
+header>nav>ul>li{ /*menu*/
+	padding-left:30px;
+	color:white;
+	width:120px;
+	height:80px;
+	float:left;
+	font-size:1.5em;
+	position:relative;
+}
+header>nav>ul>li>h2>a{ /*home*/
+	color:white;
+	height:80px;
+}
+
+header>nav>ul>li>ul{
+	display:none;
+	font-size:1em;
+	position:relative; 
+	background:#393737;
+	line-height:40px !important;
+	width:100px;
+	opacity:0.9;
+}
+
+header>nav>div{
+	position:relative;
+	margin-left:70%;
+	height : 80px;
+	width:500px;
+	font-size:1em;
+	}
+header>nav>div>li{
+	float:left;
+	width:250px;
+	color:white;
+	font-family: "맑은 고딕", cursive;
+}
+
+header>nav>div>li>a:link, a:visited{
+	color:white;
+	line-height: 80px;
+	height:80px;
+	font-family: "맑은 고딕", cursive;
+}
+	
+section>div{
+	/*background-color:yellow;*/
+}
+
+.swiper {
+        width: 100%;
+        height: 700px;
+      }
+
+.loginlogo{
+	font-family: 'ZCOOL QingKe HuangYou', cursive;
+	font-size:3em	
+}
+
+button,input,input[type=password],input[type=text]{
+	font:12px malgun gothic,"sans serif";
+	color:black;
+	background-color:transparent
+}
+
+#contents,#wrapper{
+	position:relative
+}
+
+.userlogin{
+	padding-top:60px
+}
+
+.inputMsg{
+	display:hidden;
+	height:30px;
+	margin-top:2px;
+	font-weight:700;
+	letter-spacing:-.6px;
+	text-align:left;
+	color:red
+}
+
+#wrapper.showMsg{
+	display:block
+}
+
+#wrapper{
+	max-width:500px;
+	min-width:370px;
+	min-height:100%;
+	min-height:100vh;
+	padding:0 16px 200px;
+	margin:0 auto
+}
+
+fieldset{
+	border:none;
+}
+
+.accounthidden{
+	position:absolute;
+	overflow:hidden;
+	clip:rect(0 0 0 0);
+	height:1px;
+	width:1px;
+	margin:-1px
+}
+
+.loginheader{
+	min-width:328px;
+	padding-top:120px;
+	text-align:center
+}
+	
+.loginheader.logo{
+	display:inline-block;
+	margin:0 auto;
+	width:120px;
+	height:40px
+}
+	
+.id input,.password input{
+	width:100%;
+	height:55px;
+	padding:20px 14px;
+	border:1px solid #d5d9de;
+	background-color:#fff;
+	font-size:16px;
+	font-weight:700;
+	outline:0;
+	transition:border-color .15s linear
+}
+
+.button01{
+	width:100%;
+	height:55px;
+	font-size:18px;
+	font-family:'ZCOOL QingKe HuangYou';
+	color:#fff;
+	background-color:#13151a;
+	transition:all.15s linear
+}
+.button01:active,.button01:hover{
+	outline:0;
+	background-color:#07f;
+	transition:all .2s linear
+}
+
+.loginmenu{
+	position:relative;
+	height:20px;
+	padding-top:8px
+}
+
+.loginmenu a{
+	font-weight:600;
+	font-size: 9pt;
+	letter-spacing:-.4px;
+	color:#737881;
+	margin-right:8px;
+	transition:all.15s linear
+}
+.loginmenu a:hover{
+	color: red;
+	transition:all.2s linear
+}
+	
+#join_wrapper{
+	max-width:700px;
+	min-width:400px;
+	min-height:100%;
+	min-height:100vh;
+	padding:80px 20px 200px;
+	margin:0 auto
+}
+
+section>form>div>fieldset>div>h2{
+	font:16px malgun gothic,"sans serif";
+	padding-top:10px;
+	padding-bottom:10px;
+	font-weight: bold;
+}
+
+.joinbox input,.joinpwd input{
+	width:70%;
+	height:45px;
+	padding:20px 14px;
+	border:1px solid #d5d9de;
+	background-color:#fff;
+	font-size:16px;
+	font-weight:700;
+	outline:0;
+	transition:border-color .15s linear;
+}
+
+.joinNick input{
+	width:40%;
+	height:45px;
+	padding:20px 14px;
+	border:1px solid #d5d9de;
+	background-color:#fff;
+	font-size:16px;
+	font-weight:700;
+	outline:0;
+	transition:border-color .15s linear
+}
+
+.joinemail input{
+	height:45px;
+	padding:20px 14px;
+	border:1px solid #d5d9de;
+	background-color:#fff;
+	font-size:16px;
+	font-weight:700;
+	outline:0;
+	transition:border-color .15s linear
+}
+
+#joinEmail1{
+	width:50%;
+}
+
+#joinEmail2{
+	width:20%;
+}
+
+.button02{
+	position:relative;
+	left : 360px;
+	margin-top:15px;
+	width:100px;
+	height:50px;
+	font-size:20px;
+	font-family:'ZCOOL QingKe HuangYou';
+	color:#fff;
+	background-color:#13151a;
+	transition:all.15s linear
+}
+
+.chkbtn01{
+	width:80px;
+	height:45px;
+	font-size:16px;
+	font-family:'ZCOOL QingKe HuangYou';
+	color:#fff;
+	background-color:#13151a;
+	transition:all.15s linear
+}
+
+#chkbtn01{
+	position:absolute;
+	left:470px;
+	top:40px;
+}
+
+#chkbtn02{
+	position:relative;
+	top:-45px;
+	left:270px;
+	width:80px;
+	height:45px;
+	font-size:16px;
+	font-family:'ZCOOL QingKe HuangYou';
+	color:#fff;
+	background-color:#13151a;
+	transition:all.15s linear
+}
+
+/* 아코디언 */
+#selectWrapper { 
+    width:1035px;
+    margin:0 auto; 
+    padding:100px 0 0; 
+} 
+
+#selectWrapper > div { 
+	margin-bottom:150px; 
+} 
+
+#selectWrapper .section { 
+	height:400px;
+	} 
+	
+#selectWrapper .section .cont { 
+    width:153px; 
+    height:500px; 
+    overflow:hidden; 
+    float:left; 
+    position:relative; 
+    border-left:solid 1px #f0ede7; 
+} 
+
+#selectWrapper .section .cont div:first-child { 
+	border-left:none; 
+}
+
+ #selectWrapper .section .cont .bg { 
+    position:absolute; top:0; left:0;
+} 
+
+#selectWrapper .section .cont.on {
+    width:413px; 
+} 
+
+#selectWrapper .section .cont.on .title_off { 
+    display:none; 
+}
+
+#selectWrapper .section .cont.on .title_on { 
+    display:block; 
+} 
+
+#selectWrapper .section .cont.on .layer { 
+	display:none 
+} 
+
+#selectWrapper .section .cont .title_off, #section .section .cont .title_on { 
+	position:relative; 
+	display:block; 
+	width:153px; 
+	text-align:center; 
+	z-index:99; 
+	padding-top: 48%; 
+	} 
+
+#selectWrapper .section .cont .title_on { 
+	width:413px; 
+	display:none 
+} 
+
+#selectWrapper .section .cont .layer { 
+	display:block; 
+	width:413px; 
+	height:600px; 
+	position:absolute; 
+	left:0; 
+	top:0; 
+	z-index:1; 
+	background:#333333; 
+	filter:alpha(opacity=90); 
+	opacity:0.9; 
+}
+
+.title_on>a>img{
+	margin:0 auto;
+	width:100%;
+	height:70%;
+}
+
+.title_off>img{
+	margin:0 auto;
+	width:100%;
+	height:70%;
+}
+
+/*아코디언 끝*/
+
+#chara_wrapper{
+	height:100%;
+	line-height:1.5;
+	max-width:1300px;
+	margin: 0 auto;
+}
+
+/* 별주기 */
+.star-rating,
+.star-rating2,
+.star-rating3 {
+  display: flex;
+  flex-direction: row-reverse;
+  font-size: 3rem;
+  line-height: 3rem;
+  justify-content: space-around;
+  padding: 0 0.2em;
+  text-align: center;
+  width: 5em;
+  margin:0 auto;
+}
+ 
+.star-rating input,
+.star-rating2 input,
+.star-rating3 input{
+  display: none;
+}
+ 
+.star-rating label, 
+.star-rating2 label,
+.star-rating3 label
+{
+  -webkit-text-fill-color: transparent; /* Will override color (regardless of order) */
+  -webkit-text-stroke-width: 2.3px;
+  -webkit-text-stroke-color: #2b2a29;
+  cursor: pointer;
+}
+ 
+.star-rating :checked ~ label,
+.star-rating2 :checked ~ label,
+.star-rating3 :checked ~ label {
+  -webkit-text-fill-color: gold;
+}
+ 
+.star-rating label:hover,
+.star-rating label:hover ~ label
+.star-rating2 label:hover,
+.star-rating2 label:hover ~ label,
+.star-rating3 label:hover,
+.star-rating3 label:hover ~ label {
+  -webkit-text-fill-color: #fff58c;
+}
+/*리뷰 쓰기*/
+
+/*리뷰*/
+#review{
+	font-size:30px;
+	width: 100%;
+    height: 6.25em;
+    border: none;
+    resize: none;
+}
+
+.coment-container{
+	border:2px solid black;
+}
+.review-star>label{
+  font-size: 1rem;
+  line-height: 1rem;
+  justify-content: space-around;
+  padding: 0 0.2em;
+  text-align: center;
+  width: 5em;
+  margin:0 auto;
+  -webkit-text-stroke-width: 2.3px;
+  -webkit-text-stroke-color: #2b2a29;
+  -webkit-text-fill-color: gold;
+}
+
+/*마이페이지*/
+.review-container{
+		width:1300px; margin:0 auto; margin-top:20px;
+	}
+	#reviewList>li{
+		float:left; height:40px; line-height:40px; border-bottom:1px solid black;
+		width:8.3333%;
+	}
+	#reviewList>li:nth-child(7n+3){
+		width:50%;
+	}
+	.wordCut{
+		white-space:nowrap;
+		overflow:hidden;
+		text-overflow:ellipsis; 
+	}
+
+#reviewList{
+	border:2px solid black;
+	height: 800px;
+}
+  /* 페이징 */
+.paging{
+    margin:0 45%; height:60px; overflow: auto; width:500px; padding-top:30px;
+  }
+.paging>li{
+      float:left;
+      width:30px;
+      text-align: center;
+  }
+  /*검색*/
+  #searchFrm{
+       padding:20px 200px; text-align: center;
+  }
