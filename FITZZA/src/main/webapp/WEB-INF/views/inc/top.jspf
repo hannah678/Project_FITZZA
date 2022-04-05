@@ -30,10 +30,10 @@
     	<div id="rnb">
             <c:if test="${logStatus != 'Y' }">
                 <p id="logStatus1"><a href="#">signup</a></p>
-                <p id="logStatus2"><a href="#">login</a></p>
+                <p id="logStatus2"><a href="/member/login">login</a></p>
             </c:if>
             <c:if test="${logStatus == 'Y' }">
-                <p id="logStatus1"><a href="#">logout</a></p>
+                <p id="logStatus1"><a href="/member/logout">logout</a></p>
                 <p id="logStatus2"><a href="#">mypage</a></p>
             </c:if>
         </div>
