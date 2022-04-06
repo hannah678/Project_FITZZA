@@ -25,7 +25,7 @@
 </head>
 <body>
    <header>
-    	<img id="logo" src="${url }/img/logo_text.png" alt="logo"/>
+    	<a href="/"><img id="logo" src="/img/logo_text.png" alt="logo"/></a>
     	<div id="rnb">
             <c:if test="${logStatus != 'Y' }">
                 <p id="logStatus1"><a href="/member/join">signup</a></p>
@@ -36,9 +36,9 @@
                 <p id="logStatus2"><a href="#">mypage</a></p>
             </c:if>
         </div>
-        <img id="menu_bar" src="${url }/img/menu_bar.png" alt="menu_bar"/>
+        <img id="menu_bar" src="/img/menu_bar.png" alt="menu_bar"/>
         <ul id="gnb">
-            <li><img id="close_btn" src="${url }/img/close.png" alt="close"/></li>
+            <li><img id="close_btn" src="/img/close.png" alt="close"/></li>
             <li><a href="">오늘의 코디</a></li>
             <li><a href="">스타일 추천</a></li>
             <li><a href="">중고거래</a></li>
@@ -48,7 +48,7 @@
             <li><a href="">옷입히기</a></li>
         </ul>
         <div id="notice_bar">
-            <img src="${url }/img/speaker.png">
+            <img src="/img/speaker.png">
             <a href="">
                 <MARQUEE scrollamount="10">공지사항</MARQUEE>
             </a>
