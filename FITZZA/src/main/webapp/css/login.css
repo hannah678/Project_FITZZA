@@ -8,7 +8,7 @@
 }
 .loginheader>div{
 	font-family: "Nanum pen script", cursive; 
-	font-size:3em	
+	font-size:2em	
 }
 
 .accounthidden>button,input,input[type=password],input[type=text]{
@@ -129,3 +129,102 @@ fieldset{
 }
 
 /* 로그인 CSS 끝*/
+/*회원가입 CSS 시작*/
+#join_wrapper{
+	max-width:700px;
+	min-width:400px;
+	min-height:100%;
+	min-height:100vh;
+	padding:80px 20px 200px;
+	margin:0 auto
+}
+
+#joinMenu{
+	margin-left:10%; 
+}
+
+.joinbox input{
+	width:80%;
+	height:45px;
+	padding:20px 14px;
+	border : none;
+	border-bottom:1px solid #d5d9de;
+	background-color:#fff;
+	font-size:28px;
+	font-weight:700;
+	outline:0;
+	transition:border-color .15s linear;
+	margin-bottom:10px;
+}
+
+#email01{
+	width:48%;
+	height:45px;
+	padding:20px 14px;
+	border : none;
+	border-bottom:1px solid #d5d9de;
+	background-color:#fff;
+	font-size:28px;
+	font-weight:700;
+	outline:0;
+	transition:border-color .15s linear;
+	margin-bottom:10px;
+	margin-right:8px;
+}
+
+#email02{
+	width:27%;
+	height:45px;
+	padding:20px 14px;
+	border : none;
+	border-bottom:1px solid #d5d9de;
+	background-color:#fff;
+	font-size:28px;
+	font-weight:700;
+	outline:0;
+	transition:border-color .15s linear;
+	margin-bottom:10px;
+	margin-left:8px;
+}
+
+#ConfirmCode{ /* 인증번호 넣기 */
+	width:80%;
+	height:45px;
+	padding:20px 14px;
+	border:1px solid #ddd;
+	background-color:#fff;
+	font-size:28px;
+	font-weight:700;
+	outline:0;
+	transition:border-color .15s linear;
+	margin-bottom:20px;
+	margin-top:20px;
+}
+
+#emailchk{
+	margin-left:15px; 
+	width:17%;
+	height:40px;
+	font-size:32px;
+	color:#fff;
+	border-radius: 10px;
+	font-family:'Nanum pen script';
+	background-color: black;
+	transition:all.15s linear;
+}
+
+.button02{ /*가입하기 버튼*/
+	margin-left:10%; 
+	margin-top : 40px;
+	margin-bottom : 50px;
+	position:relative;
+ 	width:72%;
+	height:55px;
+	font-size:32px;
+	color:#fff;
+	border-radius: 10px;
+	font-family:'Nanum pen script';
+	background-color: black;
+	transition:all.15s linear;
+}
+/*회원가입 CSS 끝*/
