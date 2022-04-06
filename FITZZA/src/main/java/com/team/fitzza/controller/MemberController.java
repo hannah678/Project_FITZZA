@@ -88,8 +88,34 @@ public class MemberController {
 		return "member/joinOk";
 	}
 	
+	//마이페이지로 가기위한 비밀번호 입력 페이지
+	@GetMapping("member/pwdCheck")
+	public ModelAndView pwdCheck(HttpSession session) {
+		String user_id = (String)session.getAttribute("logId");
+		
+		MemberVO vo = service.memberSelect(user_id);
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("vo",vo);
+		
+		mav.setViewName("member/pwdCheck");
+		return mav;
+	}
+	
+	@PostMapping("member/pwdCheckOk")
+	public ModelAndView pwdCheckOk(MemberVO vo, HttpSession session) {
+		// session 로그인 아이디 
+		vo.setUser_id((String)session.getAttribute("logId"));
+		
+		service.memberUpdate(vo);
+		
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("member/memberEdit");
+		return mav;
+	}
+	
+	
 	// 회원정보수정 (폼)
-	@GetMapping("memberEdit")
+	@GetMapping("member/memberEdit")
 	public ModelAndView memberEdit(HttpSession session) {
 		String user_id = (String)session.getAttribute("logId");
 		
@@ -103,7 +129,7 @@ public class MemberController {
 	}
 	
 	// 회원정보수정 (DB)
-	@PostMapping("memberEditOk")
+	@PostMapping("member/memberEditOk")
 	public ModelAndView memberEditOk(MemberVO vo, HttpSession session) {
 		// session 로그인 아이디 
 		vo.setUser_id((String)session.getAttribute("logId"));

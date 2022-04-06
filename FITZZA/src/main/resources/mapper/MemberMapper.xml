@@ -11,15 +11,16 @@
  		INSERT INTO user(user_name, user_id, user_pwd, user_nickname, tel, email)
 		VALUES(#{user_name}, #{user_id}, #{user_pwd}, #{user_nickname}, #{tel}, #{email})
  	</insert>
- 	<!-- 
- 	<select id="memberSelect" resultType="com.campus.myapp.vo.MemberVO">
-		select userid, username, tel, email from member
-		where userid = #{param1}
+ 	
+ 	<select id="memberSelect" resultType="com.team.fitzza.vo.MemberVO">
+		SELECT user_id, user_name, user_nickname, tel, email FROM user
+		WHERE user_id = #{param1}
 	</select>
 	<update id="memberUpdate">
-		update member set username=#{username}, tel=#{tel}, email=#{email}
-		where userid=#{userid} and userpwd=#{userpwd}
+		UPDATE user SET user_pwd=#{user_pwd}, user_nickname=#{user_nickname}, 
+		tel=#{tel} WHERE user_id=#{user_id}
 	</update>
+	<!-- 
 	<select id="idCheck" resultType="int">
 		select count(userid) cnt from member where userid=#{param1}
 	</select>
