@@ -4,10 +4,13 @@ import com.team.fitzza.vo.MemberVO;
 
 public interface MemberService{
 	
-	int memberInsert(MemberVO vo);
+	public int memberInsert(MemberVO vo);
 	public MemberVO loginCheck(MemberVO vo);
 	public MemberVO memberSelect(String user_id);
 	public int memberUpdate(MemberVO vo);
-	int idCheck(String user_id);
+	public int idCheck(String user_id);
+	public MemberVO pwdCheck(MemberVO vo);
+	public int memberBye(MemberVO vo);
+	public int selfBye(MemberVO vo);
 
 }

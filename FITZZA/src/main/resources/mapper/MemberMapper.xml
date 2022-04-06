@@ -20,6 +20,18 @@
 		UPDATE user SET user_pwd=#{user_pwd}, user_nickname=#{user_nickname}, 
 		tel=#{tel} WHERE user_id=#{user_id}
 	</update>
+	
+	<select id="pwdCheck" resultType="MemberVO">
+  		SELECT user_id, user_pwd FROM user
+  		WHERE user_id=#{user_id}
+ 	</select>
+ 	<!-- 회원탈퇴 -->
+ 	<insert id="selfBye">
+ 		INSERT INTO user_leave(leave_forced, email) VALUES('N',#{email})
+ 	</insert>
+ 	<delete id="memberBye">
+ 		DELETE FROM user WHERE user_id=#{user_id} AND user_pwd=#{user_pwd}
+ 	</delete>
 	<!-- 
 	<select id="idCheck" resultType="int">
 		select count(userid) cnt from member where userid=#{param1}

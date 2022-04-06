@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -101,15 +102,32 @@ public class MemberController {
 		return mav;
 	}
 	
+	//정보수정으로 가는 pwdCheckOk
 	@PostMapping("member/pwdCheckOk")
 	public ModelAndView pwdCheckOk(MemberVO vo, HttpSession session) {
 		// session 로그인 아이디 
 		vo.setUser_id((String)session.getAttribute("logId"));
 		
-		service.memberUpdate(vo);
-		
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("member/memberEdit");
+		
+		MemberVO pvo = service.pwdCheck(vo);
+		
+		if (pvo.getUser_pwd().equals(vo.getUser_pwd())) {
+			mav.setViewName("member/memberEdit");
+			System.out.println("맞았습니다");
+			System.out.println(pvo.getUser_pwd());
+			System.out.println(vo.getUser_pwd());
+			
+			mav.addObject("vo",service.memberSelect(vo.getUser_id()));
+		}else {
+			mav.setViewName("redirect:pwdCheck");
+			System.out.println("틀렸습니다.");
+			System.out.println(pvo.getUser_pwd());
+			System.out.println(vo.getUser_pwd());
+		}
+		
+		
+		
 		return mav;
 	}
 	
@@ -130,15 +148,48 @@ public class MemberController {
 	
 	// 회원정보수정 (DB)
 	@PostMapping("member/memberEditOk")
-	public ModelAndView memberEditOk(MemberVO vo, HttpSession session) {
+	public String memberEditOk(MemberVO vo, HttpSession session) {
 		// session 로그인 아이디 
 		vo.setUser_id((String)session.getAttribute("logId"));
 		
 		service.memberUpdate(vo);
 		
+		return "redirect:memberEdit";
+	}
+	
+	//마이페이지
+	@GetMapping("member/meberMypage")
+	public String memberMypage() {
+		return "member/memberMypage";
+	}
+	
+	//회원 탈퇴
+	@GetMapping("member/byeCheck")
+	public ModelAndView byeCheck(HttpSession session) {
+		String user_id = (String)session.getAttribute("logId");
+		MemberVO vo = service.memberSelect(user_id);
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("redirect:memberEdit");
+		mav.addObject("vo", vo);
+		mav.setViewName("member/byeCheck");
+		
 		return mav;
+	}
+	
+	@PostMapping("member/byeOk")
+	public String byeOk(MemberVO vo, HttpSession session) {
+		
+		System.out.println("byeOk start!");
+		// session 로그인 아이디 
+		vo.setUser_id((String)session.getAttribute("logId"));
+
+		System.out.println(vo.getEmail());
+		service.selfBye(vo);
+		System.out.println(vo.getEmail());
+		service.memberBye(vo);
+		System.out.println(vo.getEmail());
+		session.invalidate();
+		
+		return "redirect:/";
 	}
 	
 	// 아이디 중복검사

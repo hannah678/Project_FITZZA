@@ -15,9 +15,16 @@ public class MemberVO {
 	private String profile_image;
 	private String permission;
 	private int report_hit;
+	private String leave_forced;
 	
 	
 	
+	public String getLeave_forced() {
+		return leave_forced;
+	}
+	public void setLeave_forced(String leave_forced) {
+		this.leave_forced = leave_forced;
+	}
 	public String getEmail1() {
 		return email1;
 	}

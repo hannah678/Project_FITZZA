@@ -19,4 +19,11 @@ public interface MemberDAO {
 	public int memberUpdate(MemberVO vo);
 	// 아이디중복검사
 	public int idCheck(String user_id);
+	// pwdCheck 폼
+	public MemberVO pwdCheck(MemberVO vo);
+	// 회원 탈퇴
+	public int memberBye(MemberVO vo);
+	// 자진 탈퇴
+	public int selfBye(MemberVO vo);
+	
 }
