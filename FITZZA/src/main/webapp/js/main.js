@@ -27,3 +27,58 @@ $(window).on("wheel", function(e) {
     html.animate({scrollTop : posTop});
 });
 
+$(document).ready(function(){
+	$('#person1').on('click',function(){
+		$('#person1').css({
+			"position" : "absolute",
+   			"left" : "550px",
+   			"top" : "360px",
+   			"transform" : "rotate(0deg)"
+		});
+	});
+	$('#person2').on('click',function(){
+		$('#person2').css({
+			"position" : "absolute",
+   			"left" : "700px",
+   			"top" : "380px",
+   			"transform" : "rotate(0deg)"
+		});
+	});
+	$('#person3').on('click',function(){
+		$('#person3').css({
+			"position" : "absolute",
+   			"left" : "850px",
+   			"top" : "420px",
+   			"transform" : "rotate(0deg)"
+		});
+	});
+	$('#person4').on('click',function(){
+		$('#person4').css({
+			"position" : "absolute",
+   			"left" : "1000px",
+   			"top" : "360px",
+   			"transform" : "rotate(0deg)"
+		});
+	});
+	$('#person5').on('click',function(){
+		$('#person5').css({
+			"position" : "absolute",
+   			"left" : "1150px",
+   			"top" : "410px",
+   			"transform" : "rotate(0deg)"
+		});
+	});
+});
+
+$(document).ready(function(){
+	var count = 0;
+	$('.person').on('click',function(){
+		count++;
+		
+		if(count==5){
+			$('#style_reco h1').css("opacity","1");
+			$('#style_reco h2 a').css("display","block");
+			$('#text_effect').css("opacity","0");
+		}	
+	});
+});

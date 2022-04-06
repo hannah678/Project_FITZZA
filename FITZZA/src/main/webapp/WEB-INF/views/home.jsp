@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
 <div id="container">
         <article id="adver_video" class="article">
             <video type="video/mp4" autoplay muted controls loop>
@@ -12,7 +13,7 @@
         </article>
         <article id="todaysCodi" class="article">
             <h1>패션 피플들의 데일리룩</h1>
-            <a href="">오늘의 코디</a>
+            <h2><a href="">오늘의 코디</a></h2>
             <div id="lookTop3">
                 <p>TOP 3</p>
                 <ul>
@@ -42,11 +43,28 @@
             <div id="particles-js"></div>
             
             <!-- scripts -->
-            <script src="../particles.js"></script>
-            <script src="js/app.js"></script>
+            <script src="/js/particles.js"></script>
+            <script src="/js/app.js"></script>
         </article>
-        <article id="style_reco" class="article"></article>
-        <article id="purchase" class="article"></article>
+        <article id="style_reco" class="article">
+        	<h1>다양한 패션을 나누고 싶다면</h1>
+        	<h2><a href="">스타일 추천</a></h2>
+        	<ul id="text_effect">
+        		<li class="text">click the people !</li>
+        		<li class="text_before">click the people !</li>
+        		<li class="text_after">click the people !</li>
+        	</ul>
+        	<div>
+        		<img src="img/style_reco_person1.png" id="person1" class="person" alt="사람1">
+        		<img src="img/style_reco_person2.png" id="person2" class="person" alt="사람2">
+        		<img src="img/style_reco_person3.png" id="person3" class="person" alt="사람3">
+        		<img src="img/style_reco_person4.png" id="person4" class="person" alt="사람4">
+        		<img src="img/style_reco_person5.png" id="person5" class="person" alt="사람5">
+        	</div>
+        	<img src="img/style_reco_bg2.png" alt="배경사진" class="style_bg2">
+        	<img src="img/style_reco_bg3.png" alt="배경사진" class="style_bg3">
+        </article>
+        <article id="trade" class="article"></article>
         <article id="review" class="article"></article>
         <article id="QnA" class="article"></article>
         <article id="vote" class="article"></article>

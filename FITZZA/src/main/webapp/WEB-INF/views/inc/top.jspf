@@ -14,11 +14,10 @@
     <meta property="og:description" content="아직도 하나씩 입어봐? 입기 전에 Try on it! 코디북을 활용한 미리보기!" />
     
     <link rel="stylesheet" href="/css/main.css" type="text/css"/>
-    <link rel="stylesheet" media="screen" href="/css/style.css" type="text/css"/>
-
+    
     <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
     <script type="text/javascript" src="/js/main.js"></script>
-    <script src="/js/particles.js"></script>
+    
 
     <title>FITZZA | 패션 커뮤니티</title>
 
@@ -30,10 +29,10 @@
     	<div id="rnb">
             <c:if test="${logStatus != 'Y' }">
                 <p id="logStatus1"><a href="#">signup</a></p>
-                <p id="logStatus2"><a href="/member/login">login</a></p>
+                <p id="logStatus2"><a href="#">login</a></p>
             </c:if>
             <c:if test="${logStatus == 'Y' }">
-                <p id="logStatus1"><a href="/member/logout">logout</a></p>
+                <p id="logStatus1"><a href="#">logout</a></p>
                 <p id="logStatus2"><a href="#">mypage</a></p>
             </c:if>
         </div>

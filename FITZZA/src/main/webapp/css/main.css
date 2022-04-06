@@ -1,6 +1,36 @@
 @charset "UTF-8";
 @import url('https://fonts.googleapis.com/css2?family=Kaushan+Script&family=Nanum+Pen+Script&display=swap');
 
+/* reset */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+}
+ol, ul {
+	list-style: none;
+}
+.hidden {
+	text-indent: -9999px;
+	display:none;
+}
+a:link {color:#fff; text-decoration: none;}
+a:visited {color:#fff}
+
+/* reset - end */
+
 html {width: 100%; height: 100%;}
 body {
     font-family:'Nanum pen script';
@@ -9,10 +39,28 @@ body {
 article {
     width: 100%; height: 1080px;
     margin:0; padding:0px;
-    position: relative;
+    position: relative; z-index:1;
     overflow: hidden;
+    position:relative;
+}
+h1{
+	font-size: 50px;
+    line-height: 100px;
+}
+h2 a {
+    width: 200px; height: 60px;
+    display: block; 
+    border: 0;
+    border-top-left-radius: 30px; border-top-right-radius: 30px;
+    border-bottom-left-radius: 30px; border-bottom-right-radius: 30px;
+    border:3px solid #fff;
+    font-size: 40px; color: #fff;
+    line-height: 60px; text-align: center;
+    transition: all 0.5s;
+    color:#fff;
 }
 #container {background-color: #000;}
+
 /* ************ */
 /* head - start */
 /* ************ */
@@ -21,6 +69,8 @@ header {
     background-color: #f7ecde;
     position:fixed; z-index: 999;
 }
+header a:link {color:#222; text-decoration: none;}
+header a:visited {color:#222}
 #logo {
     display: block;
     width: 270px; height: 50px;
@@ -95,8 +145,8 @@ header {
 }
 #adver_video video {
     width: 100%; height: 930px;
-    margin-top: 150px;
     object-fit: cover;
+    margin-top:150px;
 }
 /* 전체화면 버튼 */ 
 video::-webkit-media-controls-fullscreen-button {display: none !important;}
@@ -135,24 +185,13 @@ video::-webkit-media-controls-volume-slider {display: none !important;}
     color: #fff;
 }
 #todaysCodi h1{
-    font-size: 50px;
-    line-height: 100px;
     margin-left:340px; padding-top:200px;
 }
-#todaysCodi > a {
-    width: 200px; height: 60px;
-    display: block; 
+#todaysCodi h2 a {
     position: absolute; left: 340px; top: 300px;
     z-index: 2;
-    border: 0;
-    border-top-left-radius: 30px; border-top-right-radius: 30px;
-    border-bottom-left-radius: 30px; border-bottom-right-radius: 30px;
-    border:3px solid #fff;
-    font-size: 40px; color: #fff;
-    line-height: 60px; text-align: center;
-    transition: all 0.5s;
-}
-#todaysCodi > a:hover {
+ }
+#todaysCodi h2 a:hover {
     background-color: #54bab9;
 }
 #lookTop3 p {
@@ -199,6 +238,7 @@ video::-webkit-media-controls-volume-slider {display: none !important;}
 #lookTop3 li img {
     position: absolute; right: -35px; top: -20px;
     transform: rotate(45deg);
+    z-index:3;
 }
 @keyframes shake{
     0%{transform: rotate(45deg);}
@@ -236,27 +276,156 @@ video::-webkit-media-controls-volume-slider {display: none !important;}
 #lookTop3 ul li:hover .codi_hover {opacity: 1;}
 #lookTop3 ul li:hover img {
     animation-name: shake;
-      animation-duration: 2s;
-      animation-iteration-count: infinite;
-      animation-delay: 0.5s;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    animation-delay: 0.5s;
 }
 #particles-js{
+	width:100%; height:100%;
     position: absolute;left: 0; top: 0;
-    z-index: 1;
+    z-index: 1;    
+}
+/* 별주기 */
+.star-rating,
+.star-rating2,
+.star-rating3 {
+  display: flex;
+  flex-direction: row-reverse;
+  font-size: 3rem;
+  line-height: 3rem;
+  justify-content: space-around;
+  padding: 0 0.2em;
+  text-align: center;
+  width: 5em;
+  margin:0 auto;
+}
+ 
+.star-rating input,
+.star-rating2 input,
+.star-rating3 input{
+  display: none;
+}
+ 
+.star-rating label, 
+.star-rating2 label,
+.star-rating3 label
+{
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke-width: 2.3px;
+  -webkit-text-stroke-color: #2b2a29;
+  cursor: pointer;
+}
+ 
+.star-rating :checked ~ label,
+.star-rating2 :checked ~ label,
+.star-rating3 :checked ~ label {
+  -webkit-text-fill-color: gold;
+}
+ 
+.star-rating label:hover,
+.star-rating label:hover ~ label
+.star-rating2 label:hover,
+.star-rating2 label:hover ~ label,
+.star-rating3 label:hover,
+.star-rating3 label:hover ~ label {
+  -webkit-text-fill-color: #fff58c;
 }
 /* todaysCodi - end */
 
 /* style_reco - start */
 #style_reco {
     background:url(../img/style_reco_bg.png) no-repeat 0 0;
+ }
+#style_reco h1 {
+    position:absolute; left:50%; top:200px;
+    z-index:3;
+	width:500px; height:100px;
+	transform: translateX(-250px);
+    background : radial-gradient(black 50px, transparent 70%);
+	text-align:center;
+	color:#fff;
+	opacity:0;
+	transition:all 0.5s;
 }
+#style_reco h2 a {
+	display:none;
+	margin : 300px auto 0 auto;
+	background-color:rgba(0,0,0,0.3);
+	position:absolute; 
+	left:50%; top:0px; z-index:3;
+	transform: translateX(-100px);
+	transition:all 0.5s;
+}
+#style_reco h2 a:hover {background-color: #54bab9;}거래하다
+#style_reco ul li {
+	width:500px; 
+	position:absolute; left:50%; top:200px; 
+	transform: translateX(-250px);
+	font-size : 60px; text-align:center;
+}
+#text_effect {transition:all 0.5s;}
+.text {z-index:4; color:#fff;}
+.text_before {
+	z-index:3;
+	animation: textE 0.3s infinite;
+	color: #f0f;
+}
+.text_after {
+	z-index:2; 
+	animation: textE 0.2s infinite reverse;
+	color: #0ff;
+}
+
+@keyframes textE {
+  0% {transform: translate(-250px)}
+  20% {transform: translate(-255px, 5px)}
+  40% {transform: translate(-255px, -5x)}
+  60% {transform: translate(-245px, 5px)}
+  80% {transform: translate(-245px, -5px)}
+  to {transform: translate(-250px)}
+}
+.style_bg2 {
+	position:absolute; left:0; top:0;
+	z-index:1;
+}
+.style_bg3 {
+	position:absolute; right:0; top:0;
+	z-index:1;
+}
+#style_reco div > img {
+	position:absolute; 
+	z-index:2;
+	cursor:pointer;
+	transition:all 1s;
+	}
+#style_reco div img:nth-child(1) {
+	left:-50px; bottom:-330px;
+	transform:rotate(10deg);
+}
+#style_reco div img:nth-child(2) {
+	left:1200px; top:280px; z-index:1;
+	transform:rotate(-50deg);
+}
+#style_reco div img:nth-child(3) {
+	left:330px; top:220px; z-index:1;
+	transform:rotate(80deg);
+}
+#style_reco div img:nth-child(4) {
+	left:1500px; bottom:-350px;
+	transform:rotate(-30deg);
+}
+#style_reco div img:nth-child(5) {
+	left:300px; top:-310px;
+	transform:rotate(150deg);
+}
+
 /* style_reco - end */
 
-/* purchase - start */
-#purchase {
-    background-color:#54bab9;
+/* trade - start */
+#trade {
+    background: url(../img/trade_bg.png);
 }
-/* purchase - end */
+/* trade - end */
 
 /* review - start */
 #review {
