@@ -6,17 +6,17 @@
     <img src="../images/LOgo.png" style="width:250px;"/>
     <div style="font-size: 3em; color:grey;">── Sign In ──</div>
   </div>
-  <form method="post" action="#" id="form1">
+  <form method="post" action="/member/loginOk" id="form1">
    <div id="contents">
     <div class="loginSection">
      <div class="userlogin" id="userlogin">
       <fieldset>
         <legend class="accounthidden">login ID</legend>
         <div class="id">
-         <input type="text" class="input01" id="txtUserId" placeholder="Username" style="margin-bottom:20px;"/>
+         <input type="text" class="input01" id="user_id" placeholder="UserID" style="margin-bottom:20px;"/>
         </div>
         <div class="password">
-         <input type="password" class="input01" id="txtUserPWD" placeholder="Password" style="margin-bottom:20px;"/>
+         <input type="password" class="input01" id="user_pwd" placeholder="Password" style="margin-bottom:20px;"/>
         </div>
         <div class="loginbtn">
          <input type="submit" class="button01" value="Login" style="margin-bottom:20px;"/>
