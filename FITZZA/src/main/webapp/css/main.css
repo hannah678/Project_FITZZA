@@ -451,3 +451,132 @@ video::-webkit-media-controls-volume-slider {display: none !important;}
 }
 /* codi_book - end */
 
+/* ※ 로그인  CSS ※*/
+#login_container{
+	width:100%;
+	background: url(../img/trade_bg.png) no-repeat 0 0;
+	background-size: 100%;
+}
+.loginheader>div{
+	font-family: "Nanum pen script", cursive; 
+	font-size:3em	
+}
+
+.accounthidden>button,input,input[type=password],input[type=text]{
+	font:28px "Nanum pen script";
+	color:black;
+	background-color:transparent
+}
+
+#contents,#wrapper{
+	position:relative;
+	} 
+
+.userlogin{
+	padding-top:60px
+}
+
+.inputMsg{
+	display:hidden;
+	height:30px;
+	margin-top:2px;
+	font-weight:700;
+	letter-spacing:-.6px;
+	text-align:left;
+	color:red
+}
+
+#wrapper.showMsg{
+	display:block
+}
+
+#wrapper{
+	max-width:500px;
+	min-width:370px;
+	min-height:100%;
+	min-height:100vh;
+	padding:0 16px 200px;
+	margin:0 auto
+}
+
+fieldset{
+	border:none;
+}
+
+.accounthidden{
+	position:absolute;
+	overflow:hidden;
+	clip:rect(0 0 0 0);
+	height:1px;
+	width:1px;
+	margin:-1px
+}
+
+.loginheader{
+	min-width:328px;
+	padding-top:120px;
+	text-align:center
+}
+	
+.loginheader.logo{
+	display:inline-block;
+	margin:0 auto;
+	width:120px;
+	height:40px
+}
+	
+.id input,.password input{
+	width:100%;
+	height:55px;
+	padding:20px 14px;
+	border-radius: 10px;
+	border:1px solid #fff;
+	background-color:rgba( 255, 255, 255, 0.5 );
+	font-size:16px;
+	font-weight:700;
+	outline:0;
+	transition:border-color .15s linear
+}
+
+.id input::placeholder,.password input::placeholder{
+	font:28px "Nanum pen script";
+	color: gray;
+
+	}
+
+.button01{
+	width:100%;
+	height:55px;
+	font-size:32px;
+	border-radius: 10px;
+	font-family:'Nanum pen script';
+	background-color:rgb( 253, 212, 149);
+	transition:all.15s linear
+}
+/*
+.button01:active,.button01:hover{
+	outline:0;
+	background-color:#07f;
+	transition:all .2s linear
+}*/
+
+.loginmenu{
+	position:relative;
+	height:20px;
+	padding-top:8px
+}
+
+.loginmenu a{
+	font-weight:600;
+	font-size: 9pt;
+	letter-spacing:-.4px;
+	color:rgb( 251, 176, 60);
+	margin-right:8px;
+	transition:all.15s linear
+}
+.loginmenu a:hover{
+	color: red;
+	transition:all.2s linear
+}
+
+/* 로그인 CSS 끝*/
