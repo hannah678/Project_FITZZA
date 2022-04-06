@@ -13,10 +13,10 @@
       <fieldset>
         <legend class="accounthidden">login ID</legend>
         <div class="id">
-         <input type="text" class="input01" id="user_id" placeholder="UserID" style="margin-bottom:20px;"/>
+         <input type="text" class="input01" name="user_id" id="user_id" placeholder="UserID" style="margin-bottom:20px;"/>
         </div>
         <div class="password">
-         <input type="password" class="input01" id="user_pwd" placeholder="Password" style="margin-bottom:20px;"/>
+         <input type="password" class="input01" name="user_pwd" id="user_pwd" placeholder="Password" style="margin-bottom:20px;"/>
         </div>
         <div class="loginbtn">
          <input type="submit" class="button01" value="Login" style="margin-bottom:20px;"/>

@@ -32,7 +32,6 @@ public class MemberController {
 	//로그인
 	@PostMapping("/member/loginOk")
 	public ResponseEntity<String> loginOk(MemberVO vo, HttpSession session){
-		System.out.println("MeberController:::loginOk START!");
 		ResponseEntity<String> entity = null;
 		HttpHeaders headers = new HttpHeaders();
 		headers.add("Content-Type","text/html; charset=utf-8");
@@ -46,8 +45,6 @@ public class MemberController {
 	            
 	            String msg = "<script>location.href='/';</script>";
 	            entity = new ResponseEntity<String>(msg, headers, HttpStatus.OK);
-	            System.out.println("userid : " + rVo.getUser_id());
-	            System.out.println("userpwd : " + rVo.getUser_pwd());
 	         }else { //로그인 실패
 	            throw new Exception(); //예외처리로 보내기
 	         }
