@@ -71,21 +71,21 @@ public class MemberController {
 	}
 	
 	//회원가입폼으로 이동하는 매핑
-	@GetMapping("memberForm")
+	@GetMapping("member/join")
 	public String memberForm() {
-		return "member/memberForm"; // member폴더에 memberForm.jsp파일을 뷰로 사용한다.
+		return "member/join"; // member폴더에 memberForm.jsp파일을 뷰로 사용한다.
 	}
 	
 	
 	// 회원등록
-	@PostMapping("memberOk")
+	@PostMapping("member/joinOk")
 	public String memberFormOk(MemberVO vo, Model model) {
 		// 회원등록
 		int cnt = service.memberInsert(vo);
 		
 		// 클라이언트 페이지로 insert 결과를 보낸다.
 		model.addAttribute("cnt",cnt);
-		return "member/memberResult";
+		return "member/joinOk";
 	}
 	
 	// 회원정보수정 (폼)

@@ -28,7 +28,7 @@
     	<img id="logo" src="${url }/img/logo_text.png" alt="logo"/>
     	<div id="rnb">
             <c:if test="${logStatus != 'Y' }">
-                <p id="logStatus1"><a href="#">signup</a></p>
+                <p id="logStatus1"><a href="/member/join">signup</a></p>
                 <p id="logStatus2"><a href="/member/login">login</a></p>
             </c:if>
             <c:if test="${logStatus == 'Y' }">

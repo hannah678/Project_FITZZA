@@ -7,6 +7,8 @@ public class MemberVO {
 	private String user_name;
 	private String user_nickname;
 	private String email;
+	private String email1;
+	private String email2;
 	private String tel;
 	private String register_date;
 	private int point;
@@ -15,6 +17,19 @@ public class MemberVO {
 	private int report_hit;
 	
 	
+	
+	public String getEmail1() {
+		return email1;
+	}
+	public void setEmail1(String email1) {
+		this.email1 = email1;
+	}
+	public String getEmail2() {
+		return email2;
+	}
+	public void setEmail2(String email2) {
+		this.email2 = email2;
+	}
 	public String getUser_id() {
 		return user_id;
 	}
@@ -40,9 +55,13 @@ public class MemberVO {
 		this.user_nickname = user_nickname;
 	}
 	public String getEmail() {
+		email = email1 +"@"+ email2;
 		return email;
 	}
 	public void setEmail(String email) {
+		String emailSp[] = email.split("@");
+		email1 = emailSp[0];
+		email2 = emailSp[1];
 		this.email = email;
 	}
 	public String getTel() {

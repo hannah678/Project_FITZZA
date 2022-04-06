@@ -7,7 +7,7 @@
    		 <img src="${url}/img/LOgo.png" style="width:250px;"/>
    		 <div>─── Sign In ───</div>
   	   </div>
-     <form method="post" action="#" id="form1">
+     <form method="post" action="loginOk" id="form1">
   		 <div id="contents">
    			 <div class="loginSection">
     			 <div class="userlogin" id="userlogin">
@@ -29,7 +29,7 @@
    			 <hr/>
    		 <div style="width:400px; margin:0 auto;">
       		   <p class="loginmenu" style="font-size:0.8em; text-align: center;">
-    				  아이디가 없으시다면? <a href="#" class="join" onclick="">회원가입</a>
+    				  아이디가 없으시다면? <a href="member/join" class="join" onclick="">회원가입</a>
     		   </p>
  	    </div>
    		</div>

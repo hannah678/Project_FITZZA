@@ -4,7 +4,7 @@
 <c:if test="${cnt>0}">
   <script>
      alert("회원이 등록되었습니다. 로그인페이지로 이동합니다.");
-     location.href="/myapp/member/login";
+     location.href="/member/login";
   </script>
 </c:if>
 <!--  등록실패했을때 -->

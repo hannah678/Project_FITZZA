@@ -102,14 +102,14 @@
 });
 </script>
 <section id="join_wrapper" class="layoutJoin">
-  <form method="post" action="/myapp/member/joinOk" id="contents">
+  <form method="post" action="/member/joinOk" id="contents">
    <div class="joinSection">
     <fieldset>
        <legend class="Joinhidden"></legend>
        <div>
         <h2>아이디</h2>
         <div class= "joinbox">
-         <input type="text" class="input02" id="joinId" name="userid"/>
+         <input type="text" class="input02" id="user_id" name="user_id"/>
         </div>
         </div>
         <p class="inputMsg userid" style="display:none;">ID를&nbsp입력하세요.</p>
@@ -118,7 +118,7 @@
         <p class="inputMsg userid3" id="idN" style="display:none; padding-top:10px;">사용 불가능한 아이디입니다.</p>
         <div class="joinpwd">
         <h2>비밀번호</h2>
-         <input type="password" class="input02" id="joinPWD" name="userpwd"/>
+         <input type="password" class="input02" id="user_pwd" name="user_pwd"/>
         </div>
         <div class="joinpwd">
         <h2>비밀번호 확인</h2>
@@ -126,8 +126,10 @@
         </div>
         <p class="inputMsg password" style="display:none;">비밀번호가 일치하지 않습니다.</p>
         <div class="joinNick">
+        <h2>이름</h2>
+        <input type="text" class="input02" id="user_name" name="user_name">
         <h2>닉네임</h2>
-        <input type="text" class="input02" id="joinNickId" name="username"/>
+        <input type="text" class="input02" id="user_nickname" name="user_nickname"/>
         </div> 
         <div>
          <input type="button" class="chkbtn01" id="chkbtn02" value="확인"/>
@@ -135,10 +137,12 @@
          <p class="inputMsg usernickname" style="display:none;">닉네임을 입력하세요.</p>
          <p class="inputMsg usernickname2" style="display:none;">닉네임은&nbsp1~8글자 사이여야합니다.<br/>한글,영어대소문자만 등록 가능합니다.</p>
         <div>
+        <h2>전화번호</h2>
+        <input type="text" class="input02" id="tel" name="tel"> 
         <h2>이메일 주소</h2>
          <div class="joinemail">
-          <input type="text" class="input02" id="joinEmail1" name="email1"/>@
-          <input type="text" class="input02" id="joinEmail2" name="email2"/>
+          <input type="text" class="input02" id="email1" name="email1"/>@
+          <input type="text" class="input02" id="email2" name="email2"/>
          </div>
          <p class="inputMsg email1" style="display:none;">이메일을 입력하세요.</p>
          <p class="inputMsg email2" style="display:none;">이메일을 잘못 입력했습니다.</p>
