@@ -53,7 +53,7 @@ $(document).ready(function(){
    			 <hr/>
    		 <div style="width:400px; margin:0 auto;">
       		   <p class="loginmenu" style="font-size:0.8em; text-align: center;">
-    				  아이디가 없으시다면? <a href="member/join" class="join" onclick="">회원가입</a>
+    				  아이디가 없으시다면? <a href="/member/join" class="join" onclick="">회원가입</a>
     		   </p>
  	    </div>
    		</div>
