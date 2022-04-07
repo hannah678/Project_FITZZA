@@ -19,7 +19,7 @@
 </head>
 <body>
 <section id="join_wrapper" class="layoutJoin">
-  <form method="post" action="#" id="contents">
+  <form method="post" action="/member/joinOk" id="contents">
    <div class="joinSection">
     <fieldset>
        <legend class="Joinhidden"></legend>
@@ -30,7 +30,7 @@
          <li class="joinbox" ><input type="text" name="user_pwdchk" id="joinpwdchk" placeholder="비밀번호 확인"/></li>
          <li class="joinbox" ><input type="text" name="user_name" id="joinname" placeholder="이름"/></li>  
          <li class="joinbox" ><input type="text" name="user_nickname" id="joinnickname" placeholder="닉네임"/></li> 
-         <li><input type="text" name="email1" id="email01" placeholder="이메일"/>@<input type="text" name="email2" id="email02"/><button type="button" id="emailchk">인증</button></li> 
+         <li><input type="text" name="email1" id="email1" placeholder="이메일"/>@<input type="text" name="email2" id="email2"/><button type="button" id="emailchk">인증</button></li> 
          <li id="Codebox" style="display:none"><input type="text" name="ConfirmCode" id="ConfirmCode" placeholder="인증코드 입력"/></li> 
          <li class="joinbox"><input type="text" name="tel" id="jointel" placeholder="전화번호(000-0000-0000)"/></li> 
        </ul>

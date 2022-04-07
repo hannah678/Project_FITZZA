@@ -10,7 +10,7 @@
    		 <img src="${url}/img/LOgo.png" style="width:250px;"/>
    		 <div>─── Sign In ───</div>
   	   </div>
-     <form method="post" action="loginOk" id="form1">
+     <form method="post" action="member/loginOk" id="form1">
   		 <div id="contents">
    			 <div class="loginSection">
     			 <div class="userlogin" id="userlogin">
