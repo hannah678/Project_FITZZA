@@ -1,0 +1,85 @@
+@import url('https://fonts.googleapis.com/css2?family=Kaushan+Script&family=Nanum+Pen+Script&display=swap');
+body{
+    background-image: url("../img/배경.png");
+    font-family:'Nanum pen script';
+    font-size: 1.5em;
+}
+body, ul, li{
+    margin:0;
+    padding:0;
+    list-style-type: none;
+}
+a:link, a:visited, a:hover{
+    text-decoration:none;
+    color:black;
+}
+.oldboard>#write a:link, .oldboard>#write a:visited{
+    text-decoration:none;
+    font-weight: 800;
+    color:gray;
+}
+.oldboard>#write a:hover{
+    font-weight: 900;
+    font-size: 2em;
+    color:black;
+}
+.oldboard>#write{
+    margin-bottom: 30px;
+}
+h1, h2, .oldlist>li:nth-child(1), .oldlist>li:nth-child(6n+3), .oldlist>li:nth-child(6n+4), .oldlist>li:nth-child(6n+5), .oldlist>li:nth-child(6n){
+    text-align: center;
+}
+.oldboard{
+    width:1200px;
+    margin:0 auto;
+    padding:0 30px;
+}
+.oldlist{
+    border-top: 1px soli black;
+}
+.oldlist>li{
+    float: left;
+    height: 80px;
+    line-height: 80px;
+    border-bottom: 1px solid rgb(192, 192, 192);
+    width: 10%;
+    background-color: white;
+}
+.oldlist>li:nth-child(6n+8){
+    width: 50%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.oldlist>li:nth-child(2){
+    width: 60%;
+    text-align:center;
+}
+img{
+    width: 80px;
+    height: 80px;
+}
+.paging{
+    height:30px;
+    display: table; margin-left: auto; margin-right: auto;
+}
+.paging>li{
+    text-align:center;
+    float:left;
+    width:32px;
+    height:24px;
+    margin:15px;
+}
+.paging>li a:link, .paging>li a:visited, .paging>li a:hover{
+    text-decoration:none;
+    color:black;
+}
+.paging>li a:hover{
+    text-decoration:none;
+    font-weight:bold;
+}
+#searchFrm{
+    width:304px;
+    margin-bottom:30px;
+    display: table; margin-left: auto; margin-right: auto;
+}

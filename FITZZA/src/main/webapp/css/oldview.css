@@ -1,0 +1,77 @@
+@import url('https://fonts.googleapis.com/css2?family=Kaushan+Script&family=Nanum+Pen+Script&display=swap');
+body{
+    width:1200px;
+    margin:0 auto;
+    padding:0 30px;
+    overflow:auto;
+    background-image: url("../img/배경.png");
+    font-family:'Nanum pen script';
+    font-size: 1.5em;
+}
+img{
+    float: left;
+    margin-right: 50px;
+    width: 400px;
+    height: 400px;
+    border: 1px solid black;
+}
+li{
+    list-style-type: none;
+}
+li:nth-child(3){
+    font-weight: 600;
+    font-size: xx-large;
+}
+li:nth-child(5){
+    font-weight: 600;
+    font-size: xx-large;
+}
+li:nth-child(3){
+    font-weight: 600;
+    font-size: xx-large;
+}
+li:nth-child(5){
+    font-weight: 600;
+    font-size: xx-large;
+}
+#call{
+    width: 300px;
+    height: 100px;
+    margin-top: 30px;
+    font-size: xx-large;
+    font-weight: 600;
+    background-color: orange;
+    color: white;
+    border: 0;
+}
+#report{
+    width: 300px;
+    height: 100px;
+    margin-top: 30px;
+    font-size: xx-large;
+    font-weight: 600;
+    background-color: red;
+    color: white;
+    border: 0;
+}
+.info>#item{
+    width: 500px;
+    float: left;
+    border-right: 1px solid black;
+    padding-right: 50px;
+    padding-left: 50px;
+}
+.info>#seller{
+    width: 500px;
+    float: left;
+    padding-left: 50px;
+}
+.info>#seller img{
+    width: 100px;
+    height: 100px;
+    border-radius: 70%;
+}
+.reply{
+    width: 1200px;
+    clear: both;
+}

@@ -158,7 +158,7 @@ public class MemberController {
 	}
 	
 	//마이페이지
-	@GetMapping("member/meberMypage")
+	@GetMapping("member/memberMypage")
 	public String memberMypage() {
 		return "member/memberMypage";
 	}

@@ -1,0 +1,54 @@
+body, ul, li{
+    margin:0;
+    padding:0;
+    list-style-type:none;
+    background-image: url("../img/배경.png");
+}
+.boardcontainer{
+    width:1200px;
+    margin:0 auto;
+    padding:0 30px;
+    overflow:auto;
+    margin-top:100px; 
+    margin-bottom:-450px;
+}
+h1{
+    text-align:center;
+}
+#subject, #city, #price{
+    width:80%;
+    height: 50px;
+    font-size: 1em;
+}
+#introduce{
+    font-size: 1em;
+}
+li{
+    margin-top: 50px;
+    margin-bottom: 50px;
+    text-align: center;
+}
+#boardFrm li{
+    font-size: 1.5em;
+}
+#enter{
+    width: 300px;
+    height: 100px;
+    font-size: xx-large;
+    font-weight: 600;
+    background-color: orange;
+    color: white;
+    border: 0;
+}
+label{
+    display:inline-block;
+    width: 150px;
+    border: solid 1px black;
+    background-color: beige;
+    margin-right: 300px;
+}
+#file_route{
+    height: 30px;
+    margin-bottom: 10px;
+    background-color: white;
+}
