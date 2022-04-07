@@ -4,13 +4,34 @@
  <link rel="stylesheet" href="/css/login.css" type="text/css"/>
 
 <!DOCTYPE html>
+<script>
+$(document).ready(function(){
+	  $(".loginbtn").click(function(){
+		  if($("#user_id").val()==""){
+			  $('.userid').css('visibility','visible');
+			  return false;
+		  };
+		  
+		  if($("#user_pwd").val()==""){
+			  $('.password').css('visibility','visible');
+			  return false;
+		  };
+	  });
+	  
+	  $(".input01").on('focus',function(){
+		  $('.inputMsg').css('visibility','hidden');
+	  });
+	  
+	  
+});
+</script>
 <div id="login_container">
 <section id="wrapper" class="layoutLogin">
        <div class="loginheader">
    		 <img src="${url}/img/LOgo.png" style="width:250px;"/>
    		 <div>─── Sign In ───</div>
   	   </div>
-     <form method="post" action="member/loginOk" id="form1">
+     <form method="post" action="/member/loginOk" id="form1">
   		 <div id="contents">
    			 <div class="loginSection">
     			 <div class="userlogin" id="userlogin">
