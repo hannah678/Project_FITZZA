@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.team.fitzza.dao.BoardDAO">
+
+  	<insert id="oldBoardInsert">
+  		INSERT INTO board(type_num, user_id, title, content, ip, gender)
+  		VALUES(3,#{user_id},#{title},#{content},#{ip},'M')
+  	</insert>
+ 
+  	<insert id="oldBoardCityInsert">
+  		INSERT INTO board_old(city, old_price) VALUES(#{city}, #{old_price})
+  	</insert> 
+  	<insert id="oldBoardFileInsert">
+  		INSERT INTO board_common_image(file1,file2,file3,file4,file5) 
+  		VALUES(#{file1},#{file2},#{file3},#{file4},#{file5})
+  	</insert> 
+
+</mapper>

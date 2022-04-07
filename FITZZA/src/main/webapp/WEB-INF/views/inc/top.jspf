@@ -41,7 +41,7 @@
             <li><img id="close_btn" src="${url }/img/close.png" alt="close"/></li>
             <li><a href="">오늘의 코디</a></li>
             <li><a href="">스타일 추천</a></li>
-            <li><a href="">중고거래</a></li>
+            <li><a href="/board/old/oldList">중고거래</a></li>
             <li><a href="">구매후기</a></li>
             <li><a href="">QnA</a></li>
             <li><a href="">오늘 뭐입지?</a></li>
