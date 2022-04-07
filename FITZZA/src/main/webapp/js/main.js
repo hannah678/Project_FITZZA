@@ -12,7 +12,7 @@ $(document).ready(function(){
 });
 
 /*스크롤 무빙*/
-/* var html = $("html");
+var html = $("html");
 var page = 1;
 html.animate({scrollTop:0}, 10);
 $(window).on("wheel", function(e) {
@@ -27,7 +27,7 @@ $(window).on("wheel", function(e) {
     // var posTop =(page-1) * $(window).height();
     var posTop =(page-1) * 1080;
     html.animate({scrollTop : posTop});
-}); */
+});
 
 /*style_reco*/
 $(document).ready(function(){
@@ -235,3 +235,30 @@ $(document).ready(function(){
                 }
 
             })
+            
+/*vote*/
+$(document).ready(function(){
+	$('.heart_empty').on('click',function(){
+		$(this).toggleClass('checked');
+	});
+});
+
+$(document).ready(function(){
+	$('.prev').on('click',function(){
+		$(this).parent().prev().children().css({
+			"transform" : "translateX(0px)"
+		});
+	});
+	$('.next').on('click',function(){
+		$(this).parent().prev().children().css({
+			"transform" : "translateX(-400px)"
+		});
+	});
+});
+
+/*codi_book*/
+
+
+
+
+

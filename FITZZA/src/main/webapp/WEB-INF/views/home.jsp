@@ -86,7 +86,7 @@
         </article>
         <article id="review" class="article">
         	<div class="wrap">
-        		<h1></h1>
+        		<h1>구매한 물건을 소개하고,<br/>고마운 마음을 전하고 싶을 땐</h1>
 	        	<h2><a href="">구매후기</a></h2>
 	        	<div class="bg">
 	        		<img src="img/review_bg.png" alt="배경이미지">
@@ -98,8 +98,11 @@
         </article>
         <article id="QnA" class="article">
         	<div class="wrap">
-        		<h1>구매한 물건을 소개하고,<br/>고마운 마음을 전해보세요.</h1>
-	        	<h2><a href="">구매후기</a></h2>
+        		<h1>패션 관련 그 어떤 질문이라도 궁금하면 뭐든지</h1>
+	        	<h2><a href="">QnA</a></h2>
+	        	<div class="wrapper">
+					<p data-heading="다 물어봐">다 물어봐</p>
+				</div>
 	        	<div class='box'>
 					<div class='wave -one'></div>
 					<div class='wave -two'></div>
@@ -107,6 +110,41 @@
 				</div>
         	</div>
         </article>
-        <article id="vote" class="article"></article>
-        <article id="codi_book" class="article"></article>
+        <article id="vote" class="article">
+        	<div class="wrap">
+        		<h1>어떤 코디가 더 어울릴까 고민되면 물어봐</h1>
+	        	<h2><a href="">오늘뭐입지?</a></h2>
+        	</div>
+        	<ul id="vote_frame">
+        		<li id="frame1">
+        			<img src="img/vote_frame1.png" alt="사진 프레임">
+        			<ul class="slides">
+        				<li><img src="img/vote_frame_img1.png" alt="여자 첫번째 코디"></li>
+        				<li><img src="img/vote_frame_img2.png" alt="여자 두번째 코디"></li>
+        			</ul>
+        			<div class="controller">
+	        			<span class="prev">&lang;</span>
+	        			<span class="next">&rang;</span>
+	        			<img src="img/heart_empty.png" class="heart_empty" alt="빈하트">
+        			</div>
+        		</li>
+        		<li id="frame2">
+        			<img src="img/vote_frame2.png" alt="사진 프레임">
+        			<ul class="slides">
+        				<li><img src="img/vote_frame_img3.png" alt="남자 첫번째 코디"></li>
+        				<li><img src="img/vote_frame_img4.png" alt="남자 두번째 코디"></li>
+        			</ul>
+        			<div class="controller">
+	        			<span class="prev">&lang;</span>
+	        			<span class="next">&rang;</span>
+	        			<img src="img/heart_empty.png" class="heart_empty" alt="빈하트">
+        			</div>
+        		</li>
+        	</ul>
+        </article>
+        <article id="codi_book" class="article">
+        	<div class="wrap">
+        		<img src="img/codi_book_img1.png" class="drag" alt="가디건">
+        	</div>
+        </article>
     </div>
