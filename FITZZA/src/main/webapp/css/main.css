@@ -26,8 +26,6 @@ ol, ul {
 	text-indent: -9999px;
 	display:none;
 }
-a:link {color:#fff; text-decoration: none;}
-a:visited {color:#fff}
 
 /* reset - end */
 
@@ -41,7 +39,6 @@ article {
     margin:0; padding:0px;
     position: relative; z-index:1;
     overflow: hidden;
-    position:relative;
 }
 h1{
 	font-size: 50px;
@@ -50,7 +47,6 @@ h1{
 h2 a {
     width: 200px; height: 60px;
     display: block; 
-    border: 0;
     border-top-left-radius: 30px; border-top-right-radius: 30px;
     border-bottom-left-radius: 30px; border-bottom-right-radius: 30px;
     border:3px solid #fff;
@@ -59,7 +55,20 @@ h2 a {
     transition: all 0.5s;
     color:#fff;
 }
-#container {background-color: #000;}
+a:link {color:#fff; text-decoration: none;}
+a:visited {color:#fff}
+
+h2 a:hover {background-color: #54bab9;}
+.wrap {
+	display:block;
+	width:100%; height:100%;
+	position:relative;
+	left: 50%; transform: translateX(-50%);
+	max-width:2560px;
+}
+#container {
+	
+	background-color: #000;}
 
 /* ************ */
 /* head - start */
@@ -71,10 +80,10 @@ header {
 }
 header a:link {color:#222; text-decoration: none;}
 header a:visited {color:#222}
-#logo {
-    display: block;
-    width: 270px; height: 50px;
-    margin: 0 auto; padding:25px 0;
+header > a {
+	display:block;
+	width: 270px; height: 50px;
+	margin: 0 auto; padding:25px 0;
 }
 #rnb {
     position:absolute; right: 0;top: 0;
@@ -121,11 +130,13 @@ header a:visited {color:#222}
     background-color: #fff;
 }
 #notice_bar img {
-    margin:10px 100px 0 390px;
+    margin:10px 100px 0 20%;
+    
 }
 #notice_bar MARQUEE{
     width: 1020px;
-    position:absolute; left: 450px; top: 0;
+    position:absolute; left: 50%; top: 0;
+    transform:translateX(-510px);
     line-height: 50px;
 }
 .hide{position:absolute; left: -340px; top: 100px;}
@@ -181,7 +192,7 @@ video::-webkit-media-controls-volume-slider {display: none !important;}
 
 /* todaysCodi - start */
 #todaysCodi {
-    background: url(../img/todays_codi_bg.png) no-repeat 0 0;
+    background: url(../img/todays_codi_bg.png) 0 0;
     color: #fff;
 }
 #todaysCodi h1{
@@ -191,9 +202,6 @@ video::-webkit-media-controls-volume-slider {display: none !important;}
     position: absolute; left: 340px; top: 300px;
     z-index: 2;
  }
-#todaysCodi h2 a:hover {
-    background-color: #54bab9;
-}
 #lookTop3 p {
     text-align: center;
     margin-top: 80px;
@@ -201,6 +209,7 @@ video::-webkit-media-controls-volume-slider {display: none !important;}
 #lookTop3 ul{
     width: 990px; height: 500px;
     margin: 150px auto 0 auto;
+    position:relative;
 }
 #lookTop3 li {
     width: 270px; height: 335px;
@@ -213,7 +222,7 @@ video::-webkit-media-controls-volume-slider {display: none !important;}
 #lookTop3 li:nth-child(1) {
     width: 350px; height: 450px;
     border-top-left-radius: 175px; border-top-right-radius: 175px;
-    position: absolute; left: 775px; top: 445px;
+    position: absolute; left:32.5%; top: -110px;
     /* 임시 사진 */
     background: url(../img/todays_codi_1st.png) no-repeat 0 0;
     background-size: 365px;
@@ -333,8 +342,10 @@ video::-webkit-media-controls-volume-slider {display: none !important;}
 /* todaysCodi - end */
 
 /* style_reco - start */
-#style_reco {
+#style_reco {background:url(../img/style_reco_bg.png) 0 0;}
+#style_reco > .wrap {
     background:url(../img/style_reco_bg.png) no-repeat 0 0;
+    max-width:1920px;
  }
 #style_reco h1 {
     position:absolute; left:50%; top:200px;
@@ -356,7 +367,7 @@ video::-webkit-media-controls-volume-slider {display: none !important;}
 	transform: translateX(-100px);
 	transition:all 0.5s;
 }
-#style_reco h2 a:hover {background-color: #54bab9;}거래하다
+#style_reco h2 a:hover {background-color:#222;}
 #style_reco ul li {
 	width:500px; 
 	position:absolute; left:50%; top:200px; 
@@ -392,29 +403,29 @@ video::-webkit-media-controls-volume-slider {display: none !important;}
 	position:absolute; right:0; top:0;
 	z-index:1;
 }
-#style_reco div > img {
+#people > img {
 	position:absolute; 
 	z-index:2;
 	cursor:pointer;
 	transition:all 1s;
 	}
-#style_reco div img:nth-child(1) {
+#people img:nth-child(1) {
 	left:-50px; bottom:-330px;
 	transform:rotate(10deg);
 }
-#style_reco div img:nth-child(2) {
+#people img:nth-child(2) {
 	left:1200px; top:280px; z-index:1;
 	transform:rotate(-50deg);
 }
-#style_reco div img:nth-child(3) {
+#people img:nth-child(3) {
 	left:330px; top:220px; z-index:1;
 	transform:rotate(80deg);
 }
-#style_reco div img:nth-child(4) {
+#people img:nth-child(4) {
 	left:1500px; bottom:-350px;
 	transform:rotate(-30deg);
 }
-#style_reco div img:nth-child(5) {
+#people img:nth-child(5) {
 	left:300px; top:-310px;
 	transform:rotate(150deg);
 }
@@ -422,20 +433,126 @@ video::-webkit-media-controls-volume-slider {display: none !important;}
 /* style_reco - end */
 
 /* trade - start */
-#trade {
-    background: url(../img/trade_bg.png);
+#trade {background: url(../img/trade_bg.png);}
+#trade .wrap {max-width:1920px;}
+#trade h1 {
+	text-align:center;
+	padding-top:450px;
 }
+#trade h2 a {
+	margin:0 auto;
+	border: 3px solid #222;
+	color:#222;
+	position:absolute; left:50%; top:550px;
+	transform:translateX(-100px);
+	z-index:2;
+}
+#trade ul {
+	width:100%; height:100%;
+	position:absolute; left:50%; top:0;
+	transform:translateX(-50%);
+}
+#trade ul li {position:absolute; transition:all 1s;}
+#trade ul li:nth-child(1) {left:100px; top:150px;}
+#trade ul li:nth-child(2) {left:880px; top:230px;}
+#trade ul li:nth-child(3) {right:380px; top:200px;}
+#trade ul li:nth-child(4) {right:150px; top:200px;}
+#trade ul li:nth-child(5) {left:450px; top:450px;}
+#trade ul li:nth-child(6) {left:200px; top:700px;}
+#trade ul li:nth-child(7) {left:800px; top:700px;}
+#trade ul li:nth-child(8) {right:350px; top:600px;}
+#trade ul li:hover {transform:scale(1.1);}
 /* trade - end */
 
 /* review - start */
-#review {
-    background-color:blueviolet;
+#review {background: url(../img/review_bg.png) 0 0;}
+.bg {
+	position:absolute; left:50%; top:0;
+	transform: translateX(-1280px);
+	z-index:-1;
+}
+.bg img:nth-child(2) {
+	position:absolute; left:50%; top:0px;
+	transform:translateX(-630px);
+	z-index:1;
+}
+#review h1 {
+	text-align:center;
+	padding-top:380px;
+}
+#review h2 a {
+	color:#222;
+	border: 3px solid #222;
+	position:absolute; left:50%; top:630px;
+	transform: translateX(-120px);
+}
+#demo-canvas {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    z-index:-1;
 }
 /* review - end */
 
 /* QnA - start */
 #QnA {
-    background-color:blue;
+    background-color: #f7ecde;
+ }
+ #QnA h1 {
+ 	padding-top:300px;
+ 	color:#fff; text-align:center;
+ }
+ #QnA h2 a {
+ 	
+ }
+.box {
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+  box-shadow: 0 2px 30px rgba(black, .2);
+  background: lighten(#f0f4c3, 10%);
+  position:absolute; left:0; top:0; z-index:-1;
+  overflow: hidden;
+  transform: translate3d(0, 0, 0);
+}
+.wave {
+  opacity: .6;
+  position: absolute;
+  top: 3%; left: 50%;
+  background: #54bab9;
+  width: 3500px;
+  height: 3500px;
+  margin-left: -1750px;
+  margin-top: -2800px;
+  border-radius: 43%;
+  animation: drift 3000ms infinite linear;
+}
+
+.wave.-three {
+  animation: drift 5000ms infinite linear;
+}
+
+.wave.-two {
+  animation: drift 7000ms infinite linear;
+  opacity: .1;
+  background: yellow;
+}
+
+.box:after {
+  content: '';
+  display: block;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, rgba(#e8a, 1), rgba(#def, 0) 80%, rgba(white, .5));
+  z-index: 11;
+  transform: translate3d(0, 0, 0);
+}
+@keyframes drift {
+  from { transform: rotate(0deg); }
+  from { transform: rotate(360deg); }
 }
 /* QnA - end */
 
@@ -451,132 +568,4 @@ video::-webkit-media-controls-volume-slider {display: none !important;}
 }
 /* codi_book - end */
 
-/* ※ 로그인  CSS ※*/
-#login_container{
-	width:100%;
-	background: url(../img/trade_bg.png) no-repeat 0 0;
-	background-size: 100%;
-}
-.loginheader>div{
-	font-family: "Nanum pen script", cursive; 
-	font-size:3em	
-}
 
-.accounthidden>button,input,input[type=password],input[type=text]{
-	font:28px "Nanum pen script";
-	color:black;
-	background-color:transparent
-}
-
-#contents,#wrapper{
-	position:relative;
-	} 
-
-.userlogin{
-	padding-top:60px
-}
-
-.inputMsg{
-	display:hidden;
-	height:30px;
-	margin-top:2px;
-	font-weight:700;
-	letter-spacing:-.6px;
-	text-align:left;
-	color:red
-}
-
-#wrapper.showMsg{
-	display:block
-}
-
-#wrapper{
-	max-width:500px;
-	min-width:370px;
-	min-height:100%;
-	min-height:100vh;
-	padding:0 16px 200px;
-	margin:0 auto
-}
-
-fieldset{
-	border:none;
-}
-
-.accounthidden{
-	position:absolute;
-	overflow:hidden;
-	clip:rect(0 0 0 0);
-	height:1px;
-	width:1px;
-	margin:-1px
-}
-
-.loginheader{
-	min-width:328px;
-	padding-top:120px;
-	text-align:center
-}
-	
-.loginheader.logo{
-	display:inline-block;
-	margin:0 auto;
-	width:120px;
-	height:40px
-}
-	
-.id input,.password input{
-	width:100%;
-	height:55px;
-	padding:20px 14px;
-	border-radius: 10px;
-	border:1px solid #fff;
-	background-color:rgba( 255, 255, 255, 0.5 );
-	font-size:16px;
-	font-weight:700;
-	outline:0;
-	transition:border-color .15s linear
-}
-
-.id input::placeholder,.password input::placeholder{
-	font:28px "Nanum pen script";
-	color: gray;
-
-	}
-
-.button01{
-	width:100%;
-	height:55px;
-	font-size:32px;
-	border-radius: 10px;
-	font-family:'Nanum pen script';
-	background-color:rgb( 253, 212, 149);
-	transition:all.15s linear
-}
-/*
-.button01:active,.button01:hover{
-	outline:0;
-	background-color:#07f;
-	transition:all .2s linear
-}*/
-
-.loginmenu{
-	position:relative;
-	height:20px;
-	padding-top:8px
-}
-
-.loginmenu a{
-	font-weight:600;
-	font-size: 9pt;
-	letter-spacing:-.4px;
-	color:rgb( 251, 176, 60);
-	margin-right:8px;
-	transition:all.15s linear
-}
-.loginmenu a:hover{
-	color: red;
-	transition:all.2s linear
-}
-
-/* 로그인 CSS 끝*/
