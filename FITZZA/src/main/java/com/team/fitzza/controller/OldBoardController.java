@@ -48,7 +48,8 @@ public class OldBoardController {
 	}
 
 	@PostMapping("/board/old/oldWriteOk")
-	public ResponseEntity<String> dataWirteOk(BoardVO vo, HttpServletRequest request) {
+	public ResponseEntity<String> boardWriteOk(BoardVO vo, HttpServletRequest request) {
+		System.out.println("boardWirteOk START");
 		// vo : subject, content는 request가 됨.
 		vo.setIp(request.getRemoteAddr()); // 접속자 아이피
 		vo.setUser_id((String)request.getSession().getAttribute("logId"));	// 글쓴이

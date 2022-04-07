@@ -30,6 +30,7 @@
 				alert("상품 설명을 입력하세요");
 				return false;
 			}
+			alert(1234)
 		});
 	});
 </script>
@@ -37,7 +38,7 @@
 <body>
     <div class="boardcontainer">
         <h1>상품등록</h1>
-        <form method="post" action="/board/old/oldWriteOk" id="boardFrm">
+        <form method="post" action="/board/old/oldWriteOk" id="boardFrm" enctype="multipart/form-data">
             <ul>
                 <li>제목 &emsp; <input type="text" name="title" id="subject" placeholder='	상품 제목을 입력해주세요.'/></li>
 				<hr/>
@@ -47,9 +48,9 @@
 				<hr/>
 				<li>설명 &emsp; <textarea name="introduce" id="content" rows="10" cols="100" placeholder='	상품 설명을 입력해주세요.'></textarea></li>
 				<hr/>
-				<li>이미지 &emsp; <input type="text" id="file_route" name="file1" disabled="disabled" value="파일 선택">
+				<li>이미지 &emsp; <input type="text" id="file_route"  disabled="disabled" value="파일 선택" >
 					<label for="upload_file">업로드</label>
-					<input type="file" id="upload_file" accept="image/*" required=true 
+					<input type="file" id="upload_file" name="filename" accept="image/*" required=true 
 						style="position:absolute; clip:rect(0, 0, 0, 0);">
 					<img style="width: 300px;" id="img_section" src="/img/이미지 없음.png"></li>
 				

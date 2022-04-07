@@ -11,6 +11,7 @@ import org.springframework.boot.web.servlet.server.ConfigurableServletWebServerF
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
+import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 
 @Component
 //@Slf4j
@@ -36,4 +37,6 @@ public class ServletInitializer extends SpringBootServletInitializer {
             }
         };
     }
+    
+    
 }
