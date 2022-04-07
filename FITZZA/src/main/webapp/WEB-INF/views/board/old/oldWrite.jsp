@@ -46,7 +46,7 @@
 				<hr/>
 				<li>가격 &emsp; <input type="text" name="old_price" id="price" placeholder='	가격을 입력해주세요.(숫자만 입력해주세요.)'/></li>
 				<hr/>
-				<li>설명 &emsp; <textarea name="introduce" id="content" rows="10" cols="100" placeholder='	상품 설명을 입력해주세요.'></textarea></li>
+				<li>설명 &emsp; <textarea name="content" id="content" rows="10" cols="100" placeholder='	상품 설명을 입력해주세요.'></textarea></li>
 				<hr/>
 				<li>이미지 &emsp; <input type="text" id="file_route"  disabled="disabled" value="파일 선택" >
 					<label for="upload_file">업로드</label>

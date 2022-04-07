@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
-<mapper namespace="com.team.fitzza.dao.BoardDAO">
+<mapper namespace="com.team.fitzza.dao.OldBoardDAO">
 
   	<insert id="oldBoardInsert">
   		INSERT INTO board(type_num, user_id, title, content, ip, gender)

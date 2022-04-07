@@ -121,7 +121,11 @@ public class OldBoardController {
 				}// for 222
 				
 			}//	if 111
-			
+			System.out.println(vo.getFile1());
+			System.out.println(vo.getFile2());
+			System.out.println(vo.getFile3());
+			System.out.println(vo.getFile4());
+			System.out.println(vo.getFile5());
 			//DB등록
 			service.oldBoardInsert(vo);
 			//레코드 추가 성공
