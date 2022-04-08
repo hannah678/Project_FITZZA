@@ -134,7 +134,7 @@ public class OldBoardController {
 			service.oldBoardDetailInsert(vo);
 			service.oldBoardFileInsert(vo);
 			//레코드 추가 성공
-			String msg = "<script>alert('자료실에 글이 등록되었습니다');location.href='/fitzza/board/old/oldList';</script>";
+			String msg = "<script>alert('자료실에 글이 등록되었습니다');location.href='/board/old/oldList';</script>";
 			entity = new ResponseEntity<String>(msg, headers, HttpStatus.OK);	//200
 			
 		}catch(Exception e) {
@@ -161,16 +161,16 @@ public class OldBoardController {
 			file.delete();
 		}
 	}
-//	
-//	//글 내용보기
-//	@GetMapping("/data/view")
-//	public ModelAndView view(int no) {
-//		ModelAndView mav = new ModelAndView();
-//		mav.addObject("dataVO", service.dataView(no));
-//		mav.setViewName("data/dataView");
-//		return mav;
-//	}
-//	
+	
+	//글 내용보기
+	@GetMapping("/board/old/oldView")
+	public ModelAndView oldBoardView(int board_num) {
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("BoardVO", service.oldBoardView(board_num));
+		mav.setViewName("/board/old/oldView");
+		return mav;
+	}
+	
 //	//글 수정폼
 //	@GetMapping("/data/dataEdit")
 //	public ModelAndView editForm(int no) {

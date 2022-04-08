@@ -1,159 +1,189 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+ <link rel="stylesheet" href="/css/login.css" type="text/css"/>
+ <!DOCTYPE html>
 <script>
   $(document).ready(function(){
-	  $("#chkbtn01").click(function(){
-		  if($("#joinId").val()==""){
+	  
+	  $("#joinid").on('blur',function(){
+		  if($("#joinid").val()==""){
 			  $('.userid').css('display','block');
 			  return false;
-		  };
+		  };//공백시 경고
 		  
-		  var reg = /^[a-zA-z_]{8,12}$/;
-		  var userid = $("#joinId").val();
+		  var reg = /^[a-zA-z0-9]{8,16}$/;
+		  var userid = $("#joinid").val();
 		  
 		  if(!reg.test(userid)){
 			  $('.userid2').css('display','block');
-			  return false;
-		  }
-	  });
+			  return;
+		  } // 유효하지 않을시 경고
+	  });//아이디
 	  
-	  $("#joinPWDch").on('blur',function(){
-		  if($("#joinPWDch").val()!==$("#joinPWD").val()){
+	  $("#joinpwd").on('blur',function(){
+		  if($("#joinpwd").val()==""){
+			  $('.userpwd').css('display','block');
+			  return;
+		  };//공백시 경고
+		  
+		  var reg = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{10,20}$/;
+		  var userpwd = $("#joinpwd").val();
+		  
+		  if(!reg.test(userpwd)){
+			  $('.userpwd2').css('display','block');
+			  return;
+		  } // 유효하지 않을시 경고
+	  });//비밀번호
+	  
+	  $("#joinpwdchk").on('blur',function(){
+		  if($("#joinpwdchk").val()!==$("#joinpwd").val()){
 			  $('.password').css('display','block');
-			  return false;
+			  return;
 		  }
-	  });
+	  });//비밀번호 체크
 	  
-
+	  $("#joinname").on('blur',function(){
+		  if($("#joinname").val()==""){
+			  $('.username').css('display','block');
+			  return;
+		  };//공백시 경고
+		  
+		  var reg = /^[가-힣a-zA-z]{2,10}$/;
+		  var username = $("#joinname").val();
+		  
+		  if(!reg.test(username)){
+			  $('.username2').css('display','block');
+			  return;
+		  } // 유효하지 않을시 경고
+	  });//이름
 	  
-	  $("#chkbtn02").click(function(){
-	      if($("#joinNickId").val()==""){
-				  $('.usernickname').css('display','block');
-				  return false;
-		  };
+	  $("#joinnickname").on('blur',function(){
+		  if($("#joinnickname").val()==""){
+			  $('.usernickname').css('display','block');
+			  return;
+		  };//공백시 경고
 		  
-		  var reg = /^[가-힣a-zA-Z]{1,8}$/;
+		  var reg = /^[가-힣a-zA-z0-9]{2,10}$/;
+		  var usernickname = $("#joinnickname").val();
 		  
-		  if(!reg.test($("#joinNickId").val()) && $("#joinNickId").val()!==""){
+		  if(!reg.test(usernickname)){
 			  $('.usernickname2').css('display','block');
-			  return false;
-		  }
-	  });
+			  return;
+		  } // 유효하지 않을시 경고
+	  });//닉네임
 	  
-	  $("#joinEmail1").on('blur',function(){
-		  if($("#joinEmail1").val()==""){
+	  $("#email01").on('blur',function(){
+		  if($("#email01").val()==""){
 			  $('.email1').css('display','block');
-			  return false;
+			  return;
 		  }
-		  
-		  var reg = /^[a-zA-z]{8,15}$/;
+		  var reg = /^[a-zA-z]{8,20}$/;
 		  		  
-		  if(!reg.test($("#joinEmail1").val()) && $("#joinEmail1").val()!==""){
+		  if(!reg.test($("#email01").val()) && $("#email01").val()!==""){
 			  $('.email2').css('display','block');
-			  return false;
+			  return;
 		  }
 		  	  
 	  });
 	  
-	  $("#joinEmail2").on('blur',function(){
+	  $("#email02").on('blur',function(){
+		  if($("#email02").val()==""){
+			  $('.email3').css('display','block');
+			  return;
+		  }
 		  var reg2 = /^[a-zA-Z]{2,8}[.][a-zA-Z]{2,4}([.][a-zA-Z]{2,4})?$/;
 		  
-		  if(!reg2.test($("#joinEmail2").val()) && $("#joinEmail2").val()!==""){
-			  $('.email3').css('display','block');
-			  return false;
+		  if(!reg2.test($("#email02").val()) && $("#email02").val()!=""){
+			  $('.email4').css('display','block');
+			  return;
 		  }
+	  })//이메일
+	  
+	  $("#jointel").on('blur',function(){
+		  if($("#jointel").val()==""){
+			  $('.tel1').css('display','block');
+			  return;
+		  }
+		  var reg = /^[0-9]{2,3}-[0-9]{3,4}-[0-9]{4}$/;
 		  
-	  })
-	 	  
-	  $(".input02").on('focus',function(){
-		  $('.inputMsg').css('display','none');
-	  });
+		  if(!reg.test($("#jointel").val()) && $("#jointel").val()!=""){
+			  $('.tel2').css('display','block');
+			  return;
+		  }
+	  })// 연락처
 	  
-	  $(".button02").on('click',function(){
-		 if($('.inputMsg').css('display')=='none' && $('#joinId').val()!='' && $('#joinPWD').val()!='' && $('#joinPWDch').val()!=''){
-			 $("#contents").submit();
-		 }
-	  });
+	  $("#emailchk").on('click',function(){
+		  $('#Codebox').css('display','block');
+	  }); //이메일 인증시 인증코드 나오게함.
 	  
-	  $("#joinId").keyup(function(){
-		  var userid = $("#joinId").val();
-		  if(userid !='' && userid.length>=8 && userid.length<=12){
-			  var url = "/myapp/member/joinIdCheck";
-		  $.ajax({
-			  url : url,
-			  data : "userid="+userid,
-			  type : "POST",
-			  success:function(result){
-				  if(result>0){//사용불가
-					$("#idY").css("display","none");
-				    $("#idN").css("color","red");
-				  }else{//사용가능
-					$("#idN").css("display","none");
-					$("#idY").css("display","block");
-					$("#idY").css("color","blue");
-				  }
+	  $(".joinbtn").on('click',function(){
+		  console.log("확인");
+		  
+		  /*if($("#ConfirmCode").val() ==""){
+			  $('.ConfirmCode1').css('display','block');
+		  }*/
+		  
+		  var i = 1;
+		  $('.inputMsg').each(function(){
+			  if($(this).css('display')=='block' && $("#joinpwd").val()=="" && $("#joinpwd").val()==""
+					  && $("#joinname").val()=="" && $("#joinnickname").val()==""&& $("#email01").val()==""
+					  && $("#email02").val()==""&& $("#jointel").val()==""){
+				return false;
 			  }
+			  i= i+1;
+			  if( i == 17){
+				$("#contents").submit();
+				return false;
+			  };
 		  });
-		 }else{// 사용불가
-		   $("#idY").css("display","none");
-		   $("#idN").css("display","block");
-		 }
-	  });
+	  }); //경고문 없으면 제출 가능하게함
+	  
+	  $(".input01").on('focus',function(){
+		  $('.inputMsg').css('display','none');
+	  }); // 수정하려고 커서 올리면 경고문들 없어짐.
+	    
 });
 </script>
+</head>
+<body>
 <section id="join_wrapper" class="layoutJoin">
   <form method="post" action="/member/memberEditOk" id="contents">
    <div class="joinSection">
     <fieldset>
        <legend class="Joinhidden"></legend>
-       <div>
-        <h2>아이디</h2>
-        <div class= "joinbox">
-         ${vo.user_id}
-        </div>
-        </div>
-        <p class="inputMsg userid" style="display:none;">ID를&nbsp입력하세요.</p>
-        <p class="inputMsg userid2" style="display:none;">ID는&nbsp8~12글자 사이여야합니다.<br/>영어대소문자,숫자만 등록 가능합니다.</p>
-        <p class="inputMsg userid3" id="idY" style="display:none; padding-top:10px;">사용 가능한 아이디입니다.</p>
-        <p class="inputMsg userid3" id="idN" style="display:none; padding-top:10px;">사용 불가능한 아이디입니다.</p>
-        <div class="joinpwd">
-        <h2>비밀번호</h2>
-         <input type="password" class="input02" id="user_pwd" name="user_pwd"/>
-        </div>
-<!--         <div class="joinpwd">
-        <h2>비밀번호 확인</h2>
-         <input type="password" class="input02" id="joinPWDch"/>
-        </div>
-        <p class="inputMsg password" style="display:none;">비밀번호가 일치하지 않습니다.</p>
-        <div class="joinNick">-->
-        <h2>이름</h2> 
-        ${vo.user_name}
-        <h2>닉네임</h2>
-        <input type="text" class="input02" id="user_nickname" name="user_nickname" value="${vo.user_nickname}"/>
-        </div> 
-        <div>
-         <input type="button" class="chkbtn01" id="chkbtn02" value="확인"/>
-         </div>
-         <p class="inputMsg usernickname" style="display:none;">닉네임을 입력하세요.</p>
-         <p class="inputMsg usernickname2" style="display:none;">닉네임은&nbsp1~8글자 사이여야합니다.<br/>한글,영어대소문자만 등록 가능합니다.</p>
-        <div>
-        <h2>전화번호</h2>
-        <input type="text" class="input02" id="tel" name="tel" value="${vo.tel}"> 
-        <h2>이메일 주소</h2>
-         <div class="joinemail">
-          ${vo.email1 }@${vo.email2}
-         </div>
-         <p class="inputMsg email1" style="display:none;">이메일을 입력하세요.</p>
-         <p class="inputMsg email2" style="display:none;">이메일을 잘못 입력했습니다.</p>
-         <p class="inputMsg email3" style="display:none;">도메인을 잘못 입력했습니다.</p>
-        </div>
+       <div style="font-size: 4em; text-align: center; margin-bottom:50px;">회원정보 수정</div>
+       <ul id="joinMenu">
+         <li class="joinbox" ><input type="text" name="user_id" id="joinid" value="${vo.user_id}" class="input01" readonly/></li>
+         <li class="joinbox" ><input type="password" name="user_pwd" id="joinpwd"placeholder="비밀번호" class="input01"/></li>
+         <li class="joinbox" ><input type="password" name="user_pwdchk" id="joinpwdchk" placeholder="비밀번호 확인" class="input01"/></li>
+         <li class="joinbox" ><input type="text" name="user_name" id="joinname" value= "${vo.user_name}" class="input01" readonly/></li>  
+         <li class="joinbox" ><input type="text" name="user_nickname" id="joinnickname" value="${vo.user_nickname}" class="input01"/></li> 
+         <li><input type="text" name="email1" id="email1" value="${vo.email1 }" class="input01" readonly/>@<input type="text" name="email2" id="email2" class="input01" value="${vo.email2}" readonly/></li> 
+         
+         <li class="joinbox"><input type="text" name="tel" id="jointel" value="${vo.tel}" class="input01"/></li> 
+       </ul>
         <div class="joinbtn">
-         <input type="button" class="button02" value="수정"/>
+         <input type="button" class="button02" value="회원정보 수정"/>
         </div>
     </fieldset>
-     <div>
-         <input type="button" class="chkbtn01" id="chkbtn01" value="확인"/>
-        </div>
+    <div id="alertmenu">
+   	 	<p class="inputMsg userid" style="display:none;">아이디를&nbsp입력하세요.</p>
+    	<p class="inputMsg userid2" style="display:none;">아이디는&nbsp8~16글자 사이로 입력해주세요.<br/>영어대소문자,숫자로 등록 가능합니다.</p>
+    	<p class="inputMsg userpwd" style="display:none;">패스워드를&nbsp입력하세요.</p>
+    	<p class="inputMsg userpwd2" style="display:none;">패스워드를&nbsp10~20글자 사이로 입력해주세요.<br/>영어 대문자, 소문자, 특수문자, 숫자가 포함되어야합니다.</p>
+    	<p class="inputMsg password" style="display:none;">비밀번호가 일치하지 않습니다.</p>
+    	<p class="inputMsg username" style="display:none;">이름을 입력하세요.</p>
+    	<p class="inputMsg username2" style="display:none;">이름을 정확히 기입해주세요.</p>
+    	<p class="inputMsg usernickname" style="display:none;">닉네임을 입력하세요.</p>
+    	<p class="inputMsg usernickname2" style="display:none;">닉네임은 2~10글자 사이로 기입해주세요.<br/> 특수문자는 사용하실 수 없습니다.</p>
+    	<p class="inputMsg email1" style="display:none;">이메일을 입력하세요.</p>
+        <p class="inputMsg email2" style="display:none;">이메일을 잘못 입력했습니다.</p>
+        <p class="inputMsg email3" style="display:none;">도메인을 입력하세요.</p>
+        <p class="inputMsg email4" style="display:none;">도메인을 잘못 입력했습니다.</p>
+        <p class="inputMsg tel1" style="display:none;">연락처를 입력하세요.</p>
+        <p class="inputMsg tel2" style="display:none;">연락처를 잘못 입력했습니다.</p>
+        <p class="inputMsg ConfirmCode1" style="display:none;">이메일 인증을 해주세요.</p>
+    </div>
     </div>
   </form>
 </section>

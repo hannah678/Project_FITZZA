@@ -21,7 +21,7 @@
 
     <title>FITZZA | 패션 커뮤니티</title>
 
-    <link rel="shortcut icon" type="/image/x-icon" href="/img/favicon.ico">
+    <link rel="shortcut icon" type="image/x-icon" href="/img/favicon.ico">
 </head>
 <body>
    <header>
@@ -33,12 +33,12 @@
             </c:if>
             <c:if test="${logStatus == 'Y' }">
                 <p id="logStatus1"><a href="/member/logout">logout</a></p>
-                <p id="logStatus2"><a href="#">mypage</a></p>
+                <p id="logStatus2"><a href="/member/memberMypage">mypage</a></p>
             </c:if>
         </div>
         <img id="menu_bar" src="/img/menu_bar.png" alt="menu_bar"/>
         <ul id="gnb">
-            <li><img id="close_btn" src="/img/close.png" alt="close"/></li>
+            <li><img id="close_btn" src="${url }/img/close.png" alt="close"/></li>
             <li><a href="">오늘의 코디</a></li>
             <li><a href="">스타일 추천</a></li>
             <li><a href="/board/old/oldList">중고거래</a></li>

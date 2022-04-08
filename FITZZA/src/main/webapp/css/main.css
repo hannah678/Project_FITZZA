@@ -421,12 +421,12 @@ video::-webkit-media-controls-volume-slider {display: none !important;}
 	transform:rotate(10deg);
 }
 #people img:nth-child(2) {
-	left:1100px; top:280px; z-index:1;
-	transform:rotate(-30deg);
+	left:1200px; top:280px; z-index:1;
+	transform:rotate(-50deg);
 }
 #people img:nth-child(3) {
-	left:430px; top:220px; z-index:1;
-	transform:rotate(25deg);
+	left:330px; top:220px; z-index:1;
+	transform:rotate(80deg);
 }
 #people img:nth-child(4) {
 	left:1500px; bottom:-350px;
@@ -661,59 +661,15 @@ video::-webkit-media-controls-volume-slider {display: none !important;}
 /* vote - end */
 
 /* codi_book - start */
-#codi_book {background:radial-gradient(#e66465, #f7ecde);}
-#codi_book h1 {
-	width:800px;
-	position:absolute; left:50%; top:600px;
-	transform:translateX(-400px);
-	text-align:center;
+#codi_book {
+    background-color:pink;
 }
-#codi_book h2 a{
-	position:absolute; left:50%; top:700px;
-	transform:translateX(-100px);
-	z-index:4;
+.drag {
+	display:block;
+	cursor: pointer; 
+	position: relative;
 }
-#codi_book .wrap:nth-child(1) div {
-	width:500px; height:580px; 
-	margin:170px auto;
-	background-color:#fff ;
-}
-#codi_img {
-	position:absolute; left:50%; top:0;
-	transform:translateX(-960px);
-	width:1920px; height:100%; margin:0 auto;
-}
-.drag {cursor:pointer; cursor:hand;}
-.drag:nth-child(1) {width:250px;}
-.drag:nth-child(2) {width:250px;}
-.drag:nth-child(3) {width:240px;}
-.drag:nth-child(4) {width:240px;}
-.drag:nth-child(5) {width:250px;}
-.drag:nth-child(6) {width:280px;}
-.drag:nth-child(7) {width:300px;}
-.drag:nth-child(8) {width:300px;}
-.drag:nth-child(9) {width:280px;}
-.drag:nth-child(10) {width:150px;}
-.drag:nth-child(11) {width:200px;}
-.drag:nth-child(12) {width:200px;}
-.drag:nth-child(13) {width:250px;}
-.drag:nth-child(14) {width:130px;} /* 얼굴 */
 
-.drag:nth-child(15) {width:250px;} /* 청남방 */
-.drag:nth-child(16) {width:250px;}
-.drag:nth-child(17) {width:200px;}
-.drag:nth-child(18) {width:250px;}
-.drag:nth-child(19) {width:200px;} /* 슬랙스바지 */
-.drag:nth-child(20) {width:200px;} 
-.drag:nth-child(21) {width:200px;}
-.drag:nth-child(22) {width:200px;}
-.drag:nth-child(23) {width:350px;} /* 베이지 아우터 */
-.drag:nth-child(24) {width:300px;}
-.drag:nth-child(25) {width:300px;}
-.drag:nth-child(26) {width:200px;} /* 스니커즈 */
-.drag:nth-child(27) {width:200px;}
-.drag:nth-child(28) {width:150px;}
-.drag:nth-child(29) {width:100px;} /* 얼굴 */
 /* codi_book - end */
 
 

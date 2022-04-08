@@ -19,9 +19,23 @@ public class BoardVO {
 	private String file5;
 	private String city;
 	private String old_name;
+	private String user_nickname;
+	private String report_hit;
 	
 	
-	
+
+	public String getReport_hit() {
+		return report_hit;
+	}
+	public void setReport_hit(String report_hit) {
+		this.report_hit = report_hit;
+	}
+	public String getUser_nickname() {
+		return user_nickname;
+	}
+	public void setUser_nickname(String user_nickname) {
+		this.user_nickname = user_nickname;
+	}
 	public String getOld_name() {
 		return old_name;
 	}

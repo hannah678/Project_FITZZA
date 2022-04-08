@@ -10,7 +10,7 @@
   		VALUES(3,#{user_id},#{title},#{content},#{ip},#{gender})
   	</insert>
   	<select id="boardNum" resultType="int">
-  		select board_num from board where user_id=#{param1} limit 1;
+  		SELECT board_num FROM board WHERE user_id=#{param1} ORDER BY board_num DESC LIMIT 1;
   	</select>
   	<insert id="oldBoardDetailInsert">
   		INSERT INTO board_old(board_num, old_name, city, old_price) VALUES(#{board_num}, #{old_name}, #{city}, #{old_price})
@@ -22,7 +22,19 @@
 
 	<!-- oldList -->
 	<select id="oldBoardSelectAll" resultType="com.team.fitzza.vo.BoardVO">
-        select board_num, title, user_id, date_format(write_date, '%m-%d %H:%i') write_date
-        from board where type_num=3 order by board_num desc
+        SELECT A.board_num, A.title, A.user_id, A.write_date, B.city, C.user_nickname, D.file1 
+		FROM board A, board_old B, user C, board_common_image D 
+		WHERE A.board_num=B.board_num AND A.user_id=C.user_id AND A.board_num=D.board_num AND A.type_num=3
+		ORDER BY A.board_num DESC;
+    </select>
+    
+    <select id="oldBoardView" resultType="com.team.fitzza.vo.BoardVO">
+	    SELECT A.board_num, A.title, A.gender, A.hit, A.write_date, A.content, 
+	    B.file1, B.file2, B.file3, B.file4, B.file5, 
+	    C.old_name, C.old_price, C.city, 
+	    D.user_nickname, D.report_hit
+	    FROM board A, board_common_image B, board_old C, user D
+	    WHERE A.board_num=B.board_num AND A.board_num=C.board_num AND A.user_id=D.user_id 
+	    AND A.board_num=${param1}
     </select>
 </mapper>

@@ -37,7 +37,6 @@
 <body>
     <div class="boardcontainer">
         <h1>상품등록</h1>
-        <input type="hidden" name="board_num" />
         <form method="post" action="/board/old/oldWriteOk" id="boardFrm" enctype="multipart/form-data">
             <ul>
                 <li>제목 &emsp; <input type="text" name="title" id="subject" placeholder='	제목을 입력해주세요.'/></li>
