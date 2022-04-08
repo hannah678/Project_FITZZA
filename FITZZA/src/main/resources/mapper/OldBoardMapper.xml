@@ -28,6 +28,7 @@
 		ORDER BY A.board_num DESC;
     </select>
     
+    <!-- oldView -->
     <select id="oldBoardView" resultType="com.team.fitzza.vo.BoardVO">
 	    SELECT A.board_num, A.title, A.gender, A.hit, A.write_date, A.content, 
 	    	   B.file1, B.file2, B.file3, B.file4, B.file5, 
@@ -37,4 +38,9 @@
 	    WHERE  A.board_num=B.board_num AND A.board_num=C.board_num AND A.user_id=D.user_id 
 	    AND    A.board_num=${param1}
     </select>
+    <update id="hitCount">
+        UPDATE board SET hit = hit+1 WHERE board_num=#{param1}
+    </update>
+    
+    <!--  -->
 </mapper>

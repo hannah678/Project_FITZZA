@@ -166,6 +166,7 @@ public class OldBoardController {
 	@GetMapping("/board/old/oldView")
 	public ModelAndView oldBoardView(int board_num) {
 		ModelAndView mav = new ModelAndView();
+		service.hitCount(board_num); //조회수 증가
 		mav.addObject("vo", service.oldBoardView(board_num));
 		mav.setViewName("/board/old/oldView");
 		return mav;

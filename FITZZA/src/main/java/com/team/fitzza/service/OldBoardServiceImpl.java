@@ -59,6 +59,11 @@ public class OldBoardServiceImpl implements OldBoardService {
 	public int boardNum(String user_id) {
 		return dao.boardNum(user_id);
 	}
+
+	@Override
+	public void hitCount(int board_num) {
+		dao.hitCount(board_num);
+	}
 	
 	
 

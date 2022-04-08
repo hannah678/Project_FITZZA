@@ -54,7 +54,7 @@ li:nth-child(5){
     color: white;
     border: 0;
 }
-.info>#item{
+/*.info>#item{
     width: 500px;
     float: left;
     border-right: 1px solid black;
@@ -65,8 +65,8 @@ li:nth-child(5){
     width: 500px;
     float: left;
     padding-left: 50px;
-}
-.info>#seller img{
+}*/
+#seller img{
     width: 100px;
     height: 100px;
     border-radius: 70%;

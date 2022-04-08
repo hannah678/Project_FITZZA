@@ -109,6 +109,8 @@
 		});
 		replyListAll();
 	});
+    
+   
 </script>
 <link rel="stylesheet" href="/css/oldview.css" type="text/css">
 <body>
@@ -120,21 +122,37 @@
                 <br/>
                 <li>${vo.title}</li>
                 <br/>
-                <li>${vo.gender} ${vo.old_name}</li>
+                <li>(${vo.gender}) ${vo.old_name}</li>
                 <br/>
-                <li>${vo.old_price}</li>
+                <li>${vo.old_price} 원</li>
             </ul>
             <br/>
             <hr/>
             <ul>
                 <li>조회수 &nbsp; ${vo.hit}<!--hit--> &emsp; &emsp; 게시일 &nbsp; ${vo.write_date} <!--enter_date--></li>
-                <li><!-- <input type="submit" value="연락하기" id="call"/> --> &emsp; &emsp; <input type="submit" value="신고하기" id="report"/></li>
+                <!--<li> <input type="submit" value="연락하기" id="call"/>  &emsp; &emsp; <input type="submit" value="신고하기" id="report"/></li>-->
+            	<hr/>
+            	<li id="seller"><b>판매자 정보</b><hr/>
+                    <img src="/img/codi_book_img12.png"/> ${vo.user_nickname}<!--user_nickname--><br/> 거래 가능 지역 : ${vo.city}<!--city--><br/> 신고 받은 횟수 : ${vo.report_hit}<!--report_hit--> </li>
             </ul>
             <hr/>
             <ul class="info">
-                <li id="seller"><b>판매자 정보</b><hr/>
-                    <img src="../img/준영이.png"/> ${vo.user_nickname}<!--user_nickname--><br/> 거래 가능 지역 : ${vo.city}<!--city--><br/> 신고 받은 횟수 : ${vo.report_hit}<!--report_hit--> </li>
+                
             	<li id="item"><b>상품 정보</b><hr/>
+            		<c:if test="${vo.file2!=null && vo.file2 !=''}">
+						<img src="/upload/${vo.file2}" width="300"/>
+					</c:if>
+					<c:if test="${vo.file3!=null && vo.file3 !=''}">
+						<img src="/upload/${vo.file3}" width="300"/>
+					</c:if>
+					<c:if test="${vo.file4!=null && vo.file4 !=''}">
+						<img src="/upload/${vo.file4}" width="300"/>
+					</c:if>
+					<c:if test="${vo.file5!=null && vo.file5 !=''}">
+						<img src="/upload/${vo.file5}" width="300"/>
+					</c:if>
+					
+					
                     ${vo.content}
                 </li>
             </ul>
