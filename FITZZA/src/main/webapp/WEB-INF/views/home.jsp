@@ -112,7 +112,7 @@
         </article>
         <article id="vote" class="article">
         	<div class="wrap">
-        		<h1>어떤 코디가 더 어울릴까 고민되면 물어봐</h1>
+        		<h1>어떤 코디가 더 어울릴까 고민되면 물어봐 !</h1>
 	        	<h2><a href="">오늘뭐입지?</a></h2>
         	</div>
         	<ul id="vote_frame">
@@ -144,7 +144,41 @@
         </article>
         <article id="codi_book" class="article">
         	<div class="wrap">
-        		<img src="img/codi_book_img1.png" class="drag" alt="가디건">
+        		<h1>더 많은 코디 알아보러 가기</h1>
+	        	<h2><a href="">옷입히기</a></h2>
+        		<div  onmousedown='startDrag(event, this)'></div>
+        		<p id="codi_img">
+	        		<img src="img/codi_book_img1.png" class="drag" alt="원피스1" style="position:absolute; left:50px; top:50px;" onmousedown='startDrag(event, this)'>
+		        	<img src="img/codi_book_img2.png" class="drag" alt="원피스2" style="position:absolute; left:50px; top:150px;" onmousedown='startDrag(event, this)'>
+		        	<img src="img/codi_book_img3.png" class="drag" alt="블라우스1" style="position:absolute; left:150px; top:300px;" onmousedown='startDrag(event, this)'>
+		        	<img src="img/codi_book_img4.png" class="drag" alt="블라우스2" style="position:absolute; left:250px; top:250px;" onmousedown='startDrag(event, this)'>
+		        	<img src="img/codi_book_img5.png" class="drag" alt="치마" style="position:absolute; left:350px; top:250px;" onmousedown='startDrag(event, this)'>
+		        	<img src="img/codi_book_img6.png" class="drag" alt="청바지" style="position:absolute; left:450px; top:250px;" onmousedown='startDrag(event, this)'>
+		        	<img src="img/codi_book_img7.png" class="drag" alt="가죽자켓" style="position:absolute; left:200px; top:50px;" onmousedown='startDrag(event, this)'>
+		        	<img src="img/codi_book_img8.png" class="drag" alt="청자켓" style="position:absolute; left:300px; top:50px;" onmousedown='startDrag(event, this)'>
+		        	<img src="img/codi_book_img9.png" class="drag" alt="가디건" style="position:absolute; left:400px; top:50px;" onmousedown='startDrag(event, this)'>
+		        	<img src="img/codi_book_img10.png" class="drag" alt="구두1" style="position:absolute; left:50px; top:580px;" onmousedown='startDrag(event, this)'>
+		        	<img src="img/codi_book_img11.png" class="drag" alt="스니커즈1" style="position:absolute; left:140px; top:600px;" onmousedown='startDrag(event, this)'>
+		        	<img src="img/codi_book_img12.png" class="drag" alt="스니커즈2" style="position:absolute; left:250px; top:550px;" onmousedown='startDrag(event, this)'>
+		        	<img src="img/codi_book_img13.png" class="drag" alt="구두2" style="position:absolute; left:400px; top:580px;" onmousedown='startDrag(event, this)'>
+		        	<img src="img/codi_face_w.png" class="drag" alt="얼굴" style="position:absolute; left:800px; top:0px;" onmousedown='startDrag(event, this)'>
+		        			        	
+		        	<img src="img/codi_book_imgM1.png" class="drag" alt="청남방" style="position:absolute; left:1230px; top:50px;" onmousedown='startDrag(event, this)'>
+		        	<img src="img/codi_book_imgM2.png" class="drag" alt="흰티" style="position:absolute; left:1310px; top:50px;" onmousedown='startDrag(event, this)'>
+		        	<img src="img/codi_book_imgM3.png" class="drag" alt="검은티" style="position:absolute; left:1230px; top:300px;" onmousedown='startDrag(event, this)'>
+		        	<img src="img/codi_book_imgM4.png" class="drag" alt="흰셔츠" style="position:absolute; left:1280px; top:300px;" onmousedown='startDrag(event, this)'>
+		        	<img src="img/codi_book_imgM5.png" class="drag" alt="슬랙스" style="position:absolute; left:1360px; top:300px;" onmousedown='startDrag(event, this)'>
+		        	<img src="img/codi_book_imgM6.png" class="drag" alt="베이지바지" style="position:absolute; left:1430px; top:300px;" onmousedown='startDrag(event, this)'>
+		        	<img src="img/codi_book_imgM7.png" class="drag" alt="청바지" style="position:absolute; left:1530px; top:300px;" onmousedown='startDrag(event, this)'>
+		        	<img src="img/codi_book_imgM8.png" class="drag" alt="차콜바지" style="position:absolute; left:1610px; top:300px;" onmousedown='startDrag(event, this)'>
+		        	<img src="img/codi_book_imgM9.png" class="drag" alt="베이지아우터" style="position:absolute; left:1360px; top:50px;" onmousedown='startDrag(event, this)'>
+		        	<img src="img/codi_book_imgM10.png" class="drag" alt="블레이져" style="position:absolute; left:1460px; top:50px;" onmousedown='startDrag(event, this)'>
+		        	<img src="img/codi_book_imgM11.png" class="drag" alt="가죽자켓" style="position:absolute; left:1540px; top:50px;" onmousedown='startDrag(event, this)'>
+		        	<img src="img/codi_book_imgM12.png" class="drag" alt="스니커즈" style="position:absolute; left:1230px; top:580px;" onmousedown='startDrag(event, this)'>
+		        	<img src="img/codi_book_imgM13.png" class="drag" alt="구두1" style="position:absolute; left:1380px; top:580px;" onmousedown='startDrag(event, this)'>
+		        	<img src="img/codi_book_imgM14.png" class="drag" alt="구두2" style="position:absolute; left:1530px; top:550px;" onmousedown='startDrag(event, this)'>
+		        	<img src="img/codi_face_m.png" class="drag" alt="얼굴" style="position:absolute; left:1030px; top:0px;" onmousedown='startDrag(event, this)'>
+        		</p>
         	</div>
         </article>
     </div>
