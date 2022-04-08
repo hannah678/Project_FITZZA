@@ -23,18 +23,18 @@
 	<!-- oldList -->
 	<select id="oldBoardSelectAll" resultType="com.team.fitzza.vo.BoardVO">
         SELECT A.board_num, A.title, A.user_id, A.write_date, B.city, C.user_nickname, D.file1 
-		FROM board A, board_old B, user C, board_common_image D 
-		WHERE A.board_num=B.board_num AND A.user_id=C.user_id AND A.board_num=D.board_num AND A.type_num=3
+		FROM   board A, board_old B, user C, board_common_image D 
+		WHERE  A.board_num=B.board_num AND A.user_id=C.user_id AND A.board_num=D.board_num AND A.type_num=3
 		ORDER BY A.board_num DESC;
     </select>
     
     <select id="oldBoardView" resultType="com.team.fitzza.vo.BoardVO">
 	    SELECT A.board_num, A.title, A.gender, A.hit, A.write_date, A.content, 
-	    B.file1, B.file2, B.file3, B.file4, B.file5, 
-	    C.old_name, C.old_price, C.city, 
-	    D.user_nickname, D.report_hit
-	    FROM board A, board_common_image B, board_old C, user D
-	    WHERE A.board_num=B.board_num AND A.board_num=C.board_num AND A.user_id=D.user_id 
-	    AND A.board_num=${param1}
+	    	   B.file1, B.file2, B.file3, B.file4, B.file5, 
+	    	   C.old_name, C.old_price, C.city, 
+	   		   D.user_nickname, D.report_hit
+	    FROM   board A, board_common_image B, board_old C, user D
+	    WHERE  A.board_num=B.board_num AND A.board_num=C.board_num AND A.user_id=D.user_id 
+	    AND    A.board_num=${param1}
     </select>
 </mapper>

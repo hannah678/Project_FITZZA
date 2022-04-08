@@ -94,7 +94,6 @@ fieldset{
 	}
 
 .button01{
-	cursor:pointer;
 	width:100%;
 	height:55px;
 	font-size:32px;
@@ -118,9 +117,9 @@ fieldset{
 
 .loginmenu a{
 	font-weight:600;
-	font-size: 18pt;
+	font-size: 9pt;
 	letter-spacing:-.4px;
-	color:rgb( 244, 156, 21);
+	color:rgb( 251, 176, 60);
 	margin-right:8px;
 	transition:all.15s linear
 }
@@ -174,7 +173,7 @@ fieldset{
 }
 
 #email2{
-	width:23%;
+	width:27%;
 	height:45px;
 	padding:20px 14px;
 	border : none;
@@ -203,10 +202,9 @@ fieldset{
 }
 
 #emailchk{
-	cursor:pointer;
 	margin-left:15px; 
-	width:12%;
-	height:60px;
+	width:17%;
+	height:40px;
 	font-size:32px;
 	color:#fff;
 	border-radius: 10px;
@@ -216,7 +214,6 @@ fieldset{
 }
 
 .button02{ /*가입하기 버튼*/
-    cursor:pointer;
 	margin-left:10%; 
 	margin-top : 40px;
 	margin-bottom : 50px;

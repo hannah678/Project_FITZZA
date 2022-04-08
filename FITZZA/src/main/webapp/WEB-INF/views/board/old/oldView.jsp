@@ -120,7 +120,7 @@
                 <br/>
                 <li>${vo.title}</li>
                 <br/>
-                <li>${vo.gender} ${vo.prod_name}</li>
+                <li>${vo.gender} ${vo.old_name}</li>
                 <br/>
                 <li>${vo.old_price}</li>
             </ul>
@@ -132,11 +132,11 @@
             </ul>
             <hr/>
             <ul class="info">
-                <li id="item"><b>상품 정보</b><hr/>
-                    ${vo.content}
-                </li>
                 <li id="seller"><b>판매자 정보</b><hr/>
                     <img src="../img/준영이.png"/> ${vo.user_nickname}<!--user_nickname--><br/> 거래 가능 지역 : ${vo.city}<!--city--><br/> 신고 받은 횟수 : ${vo.report_hit}<!--report_hit--> </li>
+            	<li id="item"><b>상품 정보</b><hr/>
+                    ${vo.content}
+                </li>
             </ul>
         </form>
     </div>
