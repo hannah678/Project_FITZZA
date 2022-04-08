@@ -4,17 +4,22 @@
   
 <mapper namespace="com.team.fitzza.dao.OldBoardDAO">
 
+	<!-- oldWrite -->
   	<insert id="oldBoardInsert">
   		INSERT INTO board(type_num, user_id, title, content, ip, gender)
-  		VALUES(3,#{user_id},#{title},#{content},#{ip},'M')
+  		VALUES(3,#{user_id},#{title},#{content},#{ip},#{gender})
   	</insert>
- 
-  	<insert id="oldBoardCityInsert">
-  		INSERT INTO board_old(city, old_price) VALUES(#{city}, #{old_price})
+  	<insert id="oldBoardDetailInsert">
+  		INSERT INTO board_old(board_num, old_name, city, old_price) VALUES(#{board_num}, #{old_name}, #{city}, #{old_price})
   	</insert> 
   	<insert id="oldBoardFileInsert">
-  		INSERT INTO board_common_image(file1,file2,file3,file4,file5) 
-  		VALUES(#{file1},#{file2},#{file3},#{file4},#{file5})
+  		INSERT INTO board_common_image(board_num,file1,file2,file3,file4,file5) 
+  		VALUES(#{board_num},#{file1},#{file2},#{file3},#{file4},#{file5})
   	</insert> 
 
+	<!-- oldList -->
+	<select id="oldBoardSelectAll" resultType="com.team.fitzza.vo.BoardVO">
+        select board_num, title, user_id, date_format(write_date, '%m-%d %H:%i') write_date
+        from board where type_num=3 order by board_num desc
+    </select>
 </mapper>

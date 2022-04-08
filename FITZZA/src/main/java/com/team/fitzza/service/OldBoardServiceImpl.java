@@ -17,50 +17,42 @@ public class OldBoardServiceImpl implements OldBoardService {
 
 	@Override
 	public int oldBoardInsert(BoardVO vo) {
-		// TODO Auto-generated method stub
 		return dao.oldBoardInsert(vo);
 	}
 
 	@Override
 	public List<BoardVO> oldBoardSelectAll() {
-		// TODO Auto-generated method stub
 		return dao.oldBoardSelectAll();
 	}
 
 	@Override
-	public BoardVO oldBoardView(int no) {
-		// TODO Auto-generated method stub
-		return null;
+	public BoardVO oldBoardView(int board_num) {
+		return dao.oldBoardView(board_num);
 	}
 
 	@Override
-	public BoardVO getFileName(int no) {
-		// TODO Auto-generated method stub
-		return null;
+	public BoardVO getFileName(int board_num) {
+		return dao.getFileName(board_num);
 	}
 
 	@Override
 	public int oldBoardUpdate(BoardVO vo) {
-		// TODO Auto-generated method stub
-		return 0;
+		return dao.oldBoardUpdate(vo);
 	}
 
 	@Override
-	public int oldBoardDelete(int no, String user_id) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int oldBoardDelete(int board_num, String user_id) {
+		return dao.oldBoardDelete(board_num, user_id);
 	}
 
 	@Override
 	public int oldBoardFileInsert(BoardVO vo) {
-		// TODO Auto-generated method stub
 		return dao.oldBoardFileInsert(vo);
 	}
 
 	@Override
-	public int oldBoardCityInsert(BoardVO vo) {
-		// TODO Auto-generated method stub
-		return dao.oldBoardCityInsert(vo);
+	public int oldBoardDetailInsert(BoardVO vo) {
+		return dao.oldBoardDetailInsert(vo);
 	}
 	
 	

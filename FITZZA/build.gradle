@@ -34,13 +34,10 @@ dependencies {
 	implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:2.2.2'
 	
 	
-	// https://mvnrepository.com/artifact/org.apache.commons/commons-lang3
+	// 파일 업로드 세팅
 	implementation group: 'org.apache.commons', name: 'commons-lang3', version: '3.12.0'
-	// https://mvnrepository.com/artifact/commons-io/commons-io
 	implementation group: 'commons-io', name: 'commons-io', version: '2.11.0'
-	implementation 'commons-fileupload:commons-fileupload:1.4'
-	//compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.9'
-    //compile group: 'commons-io', name: 'commons-io', version: '2.6'
+	implementation group: 'commons-fileupload', name: 'commons-fileupload', version: '1.4'
 }
 
 tasks.named('test') {

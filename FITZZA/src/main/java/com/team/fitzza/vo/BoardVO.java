@@ -11,20 +11,36 @@ public class BoardVO {
 	private String write_date;
 	private String ip;
 	private String gender;
-	private String old_price;
+	private int old_price;
 	private String file1;
 	private String file2;
 	private String file3;
 	private String file4;
 	private String file5;
+	private String city;
+	private String old_name;
 	
 	
-	public String getPrice() {
+	
+	public String getOld_name() {
+		return old_name;
+	}
+	public void setOld_name(String old_name) {
+		this.old_name = old_name;
+	}
+	public int getOld_price() {
 		return old_price;
 	}
-	public void setPrice(String price) {
-		this.old_price = price;
+	public void setOld_price(int old_price) {
+		this.old_price = old_price;
 	}
+	public String getCity() {
+		return city;
+	}
+	public void setCity(String city) {
+		this.city = city;
+	}
+	
 	public String getFile1() {
 		return file1;
 	}

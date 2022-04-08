@@ -49,10 +49,11 @@ public class OldBoardController {
 
 	@PostMapping("/board/old/oldWriteOk")
 	public ResponseEntity<String> boardWriteOk(BoardVO vo, HttpServletRequest request) {
-		System.out.println("boardWirteOk START");
+		System.out.println("oldWriteOk START");
 		// vo : subject, content는 request가 됨.
 		vo.setIp(request.getRemoteAddr()); // 접속자 아이피
 		vo.setUser_id((String)request.getSession().getAttribute("logId"));	// 글쓴이
+		
 		
 		// 파일 업로드에 관련된 multipartRequest객체를 구해야함
 		ResponseEntity<String> entity = null;
@@ -128,6 +129,8 @@ public class OldBoardController {
 			System.out.println(vo.getFile5());
 			//DB등록
 			service.oldBoardInsert(vo);
+			service.oldBoardDetailInsert(vo);
+			service.oldBoardFileInsert(vo);
 			//레코드 추가 성공
 			String msg = "<script>alert('자료실에 글이 등록되었습니다');location.href='/fitzza/board/old/oldList';</script>";
 			entity = new ResponseEntity<String>(msg, headers, HttpStatus.OK);	//200

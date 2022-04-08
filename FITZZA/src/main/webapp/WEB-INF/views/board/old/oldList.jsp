@@ -11,7 +11,7 @@
 <div class="oldboard">
     <h2>중고거래</h2>
     <div id="write">
-        <a href="">글쓰기</a>
+        <a href="/board/old/oldWrite">글쓰기</a>
     </div>
     <ul class="oldlist">
         <li>지역</li>
@@ -50,14 +50,14 @@
         <li>123456</li>
 
         <!-- 게시물 리스트 -->
-        <!-- <c:forEach var="" items="">
+        <!--  <c:forEach var="" items="">
             <li>Board_old.city</li>
-            <li><a href=""><img src="prod_image"/></a></li>
+            <li><a href="/board/old/oldView?board_num=${vo.board_num}"><img src="/webapp/upload/${vo.file1}"/></a></li>
             <li><a href="">Board.title</a></li>
             <li><img src="profile_image" style="width:20px; height:20px; border-radius: 70%;"/>User.user_nickname</li>
             <li>Board.write_date</li>
             <li>Board.hit</li>
-        </c:forEach> -->
+        </c:forEach>-->
 
         <!-- 게시물 리스트 페이징 -->
         <ul class="paging">

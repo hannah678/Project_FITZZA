@@ -30,7 +30,6 @@
 				alert("상품 설명을 입력하세요");
 				return false;
 			}
-			alert(1234)
 		});
 	});
 </script>
@@ -38,13 +37,22 @@
 <body>
     <div class="boardcontainer">
         <h1>상품등록</h1>
+        <input type="hidden" name="board_num" />
         <form method="post" action="/board/old/oldWriteOk" id="boardFrm" enctype="multipart/form-data">
             <ul>
-                <li>제목 &emsp; <input type="text" name="title" id="subject" placeholder='	상품 제목을 입력해주세요.'/></li>
+                <li>제목 &emsp; <input type="text" name="title" id="subject" placeholder='	제목을 입력해주세요.'/></li>
 				<hr/>
                 <li>지역 &emsp; <input type="text" name="city" id="city" placeholder='	거래 가능 지역을 입력해주세요.'/></li>
 				<hr/>
-				<li>가격 &emsp; <input type="text" name="old_price" id="price" placeholder='	가격을 입력해주세요.(숫자만 입력해주세요.)'/></li>
+				<li>상품명 &emsp; <input type="text" name="old_name" id="old_name" placeholder='	상품명을 입력해주세요.'/></li>
+				<hr/>
+				<li><select id="gender" name="gender">
+					<option value="W" name="W">여성의류</option>
+					<option value="M" name="M">남성의류</option>
+					<option value="U" name="U">남여공용</option>
+				</select></li>
+				<hr/>
+				<li>가격 &emsp; <input type="text" name="old_price" id="old_price" placeholder='	가격을 입력해주세요.(숫자만 입력해주세요.)'/></li>
 				<hr/>
 				<li>설명 &emsp; <textarea name="content" id="content" rows="10" cols="100" placeholder='	상품 설명을 입력해주세요.'></textarea></li>
 				<hr/>
