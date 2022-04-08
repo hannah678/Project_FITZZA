@@ -29,7 +29,7 @@ $(document).ready(function(){
 <section id="wrapper" class="layoutLogin">
        <div class="loginheader">
    		 <img src="${url}/img/LOgo.png" style="width:250px;"/>
-   		 <div>─── Sign In ───</div>
+   		 <div style="overflow:hidden;">── Sign In ──</div>
   	   </div>
      <form method="post" action="/member/loginOk" id="form1">
   		 <div id="contents">
