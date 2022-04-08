@@ -9,6 +9,9 @@
   		INSERT INTO board(type_num, user_id, title, content, ip, gender)
   		VALUES(3,#{user_id},#{title},#{content},#{ip},#{gender})
   	</insert>
+  	<select id="boardNum" resultType="int">
+  		select board_num from board where user_id=#{param1} limit 1;
+  	</select>
   	<insert id="oldBoardDetailInsert">
   		INSERT INTO board_old(board_num, old_name, city, old_price) VALUES(#{board_num}, #{old_name}, #{city}, #{old_price})
   	</insert> 

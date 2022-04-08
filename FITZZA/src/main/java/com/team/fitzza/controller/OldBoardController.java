@@ -129,6 +129,8 @@ public class OldBoardController {
 			System.out.println(vo.getFile5());
 			//DB등록
 			service.oldBoardInsert(vo);
+			String user_id = (String)request.getSession().getAttribute("logId");
+			vo.setBoard_num(service.boardNum(user_id));
 			service.oldBoardDetailInsert(vo);
 			service.oldBoardFileInsert(vo);
 			//레코드 추가 성공

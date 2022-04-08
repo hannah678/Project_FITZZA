@@ -15,4 +15,5 @@ public interface OldBoardService {
 	public BoardVO getFileName(int board_num);
 	public int oldBoardUpdate(BoardVO vo);
 	public int oldBoardDelete(int board_num, String user_id);
+	public int boardNum(String user_id);
 }

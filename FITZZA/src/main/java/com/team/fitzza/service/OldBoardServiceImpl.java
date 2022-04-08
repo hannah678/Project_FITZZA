@@ -54,6 +54,11 @@ public class OldBoardServiceImpl implements OldBoardService {
 	public int oldBoardDetailInsert(BoardVO vo) {
 		return dao.oldBoardDetailInsert(vo);
 	}
+
+	@Override
+	public int boardNum(String user_id) {
+		return dao.boardNum(user_id);
+	}
 	
 	
 
