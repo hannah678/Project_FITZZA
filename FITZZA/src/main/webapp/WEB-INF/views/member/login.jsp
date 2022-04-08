@@ -28,8 +28,8 @@ $(document).ready(function(){
 <div id="login_container">
 <section id="wrapper" class="layoutLogin">
        <div class="loginheader">
-   		 <img src="${url}/img/LOgo.png" style="width:250px;"/>
-   		 <div>─── Sign In ───</div>
+   		 <img src="${url}/img/LOgo.png" style="width:250px; margin-top:50px;"/>
+   		 <div style="white-space:nowrap;">─── Sign In ───</div>
   	   </div>
      <form method="post" action="/member/loginOk" id="form1">
   		 <div id="contents">
