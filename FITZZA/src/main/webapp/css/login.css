@@ -5,6 +5,7 @@
 	width:100%;
 	background: url(../img/trade_bg.png) no-repeat 0 0;
 	background-size: 100%;
+	overflow:hidden;
 }
 .loginheader>div{
 	font-family: "Nanum pen script", cursive; 
@@ -17,12 +18,12 @@
 	background-color:transparent
 }
 
-#contents,#wrapper{
+#contents, #wrapper{
 	position:relative;
-	} 
+} 
 
 .userlogin{
-	padding-top:60px
+	padding-top:60px;
 }
 
 .inputMsg{
@@ -44,7 +45,7 @@
 	min-width:370px;
 	min-height:100%;
 	min-height:100vh;
-	padding:0 16px 200px;
+	padding:0 16px;
 	margin:0 auto
 }
 
@@ -94,6 +95,7 @@ fieldset{
 	}
 
 .button01{
+	cursor:pointer;
 	width:100%;
 	height:55px;
 	font-size:32px;
@@ -117,9 +119,9 @@ fieldset{
 
 .loginmenu a{
 	font-weight:600;
-	font-size: 9pt;
+	font-size: 18pt;
 	letter-spacing:-.4px;
-	color:rgb( 251, 176, 60);
+	color:rgb( 244, 156, 21);
 	margin-right:8px;
 	transition:all.15s linear
 }
@@ -135,7 +137,7 @@ fieldset{
 	min-width:400px;
 	min-height:100%;
 	min-height:100vh;
-	padding:80px 20px 200px;
+	padding:80px 20px 0px;
 	margin:0 auto
 }
 
@@ -145,7 +147,7 @@ fieldset{
 
 .joinbox input{
 	width:80%;
-	height:45px;
+	height:20px;
 	padding:20px 14px;
 	border : none;
 	border-bottom:1px solid #d5d9de;
@@ -159,7 +161,7 @@ fieldset{
 
 #email1{
 	width:48%;
-	height:45px;
+	height:20px;
 	padding:20px 14px;
 	border : none;
 	border-bottom:1px solid #d5d9de;
@@ -173,7 +175,7 @@ fieldset{
 }
 
 #email2{
-	width:27%;
+	width:23%;
 	height:45px;
 	padding:20px 14px;
 	border : none;
@@ -202,9 +204,10 @@ fieldset{
 }
 
 #emailchk{
+	cursor:pointer;
 	margin-left:15px; 
-	width:17%;
-	height:40px;
+	width:12%;
+	height:60px;
 	font-size:32px;
 	color:#fff;
 	border-radius: 10px;
@@ -214,6 +217,7 @@ fieldset{
 }
 
 .button02{ /*가입하기 버튼*/
+    cursor:pointer;
 	margin-left:10%; 
 	margin-top : 40px;
 	margin-bottom : 50px;

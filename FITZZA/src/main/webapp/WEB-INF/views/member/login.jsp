@@ -28,7 +28,7 @@ $(document).ready(function(){
 <div id="login_container">
 <section id="wrapper" class="layoutLogin">
        <div class="loginheader">
-   		 <img src="${url}/img/LOgo2.png" style="width:70px; margin-top:50px;"/>
+   		 <img src="${url}/img/LOgo2.png" style="width:70px; margin-top:100px;"/>
    		 <div style="white-space:nowrap;">─── Sign In ───</div>
   	   </div>
      <form method="post" action="/member/loginOk" id="form1">
