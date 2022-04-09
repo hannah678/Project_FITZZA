@@ -1,5 +1,5 @@
 @charset "UTF-8";
-@import url('https://fonts.googleapis.com/css2?family=Hi+Melody&family=Nanum+Pen+Script&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Hi+Melody&family=Nanum+Pen+Script&family=Stylish&display=swap');
 
 /* reset */
 html, body, div, span, applet, object, iframe,
@@ -518,7 +518,7 @@ video::-webkit-media-controls-volume-slider {display: none !important;}
  }
  .wrapper {
   width: 100%;
-  font-family: 'Alfa Slab One', sans-serif;
+  font-family: 'Stylish', sans-serif;
   position:absolute; left:0; top:0;
   height: 100%;
   -webkit-backface-visibility: hidden;
@@ -661,7 +661,7 @@ video::-webkit-media-controls-volume-slider {display: none !important;}
 /* vote - end */
 
 /* codi_book - start */
-#codi_book {background:radial-gradient(#e66465, #f7ecde);}
+#codi_book {background:radial-gradient(#54bab9, #f7ecde);}
 #codi_book h1 {
 	width:800px;
 	position:absolute; left:50%; top:600px;
@@ -748,6 +748,7 @@ footer .f_menu li+li:after{
 	position: absolute; left: -30px; top: 0;
 }
 footer .f_copy {margin-top:50px;}
+footer .f_copy address {font-style: normal;}
 footer .f_copy li+li{
 	display: block; float:left; 
     line-height: 20px; 
