@@ -13,6 +13,7 @@ public interface OldBoardDAO {
 	public int oldBoardInsert(BoardVO vo);
 	public int oldBoardFileInsert(BoardVO vo);
 	public int oldBoardDetailInsert(BoardVO vo);
+	public int oldBoardStateInsert(BoardVO vo);
 	public List<BoardVO> oldBoardSelectAll();
 	public BoardVO oldBoardView(int board_num);
 	//파일명 선택

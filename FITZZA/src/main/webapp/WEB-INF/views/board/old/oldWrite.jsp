@@ -45,7 +45,7 @@
 				<hr/>
 				<li>상품명 &emsp; <input type="text" name="old_name" id="old_name" placeholder='	상품명을 입력해주세요.'/></li>
 				<hr/>
-				<li>상품 종류 &emsp; <select id="gender" name="gender">
+				<li>상품 종류 &emsp; <select id="gender_type" name="gender_type">
 					<option value="W" name="W">여성의류</option>
 					<option value="M" name="M">남성의류</option>
 					<option value="U" name="U">남여공용</option>

@@ -133,6 +133,7 @@ public class OldBoardController {
 			vo.setBoard_num(service.boardNum(user_id));
 			service.oldBoardDetailInsert(vo);
 			service.oldBoardFileInsert(vo);
+			service.oldBoardStateInsert(vo);
 			//레코드 추가 성공
 			String msg = "<script>alert('자료실에 글이 등록되었습니다');location.href='/board/old/oldList';</script>";
 			entity = new ResponseEntity<String>(msg, headers, HttpStatus.OK);	//200

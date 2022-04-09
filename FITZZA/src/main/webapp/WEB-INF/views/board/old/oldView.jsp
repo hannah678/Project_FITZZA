@@ -120,13 +120,12 @@
             <ul>
                 <img src="/upload/${vo.file1}"/>
                 <br/>
-                <li>${vo.title}</li>
+                <li>[${vo.state_name}]&nbsp;&nbsp;${vo.title}</li>
                 <br/>
-                <li>(${vo.gender}) ${vo.old_name}</li>
+                <li>(${vo.gender_name})&nbsp;&nbsp;${vo.old_name}</li>
                 <br/>
                 <li>${vo.old_price} 원</li>
             </ul>
-            <br/>
             <hr/>
             <ul>
                 <li>조회수 &nbsp; ${vo.hit}<!--hit--> &emsp; &emsp; 게시일 &nbsp; ${vo.write_date} <!--enter_date--></li>

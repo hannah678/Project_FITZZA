@@ -64,6 +64,11 @@ public class OldBoardServiceImpl implements OldBoardService {
 	public void hitCount(int board_num) {
 		dao.hitCount(board_num);
 	}
+
+	@Override
+	public int oldBoardStateInsert(BoardVO vo) {
+		return dao.oldBoardStateInsert(vo);
+	}
 	
 	
 

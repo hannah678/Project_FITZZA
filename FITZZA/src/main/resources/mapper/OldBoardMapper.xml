@@ -6,8 +6,8 @@
 
 	<!-- oldWrite -->
   	<insert id="oldBoardInsert">
-  		INSERT INTO board(type_num, user_id, title, content, ip, gender)
-  		VALUES(3,#{user_id},#{title},#{content},#{ip},#{gender})
+  		INSERT INTO board(type_num, user_id, title, content, ip, gender_type)
+  		VALUES(3,#{user_id},#{title},#{content},#{ip},#{gender_type})
   	</insert>
   	<select id="boardNum" resultType="int">
   		SELECT board_num FROM board WHERE user_id=#{param1} ORDER BY board_num DESC LIMIT 1;
@@ -18,29 +18,41 @@
   	<insert id="oldBoardFileInsert">
   		INSERT INTO board_common_image(board_num,file1,file2,file3,file4,file5) 
   		VALUES(#{board_num},#{file1},#{file2},#{file3},#{file4},#{file5})
+  	</insert>
+  	<insert id="oldBoardStateInsert">
+  		INSERT INTO trade_detail(board_num,state_num) 
+  		VALUES(#{board_num},1)
   	</insert> 
 
 	<!-- oldList -->
 	<select id="oldBoardSelectAll" resultType="com.team.fitzza.vo.BoardVO">
-        SELECT A.board_num, A.title, A.user_id, A.write_date, B.city, C.user_nickname, D.file1 
-		FROM   board A, board_old B, user C, board_common_image D 
-		WHERE  A.board_num=B.board_num AND A.user_id=C.user_id AND A.board_num=D.board_num AND A.type_num=3
+        SELECT   A.board_num, A.title, A.user_id, A.write_date, B.city, C.user_nickname, D.file1 
+		FROM     board A, board_old B, user C, board_common_image D 
+		WHERE    A.board_num=B.board_num AND A.user_id=C.user_id AND A.board_num=D.board_num AND A.type_num=3
 		ORDER BY A.board_num DESC;
     </select>
     
     <!-- oldView -->
     <select id="oldBoardView" resultType="com.team.fitzza.vo.BoardVO">
-	    SELECT A.board_num, A.title, A.gender, A.hit, A.write_date, A.content, 
+	    SELECT A.board_num, A.title, A.hit, A.write_date, A.content, 
 	    	   B.file1, B.file2, B.file3, B.file4, B.file5, 
 	    	   C.old_name, C.old_price, C.city, 
-	   		   D.user_nickname, D.report_hit
-	    FROM   board A, board_common_image B, board_old C, user D
-	    WHERE  A.board_num=B.board_num AND A.board_num=C.board_num AND A.user_id=D.user_id 
+	   		   D.user_nickname, D.report_hit,
+	   		   E.gender_name,
+	   		   F.state_num,
+	   		   G.state_name
+	    FROM   board A, board_common_image B, board_old C, user D, gender E, trade_detail F, trade_state G
+	    WHERE  A.board_num=B.board_num 
+	    AND    A.board_num=C.board_num 
+	    AND    A.user_id=D.user_id 
+	    AND    A.gender_type=E.gender_type
+	    AND    A.board_num=F.board_num
+	    AND    F.state_num=G.state_num
 	    AND    A.board_num=${param1}
     </select>
     <update id="hitCount">
         UPDATE board SET hit = hit+1 WHERE board_num=#{param1}
     </update>
     
-    <!--  -->
+    <!-- oldEdit -->
 </mapper>

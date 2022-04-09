@@ -4,13 +4,14 @@ public class BoardVO {
 	
 	private int board_num;
 	private int type_num;
+	private String type_name;
 	private String user_id;
 	private String title;
 	private String content;
 	private int hit;
 	private String write_date;
 	private String ip;
-	private String gender;
+	private String gender_type;
 	private int old_price;
 	private String file1;
 	private String file2;
@@ -21,9 +22,44 @@ public class BoardVO {
 	private String old_name;
 	private String user_nickname;
 	private String report_hit;
+	private String gender_name;
+	
+	private int state_num;
+	private String state_name;
+	private String trade_date;
 	
 	
 
+	public int getState_num() {
+		return state_num;
+	}
+	public void setState_num(int state_num) {
+		this.state_num = state_num;
+	}
+	public String getState_name() {
+		return state_name;
+	}
+	public void setState_name(String state_name) {
+		this.state_name = state_name;
+	}
+	public String getTrade_date() {
+		return trade_date;
+	}
+	public void setTrade_date(String trade_date) {
+		this.trade_date = trade_date;
+	}
+	public String getType_name() {
+		return type_name;
+	}
+	public void setType_name(String type_name) {
+		this.type_name = type_name;
+	}
+	public String getGender_name() {
+		return gender_name;
+	}
+	public void setGender_name(String gender_name) {
+		this.gender_name = gender_name;
+	}
 	public String getReport_hit() {
 		return report_hit;
 	}
@@ -133,11 +169,11 @@ public class BoardVO {
 	public void setIp(String ip) {
 		this.ip = ip;
 	}
-	public String getGender() {
-		return gender;
+	public String getGender_type() {
+		return gender_type;
 	}
-	public void setGender(String gender) {
-		this.gender = gender;
+	public void setGender_type(String gender_type) {
+		this.gender_type = gender_type;
 	}
 	
 	

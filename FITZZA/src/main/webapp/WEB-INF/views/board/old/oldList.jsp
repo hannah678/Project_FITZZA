@@ -52,10 +52,10 @@
     
         <form action="" id="searchFrm">
             <select name="searchKey">
-                <option value="subject">제목</option>
+                <option value="title">제목</option>
                 <option value="content">내용</option>
                 <option value="city">지역</option>
-                <option value="userid">작성자</option>
+                <option value="user_id">작성자</option>
             </select>
             <input type="text" name="searchWord" id="searchWord"/>
             <input type="submit" value="Search"/>
