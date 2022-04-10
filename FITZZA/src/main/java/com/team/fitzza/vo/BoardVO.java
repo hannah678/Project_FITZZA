@@ -3,33 +3,72 @@ package com.team.fitzza.vo;
 public class BoardVO {
 	
 	private int board_num;
-	private int type_num;
-	private String type_name;
+	private int type_num;	  //1,2,3,4,5,6
+	private String type_name; //오늘의코디, 스타일추천, 중고거래, 구매후기, QnA, 오늘뭐입지?
 	private String user_id;
 	private String title;
 	private String content;
 	private int hit;
 	private String write_date;
 	private String ip;
-	private String gender_type;
-	private int old_price;
+	private String gender_type;	//W,M,U
+	private String gender_name;	//여성의류, 남성의류, 남녀공용
+	
 	private String file1;
 	private String file2;
 	private String file3;
 	private String file4;
 	private String file5;
+	
+	private int old_price;
 	private String city;
 	private String old_name;
 	private String user_nickname;
 	private String report_hit;
-	private String gender_name;
 	
-	private int state_num;
-	private String state_name;
+	private int state_num;	   //1,2,3
+	private String state_name; //판매중, 예약중, 거래완료
 	private String trade_date;
+	
+	private int report_num;
+	private String report_content;
+	private int category_num;	  //1,2,3,4
+	private String category_name; //광고, 사기거래, 욕설/비방, 사칭
+	private String report_time;
+	
 	
 	
 
+	public int getReport_num() {
+		return report_num;
+	}
+	public void setReport_num(int report_num) {
+		this.report_num = report_num;
+	}
+	public String getReport_content() {
+		return report_content;
+	}
+	public void setReport_content(String report_content) {
+		this.report_content = report_content;
+	}
+	public int getCategory_num() {
+		return category_num;
+	}
+	public void setCategory_num(int category_num) {
+		this.category_num = category_num;
+	}
+	public String getCategory_name() {
+		return category_name;
+	}
+	public void setCategory_name(String category_name) {
+		this.category_name = category_name;
+	}
+	public String getReport_time() {
+		return report_time;
+	}
+	public void setReport_time(String report_time) {
+		this.report_time = report_time;
+	}
 	public int getState_num() {
 		return state_num;
 	}

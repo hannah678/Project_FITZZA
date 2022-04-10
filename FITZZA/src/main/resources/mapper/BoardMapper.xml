@@ -3,5 +3,20 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
 <mapper namespace="com.team.fitzza.dao.BoardDAO">
+	<select id="boardSelect" resultType="com.team.fitzza.vo.BoardVO">
+        SELECT   board_num, title, user_id, hit, ip, write_date
+		FROM     board A
+		WHERE    board_num=${param1};
+    </select>
+	<!-- 조회수 올리기 -->
+	<update id="hitCount">
+        UPDATE board SET hit = hit+1 WHERE board_num=#{param1}
+    </update>
+    
+  	<!-- 신고하기 -->
+  	<insert id="reportInsert">
+  		INSERT INTO board_report(user_id, board_num, report_content, category_num)
+  		VALUES(#{user_id}, ${board_num}, #{report_content}, #{category_num})
+  	</insert>
   	
 </mapper>

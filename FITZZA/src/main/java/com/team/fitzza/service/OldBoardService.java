@@ -17,5 +17,4 @@ public interface OldBoardService {
 	public int oldBoardUpdate(BoardVO vo);
 	public int oldBoardDelete(int board_num, String user_id);
 	public int boardNum(String user_id);
-	public void hitCount(int board_num);
 }

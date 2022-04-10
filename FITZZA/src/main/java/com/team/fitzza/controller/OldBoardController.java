@@ -2,12 +2,10 @@ package com.team.fitzza.controller;
 
 import java.io.File;
 import java.nio.charset.Charset;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -20,7 +18,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
-
+import com.team.fitzza.service.BoardService;
 import com.team.fitzza.service.OldBoardService;
 import com.team.fitzza.vo.BoardVO;
 
@@ -29,6 +27,9 @@ public class OldBoardController {
 	
 	@Inject
 	OldBoardService service;
+	
+	@Inject
+	BoardService Bservice;
 	
 	@GetMapping("/board/old/oldList")
 	public ModelAndView dataList() {
@@ -167,7 +168,7 @@ public class OldBoardController {
 	@GetMapping("/board/old/oldView")
 	public ModelAndView oldBoardView(int board_num) {
 		ModelAndView mav = new ModelAndView();
-		service.hitCount(board_num); //조회수 증가
+		Bservice.hitCount(board_num); //조회수 증가
 		mav.addObject("vo", service.oldBoardView(board_num));
 		mav.setViewName("/board/old/oldView");
 		return mav;

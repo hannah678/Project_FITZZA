@@ -50,9 +50,6 @@
 	    AND    F.state_num=G.state_num
 	    AND    A.board_num=${param1}
     </select>
-    <update id="hitCount">
-        UPDATE board SET hit = hit+1 WHERE board_num=#{param1}
-    </update>
     
     <!-- oldEdit -->
 </mapper>

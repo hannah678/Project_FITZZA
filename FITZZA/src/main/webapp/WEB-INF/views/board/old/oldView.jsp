@@ -1,12 +1,36 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
-<html>
 <head>
     <meta charset="UTF-8">
     <title>FITZZA | 중고거래</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
 </head>
+
 <script>
+	$("#reportForm").submit(function(){
+		event.preventDefault(); //form 기본이벤트 제거
+		if($("#report_content").val()==""){
+			alert("신고 내용을 입력해주세요.");
+			return;
+		}else{ //댓글 입력한 경우
+			var params = $("#reportForm").serialize();
+		
+			$.ajax({
+				url: '/board/reportOk',
+				data: params,
+				type:'POST',
+				success: function(r){
+					alert("전송 성공");
+				},
+				error: function(e){
+					console.log(e.responseText);
+					alert("전송 실패");
+				}
+			});
+		}
+	});
+
 	function delCheck(){
 		if(confirm("삭제하시겠습니까?")){
 			location.href = "";     // 게시글 삭제 매핑
@@ -116,7 +140,6 @@
 <body>
     <hr/>
     <div class="oldlist">
-        <form action=""><!-- 신고하기 -->
             <ul>
                 <img src="/upload/${vo.file1}"/>
                 <br/>
@@ -129,7 +152,7 @@
             <hr/>
             <ul>
                 <li>조회수 &nbsp; ${vo.hit}<!--hit--> &emsp; &emsp; 게시일 &nbsp; ${vo.write_date} <!--enter_date--></li>
-                <!--<li> <input type="submit" value="연락하기" id="call"/>  &emsp; &emsp; <input type="submit" value="신고하기" id="report"/></li>-->
+                <li><input type="button" value="신고하기" id="report" data-target="#reportModal" data-toggle="modal"/></li>
             	<hr/>
             	<li id="seller"><b>판매자 정보</b><hr/>
                     <img src="/img/codi_book_img12.png"/> ${vo.user_nickname}<!--user_nickname--><br/> 거래 가능 지역 : ${vo.city}<!--city--><br/> 신고 받은 횟수 : ${vo.report_hit}<!--report_hit--> </li>
@@ -155,7 +178,6 @@
                     ${vo.content}
                 </li>
             </ul>
-        </form>
     </div>
     <div class="reply">
         <hr/>
@@ -180,4 +202,43 @@
             
         </div>
     </div>
+    
+<!-- 신고 모달 -->
+	<div id="reportModal" class="modal"><!-- modal -->
+		<div class="modal-dialog">
+			<div class="modal-content">
+					<div class="modal-header">
+						<h2>게시물 신고</h2>
+						<button class="close" data-dismiss="modal">&times;</button>
+					</div>
+					<div class="modal-body">
+						<c:if test="${logStatus=='Y'}">
+							<form method="post" id="reportForm">
+							<input type="hidden" name="board_num" value="${vo.board_num}"/>
+								<ul>
+									<li>신고 이유 &emsp; 
+										<select name="category_num">
+											<option value="1">광고</option>
+											<option value="2">사기거래</option>
+											<option value="3">욕설/비방</option>
+											<option value="4">사칭</option>
+										</select>
+									</li>
+									<hr/>
+									<li>신고 내용<br/>
+										<textarea name="report_content" rows="5" cols="30"></textarea>
+									</li>
+									<hr/>
+									<li><input type='submit' value='신고 접수'/></li>
+								</ul>
+							</form>
+						</c:if>
+						<c:if test="${logStatus!='Y'}">
+							<h3>로그인 후에 가능합니다.</h3>
+						</c:if>
+				</div>
+			</div>
+		</div>
+	</div>
+
 </body>

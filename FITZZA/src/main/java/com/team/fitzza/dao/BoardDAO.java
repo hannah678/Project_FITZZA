@@ -22,4 +22,7 @@ public interface BoardDAO {
 	public int boardDelete(int board_num, String user_id);
 	//조회수 증가
     public void hitCount(int board_num);
+    //글 신고
+    public int reportInsert(BoardVO vo);
+    
 }

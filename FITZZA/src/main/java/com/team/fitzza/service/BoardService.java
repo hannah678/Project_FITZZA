@@ -11,5 +11,6 @@ public interface BoardService {
 	public int boardUpdate(BoardVO vo);
 	public int boardDelete(int board_num, String user_id);
     public void hitCount(int board_num);
+    public int reportInsert(BoardVO vo);
 }
 

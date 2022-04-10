@@ -42,5 +42,11 @@ public class BoardServiceImpl implements BoardService{
 	@Override
 	public void hitCount(int board_num) {
 		dao.hitCount(board_num);
-	}	
+	}
+
+	@Override
+	public int reportInsert(BoardVO vo) {
+		return dao.reportInsert(vo);
+	}
+	
 }
