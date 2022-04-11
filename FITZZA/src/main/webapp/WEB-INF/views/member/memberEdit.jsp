@@ -151,7 +151,7 @@
    <div class="joinSection">
     <fieldset>
        <legend class="Joinhidden"></legend>
-       <div style="font-size: 4em; text-align: center; margin-bottom:50px;">회원정보 수정</div>
+       <div style="font-size: 1.8em; font-weight:800; text-align: center; margin-bottom:30px; margin-top:120px;">회원정보 수정</div>
        <ul id="joinMenu">
          <li class="joinbox" ><input type="text" name="user_id" id="joinid" value="${vo.user_id}" class="input01" readonly/></li>
          <li class="joinbox" ><input type="password" name="user_pwd" id="joinpwd"placeholder="비밀번호" class="input01"/></li>
