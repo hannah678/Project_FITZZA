@@ -4,35 +4,23 @@
 <link rel="stylesheet" href="/css/mypage.css" type="text/css"/>
 <script>
 	window.onload=function(){
-		var point = 90;
+		var exp = ${vo.exp};
 		var x = document.getElementById("user_grade");
 		var y = document.getElementById("level_frame");
-		if(point < 100) {
-			x.innerText="level 1";
-			y.src="/img/level1.png";
-		} else if(point < 200) {
-			x.innerText="level 2";
-			y.src="/img/level2.png";
-		} else if(point < 300) {
-			x.innerText="level 3";
-			y.src="/img/level3.png";
-		} else if(point < 400) {
-			x.innerText="level 4";
-			y.src="/img/level4.png";
-		} else if(point >= 400) {
-			x.innerText="level 5";
-			y.src="/img/level5.png";
-		} 		
+		
+		x.innerText="level "+ ${vo.grade};
+		y.src="${vo.frame_img}";
 	}
 </script>
+<input type="hidden" name="user_id" value="${vo.user_id}"/>
 <div id="mypage_wrap">
 	<ul id="profile">
 		<li>
-			<img src="/img/이미지 없음.png" alt="프로필 이미지">
+			<img src="${vo.profile_image}" alt="프로필 이미지">
 			<img id="level_frame" alt="등급 프레임 이미지">
 			<p><a href="">프로필 이미지<br/>바꾸기</a></p>
 		</li>
-		<li class="userid">userid</li>
+		<li class="userid">${vo.user_nickname} (${vo.user_id})</li>
 		<li class="grade">
 			<span id="user_grade"></span>
 			<p id="grade_menual">
@@ -50,15 +38,15 @@
 		<li id="my_count">
 			<ul>
 				<li>내 포인트</li>
-				<li>0</li>
+				<li>${vo.exp}</li>
 			</ul>
 			<ul>
 				<li>받은 추천</li>
-				<li>0</li>
+				<li>xxx</li>
 			</ul>
 			<ul>
 				<li>신고 누적</li>
-				<li>0</li>
+				<li>${vo.report_hit}</li>
 			</ul>
 		</li>
 		<li><button><a href="/member/pwdCheck">회원정보수정</a></button></li>

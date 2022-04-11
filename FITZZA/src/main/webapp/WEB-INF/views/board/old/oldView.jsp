@@ -138,7 +138,11 @@
 		//replyListAll();
 	});
     
-   
+    //프레임 이미지
+	window.onload=function(){
+		var point = ${vo.point};
+		document.getElementById("level_frame").src="${vo.frame_img}";
+	}
 </script>
 <link rel="stylesheet" href="/css/oldview.css" type="text/css">
 <body>
@@ -162,7 +166,7 @@
                 <li><input type="button" value="신고하기" id="report" data-target="#reportModal" data-toggle="modal"/></li>
             	<hr/>
             	<li id="seller"><b>판매자 정보</b><hr/>
-                    <img src="/img/codi_book_img12.png"/> ${vo.user_nickname}<!--user_nickname--><br/> 거래 가능 지역 : ${vo.city}<!--city--><br/> 신고 받은 횟수 : ${vo.report_hit}<!--report_hit--> </li>
+                    <img src="${vo.profile_image}" alt="프로필 이미지"><img id="level_frame" alt="등급 프레임 이미지"> ${vo.user_nickname}<!--user_nickname--><br/> 거래 가능 지역 : ${vo.city}<!--city--><br/> 신고 받은 횟수 : ${vo.report_hit}<!--report_hit--> </li>
             </ul>
             <hr/>
             <ul class="info">

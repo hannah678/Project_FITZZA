@@ -12,4 +12,4 @@
 	<input type="password" class="input02" id="user_pwd" name="user_pwd"/>
 <input type="submit" value="탈퇴">
 </form>
-</div>
+

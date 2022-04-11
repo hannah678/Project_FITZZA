@@ -44,20 +44,22 @@ public class MemberServiceImpl implements MemberService{
 
 	@Override
 	public MemberVO pwdCheck(MemberVO vo) {
-		// TODO Auto-generated method stub
 		return dao.pwdCheck(vo);
 	}
 
 	@Override
 	public int memberBye(MemberVO vo) {
-		// TODO Auto-generated method stub
 		return dao.memberBye(vo);
 	}
 
 	@Override
 	public int selfBye(MemberVO vo) {
-		// TODO Auto-generated method stub
 		return dao.selfBye(vo);
+	}
+
+	@Override
+	public MemberVO myPage(String user_id) {
+		return dao.myPage(user_id);
 	}
 
 }

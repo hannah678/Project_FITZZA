@@ -11,14 +11,50 @@ public class MemberVO {
 	private String email2;
 	private String tel;
 	private String register_date;
-	private int point;
+	private int exp;
 	private String profile_image;
 	private String permission;
 	private int report_hit;
 	private String leave_forced;
+	private int grade;
+	private int exp_min;
+	private int exp_max;
+	private String frame_img;
 	
 	
 	
+	
+	public int getGrade() {
+		return grade;
+	}
+	public void setGrade(int grade) {
+		this.grade = grade;
+	}
+	
+	public int getExp() {
+		return exp;
+	}
+	public void setExp(int exp) {
+		this.exp = exp;
+	}
+	public int getExp_min() {
+		return exp_min;
+	}
+	public void setExp_min(int exp_min) {
+		this.exp_min = exp_min;
+	}
+	public int getExp_max() {
+		return exp_max;
+	}
+	public void setExp_max(int exp_max) {
+		this.exp_max = exp_max;
+	}
+	public String getFrame_img() {
+		return frame_img;
+	}
+	public void setFrame_img(String frame_img) {
+		this.frame_img = frame_img;
+	}
 	public String getLeave_forced() {
 		return leave_forced;
 	}
@@ -82,12 +118,6 @@ public class MemberVO {
 	}
 	public void setRegister_date(String register_date) {
 		this.register_date = register_date;
-	}
-	public int getPoint() {
-		return point;
-	}
-	public void setPoint(int point) {
-		this.point = point;
 	}
 	public String getProfile_image() {
 		return profile_image;

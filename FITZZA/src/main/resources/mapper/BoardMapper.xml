@@ -6,7 +6,7 @@
 	<select id="boardSelect" resultType="com.team.fitzza.vo.BoardVO">
         SELECT   board_num, title, user_id, hit, ip, write_date
 		FROM     board A
-		WHERE    board_num=${param1};
+		WHERE    board_num=${param1}
     </select>
 	<!-- 조회수 올리기 -->
 	<update id="hitCount">

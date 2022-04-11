@@ -7,11 +7,13 @@
   		SELECT user_id, user_nickname FROM user
   		WHERE user_id=#{user_id} AND user_pwd=#{user_pwd}
  	</select>
+ 	<!-- 회원등록 -->
  	<insert id="memberInsert">
- 		INSERT INTO user(user_name, user_id, user_pwd, user_nickname, tel, email)
-		VALUES(#{user_name}, #{user_id}, #{user_pwd}, #{user_nickname}, #{tel}, #{email})
+ 		INSERT INTO user(user_name, user_id, user_pwd, user_nickname, tel, email, profile_image)
+		VALUES(#{user_name}, #{user_id}, #{user_pwd}, #{user_nickname}, #{tel}, #{email}, '/img/profileDefault.png')
  	</insert>
  	
+ 	<!-- 회원정보 수정 -->
  	<select id="memberSelect" resultType="com.team.fitzza.vo.MemberVO">
 		SELECT user_id, user_name, user_nickname, tel, email FROM user
 		WHERE user_id = #{param1}
@@ -20,11 +22,11 @@
 		UPDATE user SET user_pwd=#{user_pwd}, user_nickname=#{user_nickname}, 
 		tel=#{tel} WHERE user_id=#{user_id}
 	</update>
-	
 	<select id="pwdCheck" resultType="MemberVO">
   		SELECT user_id, user_pwd FROM user
   		WHERE user_id=#{user_id}
  	</select>
+ 	
  	<!-- 회원탈퇴 -->
  	<insert id="selfBye">
  		INSERT INTO user_leave(leave_forced, email, user_id) VALUES('N',#{email},#{user_id})
@@ -33,9 +35,19 @@
  		DELETE FROM user WHERE user_id=#{user_id} AND user_pwd=#{user_pwd}
  	</delete>
 	<select id="idCheck" resultType="int">
-		select count(user_id) cnt from user where user_id=#{param1}
+		SELECT COUNT(user_id) CNT FROM user WHERE user_id=#{param1}
 	</select>
 	<select id="nickCheck" resultType="int">
-		select count(user_nickname) cnt from user where user_nickname=#{param1}
+		SELECT COUNT(user_nickname) CNT FROM user WHERE user_nickname=#{param1}
+	</select>
+	
+	<!-- 마이페이지 -->
+	<select id="myPage" resultType="MemberVO">
+		SELECT  A.user_id, A.user_nickname, A.report_hit, A.exp, A.profile_image,
+				B.grade, B.frame_img
+		FROM 	user A, user_grade B
+		WHERE   A.user_id=#{param1}
+		AND 	B.exp_min <![CDATA[<=]]> A.exp
+		AND 	A.exp <![CDATA[<=]]> B.exp_max
 	</select>
   </mapper>

@@ -13,5 +13,6 @@ public interface MemberService{
 	public MemberVO pwdCheck(MemberVO vo);
 	public int memberBye(MemberVO vo);
 	public int selfBye(MemberVO vo);
+	public MemberVO myPage(String user_id);
 
 }

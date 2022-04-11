@@ -33,7 +33,7 @@
             </c:if>
             <c:if test="${logStatus == 'Y' }">
                 <p id="logStatus1"><a href="/member/logout">logout</a></p>
-                <p id="logStatus2"><a href="/member/memberMypage">mypage</a></p>
+                <p id="logStatus2"><a href="/member/myPage">mypage</a></p>
             </c:if>
         </div>
         <img id="menu_bar" src="/img/menu_bar.png" alt="menu_bar"/>

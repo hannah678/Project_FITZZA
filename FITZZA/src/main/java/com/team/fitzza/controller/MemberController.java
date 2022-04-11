@@ -158,9 +158,16 @@ public class MemberController {
 	}
 	
 	//마이페이지
-	@GetMapping("member/memberMypage")
-	public String memberMypage() {
-		return "member/memberMypage";
+	@GetMapping("member/myPage")
+	public ModelAndView mypage(HttpSession session) {
+		String user_id = (String)session.getAttribute("logId");
+		MemberVO vo = service.myPage(user_id);
+		
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("vo", vo);
+		//mav.addObject("lst", service.oldBoardSelectAll());
+		mav.setViewName("/member/myPage");
+		return mav;
 	}
 	
 	//회원 탈퇴
@@ -210,4 +217,6 @@ public class MemberController {
 		System.out.println(cnt);
 		return cnt;
 	}
+	
+	
 }

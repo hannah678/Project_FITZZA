@@ -24,8 +24,12 @@ public class BoardVO {
 	private int old_price;
 	private String city;
 	private String old_name;
+	
 	private String user_nickname;
 	private String report_hit;
+	private String profile_image;
+	private int exp;
+	private String frame_img;
 	
 	private int state_num;	   //1,2,3
 	private String state_name; //판매중, 예약중, 거래완료
@@ -40,6 +44,24 @@ public class BoardVO {
 	
 	
 
+	public int getExp() {
+		return exp;
+	}
+	public void setExp(int exp) {
+		this.exp = exp;
+	}
+	public String getFrame_img() {
+		return frame_img;
+	}
+	public void setFrame_img(String frame_img) {
+		this.frame_img = frame_img;
+	}
+	public String getProfile_image() {
+		return profile_image;
+	}
+	public void setProfile_image(String profile_image) {
+		this.profile_image = profile_image;
+	}
 	public String[] getDelFile() {
 		return delFile;
 	}

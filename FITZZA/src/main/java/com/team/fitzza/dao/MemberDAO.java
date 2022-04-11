@@ -27,5 +27,6 @@ public interface MemberDAO {
 	public int memberBye(MemberVO vo);
 	// 자진 탈퇴
 	public int selfBye(MemberVO vo);
-	
+	//마이페이지
+	public MemberVO myPage(String user_id);
 }

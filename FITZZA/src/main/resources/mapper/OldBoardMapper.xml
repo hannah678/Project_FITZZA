@@ -28,7 +28,10 @@
 	<select id="oldBoardSelectAll" resultType="com.team.fitzza.vo.BoardVO">
         SELECT   A.board_num, A.title, A.user_id, A.write_date, B.city, C.user_nickname, D.file1 
 		FROM     board A, board_old B, user C, board_common_image D 
-		WHERE    A.board_num=B.board_num AND A.user_id=C.user_id AND A.board_num=D.board_num AND A.type_num=3
+		WHERE    A.board_num=B.board_num 
+		AND		 A.user_id=C.user_id 
+		AND 	 A.board_num=D.board_num 
+		AND 	 A.type_num=3
 		ORDER BY A.board_num DESC;
     </select>
     
@@ -37,11 +40,12 @@
 	    SELECT A.board_num, A.title, A.hit, A.write_date, A.content, 
 	    	   B.file1, B.file2, B.file3, B.file4, B.file5, 
 	    	   C.old_name, C.old_price, C.city, 
-	   		   D.user_nickname, D.report_hit,
+	   		   D.user_nickname, D.report_hit, D.profile_image, D.exp,
 	   		   E.gender_name,
 	   		   F.state_num,
-	   		   G.state_name
-	    FROM   board A, board_common_image B, board_old C, user D, gender E, trade_detail F, trade_state G
+	   		   G.state_name,
+	   		   H.frame_img
+	    FROM   board A, board_common_image B, board_old C, user D, gender E, trade_detail F, trade_state G, user_grade H
 	    WHERE  A.board_num=B.board_num 
 	    AND    A.board_num=C.board_num 
 	    AND    A.user_id=D.user_id 
@@ -49,6 +53,8 @@
 	    AND    A.board_num=F.board_num
 	    AND    F.state_num=G.state_num
 	    AND    A.board_num=${param1}
+	    AND    H.exp_min <![CDATA[<=]]> D.exp
+		AND    D.exp <![CDATA[<=]]> H.exp_max
     </select>
     
     <!-- oldEdit -->
