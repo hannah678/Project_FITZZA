@@ -137,7 +137,7 @@
           // ]]>
         </script>
         <script type="text/javascript" src="/js/login_bg.js"></script>
-        <script>
+ <script>
   $(document).ready(function(){
 	  
 	  $("#joinid").on('blur',function(){
@@ -326,7 +326,7 @@
    <div class="joinSection">
     <fieldset>
        <legend class="Joinhidden"></legend>
-       <div style="font-size: 1.8em; font-weight:800; text-align: center; margin-bottom:30px; margin-top:120px;">회원가입</div>
+       <h1>회원가입</h1>
        <ul id="joinMenu">
          <li class="joinbox" ><input type="text" name="user_id" id="joinid" placeholder="아이디" class="input01"/></li>
          <li class="joinbox" ><input type="password" name="user_pwd" id="joinpwd"placeholder="비밀번호" class="input01"/></li>
@@ -344,7 +344,7 @@
     <div id="alertmenu">
    	 	<p class="inputMsg userid" style="display:none;">아이디를&nbsp입력하세요.</p>
     	<p class="inputMsg userid2" style="display:none;">아이디는&nbsp8~16글자 사이로 입력해주세요.<br/>영어대소문자,숫자로 등록 가능합니다.</p><br/>
-        <p class="inputMsg userid3" id="idN" style="display:none;">사용 불가능한 아이디입니다.(중복됨)</p>
+    	<p class="inputMsg userid3" id="idN" style="display:none;">사용 불가능한 아이디입니다.(중복됨)</p>
     	<p class="inputMsg userpwd" style="display:none;">패스워드를&nbsp입력하세요.</p>
     	<p class="inputMsg userpwd2" style="display:none;">패스워드를&nbsp10~20글자 사이로 입력해주세요.<br/>영어 대문자, 소문자, 특수문자, 숫자가 포함되어야합니다.</p><br/>
     	<p class="inputMsg password" style="display:none;">비밀번호가 일치하지 않습니다.</p>

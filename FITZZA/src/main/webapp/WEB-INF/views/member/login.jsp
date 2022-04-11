@@ -176,7 +176,7 @@ $(document).ready(function(){
        					 <div class="id">
         					 <input type="text" class="input01" name="user_id" id="user_id" placeholder="UserID"/>
        					 </div>
-       					 <p class="inputMsg2 userid" style="visibility:hidden;">ID를&nbsp입력하세요.</p>
+       					 <p class="inputMsg2 userid" style="visibility:hidden;">ID를&nbsp;입력하세요.</p>
     				     <div class="password">
       					     <input type="password" class="input01" name="user_pwd" id="user_pwd" placeholder="Password"/>
      				     </div>
@@ -186,7 +186,7 @@ $(document).ready(function(){
        					 </div>
     				 </fieldset>
     			 </div>
-   			  <input type="checkbox" value="idremem" style="margin-bottom:100px;"/> 아이디 기억
+   			  <input type="checkbox" value="idremem" style="margin-bottom:50px;"/> 아이디 기억
    			 </div>
    			 <hr/>
    		 <div style="width:400px; margin:0 auto;">

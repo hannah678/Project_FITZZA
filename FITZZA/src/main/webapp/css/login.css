@@ -2,14 +2,14 @@
 
 #glscreen {
 	width:100%; height:100%;
-	position:absolute; left:0; top:0;
+	position:absolute; left:0; top:150px;
 	z-index:-1;
 	opacity:0.5;
 	}
 /* ※ 로그인  CSS ※*/
 
 #login_container{
-	width:100%;
+	width:100%; height:100%;
 	background-size: 100%;
 	overflow:hidden;
 }
@@ -32,6 +32,8 @@
 	padding-top:60px;
 }
 
+#alertmenu {position:relative;}
+#alertmenu p {position:absolute; left:0; top:0}
 .inputMsg{
 	display:hidden;
 	height:30px;
@@ -41,7 +43,6 @@
 	text-align:left;
 	color:red
 }
-
 .inputMsg2{ /*로그인 경고메세지*/
 	display:hidden;
 	height:30px;
@@ -101,7 +102,7 @@ fieldset{
 	border-radius: 10px;
 	border:1px solid #fff;
 	background-color:rgba( 255, 255, 255, 0.5 );
-	font-size:16px;
+	font-size:24px;
 	font-weight:700;
 	outline:0;
 	transition:border-color .15s linear
@@ -115,8 +116,8 @@ fieldset{
 
 .button01{
 	cursor:pointer;
-	width:100%;
-	height:55px;
+	width:100%;	height:55px;
+	margin-left:15px;
 	font-size:32px;
 	border-radius: 10px;
 	font-family:'Nanum pen script';
@@ -133,7 +134,7 @@ fieldset{
 .loginmenu{
 	position:relative;
 	height:20px;
-	padding-top:8px
+	padding-top:8px;
 }
 
 .loginmenu a{
@@ -165,7 +166,11 @@ fieldset{
 	margin:0 auto;
 	background-color:rgba(255,255,255,0.8);
 }
-
+.joinSection > fieldset > h1 {
+		font-size: 1.8em; font-weight:800; 
+		text-align: center; 
+		margin-bottom:30px; margin-top:120px;
+	}
 #joinMenu{
 	margin-left:10%; 
 }
@@ -220,8 +225,8 @@ fieldset{
 	font-weight:700;
 	outline:0;
 	transition:border-color .15s linear;
-	margin-bottom:20px;
-	margin-top:20px;
+	margin-bottom:10px;
+	margin-top:5px;
 }
 
 #emailchk{
@@ -239,11 +244,10 @@ fieldset{
 
 .button02{ /*가입하기 버튼*/
     cursor:pointer;
-	margin-left:10%; 
-	margin-top : 40px;
-	margin-bottom : 20px;
+    margin: 40px auto 20px auto;
+    display:block;
 	position:relative;
- 	width:72%;
+	width:72%;
 	height:55px;
 	font-size:32px;
 	color:#fff;
@@ -255,11 +259,47 @@ fieldset{
 .inputMsg {
 	margin-left:80px;
 	font-size:24px; font-weight:400;
-	transition:all 0.5s;
-}
-@keyframes blink{
-	0% {opacity:0;}
-    50% {opacity:1;}
 }
 
 /*회원가입 CSS 끝*/
+
+
+@media ( max-width: 1600px ) {
+	#glscreen {
+	width:100%; height:800px;
+	position:absolute; left:0; top:150px;
+	z-index:-1;
+	opacity:0.5;
+	}
+	/* ※ 로그인  CSS ※*/
+	
+	.loginheader>div{font-size:1.2em;}
+	.userlogin{padding-top:30px;}
+	.loginSection > input {margin-bottom:50px;}
+	.id input,.password input{height:20px;}
+	#contents {height:500px}
+	
+	
+	/* 로그인 CSS 끝*/
+	
+	/*회원가입 CSS 시작*/
+	
+	#join_wrapper form {height:800px;}
+	.joinSection > fieldset > h1 {
+		font-size: 1.1em;
+		margin: 80px auto 10px auto;
+	}
+	.joinbox input{
+		height:15px;
+		padding:15px 14px; font-size: 18px;		
+	}
+	#email1{padding:15px 14px;}
+	#email2{padding:15px 14px;}
+	#ConfirmCode{ /* 인증번호 넣기 */
+		margin-bottom:10px;
+		margin-top:5px;
+	}
+	#emailchk{height:40px;}
+	
+	/*회원가입 CSS 끝*/
+}

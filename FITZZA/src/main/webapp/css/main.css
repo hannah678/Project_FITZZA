@@ -758,3 +758,10 @@ footer .f_copy address{padding-top:60px}
 footer .f_copy p{height: 20px; padding-top:20px;}
 
 /* FOOTER-E */
+
+@media ( max-width: 1600px ){
+	#notice_bar MARQUEE{
+	    width: 700px;
+	    transform:translateX(-350px);
+	}
+}
