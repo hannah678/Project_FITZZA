@@ -15,8 +15,11 @@
     
   	<!-- 신고하기 -->
   	<insert id="reportInsert">
-  		INSERT INTO board_report(user_id, board_num, report_content, category_num)
-  		VALUES(#{user_id}, ${board_num}, #{report_content}, #{category_num})
+  		INSERT INTO board_report(board_num, report_content, category_num, user_id)
+		VALUES(${board_num}, #{report_content}, ${category_num}, #{user_id});
   	</insert>
-  	
+  	<!-- 신고 누적수 -->
+ 	<update id="reportUp">
+ 		UPDATE user SET report_hit=report_hit+1 WHERE user_id=(SELECT user_id FROM board WHERE board_num=${board_num});
+ 	</update>
 </mapper>

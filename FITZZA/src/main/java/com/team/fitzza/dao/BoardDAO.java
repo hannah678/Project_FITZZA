@@ -18,11 +18,15 @@ public interface BoardDAO {
 	public BoardVO boardSelect(int board_num);
 	//글수정
 	public int boardUpdate(BoardVO vo);
+	
 	//글삭제
 	public int boardDelete(int board_num, String user_id);
 	//조회수 증가
     public void hitCount(int board_num);
     //글 신고
     public int reportInsert(BoardVO vo);
-    
+ // 신고 누적
+ 	public int reportUp(BoardVO vo);
+
+ 	
 }

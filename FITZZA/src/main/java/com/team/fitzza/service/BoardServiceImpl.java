@@ -48,5 +48,11 @@ public class BoardServiceImpl implements BoardService{
 	public int reportInsert(BoardVO vo) {
 		return dao.reportInsert(vo);
 	}
+
+	@Override
+	public int reportUp(BoardVO vo) {
+		// TODO Auto-generated method stub
+		return dao.reportUp(vo);
+	}
 	
 }

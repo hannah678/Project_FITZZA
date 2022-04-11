@@ -19,6 +19,7 @@ public class BoardVO {
 	private String file3;
 	private String file4;
 	private String file5;
+	private String delFile[];
 	
 	private int old_price;
 	private String city;
@@ -39,6 +40,12 @@ public class BoardVO {
 	
 	
 
+	public String[] getDelFile() {
+		return delFile;
+	}
+	public void setDelFile(String[] delFile) {
+		this.delFile = delFile;
+	}
 	public int getReport_num() {
 		return report_num;
 	}

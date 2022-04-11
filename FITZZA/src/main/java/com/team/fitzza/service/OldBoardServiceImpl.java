@@ -64,6 +64,26 @@ public class OldBoardServiceImpl implements OldBoardService {
 	public int oldBoardStateInsert(BoardVO vo) {
 		return dao.oldBoardStateInsert(vo);
 	}
+
+	@Override
+	public int oldBoardDetailUpdate(BoardVO vo) {
+		// TODO Auto-generated method stub
+		return dao.oldBoardDetailUpdate(vo);
+	}
+
+	@Override
+	public int oldBoardFileUpdate(BoardVO vo) {
+		// TODO Auto-generated method stub
+		return dao.oldBoardFileUpdate(vo);
+	}
+
+	@Override
+	public int oldBoardStateUpdate(BoardVO vo) {
+		// TODO Auto-generated method stub
+		return dao.oldBoardStateUpdate(vo);
+	}
+
+
 	
 	
 

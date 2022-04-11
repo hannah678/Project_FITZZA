@@ -52,4 +52,27 @@
     </select>
     
     <!-- oldEdit -->
+    <select id="getFileName" resultType="com.team.fitzza.vo.BoardVO">
+    	SELECT file1,file2,file3,file4,file5 FROM board_common_image 
+    	WHERE board_num=#{board_num}
+    </select>
+    
+    <update id="oldBoardUpdate">
+  		UPDATE  board SET title=#{title}, content=#{content}, gender_type=#{gender_type}
+		WHERE board_num=#{board_num}
+  	</update>
+	
+	<update id="oldBoardDetailUpdate">
+  		UPDATE board_old SET old_name=#{old_name}, city=#{city}, old_price=#{old_price}
+		WHERE board_num=#{board_num}
+  	</update> 
+	
+  	<update id="oldBoardFileUpdate">
+  		UPDATE board_common_image SET file1=#{file1},file2=#{file2},file3=#{file3},file4=#{file4},file5=#{file5}
+		WHERE board_num=#{board_num}
+  	</update>
+	
+  	<update id="oldBoardStateUpdate">
+  		UPDATE trade_detail SET state_num=#{state_num} WHERE board_num=#{board_num}
+  	</update> 
 </mapper>

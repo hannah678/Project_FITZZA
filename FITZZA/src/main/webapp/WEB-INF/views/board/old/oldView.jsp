@@ -8,28 +8,7 @@
 </head>
 
 <script>
-	$("#reportForm").submit(function(){
-		event.preventDefault(); //form 기본이벤트 제거
-		if($("#report_content").val()==""){
-			alert("신고 내용을 입력해주세요.");
-			return;
-		}else{ //댓글 입력한 경우
-			var params = $("#reportForm").serialize();
-		
-			$.ajax({
-				url: '/board/reportOk',
-				data: params,
-				type:'POST',
-				success: function(r){
-					alert("전송 성공");
-				},
-				error: function(e){
-					console.log(e.responseText);
-					alert("전송 실패");
-				}
-			});
-		}
-	});
+	
 
 	function delCheck(){
 		if(confirm("삭제하시겠습니까?")){
@@ -38,6 +17,29 @@
 	}
     // 댓글------------------------------------------------------------
 	$(function(){
+		$("#reportForm").submit(function(){
+			event.preventDefault(); //form 기본이벤트 제거
+			if($("#report_content").val()==""){
+				alert("신고 내용을 입력해주세요.");
+				return;
+			}else{ //댓글 입력한 경우
+				var params = $("#reportForm").serialize();
+			
+				$.ajax({
+					url: '/board/reportOk',
+					data: params,
+					type:'POST',
+					success: function(r){
+						alert("전송 성공");
+					},
+					error: function(e){
+						console.log(e.responseText);
+						alert("전송 실패");
+					}
+				});
+			}
+		});
+		
 		function replyListAll(){
 			var url = "";   // 댓글 리스트
 			var params = "board_num=${vo.board_num}";    // 게시글 넘버
@@ -152,6 +154,9 @@
             <hr/>
             <ul>
                 <li>조회수 &nbsp; ${vo.hit}<!--hit--> &emsp; &emsp; 게시일 &nbsp; ${vo.write_date} <!--enter_date--></li>
+
+				<li><a href="/board/old/oldEdit?board_num=${vo.board_num}"><button>수정하기</button></a></li>
+
                 <li><input type="button" value="신고하기" id="report" data-target="#reportModal" data-toggle="modal"/></li>
             	<hr/>
             	<li id="seller"><b>판매자 정보</b><hr/>
@@ -208,8 +213,8 @@
 		<div class="modal-dialog">
 			<div class="modal-content">
 					<div class="modal-header">
-						<h2>게시물 신고</h2>
-						<button class="close" data-dismiss="modal">&times;</button>
+							<h2>게시물 신고</h2>
+							<button class="close" data-dismiss="modal">&times;</button>
 					</div>
 					<div class="modal-body">
 						<c:if test="${logStatus=='Y'}">

@@ -15,6 +15,9 @@ public interface OldBoardService {
 	//파일명 선택
 	public BoardVO getFileName(int board_num);
 	public int oldBoardUpdate(BoardVO vo);
+	public int oldBoardDetailUpdate(BoardVO vo);
+	public int oldBoardFileUpdate(BoardVO vo);
+	public int oldBoardStateUpdate(BoardVO vo);
 	public int oldBoardDelete(int board_num, String user_id);
 	public int boardNum(String user_id);
 }
