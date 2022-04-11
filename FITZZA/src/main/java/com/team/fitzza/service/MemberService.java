@@ -9,6 +9,7 @@ public interface MemberService{
 	public MemberVO memberSelect(String user_id);
 	public int memberUpdate(MemberVO vo);
 	public int idCheck(String user_id);
+	public int nickCheck(String user_nickname);
 	public MemberVO pwdCheck(MemberVO vo);
 	public int memberBye(MemberVO vo);
 	public int selfBye(MemberVO vo);

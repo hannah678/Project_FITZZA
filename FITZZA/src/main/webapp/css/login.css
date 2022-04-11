@@ -42,6 +42,19 @@
 	color:red
 }
 
+.inputMsg2{ /*로그인 경고메세지*/
+	display:hidden;
+	height:30px;
+	margin-top:2px;
+	font-weight:700;
+	letter-spacing:-.6px;
+	text-align:left;
+	color:red;
+	margin-top : 10px;
+	margin-bottom :10px;
+	padding-left :10px;
+}
+
 #wrapper.showMsg{
 	display:block
 }

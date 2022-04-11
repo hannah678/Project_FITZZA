@@ -193,11 +193,20 @@ public class MemberController {
 	}
 	
 	// 아이디 중복검사
-	@PostMapping("memberIdCheck")
+	@PostMapping("/member/memberIdCheck")
 	@ResponseBody
 	public int idCheck(String user_id) {
 		System.out.println(user_id);
 		int cnt = service.idCheck(user_id);
+		System.out.println(cnt);
+		return cnt;
+	}
+	//닉네임 중복검사
+	@PostMapping("/member/memberNickCheck")
+	@ResponseBody
+	public int nickCheck(String user_nickname) {
+		System.out.println(user_nickname);
+		int cnt = service.nickCheck(user_nickname);
 		System.out.println(cnt);
 		return cnt;
 	}

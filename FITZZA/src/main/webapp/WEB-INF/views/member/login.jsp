@@ -19,7 +19,7 @@ $(document).ready(function(){
 	  });
 	  
 	  $(".input01").on('focus',function(){
-		  $('.inputMsg').css('visibility','hidden');
+		  $('.inputMsg2').css('visibility','hidden');
 	  });
 	  
 	  
@@ -174,11 +174,13 @@ $(document).ready(function(){
   					<fieldset>
      				   <legend class="accounthidden">login ID</legend>
        					 <div class="id">
-        					 <input type="text" class="input01" name="user_id" id="user_id" placeholder="UserID" style="margin-bottom:20px;"/>
+        					 <input type="text" class="input01" name="user_id" id="user_id" placeholder="UserID"/>
        					 </div>
+       					 <p class="inputMsg2 userid" style="visibility:hidden;">ID를&nbsp입력하세요.</p>
     				     <div class="password">
-      					     <input type="password" class="input01" name="user_pwd" id="user_pwd" placeholder="Password" style="margin-bottom:20px;"/>
+      					     <input type="password" class="input01" name="user_pwd" id="user_pwd" placeholder="Password"/>
      				     </div>
+     				     <p class="inputMsg2 password" style="visibility:hidden;">비밀번호를 입력하세요.</p>
        					 <div class="loginbtn">
         					 <input type="submit" class="button01" value="Login" style="margin-bottom:20px;"/>
        					 </div>

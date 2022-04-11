@@ -36,6 +36,11 @@ public class MemberServiceImpl implements MemberService{
 	public int idCheck(String user_id) {
 		return dao.idCheck(user_id);
 	}
+	
+	@Override
+	public int nickCheck(String user_nickname) {
+		return dao.nickCheck(user_nickname);
+	}
 
 	@Override
 	public MemberVO pwdCheck(MemberVO vo) {

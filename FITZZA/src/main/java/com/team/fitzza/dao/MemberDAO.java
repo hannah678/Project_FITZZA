@@ -19,6 +19,8 @@ public interface MemberDAO {
 	public int memberUpdate(MemberVO vo);
 	// 아이디중복검사
 	public int idCheck(String user_id);
+	// 닉네임중복검사
+	public int nickCheck(String user_nickname);
 	// pwdCheck 폼
 	public MemberVO pwdCheck(MemberVO vo);
 	// 회원 탈퇴
