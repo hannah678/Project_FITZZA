@@ -67,7 +67,7 @@
 					&emsp; <input type="text" id="file_route01"  disabled="disabled" value="${vo.file1}" >
 					<label for="upload_file01">업로드</label>
 					<input type="file" id="upload_file01" name="filename" accept="image/*" required=true 
-						style="position:absolute; clip:rect(0, 0, 0, 0);">
+						style="position:absolute; clip:rect(0, 0, 0, 0);" value="${vo.file1 }">
 					<div id="img_space"><img style="width: 300px;" id="img_section" src="/upload/${vo.file1}"></div><br/>
 					
 				</li>
