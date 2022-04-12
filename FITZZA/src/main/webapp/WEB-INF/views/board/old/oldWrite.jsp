@@ -1,5 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
+<head>
+    <meta charset="UTF-8">
+    <title>상품등록</title>
+</head>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <link rel="stylesheet" href="/css/oldwrite.css" type="text/css">
 <script>
@@ -25,10 +30,15 @@
 				alert("상품 설명을 입력하세요");
 				return false;
 			}
+            if($("#upload_file01").val()==''){
+				alert("대표이미지를 첨부하세요");
+				return false;
+			}
 		});
 	});
 </script>
 
+<body>
     <div class="boardcontainer">
         <form method="post" action="/board/old/oldWriteOk" id="boardFrm" enctype="multipart/form-data">
             <ul>
@@ -76,7 +86,7 @@
                             <img style="width: 500px;" id="img_section" src="/img/이미지 없음.png"><br/>
                             <input type="text" id="file_route01"  disabled="disabled" value="파일 선택" >
                             <label for="upload_file01">업로드</label>
-                            <input type="file" id="upload_file01" name="filename" accept="image/*" required=true style="position:absolute; clip:rect(0, 0, 0, 0);"><br/>
+                            <input type="file" id="upload_file01" name="filename" accept="image/*" style="position:absolute; clip:rect(0, 0, 0, 0);"><br/>
                         </div>
                     </li>
                 </div>
@@ -87,7 +97,7 @@
                             <img style="width: 300px;" id="img_section2" src="/img/이미지 없음.png"><br/>
                             <input type="text" id="file_route02"  disabled="disabled" value="파일 선택" >
                             <label for="upload_file02">업로드</label>
-                            <input type="file" id="upload_file02" name="filename" accept="image/*" required=true style="position:absolute; clip:rect(0, 0, 0, 0);"><br/>
+                            <input type="file" id="upload_file02" name="filename" accept="image/*" style="position:absolute; clip:rect(0, 0, 0, 0);"><br/>
                             </div>
                         <div>   
                             <img style="width: 300px;" id="img_section3" src="/img/이미지 없음.png"><br/>
@@ -169,4 +179,3 @@
             </ul>
         </form>
     </div>
-</body>

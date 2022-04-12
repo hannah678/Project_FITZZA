@@ -43,14 +43,20 @@ h1, h2, .oldlist>li:nth-child(1), .oldlist>li:nth-child(6n+3), .oldlist>li:nth-c
     background-color: white;
 }
 .oldlist>li:nth-child(6n+8){
-    width: 50%;
+    width: 40%;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
 }
 .oldlist>li:nth-child(2){
-    width: 60%;
+    width: 50%;
     text-align:center;
+}
+.oldlist>li:nth-child(6n+10){
+    width: 20%;
+}
+.oldlist>li:nth-child(4){
+    width: 20%;
 }
 #product_img{
     width: 80px;

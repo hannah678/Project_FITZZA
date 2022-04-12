@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <script>
 	$("#reportForm").submit(function(){
 		event.preventDefault(); //form 기본이벤트 제거
@@ -125,7 +127,7 @@
 		replyListAll();
 	});
 </script>
-<link rel="stylesheet" href="../css/oldview2.css" type="text/css">
+<link rel="stylesheet" href="../css/oldview.css" type="text/css">
 <div class="oldboard">
     <div class="oldlist">
         <br><br><br><br><br><br><br><br>
@@ -143,8 +145,8 @@
                 <li>조회수 &nbsp; ${vo.hit}<!--hit--> &emsp; &emsp; 게시일 &nbsp; ${vo.write_date} <!--enter_date--></li>
                 <li>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;
                     <c:if test="${logId==vo.user_id}">
-                        <a href="board/old/oldBoardEdit?board_num=${vo.board_num}" style="color: pink;">수정</a>
-                        <a href="javascript:delCheck()" style="color: pink;">삭제</a>
+                        <a href="board/old/oldBoardEdit?board_num=${vo.board_num}" style="color: blue;">수정</a>
+                        <a href="javascript:delCheck()" style="color: blue;">삭제</a>
                     </c:if>
                 <!--<input type="button" value="신고" id="report" data-target="#reportModal" data-toggle="modal"/></li>-->
             	<hr/>
