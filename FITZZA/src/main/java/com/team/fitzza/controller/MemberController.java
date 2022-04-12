@@ -1,26 +1,31 @@
 package com.team.fitzza.controller;
 
+import java.util.List;
+
 import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.team.fitzza.service.BoardService;
 import com.team.fitzza.service.MemberService;
+import com.team.fitzza.vo.BoardVO;
 import com.team.fitzza.vo.MemberVO;
 
-@Controller
+@RestController
 public class MemberController {
 	@Inject //서비스 객체 만들기
 	MemberService service;
+	@Inject
+	BoardService Bservice;
 	
 	//로그인폼으로 이동
 	@GetMapping("/member/login")
@@ -165,7 +170,12 @@ public class MemberController {
 		
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("vo", vo);
-		//mav.addObject("lst", service.oldBoardSelectAll());
+		mav.addObject("lst1", Bservice.todayWriterSelect(user_id));
+		mav.addObject("lst2", Bservice.recommendWriterSelect(user_id));
+		mav.addObject("lst3", Bservice.oldWriterSelect(user_id));	
+		mav.addObject("lst4", Bservice.reviewWriterSelect(user_id));
+		mav.addObject("lst5", Bservice.qnaWriterSelect(user_id));
+		mav.addObject("lst6", Bservice.voteWriterSelect(user_id));		
 		mav.setViewName("/member/myPage");
 		return mav;
 	}

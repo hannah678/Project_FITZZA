@@ -51,14 +51,42 @@ public class BoardServiceImpl implements BoardService{
 
 	@Override
 	public int reportUp(BoardVO vo) {
-		// TODO Auto-generated method stub
 		return dao.reportUp(vo);
 	}
 
 	@Override
 	public int getType_num(int type_num) {
-		// TODO Auto-generated method stub
 		return dao.getType_num(type_num);
+	}
+
+	@Override
+	public List<BoardVO> todayWriterSelect(String user_id) {
+		return dao.todayWriterSelect(user_id);
+	}
+
+	@Override
+	public List<BoardVO> recommendWriterSelect(String user_id) {
+		return dao.recommendWriterSelect(user_id);
+	}
+
+	@Override
+	public List<BoardVO> oldWriterSelect(String user_id) {
+		return dao.oldWriterSelect(user_id);
+	}
+
+	@Override
+	public List<BoardVO> reviewWriterSelect(String user_id) {
+		return dao.reviewWriterSelect(user_id);
+	}
+
+	@Override
+	public List<BoardVO> qnaWriterSelect(String user_id) {
+		return dao.qnaWriterSelect(user_id);
+	}
+
+	@Override
+	public List<BoardVO> voteWriterSelect(String user_id) {
+		return dao.voteWriterSelect(user_id);
 	}
 	
 }
