@@ -43,6 +43,7 @@ public class BoardVO {
 	
 	
 	
+	
 
 	public int getExp() {
 		return exp;

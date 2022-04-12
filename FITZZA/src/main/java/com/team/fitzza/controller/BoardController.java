@@ -21,9 +21,6 @@ import com.team.fitzza.vo.BoardVO;
 public class BoardController {
 	@Inject
 	BoardService service;
-	@Inject
-	OldBoardService oldService;
-	
 	
 	//글 신고
 	@PostMapping("/board/reportOk")
@@ -39,6 +36,7 @@ public class BoardController {
 		return service.reportUp(vo);
 	}
 	
+	//글 삭제
 	@GetMapping("/board/boardDelete")
 	public ResponseEntity<String> boardDelete(int board_num, HttpSession session) {
 		
@@ -54,7 +52,7 @@ public class BoardController {
 		
 		try {
 			// 1. 삭제할 레코드의 파일명 얻어오기
-			BoardVO dbFileVO = oldService.getFileName(board_num);
+			BoardVO dbFileVO = service.getFileName(board_num);
 			
 			// 2. 레코드 삭제
 			service.boardDelete(board_num, user_id);

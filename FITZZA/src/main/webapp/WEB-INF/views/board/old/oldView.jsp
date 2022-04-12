@@ -172,17 +172,18 @@
             <ul class="info">
                 
             	<li id="item"><b>상품 정보</b><hr/>
+            		<img src="/upload/${vo.file1}" height="300"/>
             		<c:if test="${vo.file2!=null && vo.file2 !=''}">
-						<img src="/upload/${vo.file2}" width="300"/>
+						<img src="/upload/${vo.file2}" height="300"/>
 					</c:if>
 					<c:if test="${vo.file3!=null && vo.file3 !=''}">
-						<img src="/upload/${vo.file3}" width="300"/>
+						<img src="/upload/${vo.file3}" height="300"/>
 					</c:if>
 					<c:if test="${vo.file4!=null && vo.file4 !=''}">
-						<img src="/upload/${vo.file4}" width="300"/>
+						<img src="/upload/${vo.file4}" height="300"/>
 					</c:if>
 					<c:if test="${vo.file5!=null && vo.file5 !=''}">
-						<img src="/upload/${vo.file5}" width="300"/>
+						<img src="/upload/${vo.file5}" height="300"/>
 					</c:if>
 					
 					

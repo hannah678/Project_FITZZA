@@ -23,6 +23,7 @@
 #list-menu{
 	width:100%;
 	height:50px;
+	background-color:black;
 	border:1px solid red; /*임시경계선*/
 }
 

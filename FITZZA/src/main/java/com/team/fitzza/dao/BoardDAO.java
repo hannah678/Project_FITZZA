@@ -10,15 +10,19 @@ import com.team.fitzza.vo.BoardVO;
 @Mapper
 @Repository
 public interface BoardDAO {
-	//글목록
-	public List<BoardVO> boardList();
 	//글등록
-	public int boardInsert(BoardVO vo);
+	public int BoardInsert(BoardVO vo);
+	//파일 업로드 
+	public int BoardFileInsert(BoardVO vo);
 	//글1개 선택
 	public BoardVO boardSelect(int board_num);
+
+	public int boardNum(String user_id);
 	//글수정
-	public int boardUpdate(BoardVO vo);
-	
+	public int BoardUpdate(BoardVO vo);
+	public int BoardFileUpdate(BoardVO vo);
+	//파일명 선택
+	public BoardVO getFileName(int board_num);
 	//글삭제
 	public int boardDelete(int board_num, String user_id);
 	//조회수 증가

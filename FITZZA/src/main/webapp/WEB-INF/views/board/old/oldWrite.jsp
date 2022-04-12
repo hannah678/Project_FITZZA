@@ -40,7 +40,9 @@
 
 <body>
     <div class="boardcontainer">
+    	
         <form method="post" action="/board/old/oldWriteOk" id="boardFrm" enctype="multipart/form-data">
+       		<input type="hidden" name="type_num" value="3"/>
             <ul>
             	<h1>상품등록</h1>
                 <li>제목 &emsp;  <input type="text" name="title" id="title" placeholder='  제목을 입력해주세요.'/></li>
@@ -86,7 +88,7 @@
                             <img style="width: 500px;" id="img_section" src="/img/이미지 없음.png"><br/>
                             <input type="text" id="file_route01"  disabled="disabled" value="파일 선택" >
                             <label for="upload_file01">업로드</label>
-                            <input type="file" id="upload_file01" name="filename" accept="image/*" style="position:absolute; clip:rect(0, 0, 0, 0);"><br/>
+                            <input type="file" id="upload_file01" name="filename" accept="image/*" required=true style="position:absolute; clip:rect(0, 0, 0, 0);"><br/>
                         </div>
                     </li>
                 </div>

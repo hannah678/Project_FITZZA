@@ -15,23 +15,13 @@ public class BoardServiceImpl implements BoardService{
 	BoardDAO dao;
 
 	@Override
-	public List<BoardVO> boardList() {
-		return dao.boardList();
-	}
-
-	@Override
-	public int boardInsert(BoardVO vo) {
-		return dao.boardInsert(vo);
+	public int BoardInsert(BoardVO vo) {
+		return dao.BoardInsert(vo);
 	}
 
 	@Override
 	public BoardVO boardSelect(int board_num) {
 		return dao.boardSelect(board_num);
-	}
-
-	@Override
-	public int boardUpdate(BoardVO vo) {
-		return dao.boardUpdate(vo);
 	}
 
 	@Override
@@ -86,6 +76,31 @@ public class BoardServiceImpl implements BoardService{
 	@Override
 	public List<BoardVO> voteWriterSelect(String user_id) {
 		return dao.voteWriterSelect(user_id);
+	}
+
+	@Override
+	public BoardVO getFileName(int board_num) {
+		return dao.getFileName(board_num);
+	}
+
+	@Override
+	public int BoardUpdate(BoardVO vo) {
+		return dao.BoardUpdate(vo);
+	}
+
+	@Override
+	public int BoardFileUpdate(BoardVO vo) {
+		return dao.BoardFileUpdate(vo);
+	}
+
+	@Override
+	public int BoardFileInsert(BoardVO vo) {
+		return dao.BoardFileInsert(vo);
+	}
+
+	@Override
+	public int boardNum(String user_id) {
+		return dao.boardNum(user_id);
 	}
 	
 }

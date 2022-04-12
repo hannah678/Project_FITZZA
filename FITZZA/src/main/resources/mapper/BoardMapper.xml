@@ -3,16 +3,43 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
 <mapper namespace="com.team.fitzza.dao.BoardDAO">
-	<select id="boardSelect" resultType="com.team.fitzza.vo.BoardVO">
+	<!-- 글 등록 -->
+	<insert id="BoardInsert">
+  		INSERT INTO board(type_num, user_id, title, content, ip, gender_type)
+  		VALUES(#{type_num},#{user_id},#{title},#{content},#{ip},#{gender_type})
+  	</insert>
+	<!-- 파일 업로드 -->
+  	<insert id="BoardFileInsert">
+  		INSERT INTO board_common_image(board_num,file1,file2,file3,file4,file5) 
+  		VALUES(#{board_num},#{file1},#{file2},#{file3},#{file4},#{file5})
+  	</insert>
+  	<!-- 글1개 선택 -->
+  	<select id="boardSelect" resultType="com.team.fitzza.vo.BoardVO">
         SELECT   board_num, title, user_id, hit, ip, write_date
 		FROM     board A
 		WHERE    board_num=${param1}
     </select>
+    <select id="boardNum" resultType="int">
+  		SELECT board_num FROM board WHERE user_id=#{param1} ORDER BY board_num DESC LIMIT 1;
+  	</select>
+  	
 	<!-- 조회수 올리기 -->
 	<update id="hitCount">
         UPDATE board SET hit = hit+1 WHERE board_num=#{param1}
     </update>
-    
+    <!-- 글 수정 -->
+    <update id="BoardUpdate">
+  		UPDATE  board SET title=#{title}, content=#{content}, gender_type=#{gender_type}
+		WHERE board_num=#{board_num}
+  	</update>
+  	<select id="getFileName" resultType="com.team.fitzza.vo.BoardVO">
+    	SELECT file1,file2,file3,file4,file5 FROM board_common_image 
+    	WHERE board_num=#{board_num}
+    </select>
+  	<update id="BoardFileUpdate">
+  		UPDATE board_common_image SET file1=#{file1},file2=#{file2},file3=#{file3},file4=#{file4},file5=#{file5}
+		WHERE board_num=#{board_num}
+  	</update>
   	<!-- 신고하기 -->
   	<insert id="reportInsert">
   		INSERT INTO board_report(board_num, report_content, category_num, user_id)

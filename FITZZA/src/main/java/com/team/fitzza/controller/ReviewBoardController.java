@@ -2,7 +2,6 @@ package com.team.fitzza.controller;
 
 import java.io.File;
 import java.nio.charset.Charset;
-import java.nio.file.spi.FileSystemProvider;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,41 +21,41 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.team.fitzza.service.BoardService;
-import com.team.fitzza.service.OldBoardService;
+import com.team.fitzza.service.ReviewBoardService;
 import com.team.fitzza.vo.BoardVO;
 
 @Controller
-public class OldBoardController {
+public class ReviewBoardController {
 	
 	@Inject
-	OldBoardService service;
+	ReviewBoardService service;
 	
 	@Inject
 	BoardService Bservice;
 	
-	@GetMapping("/board/old/oldList")
+	@GetMapping("/board/review/reviewList")
 	public ModelAndView dataList() {
 		ModelAndView mav = new ModelAndView();
 		
-		mav.addObject("lst", service.oldBoardSelectAll());
+		mav.addObject("lst", service.reviewBoardSelectAll());
 		
-		mav.setViewName("/board/old/oldList");
+		mav.setViewName("/board/review/reviewList");
 		return mav;
 	}
 	
 	// 글쓰기 폼
-	@GetMapping("/board/old/oldWrite")
-	public String oldWrite() {
+	@GetMapping("/board/review/reviewWrite")
+	public String reviewWrite() {
 		
-		return "/board/old/oldWrite";
+		return "/board/review/reviewWrite";
 	}
 
-	@PostMapping("/board/old/oldWriteOk")
+	@PostMapping("/board/review/reviewWriteOk")
 	public ResponseEntity<String> boardWriteOk(BoardVO vo, HttpServletRequest request) {
-		System.out.println("oldWriteOk START");
-		// vo : subject, content는 request가 됨.
+		System.out.println("reviewWriteOk START");
 		vo.setIp(request.getRemoteAddr()); // 접속자 아이피
 		vo.setUser_id((String)request.getSession().getAttribute("logId"));	// 글쓴이
+		
 		
 		// 파일 업로드에 관련된 multipartRequest객체를 구해야함
 		ResponseEntity<String> entity = null;
@@ -134,11 +133,9 @@ public class OldBoardController {
 			Bservice.BoardInsert(vo);
 			String user_id = (String)request.getSession().getAttribute("logId");
 			vo.setBoard_num(Bservice.boardNum(user_id));
-			service.oldBoardDetailInsert(vo);
 			Bservice.BoardFileInsert(vo);
-			service.oldBoardStateInsert(vo);
 			//레코드 추가 성공
-			String msg = "<script>alert('자료실에 글이 등록되었습니다');location.href='/board/old/oldList';</script>";
+			String msg = "<script>alert('자료실에 글이 등록되었습니다');location.href='/board/review/reviewList';</script>";
 			entity = new ResponseEntity<String>(msg, headers, HttpStatus.OK);	//200
 			
 		}catch(Exception e) {
@@ -152,7 +149,7 @@ public class OldBoardController {
 				fileDelete(path, vo.getFile5());
 				
 			//메세지
-			String msg = "<script>alert('자료실 글 등록에 실패하였습니다');history.back();</script>";
+			String msg = "<script>alert('글 등록에 실패하였습니다');history.back();</script>";
 			//이전페이지로 보내기
 			entity = new ResponseEntity<String>(msg, headers, HttpStatus.BAD_REQUEST);	//400
 		}
@@ -167,21 +164,21 @@ public class OldBoardController {
 	}
 	
 	//글 내용보기
-	@GetMapping("/board/old/oldView")
-	public ModelAndView oldBoardView(int board_num) {
+	@GetMapping("/board/review/reviewView")
+	public ModelAndView reviewBoardView(int board_num) {
 		ModelAndView mav = new ModelAndView();
 		System.out.println("조회수 증가!");
 		Bservice.hitCount(board_num); //조회수 증가
-		mav.addObject("vo", service.oldBoardView(board_num));
-		mav.setViewName("/board/old/oldView");
+		mav.addObject("vo", service.reviewBoardView(board_num));
+		mav.setViewName("/board/review/reviewView");
 		return mav;
 	}
 	
 	//글 수정폼
-	@GetMapping("/board/old/oldEdit")
-	public ModelAndView oldEdit(int board_num) {
+	@GetMapping("/board/review/reviewEdit")
+	public ModelAndView reviewEdit(int board_num) {
 		ModelAndView mav = new ModelAndView();
-		BoardVO vo =service.oldBoardView(board_num);
+		BoardVO vo =service.reviewBoardView(board_num);
 //		// DB에 첨부된 파일의 수를 구한다.
 //		int fileCount =1;	//첫번째 첨부파일은 무조건 있음
 //		if(vo.getFile2()!=null) {	// 두 번째 첨부파일 있으면 1증가
@@ -189,14 +186,14 @@ public class OldBoardController {
 //		}
 //		mav.addObject("fileCount", fileCount);
 		mav.addObject("vo", vo);
-		mav.setViewName("/board/old/oldEdit");
+		mav.setViewName("/board/review/reviewEdit");
 		return mav;
 	}
 	
 	//수정(DB)
-	@PostMapping("/board/old/oldEditOk")
-	public ResponseEntity<String> oldEditOk(BoardVO vo, HttpSession session, HttpServletRequest req) {
-		System.out.println("oldEditOk START!!!");
+	@PostMapping("/board/review/reviewEditOk")
+	public ResponseEntity<String> reviewEditOk(BoardVO vo, HttpSession session, HttpServletRequest req) {
+		System.out.println("reviewEditOk START!!!");
 		vo.setUser_id((String)session.getAttribute("logId"));
 		String path = session.getServletContext().getRealPath("/upload");
 		
@@ -210,19 +207,12 @@ public class OldBoardController {
 		try {
 			//	1. DB에서 파일명 가져오기
 			BoardVO dbfileVO = Bservice.getFileName(vo.getBoard_num());
-//			fileList.add(dbfileVO.getFile1());
-//			if(dbfileVO.getFile2()!=null) {
-//				fileList.add(dbfileVO.getFile2());
-//			}
-//			if(dbfileVO.getFile3()!=null) { 
-//				fileList.add(dbfileVO.getFile3());
-//			}
-//			if(dbfileVO.getFile4()!=null) { 
-//				fileList.add(dbfileVO.getFile4());
-//			}
-//			if(dbfileVO.getFile5()!=null) { 
-//				fileList.add(dbfileVO.getFile5());
-//			}
+			fileList.add(dbfileVO.getFile1());
+			if(dbfileVO.getFile2()!=null) fileList.add(dbfileVO.getFile2());
+			if(dbfileVO.getFile3()!=null) fileList.add(dbfileVO.getFile3());
+			if(dbfileVO.getFile4()!=null) fileList.add(dbfileVO.getFile4());
+			if(dbfileVO.getFile5()!=null) fileList.add(dbfileVO.getFile5());
+		
 			//	2. 삭제된 파일이 있을 경우 List에서 같은 파일명을 지운다.
 //			if(vo.getDelFile() != null) {		// null은 삭제파일이 없다
 //				for(String delFile : vo.getDelFile()) {
@@ -232,104 +222,64 @@ public class OldBoardController {
 			
 			//	3. 새로 업로드 하기
 			MultipartHttpServletRequest mr = (MultipartHttpServletRequest)req;
-
+			
 			// 새로 업로드된 MultipartFile객체를 얻어오기
 			List<MultipartFile> newFileList = mr.getFiles("filename");
-			if(newFileList != null) {	// 새로 업로드 되는 파일이 없어도 input file 갯수만큼 
-										// 객체가 들어오는듯 함
+			if(newFileList != null) {	// 새로 업로드 된 파일이 있으면
 				for(int i=0; i<newFileList.size(); i++) {
 					MultipartFile newMf = newFileList.get(i);
 					String newUploadFilename = newMf.getOriginalFilename();
 					System.out.println((i+1)+"번째 파일 -> "+newUploadFilename);
-					
-					//-------------------------------------------
-					// input type file에는 value 설정 불가
-					//-------------------------------------------
-					
 					// 리네임 작업
-					//폼에서 새로 업로드 한 파일이 있을 경우 
 					if(newUploadFilename != null && !newUploadFilename.equals("")) {
-						
 						File f = new File(path, newUploadFilename);
-						if (f.exists()) {
-							// 있으면 여기서 rename
-							for (int n = 1;; n++) {
-								int point = newUploadFilename.lastIndexOf(".");
-								String fileNameNoExt = newUploadFilename.substring(0, point);
-								String ext = newUploadFilename.substring(point + 1);
-
-								// 새로운 파일명 만들어 존재유무 확인
-								String nf = fileNameNoExt + " (" + n + ")." + ext;
-								f = new File(path, nf);
-								if (!f.exists()) { // 없으면
-									newUploadFilename = nf;
-									break;
-								}
-							} // for
-						}
-						// 업로드
-						try {
-							newMf.transferTo(f);
-							newUpload.add(newUploadFilename);
-						} catch (Exception ee) {}
-						
-						if(i==0) {
-							if(dbfileVO.getFile1()!=null) {
-								fileDelete(path, dbfileVO.getFile1());
+						if(fileList.contains(newUploadFilename)) {
+							//이미 해당 글에 업로드 된 파일이라면 리네임이나 업로드하지 않음
+						}else {
+							//해당 글에는 없지만 이미 업로드 된 파일이라면
+							//리네임 후 업로드
+							if(f.exists()) {
+								//있으면 여기서 rename
+								for(int n=1;;n++) {
+									int point = newUploadFilename.lastIndexOf(".");
+									String fileNameNoExt = newUploadFilename.substring(0, point);
+									String ext = newUploadFilename.substring(point+1);
+									
+									//새로운 파일명 만들어 존재유무 확인
+									String nf = fileNameNoExt+ " ("+n+")."+ext;
+									f = new File(path, nf);
+									if(!f.exists()) {	//없으면
+										newUploadFilename = nf;
+										break;
+									}
+								}//for
 							}
-							dbfileVO.setFile1(newUploadFilename);
+							//업로드
+							try {
+								newMf.transferTo(f);
+							}catch(Exception ee) {}
 						}
-						if(i==1) {
-							if(dbfileVO.getFile2()!=null) {
-								fileDelete(path, dbfileVO.getFile2());
-							}
-							dbfileVO.setFile2(newUploadFilename);
-						}
-						if(i==2) {
-							if(dbfileVO.getFile3()!=null) {
-								fileDelete(path, dbfileVO.getFile3());
-							}
-							dbfileVO.setFile3(newUploadFilename);
-						}
-						if(i==3) {
-							if(dbfileVO.getFile4()!=null) {
-								fileDelete(path, dbfileVO.getFile4());
-							}
-							dbfileVO.setFile4(newUploadFilename);
-						}
-						if(i==4) {
-							if(dbfileVO.getFile5()!=null) {
-								fileDelete(path, dbfileVO.getFile5());
-							}
-							dbfileVO.setFile5(newUploadFilename);
-						}
-						
 						
 						//fileList.add(newUploadFilename);	//db에 등록할 파일명에 추가
-						//newUpload.add(newUploadFilename);	//새로 업로드 목록 추가		
-					}else {
-						//폼에서 업로드한 파일이 없을 경우 원래 파일명 그대로 다시 insert
-						//null도 다시 insert
-						//(폼에 input file 태그가 있다면 업로드 하지 않아도 빈 값이 반드시 들어옴)
-						
+						newUpload.add(newUploadFilename);	//새로 업로드 목록 추가		
 					}
 				}//for
+			}//if
+			else {
 			}
 			
 			// fileList에 있는 DB에 등록할 파일명을 filename1, filename2에 셋팅
-//			for(int k=0; k<newUpload.size(); k++) {
-//				if(k==0) vo.setFile1(newUpload.get(k));
-//				if(k==1) vo.setFile2(newUpload.get(k));
-//				if(k==2) vo.setFile3(newUpload.get(k));
-//				if(k==3) vo.setFile4(newUpload.get(k));
-//				if(k==4) vo.setFile5(newUpload.get(k));
-//			}
-			dbfileVO.setBoard_num(vo.getBoard_num());
+			for(int k=0; k<newUpload.size(); k++) {
+				if(k==0) vo.setFile1(newUpload.get(k));
+				if(k==1) vo.setFile2(newUpload.get(k));
+				if(k==2) vo.setFile3(newUpload.get(k));
+				if(k==3) vo.setFile4(newUpload.get(k));
+				if(k==4) vo.setFile5(newUpload.get(k));
+			}
+			
 			// DB update
 			Bservice.BoardUpdate(vo);
-			service.oldBoardDetailUpdate(vo);
-			Bservice.BoardFileUpdate(dbfileVO);
-			service.oldBoardStateUpdate(vo);
+			Bservice.BoardFileUpdate(vo);
 			
 //			// DB수정되었을 때
 //			if(vo.getDelFile()!=null) {
@@ -340,7 +290,7 @@ public class OldBoardController {
 			
 			// 글 내용보기로 이동
 			String msg = "<script>alert('자료실 글이 수정되었습니다.\\n글내용보기로 이동합니다');";
-			msg += "location.href='/board/old/oldView?board_num="+vo.getBoard_num()+"';</script>";
+			msg += "location.href='/board/review/reviewView?board_num="+vo.getBoard_num()+"';</script>";
 			
 			entity = new ResponseEntity<String>(msg, headers, HttpStatus.OK);
 			

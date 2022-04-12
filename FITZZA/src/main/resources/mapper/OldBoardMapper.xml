@@ -5,20 +5,9 @@
 <mapper namespace="com.team.fitzza.dao.OldBoardDAO">
 
 	<!-- oldWrite -->
-  	<insert id="oldBoardInsert">
-  		INSERT INTO board(type_num, user_id, title, content, ip, gender_type)
-  		VALUES(3,#{user_id},#{title},#{content},#{ip},#{gender_type})
-  	</insert>
-  	<select id="boardNum" resultType="int">
-  		SELECT board_num FROM board WHERE user_id=#{param1} ORDER BY board_num DESC LIMIT 1;
-  	</select>
   	<insert id="oldBoardDetailInsert">
   		INSERT INTO board_old(board_num, old_name, city, old_price) VALUES(#{board_num}, #{old_name}, #{city}, #{old_price})
   	</insert> 
-  	<insert id="oldBoardFileInsert">
-  		INSERT INTO board_common_image(board_num,file1,file2,file3,file4,file5) 
-  		VALUES(#{board_num},#{file1},#{file2},#{file3},#{file4},#{file5})
-  	</insert>
   	<insert id="oldBoardStateInsert">
   		INSERT INTO trade_detail(board_num,state_num) 
   		VALUES(#{board_num},1)
@@ -58,11 +47,6 @@
     </select>
     
     <!-- oldEdit -->
-    <select id="getFileName" resultType="com.team.fitzza.vo.BoardVO">
-    	SELECT file1,file2,file3,file4,file5 FROM board_common_image 
-    	WHERE board_num=#{board_num}
-    </select>
-    
     <update id="oldBoardUpdate">
   		UPDATE  board SET title=#{title}, content=#{content}, gender_type=#{gender_type}
 		WHERE board_num=#{board_num}
