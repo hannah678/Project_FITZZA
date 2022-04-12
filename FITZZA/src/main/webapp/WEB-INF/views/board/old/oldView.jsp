@@ -44,20 +44,21 @@
 				data:params,
 				success:function(result){
 					var $result = $(result);
-					
+					console.log(result);
+					console.log(${vo.board_num});
 					var tag = "<ul>";
 					$result.each(function(idx, vo){
 						tag += "<li><div>" + vo.user_id + " (" + vo.reply_date + ") ";
 	
-						if(vo.user_id == ''){   // user_id
+						if(vo.user_id == '${logId}'){   // user_id
 							tag += "<input type='button' value='수정'/>";
 							tag += "<input type='button' value='삭제' title='"+vo.reply_num+"'/>";
 						}
 						tag += "<br/><br/>" + vo.coment + "</div>";
 						
-						if(vo.user_id == ''){   // user_id
+						if(vo.user_id == '${logId}'){   // user_id
 							tag += "<div style='display:none'><form method='post'>";
-							tag += "<input type='hidden' name='replyno' value='"+vo.reply_num+"'/>";
+							tag += "<input type='hidden' name='reply_num' value='"+vo.reply_num+"'/>";
 							tag += "<textarea name='coment' style='width:400px; height:50px;'>"+vo.coment+"</textarea>";
 							tag += "<input type='submit' value='수정'/></form></div>";
 						}	
@@ -95,7 +96,7 @@
 				});
 			}
 		});
-		$(document).on('click','#replyList input[value=Edit]',function(){
+		$(document).on('click','#replyList input[value="수정"]',function(){
 			$(this).parent().css("display","none");
 			$(this).parent().next().css("display","block");
 		});
@@ -115,9 +116,9 @@
                 }
             });
         });
-		$(document).on('click','#replyList input[value=Del]',function(){
+		$(document).on('click','#replyList input[value="삭제"]',function(){
 			if(confirm('댓글을 삭제하시겠습니까?')){
-				var params = "replyno=" + $(this).attr("title");
+				var params = "reply_num=" + $(this).attr("title");
 				$.ajax({
 					url:'/reply/replyDelete',
 					data:params,
@@ -200,13 +201,10 @@
             <input type="submit" value="등록""/>
         </form>
         <div>
-            <c:if test="${logId==vo.user_id}">
-                <a href="board/old/oldBoardEdit?board_num=${vo.board_num}">수정</a>
-                <a href="javascript:delCheck()">삭제</a>
-            </c:if>
+
         </div>
         <hr/>
-        <div id="replyListAll">
+        <div id="replyList">
             
         </div>
     </div>

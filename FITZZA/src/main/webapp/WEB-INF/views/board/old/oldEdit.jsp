@@ -1,3 +1,4 @@
+<%@page import="com.team.fitzza.vo.BoardVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
@@ -66,39 +67,72 @@
 				<div class="img1">
                     <li id="img1">대표이미지<br/>
                         <div>
-                            <img style="width: 500px;" id="img_section" src="/img/이미지 없음.png"><br/>
-                            <input type="text" id="file_route01"  disabled="disabled" value="파일 선택" >
+                            <img style="width: 500px;" id="img_section" src="/upload/${vo.file1}"><br/>
+                            <input type="text" id="file_route01"  disabled="disabled" value="${vo.file1 }" >
                             <label for="upload_file01">업로드</label>
-                            <input type="file" id="upload_file01" name="filename" accept="image/*" style="position:absolute; clip:rect(0, 0, 0, 0);"><br/>
+                            <input type="file" id="upload_file01" name="filename" accept="image/*" style="position:absolute; clip:rect(0, 0, 0, 0);"  value="${vo.file1 }"><br/>
                         </div>
                     </li>
                 </div>
                 <hr/>
+                
                 <div class="img2">
                     <li id="img2">상세이미지<br/>
                         <div>
+                        	<c:if test="${vo.file2!=null && vo.file2 !=''}">
+                            <img style="width: 300px;" id="img_section2" src="/upload/${vo.file2}"><br/>
+                            <input type="text" id="file_route02"  disabled="disabled" value="파일 선택" >
+                            <label for="upload_file02">업로드</label>
+                            <input type="file" id="upload_file02" value="${vo.file2}" name="filename" accept="image/*" style="position:absolute; clip:rect(0, 0, 0, 0);"><br/>
+                            </c:if>
+                            <c:if test="${vo.file2==null || vo.file2 ==''}">
                             <img style="width: 300px;" id="img_section2" src="/img/이미지 없음.png"><br/>
                             <input type="text" id="file_route02"  disabled="disabled" value="파일 선택" >
                             <label for="upload_file02">업로드</label>
                             <input type="file" id="upload_file02" name="filename" accept="image/*" style="position:absolute; clip:rect(0, 0, 0, 0);"><br/>
-                            </div>
+                            </c:if>
+                        </div>
                         <div>   
+                        	<c:if test="${vo.file3!=null && vo.file3!=''}">
+                            <img style="width: 300px;" id="img_section3" src="/upload/${vo.file3}"><br/>
+                            <input type="text" id="file_route03"  disabled="disabled" value="파일 선택" >
+                            <label for="upload_file03">업로드</label>
+                            <input type="file" id="upload_file03" value="${vo.file3}" name="filename" accept="image/*" style="position:absolute; clip:rect(0, 0, 0, 0);"><br/>
+                            </c:if>
+                            <c:if test="${vo.file3==null || vo.file3 ==''}">
                             <img style="width: 300px;" id="img_section3" src="/img/이미지 없음.png"><br/>
                             <input type="text" id="file_route03"  disabled="disabled" value="파일 선택" >
                             <label for="upload_file03">업로드</label>
                             <input type="file" id="upload_file03" name="filename" accept="image/*" style="position:absolute; clip:rect(0, 0, 0, 0);"><br/>
+                            </c:if>
                         </div>
                         <div>
+                            <c:if test="${vo.file4!=null && vo.file4 !=''}">
+                            <img style="width: 300px;" id="img_section4" src="/upload/${vo.file4}"><br/>
+                            <input type="text" id="file_route04"  disabled="disabled" value="파일 선택" >
+                            <label for="upload_file04">업로드</label>
+                            <input type="file" id="upload_file04" value="${vo.file4}" name="filename" accept="image/*" style="position:absolute; clip:rect(0, 0, 0, 0);"><br/>
+                            </c:if>
+                            <c:if test="${vo.file4==null || vo.file4 ==''}">
                             <img style="width: 300px;" id="img_section4" src="/img/이미지 없음.png"><br/>
                             <input type="text" id="file_route04"  disabled="disabled" value="파일 선택" >
                             <label for="upload_file04">업로드</label>
-                            <input type="file" id="upload_file04" name="filename" accept="image/*"style="position:absolute; clip:rect(0, 0, 0, 0);"><br/>
+                            <input type="file" id="upload_file04" name="filename" accept="image/*" style="position:absolute; clip:rect(0, 0, 0, 0);"><br/>
+                            </c:if>
                         </div>
                         <div>
-                            <img style="width: 300px;" id="img_section5" src="/img/이미지 없음.png"><br/>				
+                            <c:if test="${vo.file5!=null && vo.file5 !=''}">
+                            <img style="width: 300px;" id="img_section5" src="/upload/${vo.file5}"><br/>
+                            <input type="text" id="file_route05"  disabled="disabled" value="파일 선택" >
+                            <label for="upload_file05">업로드</label>
+                            <input type="file" id="upload_file05" value="${vo.file5}" name="filename" accept="image/*" style="position:absolute; clip:rect(0, 0, 0, 0);"><br/>
+                            </c:if>
+                            <c:if test="${vo.file5==null || vo.file5 ==''}">
+                            <img style="width: 300px;" id="img_section5" src="/img/이미지 없음.png"><br/>
                             <input type="text" id="file_route05"  disabled="disabled" value="파일 선택" >
                             <label for="upload_file05">업로드</label>
                             <input type="file" id="upload_file05" name="filename" accept="image/*" style="position:absolute; clip:rect(0, 0, 0, 0);"><br/>
+                            </c:if>
                         </div>
                     </li>
 				</div>

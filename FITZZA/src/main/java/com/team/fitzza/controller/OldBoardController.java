@@ -200,7 +200,7 @@ public class OldBoardController {
 		vo.setUser_id((String)session.getAttribute("logId"));
 		String path = session.getServletContext().getRealPath("/upload");
 		
-		
+			
 		ResponseEntity<String> entity = null;
 		HttpHeaders headers = new HttpHeaders();
 		headers.add("Content-Type", "text/html; charset=UTF-8");
@@ -268,6 +268,8 @@ public class OldBoardController {
 					}
 				}//for
 			}//if
+			else {
+			}
 			
 			// fileList에 있는 DB에 등록할 파일명을 filename1, filename2에 셋팅
 			for(int k=0; k<newUpload.size(); k++) {
