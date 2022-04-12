@@ -26,7 +26,7 @@
 
 	<!-- oldList -->
 	<select id="oldBoardSelectAll" resultType="com.team.fitzza.vo.BoardVO">
-        SELECT   A.board_num, A.title, A.user_id, A.write_date, B.city, C.user_nickname, D.file1 
+        SELECT   A.board_num, A.title, A.user_id, A.write_date, B.city, C.profile_image, C.user_nickname, D.file1 
 		FROM     board A, board_old B, user C, board_common_image D 
 		WHERE    A.board_num=B.board_num 
 		AND		 A.user_id=C.user_id 

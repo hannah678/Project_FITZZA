@@ -53,7 +53,6 @@ public class BoardServiceImpl implements BoardService{
 	public int reportUp(BoardVO vo) {
 		return dao.reportUp(vo);
 	}
-
 	@Override
 	public int getType_num(int type_num) {
 		return dao.getType_num(type_num);

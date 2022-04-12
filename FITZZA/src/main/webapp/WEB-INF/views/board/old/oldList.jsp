@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <head>
     <meta charset="UTF-8">
@@ -27,7 +27,7 @@
             <li>${vo.city}</li>
             <li><a href="/board/old/oldView?board_num=${vo.board_num}"><img src="/upload/${vo.file1}"/></a></li>
             <li><a href="/board/old/oldView?board_num=${vo.board_num}">${vo.title}</a></li>
-            <li><img src="profile_image" style="width:20px; height:20px; border-radius: 70%;"/>${vo.user_nickname}</li>
+            <li><img src="${vo.profile_image}" style="width:20px; height:20px; border-radius: 70%;"/> ${vo.user_nickname}</li>
             <li>${vo.write_date}</li>
             <li>${vo.hit}</li>
         </c:forEach> 

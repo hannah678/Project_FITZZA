@@ -28,4 +28,35 @@
  	<select id="getType_num" resultType="int">
  		select type_num from board where board_num=${param1}
  	</select>
+ 	<!-- 마이페이지 게시글 확인 (글쓴이검색?)-->
+ 	<select id="todayWriterSelect" resultType="com.team.fitzza.vo.BoardVO">
+        SELECT   board_num, title, content, user_id, hit, ip, write_date
+		FROM     board
+		WHERE    user_id=#{param1} AND type_num=1
+    </select>
+    <select id="recommendWriterSelect" resultType="com.team.fitzza.vo.BoardVO">
+        SELECT   board_num, title, content, user_id, hit, ip, write_date
+		FROM     board
+		WHERE    user_id=#{param1} AND type_num=2
+    </select>
+    <select id="oldWriterSelect" resultType="com.team.fitzza.vo.BoardVO">
+        SELECT   board_num, title, content, user_id, hit, ip, write_date
+		FROM     board
+		WHERE    user_id=#{param1} AND type_num=3
+    </select>
+    <select id="reviewWriterSelect" resultType="com.team.fitzza.vo.BoardVO">
+        SELECT   board_num, title, content, user_id, hit, ip, write_date
+		FROM     board
+		WHERE    user_id=#{param1} AND type_num=4
+    </select>
+    <select id="qnaWriterSelect" resultType="com.team.fitzza.vo.BoardVO">
+        SELECT   board_num, title, content, user_id, hit, ip, write_date
+		FROM     board
+		WHERE    user_id=#{param1} AND type_num=5
+    </select>
+    <select id="voteWriterSelect" resultType="com.team.fitzza.vo.BoardVO">
+        SELECT   board_num, title, content, user_id, hit, ip, write_date
+		FROM     board
+		WHERE    user_id=#{param1} AND type_num=6
+    </select>
 </mapper>
