@@ -27,6 +27,7 @@ public interface BoardDAO {
     public int reportInsert(BoardVO vo);
  // 신고 누적
  	public int reportUp(BoardVO vo);
-
+ 	
+ 	public int getType_num(int type_num);
  	
 }

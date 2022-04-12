@@ -5,7 +5,7 @@ public class ReplyVO {
 	private int reply_num;
 	private int board_num;
 	private String user_id;
-	private String comment;
+	private String coment;
 	private String reply_date;
 	
 	
@@ -27,11 +27,11 @@ public class ReplyVO {
 	public void setUser_id(String user_id) {
 		this.user_id = user_id;
 	}
-	public String getComment() {
-		return comment;
+	public String getComent() {
+		return coment;
 	}
-	public void setComment(String comment) {
-		this.comment = comment;
+	public void setComent(String coment) {
+		this.coment = coment;
 	}
 	public String getReply_date() {
 		return reply_date;

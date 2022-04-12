@@ -315,42 +315,6 @@ public class OldBoardController {
 		 */
 		return entity;		
 	}
-//	//자료실 삭제
-//	@GetMapping("/data/dataDel")
-//	public ResponseEntity<String> dataDel(int no, HttpSession session) {
-//		String userid = (String)session.getAttribute("logId");
-//		
-//		String path = session.getServletContext().getRealPath("/upload");
-//		
-//		ResponseEntity<String> entity = null;
-//		HttpHeaders headers = new HttpHeaders();
-//		headers.add("Content-Type", "text/html; charset=utf-8");
-//		
-//		try {
-//			// 1. 삭제할 레코드의 파일명 얻어오기
-//			DataVO dbFileVO= service.getFileName(no);
-//			
-//			// 2. 레코드 삭제
-//			service.dataDelete(no, userid);
-//			
-//			// 3. 파일 삭제
-//			fileDelete(path, dbFileVO.getFilename1());	//첫번째지우고
-//			//두번째는 있을 때만, 널이 아니면
-//			if(dbFileVO.getFilename2()!=null) {	//이름지운다
-//				fileDelete(path, dbFileVO.getFilename2());
-//			}
-//			//	데이터는 안보내도 된다. 매개변수x
-//			String msg = "<script>alert('글이 삭제되었습니다');location.href='/myapp/data/dataList';</script>";
-//			
-//			entity = new ResponseEntity<String>(msg, headers, HttpStatus.OK);
-//			
-//		}catch(Exception e) {
-//			e.printStackTrace();
-//			
-//			String msg = "<script>alert('글 삭제에 실패하였습니다\\n글 내용보기로 이동합니다');history.back();</script>";
-//			entity = new ResponseEntity<String>(msg, headers, HttpStatus.BAD_REQUEST);
-//		}
-//		return entity;
-//		
-//	}
+	//자료실 삭제
+	
 }

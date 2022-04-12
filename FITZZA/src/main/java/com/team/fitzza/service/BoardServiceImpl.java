@@ -54,5 +54,11 @@ public class BoardServiceImpl implements BoardService{
 		// TODO Auto-generated method stub
 		return dao.reportUp(vo);
 	}
+
+	@Override
+	public int getType_num(int type_num) {
+		// TODO Auto-generated method stub
+		return dao.getType_num(type_num);
+	}
 	
 }

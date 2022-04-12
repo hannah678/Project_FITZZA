@@ -3,5 +3,19 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
 <mapper namespace="com.team.fitzza.dao.ReplyDAO">
-
+	<insert id="replyWrite">
+		insert into reply(board_num, user_id, coment)
+		values(#{board_num}, #{user_id}, #{coment})
+	</insert>
+	<select id="replyList" resultType="com.team.fitzza.vo.ReplyVO">
+		select reply_num, user_id, coment, reply_date from reply 
+		where board_num=${param1}
+		order by reply_num desc
+	</select>
+	<update id="replyEdit">
+		update reply set coment=#{coment} where reply_num=${reply_num} and user_id=#{user_id}
+	</update>
+	<delete id="replyDel">
+		delete from reply where reply_num=#{param1} and user_id=#{param2}
+	</delete>
 </mapper>

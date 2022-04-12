@@ -14,5 +14,6 @@ public interface BoardService {
     public void hitCount(int board_num);
     public int reportInsert(BoardVO vo);
 	public int reportUp(BoardVO vo);
+	public int getType_num(int type_num);
 }
 
