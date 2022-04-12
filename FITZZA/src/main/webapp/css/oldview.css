@@ -1,14 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Kaushan+Script&family=Nanum+Pen+Script&display=swap');
-body{
+.oldboard{
     width:1200px;
     margin:0 auto;
     padding:0 30px;
     overflow:auto;
-    background-image: url("../img/배경.png");
     font-family:'Nanum pen script';
-    font-size: 1.5em;
+    font-size: 1.2em;
 }
-img{
+#file_img{
     float: left;
     margin-right: 50px;
     width: 400px;
@@ -45,14 +44,18 @@ li:nth-child(5){
     border: 0;
 }
 #report{
-    width: 300px;
-    height: 100px;
+    width: 70px;
+    height: 30px;
     margin-top: 30px;
     font-size: xx-large;
     font-weight: 600;
-    background-color: red;
-    color: white;
+    background-color: white;
+    color: red;
     border: 0;
+    position: relative;
+    top: 15px;
+    left: 680px;
+    font-size: 0.7em;
 }
 /*.info>#item{
     width: 500px;
@@ -74,6 +77,14 @@ li:nth-child(5){
 .reply{
     width: 1200px;
     clear: both;
+}
+#pro_img{
+    width: 60%;
+    float: left;
+}
+#pro_con{
+    width: 40%;
+    float: left;
 }
 /* 모달 */
 .modal-body{

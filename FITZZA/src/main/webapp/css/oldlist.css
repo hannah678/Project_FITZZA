@@ -1,13 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Kaushan+Script&family=Nanum+Pen+Script&display=swap');
-body{
-    background-image: url("../img/배경.png");
-    font-family:'Nanum pen script';
+#title{
+    font-family: 'Hi Melody', cursive;
     font-size: 1.5em;
 }
-body, ul, li{
-    margin:0;
-    padding:0;
-    list-style-type: none;
+body{
+	font-size: 1.5em;
 }
 a:link, a:visited, a:hover{
     text-decoration:none;
@@ -35,7 +32,7 @@ h1, h2, .oldlist>li:nth-child(1), .oldlist>li:nth-child(6n+3), .oldlist>li:nth-c
     padding:0 30px;
 }
 .oldlist{
-    border-top: 1px soli black;
+    border-top: 1px solid black;
 }
 .oldlist>li{
     float: left;
@@ -55,9 +52,12 @@ h1, h2, .oldlist>li:nth-child(1), .oldlist>li:nth-child(6n+3), .oldlist>li:nth-c
     width: 60%;
     text-align:center;
 }
-img{
+#product_img{
     width: 80px;
     height: 80px;
+}
+#profile_img{
+	width:20px; height:20px; border-radius: 70%;
 }
 .paging{
     height:30px;

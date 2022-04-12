@@ -1,37 +1,32 @@
-body, ul, li{
-    margin:0;
-    padding:0;
-    list-style-type:none;
-    background-image: url("../img/배경.png");
-}
 .boardcontainer{
     width:1200px;
     margin:0 auto;
-    padding:0 30px;
     overflow:auto;
-    margin-top:100px; 
-    margin-bottom:-450px;
+}
+#boardFrm{
+	margin-top:150px;
+    margin-bottom: 150px;
 }
 h1{
     text-align:center;
 }
-#subject, #city, #price{
-    width:80%;
+#title, #city, #price, #old_name, #gender_type, #old_price, #state_num{
+    width:50%;
     height: 50px;
-    font-size: 1em;
+    font-size: 0.6em;
 }
 #introduce{
     font-size: 1em;
 }
-li{
+#boardFrm li{
     margin-top: 50px;
     margin-bottom: 50px;
     text-align: center;
-}
-#boardFrm li{
     font-size: 1.5em;
 }
 #enter{
+    margin-top: 150px;
+    text-align: center;
     width: 300px;
     height: 100px;
     font-size: xx-large;
@@ -42,16 +37,23 @@ li{
 }
 label{
     display:inline-block;
-    width: 150px;
+    width: 100px;
     border: solid 1px black;
     background-color: beige;
-    margin-right: 300px;
+    font-size: x-large;
 }
-#file_route{
+#file_route01, #file_route02, #file_route03, #file_route04, #file_route05{
     height: 30px;
-    margin-bottom: 10px;
     background-color: white;
 }
-#img_space{
-	width: 300px; height:300px;
+#img1>div{
+    margin-top: 30px;
+    border: 1px solid black;
+}
+#img2>div{
+    width: 50%;
+    height: 450px;
+    float: left;
+    margin-top: 30px;
+    margin-bottom: 30px;
 }
