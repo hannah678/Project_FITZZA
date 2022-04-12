@@ -210,12 +210,19 @@ public class OldBoardController {
 		try {
 			//	1. DB에서 파일명 가져오기
 			BoardVO dbfileVO = service.getFileName(vo.getBoard_num());
-			fileList.add(dbfileVO.getFile1());
-			if(dbfileVO.getFile2()!=null) fileList.add(dbfileVO.getFile2());
-			if(dbfileVO.getFile3()!=null) fileList.add(dbfileVO.getFile3());
-			if(dbfileVO.getFile4()!=null) fileList.add(dbfileVO.getFile4());
-			if(dbfileVO.getFile5()!=null) fileList.add(dbfileVO.getFile5());
-		
+//			fileList.add(dbfileVO.getFile1());
+//			if(dbfileVO.getFile2()!=null) {
+//				fileList.add(dbfileVO.getFile2());
+//			}
+//			if(dbfileVO.getFile3()!=null) { 
+//				fileList.add(dbfileVO.getFile3());
+//			}
+//			if(dbfileVO.getFile4()!=null) { 
+//				fileList.add(dbfileVO.getFile4());
+//			}
+//			if(dbfileVO.getFile5()!=null) { 
+//				fileList.add(dbfileVO.getFile5());
+//			}
 			//	2. 삭제된 파일이 있을 경우 List에서 같은 파일명을 지운다.
 //			if(vo.getDelFile() != null) {		// null은 삭제파일이 없다
 //				for(String delFile : vo.getDelFile()) {
@@ -225,65 +232,103 @@ public class OldBoardController {
 			
 			//	3. 새로 업로드 하기
 			MultipartHttpServletRequest mr = (MultipartHttpServletRequest)req;
-			
+
 			// 새로 업로드된 MultipartFile객체를 얻어오기
 			List<MultipartFile> newFileList = mr.getFiles("filename");
-			if(newFileList != null) {	// 새로 업로드 된 파일이 있으면
+			if(newFileList != null) {	// 새로 업로드 되는 파일이 없어도 input file 갯수만큼 
+										// 객체가 들어오는듯 함
 				for(int i=0; i<newFileList.size(); i++) {
 					MultipartFile newMf = newFileList.get(i);
 					String newUploadFilename = newMf.getOriginalFilename();
 					System.out.println((i+1)+"번째 파일 -> "+newUploadFilename);
+					
+					//-------------------------------------------
+					// input type file에는 value 설정 불가
+					//-------------------------------------------
+					
 					// 리네임 작업
+					//폼에서 새로 업로드 한 파일이 있을 경우 
 					if(newUploadFilename != null && !newUploadFilename.equals("")) {
+						
 						File f = new File(path, newUploadFilename);
-						if(fileList.contains(newUploadFilename)) {
-							//이미 해당 글에 업로드 된 파일이라면 리네임이나 업로드하지 않음
-						}else {
-							//해당 글에는 없지만 이미 업로드 된 파일이라면
-							//리네임 후 업로드
-							if(f.exists()) {
-								//있으면 여기서 rename
-								for(int n=1;;n++) {
-									int point = newUploadFilename.lastIndexOf(".");
-									String fileNameNoExt = newUploadFilename.substring(0, point);
-									String ext = newUploadFilename.substring(point+1);
-									
-									//새로운 파일명 만들어 존재유무 확인
-									String nf = fileNameNoExt+ " ("+n+")."+ext;
-									f = new File(path, nf);
-									if(!f.exists()) {	//없으면
-										newUploadFilename = nf;
-										break;
-									}
-								}//for
+						if (f.exists()) {
+							// 있으면 여기서 rename
+							for (int n = 1;; n++) {
+								int point = newUploadFilename.lastIndexOf(".");
+								String fileNameNoExt = newUploadFilename.substring(0, point);
+								String ext = newUploadFilename.substring(point + 1);
+
+								// 새로운 파일명 만들어 존재유무 확인
+								String nf = fileNameNoExt + " (" + n + ")." + ext;
+								f = new File(path, nf);
+								if (!f.exists()) { // 없으면
+									newUploadFilename = nf;
+									break;
+								}
+							} // for
+						}
+						// 업로드
+						try {
+							newMf.transferTo(f);
+							newUpload.add(newUploadFilename);
+						} catch (Exception ee) {}
+						
+						if(i==0) {
+							if(dbfileVO.getFile1()!=null) {
+								fileDelete(path, dbfileVO.getFile1());
 							}
-							//업로드
-							try {
-								newMf.transferTo(f);
-							}catch(Exception ee) {}
+							dbfileVO.setFile1(newUploadFilename);
+						}
+						if(i==1) {
+							if(dbfileVO.getFile2()!=null) {
+								fileDelete(path, dbfileVO.getFile2());
+							}
+							dbfileVO.setFile2(newUploadFilename);
+						}
+						if(i==2) {
+							if(dbfileVO.getFile3()!=null) {
+								fileDelete(path, dbfileVO.getFile3());
+							}
+							dbfileVO.setFile3(newUploadFilename);
+						}
+						if(i==3) {
+							if(dbfileVO.getFile4()!=null) {
+								fileDelete(path, dbfileVO.getFile4());
+							}
+							dbfileVO.setFile4(newUploadFilename);
+						}
+						if(i==4) {
+							if(dbfileVO.getFile5()!=null) {
+								fileDelete(path, dbfileVO.getFile5());
+							}
+							dbfileVO.setFile5(newUploadFilename);
 						}
 						
+						
 						//fileList.add(newUploadFilename);	//db에 등록할 파일명에 추가
-						newUpload.add(newUploadFilename);	//새로 업로드 목록 추가		
+						//newUpload.add(newUploadFilename);	//새로 업로드 목록 추가		
+					}else {
+						//폼에서 업로드한 파일이 없을 경우 원래 파일명 그대로 다시 insert
+						//null도 다시 insert
+						//(폼에 input file 태그가 있다면 업로드 하지 않아도 빈 값이 반드시 들어옴)
+						
 					}
 				}//for
-			}//if
-			else {
 			}
 			
 			// fileList에 있는 DB에 등록할 파일명을 filename1, filename2에 셋팅
-			for(int k=0; k<newUpload.size(); k++) {
-				if(k==0) vo.setFile1(newUpload.get(k));
-				if(k==1) vo.setFile2(newUpload.get(k));
-				if(k==2) vo.setFile3(newUpload.get(k));
-				if(k==3) vo.setFile4(newUpload.get(k));
-				if(k==4) vo.setFile5(newUpload.get(k));
-			}
-			
+//			for(int k=0; k<newUpload.size(); k++) {
+//				if(k==0) vo.setFile1(newUpload.get(k));
+//				if(k==1) vo.setFile2(newUpload.get(k));
+//				if(k==2) vo.setFile3(newUpload.get(k));
+//				if(k==3) vo.setFile4(newUpload.get(k));
+//				if(k==4) vo.setFile5(newUpload.get(k));
+//			}
+			dbfileVO.setBoard_num(vo.getBoard_num());
 			// DB update
 			service.oldBoardUpdate(vo);
 			service.oldBoardDetailUpdate(vo);
-			service.oldBoardFileUpdate(vo);
+			service.oldBoardFileUpdate(dbfileVO);
 			service.oldBoardStateUpdate(vo);
 			
 //			// DB수정되었을 때
