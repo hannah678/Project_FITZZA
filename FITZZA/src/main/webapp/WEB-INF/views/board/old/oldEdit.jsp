@@ -46,7 +46,7 @@
 					<option value="3" name="거래완료" <c:if test="${state_num} == 3">selected</c:if>>거래완료</option>
 				</select></li>
 				<hr/>
-                <li>제목 &emsp; <input type="text" name="title" id="subject" value='${vo.title}'/></li>
+                <li>제목 &emsp; <input type="text" name="title" id="title" value='${vo.title}'/></li>
 				<hr/>
                 <li>지역 &emsp; <input type="text" name="city" id="city" value='${vo.city }'/></li>
 				<hr/>
@@ -63,87 +63,101 @@
 				<li>설명 &emsp; <br/><textarea name="content" id="content" rows="30" cols="100" 
 				>${vo.content}</textarea></li>
 				<hr/>
-				<li>대표이미지<br/>
-					&emsp; <input type="text" id="file_route01"  disabled="disabled" value="${vo.file1}" >
-					<label for="upload_file01">업로드</label>
-					<input type="file" id="upload_file01" name="filename" accept="image/*" required=true 
-						style="position:absolute; clip:rect(0, 0, 0, 0);" value="${vo.file1 }">
-					<div id="img_space"><img style="width: 300px;" id="img_section" src="/upload/${vo.file1}"></div><br/>
-					
-				</li>
-				<li>상세이미지<br/>
-					<input type="text" id="file_route02"  disabled="disabled" value="${vo.file2}" >
-					<label for="upload_file02">업로드</label>
-					<input type="file" id="upload_file02" name="filename" accept="image/*" value="${vo.file2}"
-						style="position:absolute; clip:rect(0, 0, 0, 0);"><br/>
-						<input type="text" id="file_route03"  disabled="disabled" value="파일 선택" >
-					<label for="upload_file03">업로드</label>
-					<input type="file" id="upload_file03" name="filename" accept="image/*" 
-						style="position:absolute; clip:rect(0, 0, 0, 0);"><br/>
-						<input type="text" id="file_route04"  disabled="disabled" value="파일 선택" >
-					<label for="upload_file04">업로드</label>
-					<input type="file" id="upload_file04" name="filename" accept="image/*"
-						style="position:absolute; clip:rect(0, 0, 0, 0);"><br/>
-						<input type="text" id="file_route05"  disabled="disabled" value="파일 선택" >
-					<label for="upload_file05">업로드</label>
-					<input type="file" id="upload_file05" name="filename" accept="image/*"
-						style="position:absolute; clip:rect(0, 0, 0, 0);"><br/>						
-				</li>
-				
+				<div class="img1">
+                    <li id="img1">대표이미지<br/>
+                        <div>
+                            <img style="width: 500px;" id="img_section" src="/img/이미지 없음.png"><br/>
+                            <input type="text" id="file_route01"  disabled="disabled" value="파일 선택" >
+                            <label for="upload_file01">업로드</label>
+                            <input type="file" id="upload_file01" name="filename" accept="image/*" style="position:absolute; clip:rect(0, 0, 0, 0);"><br/>
+                        </div>
+                    </li>
+                </div>
+                <hr/>
+                <div class="img2">
+                    <li id="img2">상세이미지<br/>
+                        <div>
+                            <img style="width: 300px;" id="img_section2" src="/img/이미지 없음.png"><br/>
+                            <input type="text" id="file_route02"  disabled="disabled" value="파일 선택" >
+                            <label for="upload_file02">업로드</label>
+                            <input type="file" id="upload_file02" name="filename" accept="image/*" style="position:absolute; clip:rect(0, 0, 0, 0);"><br/>
+                            </div>
+                        <div>   
+                            <img style="width: 300px;" id="img_section3" src="/img/이미지 없음.png"><br/>
+                            <input type="text" id="file_route03"  disabled="disabled" value="파일 선택" >
+                            <label for="upload_file03">업로드</label>
+                            <input type="file" id="upload_file03" name="filename" accept="image/*" style="position:absolute; clip:rect(0, 0, 0, 0);"><br/>
+                        </div>
+                        <div>
+                            <img style="width: 300px;" id="img_section4" src="/img/이미지 없음.png"><br/>
+                            <input type="text" id="file_route04"  disabled="disabled" value="파일 선택" >
+                            <label for="upload_file04">업로드</label>
+                            <input type="file" id="upload_file04" name="filename" accept="image/*"style="position:absolute; clip:rect(0, 0, 0, 0);"><br/>
+                        </div>
+                        <div>
+                            <img style="width: 300px;" id="img_section5" src="/img/이미지 없음.png"><br/>				
+                            <input type="text" id="file_route05"  disabled="disabled" value="파일 선택" >
+                            <label for="upload_file05">업로드</label>
+                            <input type="file" id="upload_file05" name="filename" accept="image/*" style="position:absolute; clip:rect(0, 0, 0, 0);"><br/>
+                        </div>
+                    </li>
+				</div>
 					<script>
 						const reader = new FileReader();
-				
 						reader.onload = (readerEvent) => {
 							document.querySelector("#img_section").setAttribute("src", readerEvent.target.result);
 						};
-				
 						document.querySelector("#upload_file01").addEventListener("change", (changeEvent) => {
-				
 							const imgFile = changeEvent.target.files[0];
 							reader.readAsDataURL(imgFile);
-				
 							const fileName = document.getElementById("file_route01");
 							fileName.value = imgFile.name;
 						});
 						
+                        const reader2 = new FileReader();
+						reader2.onload = (readerEvent) => {
+							document.querySelector("#img_section2").setAttribute("src", readerEvent.target.result);
+						};
 						document.querySelector("#upload_file02").addEventListener("change", (changeEvent) => {
-							
-							const imgFile = changeEvent.target.files[0];
-							reader.readAsDataURL(imgFile);
-				
-							const fileName = document.getElementById("file_route02");
-							fileName.value = imgFile.name;
+							const imgFile2 = changeEvent.target.files[0];
+							reader2.readAsDataURL(imgFile2);
+							const fileName2 = document.getElementById("file_route02");
+							fileName2.value = imgFile2.name;
 						});
 						
+                        const reader3 = new FileReader();
+						reader3.onload = (readerEvent) => {
+							document.querySelector("#img_section3").setAttribute("src", readerEvent.target.result);
+						};
 						document.querySelector("#upload_file03").addEventListener("change", (changeEvent) => {
-							
-							const imgFile = changeEvent.target.files[0];
-							reader.readAsDataURL(imgFile);
-				
-							const fileName = document.getElementById("file_route03");
-							fileName.value = imgFile.name;
+							const imgFile3 = changeEvent.target.files[0];
+							reader3.readAsDataURL(imgFile3);
+							const fileName3 = document.getElementById("file_route03");
+							fileName3.value = imgFile3.name;
 						});
 						
+                        const reader4 = new FileReader();
+						reader4.onload = (readerEvent) => {
+							document.querySelector("#img_section4").setAttribute("src", readerEvent.target.result);
+						};
 						document.querySelector("#upload_file04").addEventListener("change", (changeEvent) => {
-							
-							const imgFile = changeEvent.target.files[0];
-							reader.readAsDataURL(imgFile);
-				
-							const fileName = document.getElementById("file_route04");
-							fileName.value = imgFile.name;
+							const imgFile4 = changeEvent.target.files[0];
+							reader4.readAsDataURL(imgFile4);
+							const fileName4 = document.getElementById("file_route04");
+							fileName4.value = imgFile4.name;
 						});
 						
+                        const reader5 = new FileReader();
+						reader5.onload = (readerEvent) => {
+							document.querySelector("#img_section5").setAttribute("src", readerEvent.target.result);
+						};
 						document.querySelector("#upload_file05").addEventListener("change", (changeEvent) => {
-							
-							const imgFile = changeEvent.target.files[0];
-							reader.readAsDataURL(imgFile);
-				
-							const fileName = document.getElementById("file_route05");
-							fileName.value = imgFile.name;
+							const imgFile5 = changeEvent.target.files[0];
+							reader5.readAsDataURL(imgFile5);
+							const fileName5 = document.getElementById("file_route05");
+							fileName5.value = imgFile5.name;
 						});
 					</script>
-					
-					
 				<hr/>
 				<li><input type='submit' value='수정하기' id="enter"/></li>
 				<hr/>
