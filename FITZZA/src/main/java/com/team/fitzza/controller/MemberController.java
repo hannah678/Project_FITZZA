@@ -15,6 +15,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
@@ -24,6 +26,7 @@ import com.team.fitzza.service.BoardService;
 import com.team.fitzza.service.MemberService;
 import com.team.fitzza.vo.BoardVO;
 import com.team.fitzza.vo.MemberVO;
+import com.team.fitzza.vo.PagingVO;
 
 @Controller
 public class MemberController {
@@ -53,7 +56,7 @@ public class MemberController {
 	            session.setAttribute("logId", rVo.getUser_id());
 	            session.setAttribute("logNickName", rVo.getUser_nickname());
 	            session.setAttribute("logStatus", "Y");
-	            
+	            session.setAttribute("logPermission", rVo.getPermission());
 	            String msg = "<script>location.href='/';</script>";
 	            entity = new ResponseEntity<String>(msg, headers, HttpStatus.OK);
 	         }else { //로그인 실패

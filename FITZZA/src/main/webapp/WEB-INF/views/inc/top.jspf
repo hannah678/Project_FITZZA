@@ -29,13 +29,19 @@
    <header>
     	<a href="/"><img id="logo" src="/img/logo_text.png" alt="logo"/></a>
     	<div id="rnb">
-            <c:if test="${logStatus != 'Y' }">
+            <c:if test="${logStatus != 'Y'}">
                 <p id="logStatus1"><a href="/member/join">signup</a></p>
                 <p id="logStatus2"><a href="/member/login">login</a></p>
             </c:if>
-            <c:if test="${logStatus == 'Y' }">
+            <c:if test="${logStatus == 'Y' && logPermission =='user'}">
                 <p id="logStatus1"><a href="/member/logout">logout</a></p>
                 <p id="logStatus2"><a href="/member/myPage">mypage</a></p>
+            </c:if>
+            <c:if test="${logStatus == 'Y' && logPermission =='admin'}">
+                <p id="logStatus3"><a href="/admin/adminHome">관리자 페이지</a></p>
+                <p id="logStatus1"><a href="/member/logout">logout</a></p>
+                <p id="logStatus2"><a href="/member/myPage">mypage</a></p>
+                
             </c:if>
         </div>
         <img id="menu_bar" src="/img/menu_bar.png" alt="menu_bar"/>

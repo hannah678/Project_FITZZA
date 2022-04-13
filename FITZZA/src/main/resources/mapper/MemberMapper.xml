@@ -4,13 +4,13 @@
   
   <mapper namespace="com.team.fitzza.dao.MemberDAO">
   	<select id="loginCheck" resultType="MemberVO">
-  		SELECT user_id, user_nickname FROM user
+  		SELECT user_id, user_nickname, permission FROM user
   		WHERE user_id=#{user_id} AND user_pwd=#{user_pwd}
  	</select>
  	<!-- 회원등록 -->
  	<insert id="memberInsert">
  		INSERT INTO user(user_name, user_id, user_pwd, user_nickname, tel, email, profile_image)
-		VALUES(#{user_name}, #{user_id}, #{user_pwd}, #{user_nickname}, #{tel}, #{email}, '/upload/profileDefault.png')
+		VALUES(#{user_name}, #{user_id}, #{user_pwd}, #{user_nickname}, #{tel}, #{email}, 'profileDefault.png')
  	</insert>
  	
  	<!-- 회원정보 수정 -->

@@ -107,6 +107,14 @@ header > a {
     border-bottom-left-radius: 20px; border-bottom-right-radius: 20px;
     background-color: #54bab9;
 }
+#rnb #logStatus3 {position:absolute; right: 270px; top: 30px;}
+#rnb #logStatus3 a {
+    display:block;
+    width: 200px; height: 40px;
+    border-top-left-radius: 20px; border-top-right-radius: 20px;
+    border-bottom-left-radius: 20px; border-bottom-right-radius: 20px;
+    background-color: #8080ff; color:white;
+}
 #menu_bar{
     position:absolute; left: 50px; top: 32px;
     z-index: 2; cursor: pointer;  
