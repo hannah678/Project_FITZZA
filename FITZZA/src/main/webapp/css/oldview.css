@@ -52,6 +52,7 @@ li{
     bottom:50px;
     left: 630px;
     font-size: 1em;
+    line-height:35px;
 }
 /*.info>#item{
     width: 500px;
@@ -110,26 +111,13 @@ li{
     float: left;
 }
 /* 모달 */
-.modal-body{
-	margin:0 auto;
-} 
-.modal-header{
-	margin:0 auto;
-	width:100%;
-}
-#reportModal{
-	top:20%;
-}
-#reportbtn{
-	position: relative;
-    right: 30px;
-    bottom: 27px;
-    width: 100px;
-    height: 80px;
-    border: 2px solid black;
-    font-family:'Nanum pen script';
-    font-size: 1em;
-    font-weight: bold;
+.modal {font-size: 20px; text-align:center}
+.modal-backdrop {margin-left:-340px}
+.modal-content {
+	display:block;
+	max-width:1000px; height: 650px;
+	position:absolute; left:50%; top:150px;
+	transform:translateX(-550px);
 }
 footer{
 	font-size: 1em;

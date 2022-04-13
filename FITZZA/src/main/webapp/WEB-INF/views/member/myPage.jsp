@@ -2,6 +2,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
     
 <link rel="stylesheet" href="/css/mypage.css" type="text/css"/>
+
 <script>
 	window.onload=function(){
 		var exp = ${vo.exp};
@@ -12,13 +13,14 @@
 		y.src="${vo.frame_img}";
 	}
 </script>
+</script>
 <input type="hidden" name="user_id" value="${vo.user_id}"/>
 <div id="mypage_wrap">
 	<ul id="profile">
 		<li>
 			<img src="${vo.profile_image}" alt="프로필 이미지">
 			<img id="level_frame" alt="등급 프레임 이미지">
-			<p><a href="">프로필 이미지<br/>바꾸기</a></p>
+			<p><a id="profile_upload">프로필 이미지<br/>바꾸기</a></p>
 		</li>
 		<li class="userid">${vo.user_nickname} (${vo.user_id})</li>
 		<li class="grade">
@@ -66,11 +68,15 @@
 				<ul class="my_list_contents">
 					<!-- 게시물 리스트-->
         			<c:forEach var="vo1" items="${lst1}">
-						<li><a href="/board/todayCodi/todayCodiView?board_num=${vo1.board_num}">${vo1.title}</a></li>
-							<li>${vo1.content}</li>
-							<li>${vo1.hit}</li>
-							<li>${vo1.write_date}</li>
-						
+						<li>
+							<ul>
+								<li class="my_list_subtitle">${vo1.title}</li>
+								<li class="my_list_subcontent">${vo1.content}</li>
+								<li class="my_list_hit">${vo1.hit}</li>
+								<li class="my_list_date">${vo1.write_date}</li>
+							</ul>
+							<a href="/board/old/oldView?board_num=${vo1.board_num}"></a>
+						</li>
 					</c:forEach>
 				</ul>
 			</div>
@@ -88,11 +94,15 @@
 				<ul class="my_list_contents">
 					<!-- 게시물 리스트-->
         			<c:forEach var="vo2" items="${lst2}">
-						<li><a href="/board/recommend/recommendView?board_num=${vo2.board_num}">${vo2.title}</a></li>
-							<li>${vo2.content}</li>
-							<li>${vo2.hit}</li>
-							<li>${vo2.write_date}</li>
-						
+						<li>
+							<ul>
+								<li class="my_list_subtitle">${vo2.title}</li>
+								<li class="my_list_subcontent">${vo2.content}</li>
+								<li class="my_list_hit">${vo2.hit}</li>
+								<li class="my_list_date">${vo2.write_date}</li>
+							</ul>
+							<a href="/board/old/oldView?board_num=${vo2.board_num}"></a>
+						</li>
 					</c:forEach>
 				</ul>
 			</div>
@@ -110,10 +120,15 @@
 				<ul class="my_list_contents">
 					<!-- 게시물 리스트-->
         			<c:forEach var="vo3" items="${lst3}">
-						<li><a href="/board/old/oldView?board_num=${vo3.board_num}">${vo3.title}</a></li>
-							<li>${vo3.content}</li>
-							<li>${vo3.hit}</li>
-							<li>${vo3.write_date}</li>
+						<li>
+							<ul>
+								<li class="my_list_subtitle">${vo3.title}</li>
+								<li class="my_list_subcontent">${vo3.content}</li>
+								<li class="my_list_hit">${vo3.hit}</li>
+								<li class="my_list_date">${vo3.write_date}</li>
+							</ul>
+							<a class="my_list_alink" href="/board/old/oldView?board_num=${vo3.board_num}"></a>
+						</li>
 					</c:forEach>
 				</ul>
 			</div>
@@ -131,10 +146,15 @@
 				<ul class="my_list_contents">
 					<!-- 게시물 리스트-->
         			<c:forEach var="vo4" items="${lst4}">
-						<li><a href="/board/review/reviewView?board_num=${vo4.board_num}">${vo4.title}</a></li>
-							<li>${vo4.content}</li>
-							<li>${vo4.hit}</li>
-							<li>${vo4.write_date}</li>	
+						<li>
+							<ul>
+								<li class="my_list_subtitle">${vo4.title}</li>
+								<li class="my_list_subcontent">${vo4.content}</li>
+								<li class="my_list_hit">${vo4.hit}</li>
+								<li class="my_list_date">${vo4.write_date}</li>
+							</ul>
+							<a class="my_list_alink" href="/board/old/oldView?board_num=${vo4.board_num}"></a>
+						</li>
 					</c:forEach>
 				</ul>
 			</div>
@@ -152,11 +172,15 @@
 				<ul class="my_list_contents">
 					<!-- 게시물 리스트-->
         			<c:forEach var="vo5" items="${lst5}">
-						<li><a href="/board/qna/qnaView?board_num=${vo5.board_num}">${vo5.title}</a></li>
-							<li>${vo5.content}</li>
-							<li>${vo5.hit}</li>
-							<li>${vo5.write_date}</li>
-						
+						<li>
+							<ul>
+								<li class="my_list_subtitle">${vo5.title}</li>
+								<li class="my_list_subcontent">${vo5.content}</li>
+								<li class="my_list_hit">${vo5.hit}</li>
+								<li class="my_list_date">${vo5.write_date}</li>
+							</ul>
+							<a href="/board/old/oldView?board_num=${vo5.board_num}"></a>
+						</li>
 					</c:forEach>
 				</ul>
 			</div>
@@ -174,20 +198,17 @@
 				<ul class="my_list_contents">
 					<!-- 게시물 리스트-->
         			<c:forEach var="vo6" items="${lst6}">
-						<li><a href="/board/vote/oldView?board_num=${vo6.board_num}">${vo6.title}</a></li>
-							<li>${vo6.content}</li>
-							<li>${vo6.hit}</li>
-							<li>${vo6.write_date}</li>
-						
+						<li>
+							<ul>
+								<li class="my_list_subtitle">${vo6.title}</li>
+								<li class="my_list_subcontent">${vo6.content}</li>
+								<li class="my_list_hit">${vo6.hit}</li>
+								<li class="my_list_date">${vo6.write_date}</li>
+							</ul>
+							<a href="/board/old/oldView?board_num=${vo6.board_num}"></a>
+						</li>
 					</c:forEach>
 				</ul>
-			</div>
-		</li>
-		<li>
-			<input type="radio" name="tab" id="tab7">
-			<label for="tab7">옷입히기</label>
-			<div>
-				
 			</div>
 		</li>
 		<li>
@@ -200,11 +221,10 @@
 					<li>작성날짜</li>
 				</ul>
 				<ul class="my_list_contents">
-					<a href="">
-						<li>게시물 타입</li>
-						<li>내용</li>
-						<li>작성날짜</li>
-					</a>
+					<li>게시물 타입</li>
+					<li>내용</li>
+					<li>작성날짜</li>
+					<li  class="my_list_alink"><a href=""></a></li>
 				</ul>
 			</div>
 		</li>

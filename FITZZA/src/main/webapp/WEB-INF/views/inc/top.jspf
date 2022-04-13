@@ -12,7 +12,9 @@
     <meta property="og:title" content="FITZZA | 패션 커뮤니티" />
     <meta property="og:type" content="website" />
     <meta property="og:description" content="아직도 하나씩 입어봐? 입기 전에 Try on it! 코디북을 활용한 미리보기!" />
+    
     <link rel="stylesheet" href="/css/main.css" type="text/css"/>
+    <link rel="stylesheet" href="/css/paging.css" type="text/css"/>
     <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
     <script type="text/javascript" src="/js/main.js"></script>
     
