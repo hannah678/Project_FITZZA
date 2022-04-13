@@ -1,11 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
 
 <script>
 	function delCheck(){
 		if(confirm("삭제하시겠습니까?")){
-			location.href = "";     // 게시글 삭제 매핑
+			location.href = "/board/boardDelete?board_num="+${vo.board_num};     // 게시글 삭제 매핑
 		}
 	}
     // 댓글------------------------------------------------------------
@@ -45,8 +46,8 @@
 					console.log(${vo.board_num});
 					var tag = "<ul>";
 					$result.each(function(idx, vo){		//vo에서 프로필사진 가져올 자리
-						tag += "<li><div>" + "<img src='//*vo에서 프로필사진 가져올 자리*/' style='width:50px; height:50px; border:1px solid black; border-radius:70%; margin-right:30px; position:relative; top:20px;'/>" + vo.user_id + " (" + vo.reply_date + ") ";
-	
+						tag += "<li><div>" + "<img src='"+vo.profile_image+"' style='width:50px; height:50px; border:1px solid black; border-radius:70%; margin-right:30px; position:relative; top:20px;'/><img src='"+vo.frame_img+"' >" + vo.user_nickname + " (" + vo.reply_date + ") ";
+						
 						if(vo.user_id == '${logId}'){   // user_id
 							tag += "<input type='button' value='수정'/>";
 							tag += "<input type='button' value='삭제' title='"+vo.reply_num+"'/>";
@@ -162,11 +163,9 @@
 					<br />
 				</c:if>
 				<c:if test="${logId == vo.user_id}">
-					<li style="float: right;"><a
-						href="/board/old/oldEdit?board_num=${vo.board_num}"
-						style="color: blue;">수정</a> <a
-						href="/board/boardDelete?board_num=${vo.board_num}"
-						style="color: blue;">삭제</a></li>
+					<li style="float: right;">
+					<a href="/board/old/oldEdit?board_num=${vo.board_num}" style="color: blue;">수정</a> 
+					<a id="del" href="javascript:delCheck()" style="color: blue;">삭제</a></li>
 					<li><input type="button" value="신고" id="report"
 						data-target="#reportModal" data-toggle="modal" /></li>
 				</c:if>
