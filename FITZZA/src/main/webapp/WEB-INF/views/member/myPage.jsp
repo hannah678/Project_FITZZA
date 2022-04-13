@@ -12,12 +12,19 @@
 		y.src="${vo.frame_img}";
 	}
 </script>
+<style>
+*{font-family:'Nanum pen script'; font-size:30px;text-decoration: none; }
+a {font-size:24px}
+a:link {color:#fff; text-decoration: none;}
+a:visited {color:#fff}
+.my_list_title li {font-size:24px; font-weight:600;}
 
+</style>
 <input type="hidden" name="user_id" value="${vo.user_id}"/>
 <div id="mypage_wrap">
 	<ul id="profile">
 		<li>
-			<img src="/upload/${vo.profile_image}" alt="프로필 이미지">
+			<img id ="p_img" src="/upload/${vo.profile_image}" alt="프로필 이미지">
 			<img id="level_frame" alt="등급 프레임 이미지">
 			<p><a id="profile_upload" data-target="#changeModal" data-toggle="modal">프로필 사진<br/>바꾸기</a></p>
 		</li><!-- 모달은 맨 밑 -->

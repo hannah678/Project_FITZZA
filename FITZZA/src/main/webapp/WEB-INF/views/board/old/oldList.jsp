@@ -5,7 +5,9 @@
     <title>FITZZA | 중고거래</title>
 </head>
 <link rel="stylesheet" href="/css/oldlist.css" type="text/css">
-
+<style>
+	#moreView {cursor:pointer}
+</style>
 <body>
 <br><br><br><br><br><br><br><br>
 	<div class="oldboard">
@@ -34,7 +36,7 @@
     </ul>
     
     <!-- 리스트 더보기 -->
-    <a id="moreView">더보기</a>
+    <a id="moreView"><img src="/img/더보기.png" style="width:100px;"></a>
     
     
     <!-- 검색 -->
