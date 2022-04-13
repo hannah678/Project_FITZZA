@@ -15,15 +15,21 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.team.fitzza.service.BoardService;
+import com.team.fitzza.service.MemberService;
 import com.team.fitzza.service.OldBoardService;
 import com.team.fitzza.vo.BoardVO;
+import com.team.fitzza.vo.PagingVO;
 
 @Controller
 public class OldBoardController {
@@ -34,15 +40,44 @@ public class OldBoardController {
 	@Inject
 	BoardService Bservice;
 	
+	@Inject
+	MemberService Mservice;
+	
 	@GetMapping("/board/old/oldList")
 	public ModelAndView dataList() {
-		ModelAndView mav = new ModelAndView();
-		
-		mav.addObject("lst", service.oldBoardSelectAll());
-		
+		ModelAndView mav = new ModelAndView();		
 		mav.setViewName("/board/old/oldList");
 		return mav;
 	}
+	
+	@GetMapping("/board/old/search")
+	   public ModelAndView search(String searchKey, String searchWord) {
+	      ModelAndView mav = new ModelAndView();
+	      mav.setViewName("/board/old/oldList");
+	      return mav;
+	   }
+	
+	@ResponseBody //Ajax
+	@RequestMapping(value = "/board/old/oldLists")
+	public List<BoardVO> newsMoreView(PagingVO pvo, Model model
+			, @RequestParam(value="startNum", required=false)String startNum) throws Exception {
+		System.out.println("페이징 브이오다"+pvo);
+//		startNum="5";
+		pvo.setStart(Integer.parseInt(startNum));
+		pvo.setEnd(5);
+		return service.oldBoardSelectAll(pvo);
+	}
+	@ResponseBody //Ajax
+	@RequestMapping(value = "/board/old/searchLists")
+	public List<BoardVO> searchMoreView(@RequestParam(value="startNum", required=false)String startNum,
+			String searchKey, String searchWord) throws Exception {
+		int start = Integer.parseInt(startNum);
+		int end = 5;
+		System.out.println("searchKey -> "+searchKey);
+		System.out.println("searchWord -> "+searchWord);
+		return service.oldBoardSearch(searchKey, "%"+searchWord+"%", start, end);
+	}
+	
 	
 	// 글쓰기 폼
 	@GetMapping("/board/old/oldWrite")
@@ -137,6 +172,7 @@ public class OldBoardController {
 			service.oldBoardDetailInsert(vo);
 			Bservice.BoardFileInsert(vo);
 			service.oldBoardStateInsert(vo);
+			Mservice.expUp_board(user_id);
 			//레코드 추가 성공
 			String msg = "<script>alert('자료실에 글이 등록되었습니다');location.href='/board/old/oldList';</script>";
 			entity = new ResponseEntity<String>(msg, headers, HttpStatus.OK);	//200
@@ -362,6 +398,9 @@ public class OldBoardController {
 		 */
 		return entity;		
 	}
-	//자료실 삭제
+
+	
+	
+	
 	
 }

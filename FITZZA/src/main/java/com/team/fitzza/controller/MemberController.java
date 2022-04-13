@@ -1,5 +1,7 @@
 package com.team.fitzza.controller;
 
+import java.util.List;
+
 import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
 
@@ -15,6 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.team.fitzza.service.BoardService;
 import com.team.fitzza.service.MemberService;
+import com.team.fitzza.vo.BoardVO;
 import com.team.fitzza.vo.MemberVO;
 
 @Controller

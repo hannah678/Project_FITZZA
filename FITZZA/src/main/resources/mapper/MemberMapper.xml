@@ -50,4 +50,18 @@
 		AND 	B.exp_min <![CDATA[<=]]> A.exp
 		AND 	A.exp <![CDATA[<=]]> B.exp_max
 	</select>
+	
+	<!-- 회원 EXP -->
+ 	<update id='expUp_board'>
+ 		update user set exp=exp+10 where user_id=#{param1};
+ 	</update>
+ 	<update id='expUp_reply'>
+ 		update user set exp=exp+3 where user_id=#{param1};
+ 	</update>
+ 	<update id='expDown_board'>
+ 		update user set exp=exp-10 where user_id=#{param1};
+ 	</update>
+ 	<update id='expDown_reply'>
+ 		update user set exp=exp-3 where user_id=#{param1};
+ 	</update>
   </mapper>

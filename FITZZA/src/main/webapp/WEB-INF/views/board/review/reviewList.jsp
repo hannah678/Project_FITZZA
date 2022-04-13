@@ -11,6 +11,7 @@
   <div id="list-menu">
 	<a href="/board/review/reviewWrite">글쓰기</a>  <!-- 글쓰기가 안보임 -->
   </div>
+  <br><br><br><br><br><br>
 	<hr/>
 	<div id="review_container"><!--  리뷰 글 들어갈곳 -->
 	  <ul>
@@ -38,7 +39,7 @@
 	</div>
 	 
     
-        <form action="" id="searchFrm">
+        <form action="/board/review/search" id="searchFrm">
             <select name="searchKey">
                 <option value="subject">제목</option>
                 <option value="content">내용</option>
@@ -48,3 +49,113 @@
             <input type="submit" value="Search"/>
         </form>
 </div>
+
+<script>
+       $("#searchFrm").submit(function() {
+          if ($("#searchWord").val() == "") {
+             alert("검색어를 입력하세요");
+             return false;
+          }
+          
+       });
+   		
+       window.onload=function(){
+			var startNum = $("#oldlist li").length/6 -1; // oldlist안에 li태그의 길이
+			var addListHtml = "";
+			 console.log(startNum); 
+			var url;
+			var param;
+			const params = new URL(window.location.href).searchParams;
+			var key = params.get('searchKey');
+			var word = params.get('searchWord');
+			var pathname = window.location.pathname;
+			var pn = pathname.substring(pathname.lastIndexOf('/')+1);
+			if(pn=='oldList'){
+				url = '/board/old/oldLists';
+				param = {
+					"startNum" : startNum 
+				};
+			}else if(pn='search'){
+				url = '/board/old/searchLists';
+				param = {
+					"startNum" : startNum ,
+					"searchKey" : key,
+					"searchWord" : word
+				};
+				console.log(startNum);
+			}
+			$.ajax({
+				url : url,
+				type : 'POST',
+				dataType : 'json',
+				data :param,
+				success : function(data){
+					
+					for (var i = 0; i < data.length; i++) {
+						addListHtml += "<li>"+data[i].city+"</li>";
+						addListHtml += "<li><a href='/board/old/oldView?board_num="+data[i].board_num+"'><img src='/upload/"+data[i].file1+"'/></a></li>";
+						addListHtml += "<li><a href='/board/old/oldView?board_num="+data[i].board_num+"'>"+data[i].title+"</a></li>";
+						addListHtml += "<li><img src='"+data[i].profile_image+"' style='width:20px; height:20px; border-radius: 70%;'/>"+data[i].user_nickname+"</li>";
+						addListHtml += "<li>"+data[i].write_date+"</li>";
+						addListHtml += "<li>"+data[i].hit+"</li>";
+						if(data[i].board_num==1){
+							$("#moreView").remove();
+						} 
+					}
+					$("#oldlist").append(addListHtml);
+					/* console.log(addListHtml); */
+				}
+			});
+       }
+   
+	   $('#moreView').click(function(){
+			var startNum = $("#oldlist li").length/6 -1; // oldlist안에 li태그의 길이
+			var addListHtml = "";
+			 console.log(startNum); 
+			var url;
+			var param;
+			const params = new URL(window.location.href).searchParams;
+			var key = params.get('searchKey');
+			var word = params.get('searchWord');
+			var pathname = window.location.pathname;
+			var pn = pathname.substring(pathname.lastIndexOf('/')+1);
+			if(pn=='oldList'){
+				url = '/board/old/oldLists';
+				param = {
+					"startNum" : startNum 
+				};
+			}else if(pn='search'){
+				url = '/board/old/searchLists';
+				param = {
+					"startNum" : startNum ,
+					"searchKey" : key,
+					"searchWord" : word
+				};
+				console.log(startNum);
+			}
+			$.ajax({
+				url : url,
+				type : 'POST',
+				dataType : 'json',
+				data :param,
+				success : function(data){
+					
+					for (var i = 0; i < data.length; i++) {
+						addListHtml += "<li>"+data[i].city+"</li>";
+						addListHtml += "<li><a href='/board/old/oldView?board_num="+data[i].board_num+"'><img src='/upload/"+data[i].file1+"'/></a></li>";
+						addListHtml += "<li><a href='/board/old/oldView?board_num="+data[i].board_num+"'>"+data[i].title+"</a></li>";
+						addListHtml += "<li><img src='"+data[i].profile_image+"' style='width:20px; height:20px; border-radius: 70%;'/>"+data[i].user_nickname+"</li>";
+						addListHtml += "<li>"+data[i].write_date+"</li>";
+						addListHtml += "<li>"+data[i].hit+"</li>";
+						if(data[i].board_num==1){
+							$("#moreView").remove();
+						} 
+					}
+					$("#oldlist").append(addListHtml);
+					/* console.log(addListHtml); */
+				}
+			});
+		   
+			
+		});
+</script>

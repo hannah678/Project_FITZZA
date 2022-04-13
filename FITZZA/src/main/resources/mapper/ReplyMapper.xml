@@ -8,14 +8,17 @@
 		values(#{board_num}, #{user_id}, #{coment})
 	</insert>
 	<select id="replyList" resultType="com.team.fitzza.vo.ReplyVO">
-		select reply_num, user_id, coment, reply_date from reply 
-		where board_num=${param1}
-		order by reply_num desc
+		SELECT A.reply_num, A.user_id, A.coment, A.reply_date, B.profile_image, B.user_nickname, 
+		C.frame_img
+		FROM   reply A join user B ON A.user_id = B.user_id 
+		JOIN user_grade C ON  B.exp BETWEEN C.exp_min AND C.exp_max
+		WHERE  A.board_num=${param1}
+		ORDER BY A.reply_num DESC;
 	</select>
 	<update id="replyEdit">
-		update reply set coment=#{coment} where reply_num=${reply_num} and user_id=#{user_id}
+		UPDATE reply SET coment=#{coment} WHERE reply_num=${reply_num} AND user_id=#{user_id}
 	</update>
 	<delete id="replyDel">
-		delete from reply where reply_num=#{param1} and user_id=#{param2}
+		DELETE FROM reply where reply_num=#{param1} AND user_id=#{param2}
 	</delete>
 </mapper>

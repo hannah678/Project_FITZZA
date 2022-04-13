@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.team.fitzza.service.BoardService;
+import com.team.fitzza.service.MemberService;
 import com.team.fitzza.service.OldBoardService;
 import com.team.fitzza.vo.BoardVO;
 
@@ -21,6 +22,9 @@ import com.team.fitzza.vo.BoardVO;
 public class BoardController {
 	@Inject
 	BoardService service;
+	
+	@Inject
+	MemberService Mservice;
 	
 	//글 신고
 	@PostMapping("/board/reportOk")
@@ -56,7 +60,7 @@ public class BoardController {
 			
 			// 2. 레코드 삭제
 			service.boardDelete(board_num, user_id);
-			
+			Mservice.expDown_board(user_id);
 			// 3. 파일 삭제
 			fileDelete(path, dbFileVO.getFile1());	//첫번째지우고
 			//두번째는 있을 때만, 널이 아니면
@@ -101,4 +105,6 @@ public class BoardController {
 		// TODO Auto-generated method stub
 		
 	}
+	
+	
 }

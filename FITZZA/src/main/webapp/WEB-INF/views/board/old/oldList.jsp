@@ -25,9 +25,9 @@
 		<!-- 게시물 리스트-->
         <c:forEach var="vo" items="${lst}">
             <li>${vo.city}</li>
-            <li><a href="/board/old/oldView?board_num=${vo.board_num}"><img src="/upload/${vo.file1}" id="product_img"/></a></li>
+            <li><a href="/board/old/oldView?board_num=${vo.board_num}"><img src="/upload/${vo.file1}"/></a></li>
             <li><a href="/board/old/oldView?board_num=${vo.board_num}">${vo.title}</a></li>
-            <li><img src="${vo.profile_image}" id="profile_img"/> ${vo.user_nickname}</li>
+            <li><img src="${vo.profile_image}" style="width:20px; height:20px; border-radius: 70%;" id="profile_img"/> ${vo.user_nickname}</li>
             <li>${vo.write_date}</li>
             <li>${vo.hit}</li>
         </c:forEach> 
@@ -38,7 +38,7 @@
     
     
     <!-- 검색 -->
-    <form method="get" action="/board/old/oldList" id="searchFrm">
+    <form method="get" action="/board/old/search" id="searchFrm">
             <select name="searchKey">
                 <option value="title">제목</option>
                 <option value="content">내용</option>
@@ -51,32 +51,49 @@
 </div>
 </body>
 <script>
-
-   $(function() {
        $("#searchFrm").submit(function() {
           if ($("#searchWord").val() == "") {
              alert("검색어를 입력하세요");
              return false;
           }
+          
        });
    		
        window.onload=function(){
-			var startNum = $("#oldlist li").length/6; // oldlist안에 li태그의 길이
+			var startNum = $("#oldlist li").length/6 -1; // oldlist안에 li태그의 길이
 			var addListHtml = "";
 			 console.log(startNum); 
-			
+			var url;
+			var param;
+			const params = new URL(window.location.href).searchParams;
+			var key = params.get('searchKey');
+			var word = params.get('searchWord');
+			var pathname = window.location.pathname;
+			var pn = pathname.substring(pathname.lastIndexOf('/')+1);
+			if(pn=='oldList'){
+				url = '/board/old/oldLists';
+				param = {
+					"startNum" : startNum 
+				};
+			}else if(pn='search'){
+				url = '/board/old/searchLists';
+				param = {
+					"startNum" : startNum ,
+					"searchKey" : key,
+					"searchWord" : word
+				};
+				console.log(startNum);
+			}
 			$.ajax({
-				url : '/board/old/oldLists',
+				url : url,
 				type : 'POST',
 				dataType : 'json',
-				data : {
-					"startNum" : startNum
-				},
+				data :param,
 				success : function(data){
 					
 					for (var i = 0; i < data.length; i++) {
 						addListHtml += "<li>"+data[i].city+"</li>";
-						addListHtml += "<li><a href='/board/old/oldView?board_num="+data[i].board_num+"'><img src='/upload/"+data[i].file1+"'/></a></li>";
+						addListHtml += "<li><a href='/board/old/oldView?board_num="+data[i].board_num+"'><img src='/upload/"+data[i].file1+"' id='profile_img'/></a></li>";
 						addListHtml += "<li><a href='/board/old/oldView?board_num="+data[i].board_num+"'>"+data[i].title+"</a></li>";
 						addListHtml += "<li><img src='"+data[i].profile_image+"' style='width:20px; height:20px; border-radius: 70%;'/>"+data[i].user_nickname+"</li>";
 						addListHtml += "<li>"+data[i].write_date+"</li>";
@@ -92,22 +109,40 @@
        }
    
 	   $('#moreView').click(function(){
-			var startNum = $("#oldlist li").length/6; // oldlist안에 li태그의 길이
+			var startNum = $("#oldlist li").length/6 -1; // oldlist안에 li태그의 길이
 			var addListHtml = "";
 			 console.log(startNum); 
-			
+			var url;
+			var param;
+			const params = new URL(window.location.href).searchParams;
+			var key = params.get('searchKey');
+			var word = params.get('searchWord');
+			var pathname = window.location.pathname;
+			var pn = pathname.substring(pathname.lastIndexOf('/')+1);
+			if(pn=='oldList'){
+				url = '/board/old/oldLists';
+				param = {
+					"startNum" : startNum 
+				};
+			}else if(pn='search'){
+				url = '/board/old/searchLists';
+				param = {
+					"startNum" : startNum ,
+					"searchKey" : key,
+					"searchWord" : word
+				};
+				console.log(startNum);
+			}
 			$.ajax({
-				url : '/board/old/oldLists',
+				url : url,
 				type : 'POST',
 				dataType : 'json',
-				data : {
-					"startNum" : startNum
-				},
+				data :param,
 				success : function(data){
 					
 					for (var i = 0; i < data.length; i++) {
 						addListHtml += "<li>"+data[i].city+"</li>";
-						addListHtml += "<li><a href='/board/old/oldView?board_num="+data[i].board_num+"'><img src='/upload/"+data[i].file1+"'/></a></li>";
+						addListHtml += "<li><a href='/board/old/oldView?board_num="+data[i].board_num+"'><img src='/upload/"+data[i].file1+"' id='profile_img'/></a></li>";
 						addListHtml += "<li><a href='/board/old/oldView?board_num="+data[i].board_num+"'>"+data[i].title+"</a></li>";
 						addListHtml += "<li><img src='"+data[i].profile_image+"' style='width:20px; height:20px; border-radius: 70%;'/>"+data[i].user_nickname+"</li>";
 						addListHtml += "<li>"+data[i].write_date+"</li>";
@@ -120,8 +155,8 @@
 					/* console.log(addListHtml); */
 				}
 			});
+		   
 			
 		});
-   });
 </script>
 

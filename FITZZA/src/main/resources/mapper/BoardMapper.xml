@@ -49,9 +49,14 @@
  	<update id="reportUp">
  		UPDATE user SET report_hit=report_hit+1 WHERE user_id=(SELECT user_id FROM board WHERE board_num=${board_num});
  	</update>
+ 	
+ 	
+ 	
+ 	<!-- 게시글 삭제 -->
  	<delete id="boardDelete">
  		DELETE FROM board WHERE board_num=#{param1} AND user_id=#{param2}
  	</delete>
+ 	<!-- 타입넘버 가져오기 -->
  	<select id="getType_num" resultType="int">
  		select type_num from board where board_num=${param1}
  	</select>

@@ -32,4 +32,10 @@ public interface MemberDAO {
 	public int selfBye(MemberVO vo);
 	//마이페이지
 	public MemberVO myPage(String user_id);
+	
+
+	public int expUp_board(String user_id);
+	public int expUp_reply(String user_id);
+	public int expDown_board(String user_id);
+	public int expDown_reply(String user_id);
 }

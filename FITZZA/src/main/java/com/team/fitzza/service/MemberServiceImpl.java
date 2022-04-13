@@ -62,4 +62,23 @@ public class MemberServiceImpl implements MemberService{
 		return dao.myPage(user_id);
 	}
 
+	@Override
+	public int expUp_board(String user_id) {
+		return dao.expUp_board(user_id);
+	}
+
+	@Override
+	public int expUp_reply(String user_id) {
+		return dao.expUp_reply(user_id);
+	}
+	
+	@Override
+	public int expDown_board(String user_id) {
+		return dao.expDown_board(user_id);
+	}
+	
+	@Override
+	public int expDown_reply(String user_id) {
+		return dao.expDown_reply(user_id);
+	}
 }

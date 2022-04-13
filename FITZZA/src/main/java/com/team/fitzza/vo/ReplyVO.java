@@ -5,10 +5,31 @@ public class ReplyVO {
 	private int reply_num;
 	private int board_num;
 	private String user_id;
+	private String user_nickname;
+	private String profile_image;
+	private String frame_img;
 	private String coment;
 	private String reply_date;
 	
 	
+	public String getUser_nickname() {
+		return user_nickname;
+	}
+	public void setUser_nickname(String user_nickname) {
+		this.user_nickname = user_nickname;
+	}
+	public String getProfile_image() {
+		return profile_image;
+	}
+	public void setProfile_image(String profile_image) {
+		this.profile_image = profile_image;
+	}
+	public String getFrame_img() {
+		return frame_img;
+	}
+	public void setFrame_img(String frame_img) {
+		this.frame_img = frame_img;
+	}
 	public int getReply_num() {
 		return reply_num;
 	}
