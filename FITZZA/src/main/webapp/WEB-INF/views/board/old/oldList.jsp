@@ -27,7 +27,7 @@
             <li>${vo.city}</li>
             <li><a href="/board/old/oldView?board_num=${vo.board_num}"><img src="/upload/${vo.file1}"/></a></li>
             <li><a href="/board/old/oldView?board_num=${vo.board_num}">${vo.title}</a></li>
-            <li><img src="${vo.profile_image}" style="width:20px; height:20px; border-radius: 70%;" id="profile_img"/> ${vo.user_nickname}</li>
+            <li><img src="/upload/${vo.profile_image}" style="width:20px; height:20px; border-radius: 70%;" id="profile_img"/> ${vo.user_nickname}</li>
             <li>${vo.write_date}</li>
             <li>${vo.hit}</li>
         </c:forEach> 
@@ -95,7 +95,7 @@
 						addListHtml += "<li>"+data[i].city+"</li>";
 						addListHtml += "<li><a href='/board/old/oldView?board_num="+data[i].board_num+"'><img src='/upload/"+data[i].file1+"' id='profile_img'/></a></li>";
 						addListHtml += "<li><a href='/board/old/oldView?board_num="+data[i].board_num+"'>"+data[i].title+"</a></li>";
-						addListHtml += "<li><img src='"+data[i].profile_image+"' style='width:20px; height:20px; border-radius: 70%;'/>"+data[i].user_nickname+"</li>";
+						addListHtml += "<li><img src='/upload/"+data[i].profile_image+"' style='width:20px; height:20px; border-radius: 70%;'/>&nbsp;"+data[i].user_nickname+"</li>";
 						addListHtml += "<li>"+data[i].write_date+"</li>";
 						addListHtml += "<li>"+data[i].hit+"</li>";
 						if(data[i].board_num==1){
@@ -144,7 +144,7 @@
 						addListHtml += "<li>"+data[i].city+"</li>";
 						addListHtml += "<li><a href='/board/old/oldView?board_num="+data[i].board_num+"'><img src='/upload/"+data[i].file1+"' id='profile_img'/></a></li>";
 						addListHtml += "<li><a href='/board/old/oldView?board_num="+data[i].board_num+"'>"+data[i].title+"</a></li>";
-						addListHtml += "<li><img src='"+data[i].profile_image+"' style='width:20px; height:20px; border-radius: 70%;'/>"+data[i].user_nickname+"</li>";
+						addListHtml += "<li><img src=/upload/'"+data[i].profile_image+"' style='width:20px; height:20px; border-radius: 70%;'/>"+data[i].user_nickname+"</li>";
 						addListHtml += "<li>"+data[i].write_date+"</li>";
 						addListHtml += "<li>"+data[i].hit+"</li>";
 						if(data[i].board_num==1){

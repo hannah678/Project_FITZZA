@@ -218,12 +218,6 @@ public class OldBoardController {
 	public ModelAndView oldEdit(int board_num) {
 		ModelAndView mav = new ModelAndView();
 		BoardVO vo =service.oldBoardView(board_num);
-//		// DB에 첨부된 파일의 수를 구한다.
-//		int fileCount =1;	//첫번째 첨부파일은 무조건 있음
-//		if(vo.getFile2()!=null) {	// 두 번째 첨부파일 있으면 1증가
-//			fileCount++;
-//		}
-//		mav.addObject("fileCount", fileCount);
 		mav.addObject("vo", vo);
 		mav.setViewName("/board/old/oldEdit");
 		return mav;
@@ -246,30 +240,11 @@ public class OldBoardController {
 		try {
 			//	1. DB에서 파일명 가져오기
 			BoardVO dbfileVO = Bservice.getFileName(vo.getBoard_num());
-//			fileList.add(dbfileVO.getFile1());
-//			if(dbfileVO.getFile2()!=null) {
-//				fileList.add(dbfileVO.getFile2());
-//			}
-//			if(dbfileVO.getFile3()!=null) { 
-//				fileList.add(dbfileVO.getFile3());
-//			}
-//			if(dbfileVO.getFile4()!=null) { 
-//				fileList.add(dbfileVO.getFile4());
-//			}
-//			if(dbfileVO.getFile5()!=null) { 
-//				fileList.add(dbfileVO.getFile5());
-//			}
-			//	2. 삭제된 파일이 있을 경우 List에서 같은 파일명을 지운다.
-//			if(vo.getDelFile() != null) {		// null은 삭제파일이 없다
-//				for(String delFile : vo.getDelFile()) {
-//					fileList.remove(delFile);
-//				}
-//			}
 			
-			//	3. 새로 업로드 하기
+			//	2. 새로 업로드 하기
 			MultipartHttpServletRequest mr = (MultipartHttpServletRequest)req;
 
-			// 새로 업로드된 MultipartFile객체를 얻어오기
+			// 3. 새로 업로드된 MultipartFile객체를 얻어오기
 			List<MultipartFile> newFileList = mr.getFiles("filename");
 			if(newFileList != null) {	// 새로 업로드 되는 파일이 없어도 input file 갯수만큼 
 										// 객체가 들어오는듯 함
@@ -351,28 +326,12 @@ public class OldBoardController {
 					}
 				}//for
 			}
-			
-			// fileList에 있는 DB에 등록할 파일명을 filename1, filename2에 셋팅
-//			for(int k=0; k<newUpload.size(); k++) {
-//				if(k==0) vo.setFile1(newUpload.get(k));
-//				if(k==1) vo.setFile2(newUpload.get(k));
-//				if(k==2) vo.setFile3(newUpload.get(k));
-//				if(k==3) vo.setFile4(newUpload.get(k));
-//				if(k==4) vo.setFile5(newUpload.get(k));
-//			}
 			dbfileVO.setBoard_num(vo.getBoard_num());
 			// DB update
 			Bservice.BoardUpdate(vo);
 			service.oldBoardDetailUpdate(vo);
 			Bservice.BoardFileUpdate(dbfileVO);
-			service.oldBoardStateUpdate(vo);
-			
-//			// DB수정되었을 때
-//			if(vo.getDelFile()!=null) {
-//				for(String fname:vo.getDelFile()) {
-//					fileDelete(path, fname);
-//				}
-//			}			
+			service.oldBoardStateUpdate(vo);	
 			
 			// 글 내용보기로 이동
 			String msg = "<script>alert('자료실 글이 수정되었습니다.\\n글내용보기로 이동합니다');";

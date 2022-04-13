@@ -27,7 +27,7 @@
 			<li class='tc_img'>
 				<img src='/img/bg.png' >
 				<a href=''>
-					<img src="/img/profileDefault.png">
+					<img src="/upload/profileDefault.png">
 					<p>닉네임</p>
 					<span>작성일</span>
 				</a>

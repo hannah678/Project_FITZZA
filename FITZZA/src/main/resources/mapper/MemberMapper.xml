@@ -10,7 +10,7 @@
  	<!-- 회원등록 -->
  	<insert id="memberInsert">
  		INSERT INTO user(user_name, user_id, user_pwd, user_nickname, tel, email, profile_image)
-		VALUES(#{user_name}, #{user_id}, #{user_pwd}, #{user_nickname}, #{tel}, #{email}, '/img/profileDefault.png')
+		VALUES(#{user_name}, #{user_id}, #{user_pwd}, #{user_nickname}, #{tel}, #{email}, '/upload/profileDefault.png')
  	</insert>
  	
  	<!-- 회원정보 수정 -->
@@ -26,6 +26,14 @@
   		SELECT user_id, user_pwd FROM user
   		WHERE user_id=#{user_id}
  	</select>
+ 	<!-- 프로필 사진 바꾸기 -->
+ 	<select id="getFileName" resultType="com.team.fitzza.vo.MemberVO">
+    	SELECT profile_image FROM user 
+    	WHERE user_id=#{user_id}
+    </select>
+ 	<update id="changeProfileImg">
+ 		UPDATE user SET profile_image=#{profile_image} WHERE user_id=#{user_id}
+ 	</update>
  	
  	<!-- 회원탈퇴 -->
  	<insert id="selfBye">

@@ -1,8 +1,11 @@
 package com.team.fitzza.controller;
 
+import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.http.HttpHeaders;
@@ -13,6 +16,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.team.fitzza.service.BoardService;
@@ -228,5 +233,95 @@ public class MemberController {
 		return cnt;
 	}
 	
+	//프로필 사진 바꾸기
+	@PostMapping("/member/changeProfileImg")
+	public ResponseEntity<String> changeProfileImg(MemberVO vo, HttpSession session, HttpServletRequest req) {
+		vo.setUser_id((String)session.getAttribute("logId"));
+		String path = session.getServletContext().getRealPath("/upload");
+			
+		ResponseEntity<String> entity = null;
+		HttpHeaders headers = new HttpHeaders();
+		headers.add("Content-Type", "text/html; charset=UTF-8");
+		
+		List<String> newUpload = new ArrayList<String>();	// 폼에서 온 파일중 게시물에 없는 파일만 고른 컬렉션
+		try {
+			//	1. DB에서 파일명 가져오기
+			MemberVO dbfileVO = service.getFileName(vo.getUser_id());
+			
+			//	2. 새로 업로드 하기
+			MultipartHttpServletRequest mr = (MultipartHttpServletRequest)req;
+
+			// 3. 새로 업로드된 MultipartFile객체를 얻어오기
+			List<MultipartFile> newFileList = mr.getFiles("filename");
+			if(newFileList != null) {	// 새로 업로드 되는 파일이 없어도 input file 갯수만큼 
+										// 객체가 들어오는듯 함
+				for(int i=0; i<newFileList.size(); i++) {
+					MultipartFile newMf = newFileList.get(i);
+					String newUploadFilename = newMf.getOriginalFilename();
+					System.out.println(newUploadFilename);
+					// 리네임 작업
+					//폼에서 새로 업로드 한 파일이 있을 경우 
+					if(newUploadFilename != null && !newUploadFilename.equals("")) {
+						File f = new File(path, newUploadFilename);
+						if (f.exists()) {
+							System.out.println("파일명 있음");
+							// 있으면 여기서 rename
+							for (int n = 1;; n++) {
+								int point = newUploadFilename.lastIndexOf(".");
+								String fileNameNoExt = newUploadFilename.substring(0, point);
+								String ext = newUploadFilename.substring(point + 1);
+
+								// 새로운 파일명 만들어 존재유무 확인
+								String nf = fileNameNoExt + " (" + n + ")." + ext;
+								f = new File(path, nf);
+								if (!f.exists()) { // 없으면
+									System.out.println("파일명 바꿨음");
+									newUploadFilename = nf;
+									break;
+								}
+								System.out.println(f);
+							} // for
+						}
+						// 업로드
+							newMf.transferTo(f);
+							newUpload.add(newUploadFilename);
+							System.out.println(newUploadFilename);
+							dbfileVO.setProfile_image(newUploadFilename);
+					}
+				}//for
+			}
+			dbfileVO.setUser_id(vo.getUser_id());
+			// DB update
+			service.changeProfileImg(dbfileVO);
+			System.out.println(dbfileVO);
+			String msg = "<script>location.href='/member/myPage';</script>";
+
+			entity = new ResponseEntity<String>(msg, headers, HttpStatus.OK);
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+			//DB잘못수정했을때
+			for(String fname:newUpload) {
+				fileDelete(path, fname);
+			}
+			
+			//마이페이지로 이동
+			String msg = "<script>";
+			msg += "alert('이미지 업로드 실패하였습니다.)";
+			msg += "history.back();</script>";
+			entity = new ResponseEntity<String>(msg, headers, HttpStatus.BAD_REQUEST);
+		}
+		/*
+		 * for(String d:fileList) { System.out.println(d); }
+		 */
+		return entity;		
+	}
+	// 파일지우기
+	public void fileDelete(String p, String f) {
+		if(f != null) {	//파일명이 있을때만
+			File file = new File(p, f);
+			file.delete();
+		}
+	}
 	
 }

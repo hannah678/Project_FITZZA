@@ -27,7 +27,7 @@
 				  		 	<div class="txt">${vo.content}</div><!-- 글 내용 일부분 -->
 				  		</div>
 				  		<div class="post_bottom"> <!--  작성자 작성일 조회수 등 들어갈곳 -->
-				  		 	<span>${vo.user_nickname}</span><!--  닉네임 -->
+				  		 	<span>${vo.user_nickname}&nbsp;<img src="/upload/${vo.profile_image}" style='width:20px; height:20px; border-radius: 70%;'/></span><!--  닉네임 -->
 				  			<span>${vo.write_date}</span><!--  작성일자 -->
 				  			<span>${vo.hit}</span><!--  조회수 -->
 				  		</div>
@@ -95,7 +95,7 @@
 						addListHtml += "<li>"+data[i].city+"</li>";
 						addListHtml += "<li><a href='/board/old/oldView?board_num="+data[i].board_num+"'><img src='/upload/"+data[i].file1+"'/></a></li>";
 						addListHtml += "<li><a href='/board/old/oldView?board_num="+data[i].board_num+"'>"+data[i].title+"</a></li>";
-						addListHtml += "<li><img src='"+data[i].profile_image+"' style='width:20px; height:20px; border-radius: 70%;'/>"+data[i].user_nickname+"</li>";
+						addListHtml += "<li><img src=/upload/'"+data[i].profile_image+"' style='width:20px; height:20px; border-radius: 70%;'/>"+data[i].user_nickname+"</li>";
 						addListHtml += "<li>"+data[i].write_date+"</li>";
 						addListHtml += "<li>"+data[i].hit+"</li>";
 						if(data[i].board_num==1){
@@ -144,7 +144,7 @@
 						addListHtml += "<li>"+data[i].city+"</li>";
 						addListHtml += "<li><a href='/board/old/oldView?board_num="+data[i].board_num+"'><img src='/upload/"+data[i].file1+"'/></a></li>";
 						addListHtml += "<li><a href='/board/old/oldView?board_num="+data[i].board_num+"'>"+data[i].title+"</a></li>";
-						addListHtml += "<li><img src='"+data[i].profile_image+"' style='width:20px; height:20px; border-radius: 70%;'/>"+data[i].user_nickname+"</li>";
+						addListHtml += "<li><img src=/upload/'"+data[i].profile_image+"' style='width:20px; height:20px; border-radius: 70%;'/>"+data[i].user_nickname+"</li>";
 						addListHtml += "<li>"+data[i].write_date+"</li>";
 						addListHtml += "<li>"+data[i].hit+"</li>";
 						if(data[i].board_num==1){

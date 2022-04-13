@@ -46,7 +46,7 @@
 					console.log(${vo.board_num});
 					var tag = "<ul>";
 					$result.each(function(idx, vo){		//vo에서 프로필사진 가져올 자리
-						tag += "<li><div>" + "<img src='"+vo.profile_image+"' style='width:50px; height:50px; border:1px solid black; border-radius:70%; margin-right:30px; position:relative; top:20px;'/><img src='"+vo.frame_img+"' >" + vo.user_nickname + " (" + vo.reply_date + ") ";
+						tag += "<li><div>" + "<img src='/upload/"+vo.profile_image+"' style='width:50px; height:50px; border:1px solid black; border-radius:70%; margin-right:30px; position:relative; top:20px;'/><img src='"+vo.frame_img+"' >" + vo.user_nickname + " (" + vo.reply_date + ") ";
 						
 						if(vo.user_id == '${logId}'){   // user_id
 							tag += "<input type='button' value='수정'/>";
@@ -171,7 +171,7 @@
 				</c:if>
 				<hr />
 				<li id="seller"><b><b>판매자 정보</b></b>
-					<hr /> <img src="${vo.profile_image}" alt="프로필 이미지"
+					<hr /> <img src="/upload/${vo.profile_image}" alt="프로필 이미지"
 					id="seller_img"><img id="level_frame" alt="등급 프레임 이미지">
 					<span id="user_nick">${vo.user_nickname}</span><!--user_nickname--> <br /> 거래 가능 지역 :
 					${vo.city}<!--city--> <br /> 신고 받은 횟수 : ${vo.report_hit}<!--report_hit--></li>

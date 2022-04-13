@@ -1,5 +1,6 @@
 package com.team.fitzza.service;
 
+import com.team.fitzza.vo.BoardVO;
 import com.team.fitzza.vo.MemberVO;
 
 public interface MemberService{
@@ -18,5 +19,6 @@ public interface MemberService{
 	public int expUp_reply(String user_id);
 	public int expDown_board(String user_id);
 	public int expDown_reply(String user_id);
-
+	public MemberVO getFileName(String user_id);
+	public int changeProfileImg(MemberVO vo);
 }

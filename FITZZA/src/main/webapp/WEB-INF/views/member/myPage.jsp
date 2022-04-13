@@ -1,8 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-    
 <link rel="stylesheet" href="/css/mypage.css" type="text/css"/>
-
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
 <script>
 	window.onload=function(){
 		var exp = ${vo.exp};
@@ -13,15 +12,15 @@
 		y.src="${vo.frame_img}";
 	}
 </script>
-</script>
+
 <input type="hidden" name="user_id" value="${vo.user_id}"/>
 <div id="mypage_wrap">
 	<ul id="profile">
 		<li>
-			<img src="${vo.profile_image}" alt="프로필 이미지">
+			<img src="/upload/${vo.profile_image}" alt="프로필 이미지">
 			<img id="level_frame" alt="등급 프레임 이미지">
-			<p><a id="profile_upload">프로필 이미지<br/>바꾸기</a></p>
-		</li>
+			<p><a id="profile_upload" data-target="#changeModal" data-toggle="modal">프로필 사진<br/>바꾸기</a></p>
+		</li><!-- 모달은 맨 밑 -->
 		<li class="userid">${vo.user_nickname} (${vo.user_id})</li>
 		<li class="grade">
 			<span id="user_grade"></span>
@@ -244,3 +243,45 @@
 
      </ul>
 </div>
+<!-- 프로필 사진 바꾸기 모달 -->
+		<div id="changeModal" class="modal">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h2>프로필 사진 바꾸기</h2>
+						<button class="close" data-dismiss="modal">&times;</button>
+					</div>
+					<div class="modal-body">
+						<form method="post" id="changeForm" action="/member/changeProfileImg" enctype="multipart/form-data">
+							<ul>
+								<li>
+									<div>
+				                      	<img style="width: 400px; height:400px; border-radius: 70%;" id="img_section" src="/upload/${vo.profile_image}">
+				                      	<img style="width: 400px; border-radius: 70%;" src="${vo.frame_img}"><br/>
+				                    	<input type="text" id="file_route"  disabled="disabled" value="${vo.profile_image}" >
+				                     	<label for="upload_file">업로드</label>
+				                       	<input type="file" id="upload_file" name="filename" accept="image/*" style="position:absolute; clip:rect(0, 0, 0, 0);"  value="${vo.profile_image}"><br/>
+				                    </div>
+				                    <script>
+				                    	//프로필 사진 바꾸기
+					                    const reader = new FileReader();
+					                	reader.onload = (readerEvent) => {
+					                		document.querySelector("#img_section").setAttribute("src", readerEvent.target.result);
+					                	};
+					                	document.querySelector("#upload_file").addEventListener("change", (changeEvent) => {
+					                		const imgFile = changeEvent.target.files[0];
+					                		reader.readAsDataURL(imgFile);
+					                		const fileName = document.getElementById("file_route");
+					                		fileName.value = imgFile.name;
+					                	});
+				                    </script>
+								</li>
+								<hr />
+								<li><input type='submit' value='확인' id="changebtn" /></li>
+							</ul>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+

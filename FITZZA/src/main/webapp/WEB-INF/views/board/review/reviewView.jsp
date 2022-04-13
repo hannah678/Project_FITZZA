@@ -49,7 +49,7 @@ $(function(){
 				console.log(${vo.board_num});
 				var tag = "<ul>";
 				$result.each(function(idx, vo){		//vo에서 프로필사진 가져올 자리
-					tag += "<li><div>" + "<img src='"+vo.profile_image+"' style='width:50px; height:50px; border:1px solid black; border-radius:70%; margin-right:30px; position:relative; top:20px;'/><img src='"+vo.frame_img+"' >" + vo.user_nickname + " (" + vo.reply_date + ") ";
+					tag += "<li><div>" + "<img src='/upload/"+vo.profile_image+"' style='width:50px; height:50px; border:1px solid black; border-radius:70%; margin-right:30px; position:relative; top:20px;'/><img src='"+vo.frame_img+"' >" + vo.user_nickname + " (" + vo.reply_date + ") ";
 					
 					if(vo.user_id == '${logId}'){   // user_id
 						tag += "<input type='button' value='수정'/>";
@@ -189,7 +189,7 @@ window.onload=function(){
 				<td colspan='3' style="text-align:center;">작성자 정보</td>
 				</tr>
 					<tr>
-						<td><img src="${vo.profile_image}" alt="프로필 이미지"><img src="${vo.frame_img}" id="level_frame" alt="등급 프레임 이미지"></td>
+						<td><img src="/upload/${vo.profile_image}" alt="프로필 이미지"><img src="${vo.frame_img}" id="level_frame" alt="등급 프레임 이미지"></td>
 						<td>작성자 이름: ${vo.user_nickname}</td>
 						<td>신고받은 횟수: ${vo.report_hit}</td>
 					</tr>

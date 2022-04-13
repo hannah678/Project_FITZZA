@@ -81,4 +81,14 @@ public class MemberServiceImpl implements MemberService{
 	public int expDown_reply(String user_id) {
 		return dao.expDown_reply(user_id);
 	}
+
+	@Override
+	public MemberVO getFileName(String user_id) {
+		return dao.getFileName(user_id);
+	}
+
+	@Override
+	public int changeProfileImg(MemberVO vo) {
+		return dao.changeProfileImg(vo);
+	}
 }
