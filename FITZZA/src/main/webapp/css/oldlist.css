@@ -22,6 +22,7 @@ a:link, a:visited, a:hover{
 }
 .oldboard>#write{
     margin-bottom: 30px;
+    text-align:right;
 }
 h1, h2, .oldlist>li:nth-child(1), .oldlist>li:nth-child(6n+3), .oldlist>li:nth-child(6n+4), .oldlist>li:nth-child(6n+5), .oldlist>li:nth-child(6n){
     text-align: center;
