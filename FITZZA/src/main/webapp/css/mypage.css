@@ -49,11 +49,11 @@
 	opacity:0;
 }
 #profile > li:nth-child(1) p a {
-	width:150px; height:150px;
+	width:150px; height:100px;
 	border-top-left-radius: 100px; border-top-right-radius: 100px;
     border-bottom-left-radius: 100px; border-bottom-right-radius: 100px;
 	display:block;
-	margin-top:50px;
+	padding-top:50px;
 	text-align:center; color:#fff;
 	line-height:30px;
 }
@@ -62,8 +62,9 @@
 	float:left; margin-top:100px;
 }
 #profile .userid {
+	width:220px;
 	margin-right:100px;
-	font-size:40px; line-height:30px;
+	font-size:30px; line-height:30px;
 	text-align:left;
 }
 #profile .grade span {
@@ -77,8 +78,8 @@
 }
 #profile > li ul {float:left;}
 #grade_menual {
-	width:250px; height:200px;
-	float:right; margin:-30px 0 0 50px;
+	width:210px; height:200px;
+	float:right; margin:-30px 0 0 20px;
 	font-size:20px; text-align:left;
 	line-height:20px;
 	background-color:#fff;
@@ -176,6 +177,7 @@
     height:30px;
     display: table; 
     margin:0 auto;
+    padding-bottom:50px;
 }
 .paging > li{
     text-align:center;

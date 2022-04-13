@@ -10,14 +10,17 @@ a:link, a:visited, a:hover{
     text-decoration:none;
     color:black;
 }
+.oldboard>#write {height:40px;}
 .oldboard>#write a:link, .oldboard>#write a:visited{
     text-decoration:none;
     font-weight: 800;
     color:gray;
+    transition:all 0.5s;
+    line-height:40px;
 }
 .oldboard>#write a:hover{
     font-weight: 900;
-    font-size: 2em;
+    font-size: 1.2em;
     color:black;
 }
 .oldboard>#write{
