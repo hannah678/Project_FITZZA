@@ -96,25 +96,25 @@
                 <div class="img2">
                     <li id="img2">상세이미지<br/>
                         <div>
-                            <img style="width: 300px;" id="img_section2" src="/img/이미지 없음.png"><br/>
+                            <img style="width: 300px; height: 300px" id="img_section2" src="/img/이미지 없음.png"><br/>
                             <input type="text" id="file_route02"  disabled="disabled" value="파일 선택" >
                             <label for="upload_file02">업로드</label>
                             <input type="file" id="upload_file02" name="filename" accept="image/*" style="position:absolute; clip:rect(0, 0, 0, 0);"><br/>
                             </div>
                         <div>   
-                            <img style="width: 300px;" id="img_section3" src="/img/이미지 없음.png"><br/>
+                            <img style="width: 300px; height: 300px" id="img_section3" src="/img/이미지 없음.png"><br/>
                             <input type="text" id="file_route03"  disabled="disabled" value="파일 선택" >
                             <label for="upload_file03">업로드</label>
                             <input type="file" id="upload_file03" name="filename" accept="image/*" style="position:absolute; clip:rect(0, 0, 0, 0);"><br/>
                         </div>
                         <div>
-                            <img style="width: 300px;" id="img_section4" src="/img/이미지 없음.png"><br/>
+                            <img style="width: 300px; height: 300px" id="img_section4" src="/img/이미지 없음.png"><br/>
                             <input type="text" id="file_route04"  disabled="disabled" value="파일 선택" >
                             <label for="upload_file04">업로드</label>
                             <input type="file" id="upload_file04" name="filename" accept="image/*"style="position:absolute; clip:rect(0, 0, 0, 0);"><br/>
                         </div>
                         <div>
-                            <img style="width: 300px;" id="img_section5" src="/img/이미지 없음.png"><br/>				
+                            <img style="width: 300px; height: 300px" id="img_section5" src="/img/이미지 없음.png"><br/>				
                             <input type="text" id="file_route05"  disabled="disabled" value="파일 선택" >
                             <label for="upload_file05">업로드</label>
                             <input type="file" id="upload_file05" name="filename" accept="image/*" style="position:absolute; clip:rect(0, 0, 0, 0);"><br/>
