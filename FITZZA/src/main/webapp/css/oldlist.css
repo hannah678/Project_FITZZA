@@ -5,6 +5,7 @@
 }
 body{
 	font-size: 1.5em;
+	background-image: url("../img/배경.png");
 }
 a:link, a:visited, a:hover{
     text-decoration:none;
@@ -27,7 +28,7 @@ a:link, a:visited, a:hover{
     margin-bottom: 30px;
     text-align:right;
 }
-h1, h2, .oldlist>li:nth-child(1), .oldlist>li:nth-child(6n+3), .oldlist>li:nth-child(6n+4), .oldlist>li:nth-child(6n+5), .oldlist>li:nth-child(6n){
+h1, h2, .oldlist>li:nth-child(3), .oldlist>li:nth-child(6n+1), .oldlist>li:nth-child(6n+2), .oldlist>li:nth-child(6n+4), .oldlist>li:nth-child(6n+5), .oldlist>li:nth-child(6n){
     text-align: center;
 }
 .oldboard{
@@ -46,20 +47,13 @@ h1, h2, .oldlist>li:nth-child(1), .oldlist>li:nth-child(6n+3), .oldlist>li:nth-c
     width: 10%;
     background-color: white;
 }
-.oldlist>li:nth-child(6n+8){
+.oldlist>li:nth-child(6n+3){
     width: 40%;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
 }
-.oldlist>li:nth-child(2){
-    width: 50%;
-    text-align:center;
-}
-.oldlist>li:nth-child(6n+10){
-    width: 20%;
-}
-.oldlist>li:nth-child(4){
+.oldlist>li:nth-child(6n+5){
     width: 20%;
 }
 #product_img{

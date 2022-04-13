@@ -12,26 +12,32 @@
 		$("#boardFrm").submit(function(){
 			if($("#title").val()==''){
 				alert("제목을 입력하세요");
+				$("#title").focus();
 				return false;
 			}
 			if($("#city").val()==''){
 				alert("거래 가능 지역을 입력하세요");
+				$("#city").focus();
 				return false;
 			}
 			if($("#old_name").val()==''){
 				alert("상품명을 입력하세요");
+				$("#old_name").focus();
 				return false;
 			}
 			if($("#old_price").val()==''){
 				alert("가격을 입력하세요");
+				$("#old_price").focus();
 				return false;
 			}
 			if($("#content").val()==''){
 				alert("상품 설명을 입력하세요");
+				$("#content").focus();
 				return false;
 			}
             if($("#upload_file01").val()==''){
 				alert("대표이미지를 첨부하세요");
+				$("#upload_file01").focus();
 				return false;
 			}
 		});
@@ -85,10 +91,10 @@
 				<div class="img1">
                     <li id="img1">대표이미지<br/>
                         <div>
-                            <img style="width: 500px;" id="img_section" src="/img/이미지 없음.png"><br/>
+                            <img style="width: 500px; height: 500px" id="img_section" src="/img/이미지 없음.png"><br/>
                             <input type="text" id="file_route01"  disabled="disabled" value="파일 선택" >
                             <label for="upload_file01">업로드</label>
-                            <input type="file" id="upload_file01" name="filename" accept="image/*" required=true style="position:absolute; clip:rect(0, 0, 0, 0);"><br/>
+                            <input type="file" id="upload_file01" name="filename" accept="image/*" style="position:absolute; clip:rect(0, 0, 0, 0);"><br/>
                         </div>
                     </li>
                 </div>

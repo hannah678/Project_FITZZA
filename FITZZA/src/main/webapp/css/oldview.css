@@ -1,4 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Kaushan+Script&family=Nanum+Pen+Script&display=swap');
+*{
+	font-family:'Nanum pen script';
+    font-size: 1.1em;
+}
+body{
+	background-image: url("../img/배경.png");
+}
 .oldboard{
     width:1200px;
     margin:0 auto;
@@ -37,15 +44,14 @@ li{
 #report{
     width: 70px;
     height: 35px;
-    margin-top: 30px;
     font-weight: 600;
     background-color: white;
     color: red;
     border: 0;
     position: relative;
-    top:0px;
+    bottom:50px;
     left: 630px;
-    font-size: 0.7em;
+    font-size: 1em;
 }
 /*.info>#item{
     width: 500px;
@@ -60,7 +66,7 @@ li{
     padding-left: 50px;
 }*/
 #seller{
-	font-size:1em;
+	font-size:1.2em;
 	font-weight: 200;
 }
 #seller_img{
@@ -73,8 +79,11 @@ li{
     height: 140px;
     border-radius: 70%;
     position:relative;
-    top:20px;
+    top:0px;
 	right:120px;
+}
+#user_nick{
+	font-size:1.5em;
 }
 .reply{
     width: 1200px;
@@ -84,9 +93,9 @@ li{
 #replybtn{
     position: relative;
     right: 30px;
-    bottom: 16px;
+    bottom: 17px;
     width: 100px;
-    height: 56.5px;
+    height: 50px;
     border: 2px solid black;
     font-family:'Nanum pen script';
     font-size: 1em;
@@ -121,4 +130,7 @@ li{
     font-family:'Nanum pen script';
     font-size: 1em;
     font-weight: bold;
+}
+footer{
+	font-size: 1em;
 }

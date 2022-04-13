@@ -9,30 +9,35 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <link rel="stylesheet" href="/css/oldwrite.css" type="text/css">
 <script>
-	$(function(){
-		$("#boardFrm").submit(function(){
-			if($("#title").val()==''){
-				alert("제목을 입력하세요");
-				return false;
-			}
-			if($("#city").val()==''){
-				alert("거래 가능 지역을 입력하세요");
-				return false;
-			}
-			if($("#old_name").val()==''){
-				alert("상품명을 입력하세요");
-				return false;
-			}
-			if($("#old_price").val()==''){
-				alert("가격을 입력하세요");
-				return false;
-			}
-			if($("#content").val()==''){
-				alert("상품 설명을 입력하세요");
-				return false;
-			}
-		});
+$(function(){
+	$("#boardFrm").submit(function(){
+		if($("#title").val()==''){
+			alert("제목을 입력하세요");
+			$("#title").focus();
+			return false;
+		}
+		if($("#city").val()==''){
+			alert("거래 가능 지역을 입력하세요");
+			$("#city").focus();
+			return false;
+		}
+		if($("#old_name").val()==''){
+			alert("상품명을 입력하세요");
+			$("#old_name").focus();
+			return false;
+		}
+		if($("#old_price").val()==''){
+			alert("가격을 입력하세요");
+			$("#old_price").focus();
+			return false;
+		}
+		if($("#content").val()==''){
+			alert("상품 설명을 입력하세요");
+			$("#content").focus();
+			return false;
+		}
 	});
+});
 </script>
 
 <body>
@@ -194,7 +199,6 @@
 					</script>
 				<hr/>
 				<li><input type='submit' value='수정하기' id="enter"/></li>
-				<hr/>
             </ul>
         </form>
     </div>

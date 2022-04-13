@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
-
+<link rel="stylesheet" href="/css/oldview.css" type="text/css">
 <script>
 	function delCheck(){
 		if(confirm("삭제하시겠습니까?")){
@@ -140,10 +140,9 @@
 		document.getElementById("level_frame").src="${vo.frame_img}";
 	}
 </script>
-<link rel="stylesheet" href="/css/oldview.css" type="text/css">
 <body>
 	<div class="oldboard">
-		<br> <br> <br> <br>
+		<br> <br> <br> <br> <br>
 		<div class="oldlist">
 			<ul>
 				<img src="/upload/${vo.file1}" id="file_img" />
@@ -160,20 +159,21 @@
 					${vo.write_date} <!--enter_date--></li>
 				<li>${vo.user_id}</li>
 				<c:if test="${logId != vo.user_id}">
-					<br />
-				</c:if>
-				<c:if test="${logId == vo.user_id}">
-					<li style="float: right;">
-					<a href="/board/old/oldEdit?board_num=${vo.board_num}" style="color: blue;">수정</a> 
-					<a id="del" href="javascript:delCheck()" style="color: blue;">삭제</a></li>
 					<li><input type="button" value="신고" id="report"
 						data-target="#reportModal" data-toggle="modal" /></li>
 				</c:if>
+				<c:if test="${logId == vo.user_id}">
+					<li style="float: right;">
+						<a href="/board/old/oldEdit?board_num=${vo.board_num}" style="color: blue;">수정</a> 
+						<a id="del" href="javascript:delCheck()" style="color: blue;">삭제</a>
+					</li>
+					<br/>
+				</c:if>
 				<hr />
-				<li id="seller"><b>판매자 정보</b>
+				<li id="seller"><b><b>판매자 정보</b></b>
 					<hr /> <img src="${vo.profile_image}" alt="프로필 이미지"
 					id="seller_img"><img id="level_frame" alt="등급 프레임 이미지">
-					${vo.user_nickname}<!--user_nickname--> <br /> 거래 가능 지역 :
+					<span id="user_nick">${vo.user_nickname}</span><!--user_nickname--> <br /> 거래 가능 지역 :
 					${vo.city}<!--city--> <br /> 신고 받은 횟수 : ${vo.report_hit}<!--report_hit--></li>
 			</ul>
 			<hr />
