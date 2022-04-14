@@ -23,6 +23,7 @@
         <li>작성일</li>
         <li>조회</li>
 
+
 		<!-- 게시물 리스트-->
         <!--<c:forEach var="vo" items="${lst}">
             <li>${vo.city}</li>
@@ -31,7 +32,7 @@
             <li><img src="/upload/${vo.profile_image}" style="width:20px; height:20px; border-radius: 70%;" id="product_img"/> ${vo.user_nickname}</li>
             <li>${vo.write_date}</li>
             <li>${vo.hit}</li>
-        </c:forEach> -->
+        </c:forEach> 
     </ul>
     
     <!-- 리스트 더보기 -->

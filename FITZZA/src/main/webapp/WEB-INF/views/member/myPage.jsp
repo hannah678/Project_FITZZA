@@ -23,7 +23,6 @@ window.onload=function(){
 	// 게시물 리스트
 	var startNum = $("#my_list_contents03 li").length/5; // list안의 li태그의 개수
 		var addListHtml = "";
-		 alert(startNum); 
 		var url;
 		var param;
 		const params = new URL(window.location.href).searchParams;
@@ -31,7 +30,7 @@ window.onload=function(){
 		var pathname = window.location.pathname;
 		var pn = pathname.substring(pathname.lastIndexOf('/')+1);
 		if(pn=='myPage'){
-			url = '/member/myPages';
+			url = '/member/myPage03';
 			param = {
 				"startNum" : startNum 
 			};
@@ -40,7 +39,7 @@ window.onload=function(){
 		
 		$.ajax({
 			url : url,
-			type : 'POST',
+			type : 'GET',
 			dataType : 'json',
 			data :param,
 			success : function(data){
@@ -56,17 +55,17 @@ window.onload=function(){
 					
 				}
 				if(data.length<5){
-					$("#moreView").remove();
+					$("#moreView03").remove();
 				} 
 				$("#my_list_contents03").append(addListHtml);
 				/* console.log(addListHtml); */
 			}
 		});
 }
-$('#moreView').click(function(){
+
+function viewMore(){
 	var startNum = $("#my_list_contents03 li").length/5; // oldlist안에 li태그의 길이
 	var addListHtml = "";
-	 console.log(startNum); 
 	var url;
 	var param;
 	const params = new URL(window.location.href).searchParams;
@@ -74,7 +73,7 @@ $('#moreView').click(function(){
 	var pathname = window.location.pathname;
 	var pn = pathname.substring(pathname.lastIndexOf('/')+1);
 	if(pn=='myPage'){
-		url = '/member/myPages';
+		url = '/member/myPage03';
 		param = {
 			"startNum" : startNum 
 		};
@@ -83,7 +82,7 @@ $('#moreView').click(function(){
 
 	$.ajax({
 		url : url,
-		type : 'POST',
+		type : 'GET',
 		dataType : 'json',
 		data :param,
 		success : function(data){
@@ -99,13 +98,13 @@ $('#moreView').click(function(){
 				
 			}
 			if(data.length<5){
-				$("#moreView").remove();
+				$("#moreView03").remove();
 			} 
 			$("#my_list_contents03").append(addListHtml);
 			/* console.log(addListHtml); */
 		}
 	});
-});
+}
 </script>
 <input type="hidden" name="user_id" value="${vo.user_id}"/>
 <div id="mypage_wrap">
@@ -203,14 +202,16 @@ $('#moreView').click(function(){
 		<li>
 			<input type="radio" name="tab" id="tab3">
 			<label for="tab3">중고거래</label>
-			<div>
+			<div style="overflow:auto;">
 				<ul class="my_list_title">
 					<li>게시물 제목</li>
 					<li>내용</li>
 					<li>조회수</li>
 					<li>작성날짜</li>
 				</ul>
-				<ul class="my_list_contents" id="my_list_contents03">
+				
+				
+				<ul class="my_list_contents" id="my_list_contents03" >
 					<!-- 게시물 리스트-->
         			<!--<c:forEach var="vo3" items="${lst3}">
 						<li>
@@ -224,9 +225,10 @@ $('#moreView').click(function(){
 						</li>
 					</c:forEach>-->
 				</ul>
+				
+				<a id="moreView03" onclick="viewMore()"><img src="/img/더보기.png" style="width:100px;"></a>
+				
 			</div>
-			<a id="moreView" style="background-color:black;"><img src="/img/더보기.png" style="width:100px;"></a>
-			
 		</li>
 		<li>
 			<input type="radio" name="tab" id="tab4">

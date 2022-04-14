@@ -170,7 +170,7 @@ public class MemberController {
 		return "redirect:memberEdit";
 	}
 	
-	//마이페이지
+	//마이페이지 프로필
 	@GetMapping("member/myPage")
 	public ModelAndView mypage(HttpSession session) {
 		String user_id = (String)session.getAttribute("logId");
@@ -188,13 +188,12 @@ public class MemberController {
 	}
 	//마이페이지 더보기페이징
 	@ResponseBody //Ajax
-	@RequestMapping(value = "/member/myPages")
+	@RequestMapping(value = "/member/myPage03")
 	public List<BoardVO> MoreView(PagingVO pvo, HttpSession session
 			, @RequestParam(value="startNum", required=false)String startNum) throws Exception {
 		System.out.println("페이징 브이오다"+pvo);
 		
 		String user_id = (String)session.getAttribute("logId");
-		
 		
 		pvo.setStart(Integer.parseInt(startNum));
 		pvo.setEnd(5);

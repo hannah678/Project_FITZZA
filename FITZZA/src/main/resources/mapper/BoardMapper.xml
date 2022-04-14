@@ -65,30 +65,37 @@
         SELECT   board_num, title, content, user_id, hit, ip, write_date
 		FROM     board
 		WHERE    user_id=#{param1} AND type_num=1
+		LIMIT 	#{param2.start}, #{param2.end}
     </select>
     <select id="recommendWriterSelect" resultType="com.team.fitzza.vo.BoardVO">
         SELECT   board_num, title, content, user_id, hit, ip, write_date
 		FROM     board
 		WHERE    user_id=#{param1} AND type_num=2
+		LIMIT 	#{param2.start}, #{param2.end}
     </select>
     <select id="oldWriterSelect" resultType="com.team.fitzza.vo.BoardVO">
         SELECT   board_num, title, content, user_id, hit, ip, write_date
 		FROM     board
 		WHERE    user_id=#{param1} AND type_num=3
+		LIMIT 	#{param2.start}, #{param2.end}
+
     </select>
     <select id="reviewWriterSelect" resultType="com.team.fitzza.vo.BoardVO">
         SELECT   board_num, title, content, user_id, hit, ip, write_date
 		FROM     board
 		WHERE    user_id=#{param1} AND type_num=4
+		LIMIT 	#{param2.start}, #{param2.end}
     </select>
     <select id="qnaWriterSelect" resultType="com.team.fitzza.vo.BoardVO">
         SELECT   board_num, title, content, user_id, hit, ip, write_date
 		FROM     board
 		WHERE    user_id=#{param1} AND type_num=5
+		LIMIT 	#{param2.start}, #{param2.end}
     </select>
     <select id="voteWriterSelect" resultType="com.team.fitzza.vo.BoardVO">
         SELECT   board_num, title, content, user_id, hit, ip, write_date
 		FROM     board
 		WHERE    user_id=#{param1} AND type_num=6
+		LIMIT 	#{param2.start}, #{param2.end}
     </select>
 </mapper>
