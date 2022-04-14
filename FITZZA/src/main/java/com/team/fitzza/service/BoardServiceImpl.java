@@ -109,5 +109,15 @@ public class BoardServiceImpl implements BoardService{
 	public List<ReplyVO> replyWriterSelect(String user_id, PagingVO pvo) {
 		return dao.replyWriterSelect(user_id, pvo);
 	}
+
+	@Override
+	public List<BoardVO> BoardSelectAll(int type_num) {
+		return dao.BoardSelectAll(type_num);
+	}
+
+	@Override
+	public BoardVO BoardView(int board_num) {
+		return dao.BoardView(board_num);
+	}
 	
 }

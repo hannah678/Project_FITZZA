@@ -26,8 +26,8 @@
 				  		 	<div class="txt">${vo.content}</div><!-- 글 내용 일부분 -->
 				  		</div>
 				  		<div class="post_bottom"> <!--  작성자 작성일 조회수 등 들어갈곳 -->
-				  		 	<span>${vo.user_nickname}&nbsp;<img src="/upload/${vo.profile_image}" style='width:20px; height:20px; border-radius: 70%;'/></span><!--  닉네임 -->
-				  			<span>작성일자 : ${vo.write_date}</span><!--  작성일자 -->
+				  		 	<span><img src="/upload/${vo.profile_image}" style='width:20px; height:20px; border-radius: 70%;'/>&nbsp;${vo.user_nickname}</span><!--  닉네임 -->
+				  			<span>${vo.write_date}</span><!--  작성일자 -->
 				  			<span>조회수 : ${vo.hit}</span><!--  조회수 -->
 				  		</div>
 				  	</div>

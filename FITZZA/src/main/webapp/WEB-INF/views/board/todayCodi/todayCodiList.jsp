@@ -1,6 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-    
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
     <link rel="stylesheet" href="/css/todayCodi.css" type="text/css"/>
     <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
     <style>
@@ -24,38 +24,16 @@
 		<h1>오늘의 코디</h1>
 		<div id="write"><a href="/board/todayCodi/todayCodiWrite">글쓰기</a></div>
 		<ul id="tc_box">
-			<li class='tc_img'>
-				<img src='/img/bg.png' >
-				<a href=''>
-					<img src="/upload/profileDefault.png">
-					<p>닉네임</p>
-					<span>작성일</span>
-				</a>
-			</li>
-			<li class='tc_img'>
-				<img src='/img/bg.png'>
-				<a href=''>
-					<img src="/img/profileDefault.png">
-					<p>닉네임</p>
-					<span>작성일</span>
-				</a>
-			</li>
-			<li class='tc_img'>
-				<img src='/img/bg.png'>
-				<a href=''>
-					<img src="/img/profileDefault.png">
-					<p>닉네임</p>
-					<span>작성일</span>
-				</a>
-			</li>
-			<li class='tc_img'>
-				<img src='/img/bg.png'>
-				<a href=''>
-					<img src="/img/profileDefault.png">
-					<p>닉네임</p>
-					<span>작성일</span>
-				</a>
-			</li>
+			<c:forEach var="vo" items="${lst}">
+				<li class='tc_img'>
+					<img src='/upload/${vo.file1}' >
+					<a href='#'>
+						<img src="/upload/${vo.profile_image}">
+						<p>${vo.user_nickname}</p>
+						<span>${vo.write_date}</span>
+					</a>
+				</li>
+			</c:forEach>
 		</ul>
 	</div>
 </div>

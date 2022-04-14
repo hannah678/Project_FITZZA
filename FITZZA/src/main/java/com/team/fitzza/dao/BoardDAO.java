@@ -18,7 +18,10 @@ public interface BoardDAO {
 	public int BoardFileInsert(BoardVO vo);
 	//글1개 선택
 	public BoardVO boardSelect(int board_num);
-
+	
+	public List<BoardVO> BoardSelectAll(int type_num);
+	public BoardVO BoardView(int board_num);
+	
 	public int boardNum(String user_id);
 	//글수정
 	public int BoardUpdate(BoardVO vo);

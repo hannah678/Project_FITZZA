@@ -22,7 +22,31 @@
     <select id="boardNum" resultType="int">
   		SELECT board_num FROM board WHERE user_id=#{param1} ORDER BY board_num DESC LIMIT 1;
   	</select>
-  	
+  	<!-- reviewList --><!-- TodayList -->
+	<select id="BoardSelectAll" resultType="com.team.fitzza.vo.BoardVO">
+        SELECT   A.board_num, A.title, A.user_id, A.write_date, B.profile_image, B.user_nickname, C.file1 
+		FROM     board A, user B, board_common_image C 
+		WHERE    A.user_id=B.user_id 
+		AND 	 A.board_num=C.board_num 
+		AND 	 A.type_num=#{param1}
+		ORDER BY A.board_num DESC;
+    </select>
+    
+    <!-- reviewView --><!-- TodayView -->
+    <select id="BoardView" resultType="com.team.fitzza.vo.BoardVO">
+	    SELECT A.board_num, A.title, A.hit, A.write_date, A.content, A.user_id, 
+	    	   B.file1, B.file2, B.file3, B.file4, B.file5, 
+	   		   C.user_nickname, C.report_hit, C.profile_image, C.exp,
+	   		   D.gender_name,
+	   		   E.frame_img
+	    FROM   board A, board_common_image B, user C, gender D, user_grade E
+	    WHERE  A.board_num=B.board_num 
+	    AND    A.user_id=C.user_id 
+	    AND    A.gender_type=D.gender_type
+	    AND    A.board_num=${param1}
+	    AND    E.exp_min <![CDATA[<=]]> C.exp
+		AND    C.exp <![CDATA[<=]]> E.exp_max
+    </select>
 	<!-- 조회수 올리기 -->
 	<update id="hitCount">
         UPDATE board SET hit = hit+1 WHERE board_num=#{param1}
