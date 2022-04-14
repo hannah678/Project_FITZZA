@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.team.fitzza.dao.BoardDAO;
 import com.team.fitzza.vo.BoardVO;
+import com.team.fitzza.vo.PagingVO;
 
 @Service
 public class BoardServiceImpl implements BoardService{
@@ -49,36 +50,6 @@ public class BoardServiceImpl implements BoardService{
 	}
 
 	@Override
-	public List<BoardVO> todayWriterSelect(String user_id) {
-		return dao.todayWriterSelect(user_id);
-	}
-
-	@Override
-	public List<BoardVO> recommendWriterSelect(String user_id) {
-		return dao.recommendWriterSelect(user_id);
-	}
-
-	@Override
-	public List<BoardVO> oldWriterSelect(String user_id) {
-		return dao.oldWriterSelect(user_id);
-	}
-
-	@Override
-	public List<BoardVO> reviewWriterSelect(String user_id) {
-		return dao.reviewWriterSelect(user_id);
-	}
-
-	@Override
-	public List<BoardVO> qnaWriterSelect(String user_id) {
-		return dao.qnaWriterSelect(user_id);
-	}
-
-	@Override
-	public List<BoardVO> voteWriterSelect(String user_id) {
-		return dao.voteWriterSelect(user_id);
-	}
-
-	@Override
 	public BoardVO getFileName(int board_num) {
 		return dao.getFileName(board_num);
 	}
@@ -101,6 +72,36 @@ public class BoardServiceImpl implements BoardService{
 	@Override
 	public int boardNum(String user_id) {
 		return dao.boardNum(user_id);
+	}
+
+	@Override
+	public List<BoardVO> todayWriterSelect(String user_id, PagingVO pvo) {
+		return dao.todayWriterSelect(user_id, pvo);
+	}
+
+	@Override
+	public List<BoardVO> recommendWriterSelect(String user_id, PagingVO pvo) {
+		return dao.recommendWriterSelect(user_id, pvo);
+	}
+
+	@Override
+	public List<BoardVO> oldWriterSelect(String user_id, PagingVO pvo) {
+		return dao.oldWriterSelect(user_id, pvo);
+	}
+
+	@Override
+	public List<BoardVO> reviewWriterSelect(String user_id, PagingVO pvo) {
+		return dao.reviewWriterSelect(user_id, pvo);
+	}
+
+	@Override
+	public List<BoardVO> qnaWriterSelect(String user_id, PagingVO pvo) {
+		return dao.qnaWriterSelect(user_id, pvo);
+	}
+
+	@Override
+	public List<BoardVO> voteWriterSelect(String user_id, PagingVO pvo) {
+		return dao.voteWriterSelect(user_id, pvo);
 	}
 	
 }

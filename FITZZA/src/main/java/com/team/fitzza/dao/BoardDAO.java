@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
 import com.team.fitzza.vo.BoardVO;
+import com.team.fitzza.vo.PagingVO;
 
 @Mapper
 @Repository
@@ -34,11 +35,11 @@ public interface BoardDAO {
  	
  	public int getType_num(int type_num);
  	//마이페이지 글목록
- 	public List<BoardVO> todayWriterSelect(String user_id);
-	public List<BoardVO> recommendWriterSelect(String user_id);
-	public List<BoardVO> oldWriterSelect(String user_id);
-	public List<BoardVO> reviewWriterSelect(String user_id);
-	public List<BoardVO> qnaWriterSelect(String user_id);
-	public List<BoardVO> voteWriterSelect(String user_id);
+ 	public List<BoardVO> todayWriterSelect(String user_id, PagingVO pvo);
+	public List<BoardVO> recommendWriterSelect(String user_id, PagingVO pvo);
+	public List<BoardVO> oldWriterSelect(String user_id, PagingVO pvo);
+	public List<BoardVO> reviewWriterSelect(String user_id, PagingVO pvo);
+	public List<BoardVO> qnaWriterSelect(String user_id, PagingVO pvo);
+	public List<BoardVO> voteWriterSelect(String user_id, PagingVO pvo);
  	
 }

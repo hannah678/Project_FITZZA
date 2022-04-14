@@ -3,6 +3,7 @@ package com.team.fitzza.vo;
 public class PagingVO {
 	private int start;
 	private int end;
+	
 	public int getStart() {
 		return start;
 	}

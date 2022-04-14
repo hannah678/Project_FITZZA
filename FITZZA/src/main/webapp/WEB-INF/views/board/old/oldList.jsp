@@ -23,20 +23,19 @@
         <li>작성일</li>
         <li>조회</li>
 
-
 		<!-- 게시물 리스트-->
-        <c:forEach var="vo" items="${lst}">
+        <!--<c:forEach var="vo" items="${lst}">
             <li>${vo.city}</li>
             <li><a href="/board/old/oldView?board_num=${vo.board_num}"><img src="/upload/${vo.file1}"/></a></li>
             <li><a href="/board/old/oldView?board_num=${vo.board_num}">${vo.title}</a></li>
             <li><img src="/upload/${vo.profile_image}" style="width:20px; height:20px; border-radius: 70%;" id="product_img"/> ${vo.user_nickname}</li>
             <li>${vo.write_date}</li>
             <li>${vo.hit}</li>
-        </c:forEach> 
+        </c:forEach> -->
     </ul>
     
     <!-- 리스트 더보기 -->
-    <a id="moreView"><img src="/img/더보기.png" style="width:100px;"></a>
+    <a id="moreView" ><img src="/img/더보기.png" style="width:100px;"></a>
     
     
     <!-- 검색 -->
@@ -92,7 +91,6 @@
 				dataType : 'json',
 				data :param,
 				success : function(data){
-					
 					for (var i = 0; i < data.length; i++) {
 						addListHtml += "<li>"+data[i].city+"</li>";
 						addListHtml += "<li><a href='/board/old/oldView?board_num="+data[i].board_num+"'><img src='/upload/"+data[i].file1+"' id='product_img'/></a></li>";
@@ -100,10 +98,10 @@
 						addListHtml += "<li><img src='/upload/"+data[i].profile_image+"' style='width:20px; height:20px; border-radius: 70%;'/>&nbsp;"+data[i].user_nickname+"</li>";
 						addListHtml += "<li>"+data[i].write_date+"</li>";
 						addListHtml += "<li>"+data[i].hit+"</li>";
-						if(data[i].board_num==1){
-							$("#moreView").remove();
-						} 
 					}
+					if(data.length<5){
+						$("#moreView").remove();
+					} 
 					$("#oldlist").append(addListHtml);
 					/* console.log(addListHtml); */
 				}
@@ -141,7 +139,6 @@
 				dataType : 'json',
 				data :param,
 				success : function(data){
-					
 					for (var i = 0; i < data.length; i++) {
 						addListHtml += "<li>"+data[i].city+"</li>";
 						addListHtml += "<li><a href='/board/old/oldView?board_num="+data[i].board_num+"'><img src='/upload/"+data[i].file1+"' id='product_img'/></a></li>";
@@ -149,10 +146,11 @@
 						addListHtml += "<li><img src=/upload/'"+data[i].profile_image+"' style='width:20px; height:20px; border-radius: 70%;'/>"+data[i].user_nickname+"</li>";
 						addListHtml += "<li>"+data[i].write_date+"</li>";
 						addListHtml += "<li>"+data[i].hit+"</li>";
-						if(data[i].board_num==1){
-							$("#moreView").remove();
-						} 
+						
 					}
+					if(data.length<5){
+						$("#moreView").remove();
+					} 
 					$("#oldlist").append(addListHtml);
 					/* console.log(addListHtml); */
 				}

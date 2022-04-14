@@ -175,17 +175,30 @@ public class MemberController {
 	public ModelAndView mypage(HttpSession session) {
 		String user_id = (String)session.getAttribute("logId");
 		MemberVO vo = service.myPage(user_id);
-		
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("vo", vo);
-		mav.addObject("lst1", Bservice.todayWriterSelect(user_id));
-		mav.addObject("lst2", Bservice.recommendWriterSelect(user_id));
-		mav.addObject("lst3", Bservice.oldWriterSelect(user_id));	
-		mav.addObject("lst4", Bservice.reviewWriterSelect(user_id));
-		mav.addObject("lst5", Bservice.qnaWriterSelect(user_id));
-		mav.addObject("lst6", Bservice.voteWriterSelect(user_id));		
+//		mav.addObject("lst1", Bservice.todayWriterSelect(user_id));
+//		mav.addObject("lst2", Bservice.recommendWriterSelect(user_id));
+//		mav.addObject("lst3", Bservice.oldWriterSelect(user_id));	
+//		mav.addObject("lst4", Bservice.reviewWriterSelect(user_id));
+//		mav.addObject("lst5", Bservice.qnaWriterSelect(user_id));
+//		mav.addObject("lst6", Bservice.voteWriterSelect(user_id));		
 		mav.setViewName("/member/myPage");
 		return mav;
+	}
+	//마이페이지 더보기페이징
+	@ResponseBody //Ajax
+	@RequestMapping(value = "/member/myPages")
+	public List<BoardVO> MoreView(PagingVO pvo, HttpSession session
+			, @RequestParam(value="startNum", required=false)String startNum) throws Exception {
+		System.out.println("페이징 브이오다"+pvo);
+		
+		String user_id = (String)session.getAttribute("logId");
+		
+		
+		pvo.setStart(Integer.parseInt(startNum));
+		pvo.setEnd(5);
+		return Bservice.oldWriterSelect(user_id, pvo);
 	}
 	
 	//회원 탈퇴

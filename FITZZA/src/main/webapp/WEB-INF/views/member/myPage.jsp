@@ -2,24 +2,111 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <link rel="stylesheet" href="/css/mypage.css" type="text/css"/>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
-<script>
-	window.onload=function(){
-		var exp = ${vo.exp};
-		var x = document.getElementById("user_grade");
-		var y = document.getElementById("level_frame");
-		
-		x.innerText="level "+ ${vo.grade};
-		y.src="${vo.frame_img}";
-	}
-</script>
+
 <style>
 *{font-family:'Nanum pen script'; font-size:30px;text-decoration: none; }
 a {font-size:24px}
 a:link {color:#fff; text-decoration: none;}
 a:visited {color:#fff}
 .my_list_title li {font-size:24px; font-weight:600;}
-
 </style>
+<script>
+window.onload=function(){
+	//프로필
+	var exp = ${vo.exp};
+	var x = document.getElementById("user_grade");
+	var y = document.getElementById("level_frame");
+	
+	x.innerText="level ${vo.grade}";
+	y.src="${vo.frame_img}";
+	
+	// 게시물 리스트
+	var startNum = $("#my_list_contents03 li").length/5; // list안의 li태그의 개수
+		var addListHtml = "";
+		 alert(startNum); 
+		var url;
+		var param;
+		const params = new URL(window.location.href).searchParams;
+
+		var pathname = window.location.pathname;
+		var pn = pathname.substring(pathname.lastIndexOf('/')+1);
+		if(pn=='myPage'){
+			url = '/member/myPages';
+			param = {
+				"startNum" : startNum 
+			};
+		}
+			console.log(startNum);
+		
+		$.ajax({
+			url : url,
+			type : 'POST',
+			dataType : 'json',
+			data :param,
+			success : function(data){
+				for (var i = 0; i < data.length; i++) {
+					addListHtml += "<li>";
+                    addListHtml += "<ul>";
+					addListHtml += "<li class='my_list_subtitle'>"+data[i].title+"</li>";
+					addListHtml += "<li class='my_list_subcontent'>"+data[i].content+"</li>";
+					addListHtml += "<li class='my_list_hit'>"+data[i].hit+"</li>";
+					addListHtml += "<li class='my_list_date'>"+data[i].write_date+"</li>";
+					addListHtml += "</ul>";
+                    addListHtml += "<a href='/board/old/oldView?board_num="+data[i].board_num+"'></a></li>";
+					
+				}
+				if(data.length<5){
+					$("#moreView").remove();
+				} 
+				$("#my_list_contents03").append(addListHtml);
+				/* console.log(addListHtml); */
+			}
+		});
+}
+$('#moreView').click(function(){
+	var startNum = $("#my_list_contents03 li").length/5; // oldlist안에 li태그의 길이
+	var addListHtml = "";
+	 console.log(startNum); 
+	var url;
+	var param;
+	const params = new URL(window.location.href).searchParams;
+	
+	var pathname = window.location.pathname;
+	var pn = pathname.substring(pathname.lastIndexOf('/')+1);
+	if(pn=='myPage'){
+		url = '/member/myPages';
+		param = {
+			"startNum" : startNum 
+		};
+	}
+		console.log(startNum);
+
+	$.ajax({
+		url : url,
+		type : 'POST',
+		dataType : 'json',
+		data :param,
+		success : function(data){
+			for (var i = 0; i < data.length; i++) {
+				addListHtml += "<li>";
+                addListHtml += "<ul>";
+				addListHtml += "<li class='my_list_subtitle'>"+data[i].title+"</li>";
+				addListHtml += "<li class='my_list_subcontent'>"+data[i].content+"</li>";
+				addListHtml += "<li class='my_list_hit'>"+data[i].hit+"</li>";
+				addListHtml += "<li class='my_list_date'>"+data[i].write_date+"</li>";
+				addListHtml += "</ul>";
+                addListHtml += "<a href='/board/old/oldView?board_num="+data[i].board_num+"'></a></li>";
+				
+			}
+			if(data.length<5){
+				$("#moreView").remove();
+			} 
+			$("#my_list_contents03").append(addListHtml);
+			/* console.log(addListHtml); */
+		}
+	});
+});
+</script>
 <input type="hidden" name="user_id" value="${vo.user_id}"/>
 <div id="mypage_wrap">
 	<ul id="profile">
@@ -71,9 +158,9 @@ a:visited {color:#fff}
 					<li>조회수</li>
 					<li>작성날짜</li>
 				</ul>
-				<ul class="my_list_contents">
+				<ul class="my_list_contents" id="my_list_contents01">
 					<!-- 게시물 리스트-->
-        			<c:forEach var="vo1" items="${lst1}">
+        			<!--<c:forEach var="vo1" items="${lst1}">
 						<li>
 							<ul>
 								<li class="my_list_subtitle">${vo1.title}</li>
@@ -83,7 +170,7 @@ a:visited {color:#fff}
 							</ul>
 							<a href="/board/old/oldView?board_num=${vo1.board_num}"></a>
 						</li>
-					</c:forEach>
+					</c:forEach>-->
 				</ul>
 			</div>
 		</li>
@@ -99,7 +186,7 @@ a:visited {color:#fff}
 				</ul>
 				<ul class="my_list_contents">
 					<!-- 게시물 리스트-->
-        			<c:forEach var="vo2" items="${lst2}">
+        			<!--<c:forEach var="vo2" items="${lst2}">
 						<li>
 							<ul>
 								<li class="my_list_subtitle">${vo2.title}</li>
@@ -109,7 +196,7 @@ a:visited {color:#fff}
 							</ul>
 							<a href="/board/old/oldView?board_num=${vo2.board_num}"></a>
 						</li>
-					</c:forEach>
+					</c:forEach>-->
 				</ul>
 			</div>
 		</li>
@@ -123,9 +210,9 @@ a:visited {color:#fff}
 					<li>조회수</li>
 					<li>작성날짜</li>
 				</ul>
-				<ul class="my_list_contents">
+				<ul class="my_list_contents" id="my_list_contents03">
 					<!-- 게시물 리스트-->
-        			<c:forEach var="vo3" items="${lst3}">
+        			<!--<c:forEach var="vo3" items="${lst3}">
 						<li>
 							<ul>
 								<li class="my_list_subtitle">${vo3.title}</li>
@@ -135,9 +222,11 @@ a:visited {color:#fff}
 							</ul>
 							<a class="my_list_alink" href="/board/old/oldView?board_num=${vo3.board_num}"></a>
 						</li>
-					</c:forEach>
+					</c:forEach>-->
 				</ul>
 			</div>
+			<a id="moreView" style="background-color:black;"><img src="/img/더보기.png" style="width:100px;"></a>
+			
 		</li>
 		<li>
 			<input type="radio" name="tab" id="tab4">
@@ -151,7 +240,7 @@ a:visited {color:#fff}
 				</ul>
 				<ul class="my_list_contents">
 					<!-- 게시물 리스트-->
-        			<c:forEach var="vo4" items="${lst4}">
+        			<!--<c:forEach var="vo4" items="${lst4}">
 						<li>
 							<ul>
 								<li class="my_list_subtitle">${vo4.title}</li>
@@ -161,7 +250,7 @@ a:visited {color:#fff}
 							</ul>
 							<a class="my_list_alink" href="/board/old/oldView?board_num=${vo4.board_num}"></a>
 						</li>
-					</c:forEach>
+					</c:forEach>-->
 				</ul>
 			</div>
 		</li>
@@ -177,7 +266,7 @@ a:visited {color:#fff}
 				</ul>
 				<ul class="my_list_contents">
 					<!-- 게시물 리스트-->
-        			<c:forEach var="vo5" items="${lst5}">
+        			<!--<c:forEach var="vo5" items="${lst5}">
 						<li>
 							<ul>
 								<li class="my_list_subtitle">${vo5.title}</li>
@@ -187,7 +276,7 @@ a:visited {color:#fff}
 							</ul>
 							<a href="/board/old/oldView?board_num=${vo5.board_num}"></a>
 						</li>
-					</c:forEach>
+					</c:forEach>-->
 				</ul>
 			</div>
 		</li>
@@ -203,7 +292,7 @@ a:visited {color:#fff}
 				</ul>
 				<ul class="my_list_contents">
 					<!-- 게시물 리스트-->
-        			<c:forEach var="vo6" items="${lst6}">
+        			<!--<c:forEach var="vo6" items="${lst6}">
 						<li>
 							<ul>
 								<li class="my_list_subtitle">${vo6.title}</li>
@@ -213,7 +302,7 @@ a:visited {color:#fff}
 							</ul>
 							<a href="/board/old/oldView?board_num=${vo6.board_num}"></a>
 						</li>
-					</c:forEach>
+					</c:forEach>-->
 				</ul>
 			</div>
 		</li>
@@ -235,20 +324,6 @@ a:visited {color:#fff}
 			</div>
 		</li>
 	</ul>
-	<!-- 게시물 리스트 페이징 -->
-    <ul class="paging">
-      
-            <!-- 삭제 -->
-            <li><a href="">이전</a></li>
-            <li style="background-color:#fff58c; border-radius:360px; font-weight:bold;">1</li>
-            <li>2</li>
-            <li>3</li>
-            <li>4</li>
-            <li>5</li>
-            <li><a href="">다음</a></li>
-            <!-- 삭제 -->
-
-     </ul>
 </div>
 <!-- 프로필 사진 바꾸기 모달 -->
 		<div id="changeModal" class="modal">
@@ -291,4 +366,5 @@ a:visited {color:#fff}
 				</div>
 			</div>
 		</div>
+
 
