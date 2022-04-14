@@ -4,6 +4,7 @@ public class ReplyVO {
 	
 	private int reply_num;
 	private int board_num;
+	private String title;
 	private String user_id;
 	private String user_nickname;
 	private String profile_image;
@@ -12,6 +13,13 @@ public class ReplyVO {
 	private String reply_date;
 	
 	
+	
+	public String getTitle() {
+		return title;
+	}
+	public void setTitle(String title) {
+		this.title = title;
+	}
 	public String getUser_nickname() {
 		return user_nickname;
 	}

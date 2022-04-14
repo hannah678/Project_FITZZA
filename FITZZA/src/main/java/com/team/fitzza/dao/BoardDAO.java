@@ -7,6 +7,7 @@ import org.springframework.stereotype.Repository;
 
 import com.team.fitzza.vo.BoardVO;
 import com.team.fitzza.vo.PagingVO;
+import com.team.fitzza.vo.ReplyVO;
 
 @Mapper
 @Repository
@@ -41,5 +42,5 @@ public interface BoardDAO {
 	public List<BoardVO> reviewWriterSelect(String user_id, PagingVO pvo);
 	public List<BoardVO> qnaWriterSelect(String user_id, PagingVO pvo);
 	public List<BoardVO> voteWriterSelect(String user_id, PagingVO pvo);
- 	
+	public List<ReplyVO> replyWriterSelect(String user_id, PagingVO pvo);
 }

@@ -98,4 +98,11 @@
 		WHERE    user_id=#{param1} AND type_num=6
 		LIMIT 	#{param2.start}, #{param2.end}
     </select>
+    <!-- 댓글 마이페이지 -->
+    <select id="replyWriterSelect" resultType="com.team.fitzza.vo.ReplyVO">
+    	SELECT B.title, A.coment, A.reply_date 
+	FROM reply A JOIN board B ON A.board_num=B.board_num
+	WHERE A.user_id=#{param1}
+	LIMIT #{param2.start}, #{param2.end}
+    </select>
 </mapper>

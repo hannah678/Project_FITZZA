@@ -20,92 +20,483 @@ window.onload=function(){
 	x.innerText="level ${vo.grade}";
 	y.src="${vo.frame_img}";
 	
-	// 게시물 리스트
-	var startNum = $("#my_list_contents03 li").length/5; // list안의 li태그의 개수
-		var addListHtml = "";
-		var url;
-		var param;
-		const params = new URL(window.location.href).searchParams;
-
-		var pathname = window.location.pathname;
-		var pn = pathname.substring(pathname.lastIndexOf('/')+1);
-		if(pn=='myPage'){
-			url = '/member/myPage03';
-			param = {
-				"startNum" : startNum 
-			};
-		}
-			console.log(startNum);
-		
-		$.ajax({
-			url : url,
-			type : 'GET',
-			dataType : 'json',
-			data :param,
-			success : function(data){
-				for (var i = 0; i < data.length; i++) {
-					addListHtml += "<li>";
-                    addListHtml += "<ul>";
-					addListHtml += "<li class='my_list_subtitle'>"+data[i].title+"</li>";
-					addListHtml += "<li class='my_list_subcontent'>"+data[i].content+"</li>";
-					addListHtml += "<li class='my_list_hit'>"+data[i].hit+"</li>";
-					addListHtml += "<li class='my_list_date'>"+data[i].write_date+"</li>";
-					addListHtml += "</ul>";
-                    addListHtml += "<a href='/board/old/oldView?board_num="+data[i].board_num+"'></a></li>";
-					
-				}
-				if(data.length<5){
-					$("#moreView03").remove();
-				} 
-				$("#my_list_contents03").append(addListHtml);
-				/* console.log(addListHtml); */
-			}
-		});
-}
-
-function viewMore(){
-	var startNum = $("#my_list_contents03 li").length/5; // oldlist안에 li태그의 길이
-	var addListHtml = "";
-	var url;
-	var param;
-	const params = new URL(window.location.href).searchParams;
-	
-	var pathname = window.location.pathname;
-	var pn = pathname.substring(pathname.lastIndexOf('/')+1);
-	if(pn=='myPage'){
-		url = '/member/myPage03';
-		param = {
-			"startNum" : startNum 
-		};
-	}
-		console.log(startNum);
+	// (1) 오늘의코디 게시물 리스트
+	var startNum01 = $("#my_list_contents01 li").length/5; // oldlist안에 li태그의 길이
+	var addListHtml01 = "";
+	var url01= '/member/myPage01';
+	var param01 = {"startNum01" : startNum01};
+	var pathname01 = window.location.pathname;
+	var pn01 = pathname01.substring(pathname01.lastIndexOf('/')+1);
+		console.log(startNum01);
 
 	$.ajax({
-		url : url,
+		url : url01,
 		type : 'GET',
 		dataType : 'json',
-		data :param,
+		data :param01,
 		success : function(data){
 			for (var i = 0; i < data.length; i++) {
-				addListHtml += "<li>";
-                addListHtml += "<ul>";
-				addListHtml += "<li class='my_list_subtitle'>"+data[i].title+"</li>";
-				addListHtml += "<li class='my_list_subcontent'>"+data[i].content+"</li>";
-				addListHtml += "<li class='my_list_hit'>"+data[i].hit+"</li>";
-				addListHtml += "<li class='my_list_date'>"+data[i].write_date+"</li>";
-				addListHtml += "</ul>";
-                addListHtml += "<a href='/board/old/oldView?board_num="+data[i].board_num+"'></a></li>";
+				addListHtml01 += "<li>";
+                addListHtml01 += "<ul>";
+				addListHtml01 += "<li class='my_list_subtitle'>"+data[i].title+"</li>";
+				addListHtml01 += "<li class='my_list_subcontent'>"+data[i].content+"</li>";
+				addListHtml01 += "<li class='my_list_hit'>"+data[i].hit+"</li>";
+				addListHtml01 += "<li class='my_list_date'>"+data[i].write_date+"</li>";
+				addListHtml01 += "</ul>";
+                addListHtml01 += "<a href='/board/old/oldView?board_num="+data[i].board_num+"'></a></li>";
+				            
+			}
+			if(data.length<5){
+				$("#moreView01").remove();
+			} 
+			$("#my_list_contents01").append(addListHtml01);
+			/* console.log(addListHtml); */
+		}
+	});
+	// (2) 추천 게시물 리스트
+	var startNum02 = $("#my_list_contents02 li").length/5; // oldlist안에 li태그의 길이
+	var addListHtml02 = "";
+	var url02= '/member/myPage02';
+	var param02 = {"startNum02" : startNum02};
+	var pathname02 = window.location.pathname;
+	var pn02 = pathname02.substring(pathname02.lastIndexOf('/')+1);
+		console.log(startNum02);
+
+	$.ajax({
+		url : url02,
+		type : 'GET',
+		dataType : 'json',
+		data :param02,
+		success : function(data){
+			for (var i = 0; i < data.length; i++) {
+				addListHtml02 += "<li>";
+                addListHtml02 += "<ul>";
+				addListHtml02 += "<li class='my_list_subtitle'>"+data[i].title+"</li>";
+				addListHtml02 += "<li class='my_list_subcontent'>"+data[i].content+"</li>";
+				addListHtml02 += "<li class='my_list_hit'>"+data[i].hit+"</li>";
+				addListHtml02 += "<li class='my_list_date'>"+data[i].write_date+"</li>";
+				addListHtml02 += "</ul>";
+                addListHtml02 += "<a href='/board/old/oldView?board_num="+data[i].board_num+"'></a></li>";
+				
+			}
+			if(data.length<5){
+				$("#moreView02").remove();
+			} 
+			$("#my_list_contents02").append(addListHtml02);
+			/* console.log(addListHtml); */
+		}
+	});
+	// (3) 중고거래 게시물 리스트
+	var startNum03 = $("#my_list_contents03 li").length/5; // oldlist안에 li태그의 길이
+	var addListHtml03 = "";
+	var url03= '/member/myPage03';
+	var param03 = {"startNum03" : startNum03};
+	var pathname03 = window.location.pathname;
+	var pn03 = pathname03.substring(pathname03.lastIndexOf('/')+1);
+		console.log(startNum03);
+
+	$.ajax({
+		url : url03,
+		type : 'GET',
+		dataType : 'json',
+		data :param03,
+		success : function(data){
+			for (var i = 0; i < data.length; i++) {
+				addListHtml03 += "<li>";
+                addListHtml03 += "<ul>";
+				addListHtml03 += "<li class='my_list_subtitle'>"+data[i].title+"</li>";
+				addListHtml03 += "<li class='my_list_subcontent'>"+data[i].content+"</li>";
+				addListHtml03 += "<li class='my_list_hit'>"+data[i].hit+"</li>";
+				addListHtml03 += "<li class='my_list_date'>"+data[i].write_date+"</li>";
+				addListHtml03 += "</ul>";
+                addListHtml03 += "<a href='/board/old/oldView?board_num="+data[i].board_num+"'></a></li>";
 				
 			}
 			if(data.length<5){
 				$("#moreView03").remove();
 			} 
-			$("#my_list_contents03").append(addListHtml);
+			$("#my_list_contents03").append(addListHtml03);
+			/* console.log(addListHtml); */
+		}
+	});
+	// (4) 구매후기 게시물 리스트
+	var startNum04 = $("#my_list_contents04 li").length/5; // oldlist안에 li태그의 길이
+	var addListHtml04 = "";
+	var url04= '/member/myPage04';
+	var param04 = {"startNum04" : startNum04};
+	var pathname04 = window.location.pathname;
+	var pn04 = pathname04.substring(pathname04.lastIndexOf('/')+1);
+		console.log(startNum04);
+
+	$.ajax({
+		url : url04,
+		type : 'GET',
+		dataType : 'json',
+		data :param04,
+		success : function(data){
+			for (var i = 0; i < data.length; i++) {
+				addListHtml04 += "<li>";
+                addListHtml04 += "<ul>";
+				addListHtml04 += "<li class='my_list_subtitle'>"+data[i].title+"</li>";
+				addListHtml04 += "<li class='my_list_subcontent'>"+data[i].content+"</li>";
+				addListHtml04 += "<li class='my_list_hit'>"+data[i].hit+"</li>";
+				addListHtml04 += "<li class='my_list_date'>"+data[i].write_date+"</li>";
+				addListHtml04 += "</ul>";
+                addListHtml04 += "<a href='/board/old/oldView?board_num="+data[i].board_num+"'></a></li>";
+				
+			}
+			if(data.length<5){
+				$("#moreView04").remove();
+			} 
+			$("#my_list_contents04").append(addListHtml04);
+			/* console.log(addListHtml); */
+		}
+	});
+	// (5)QnA 게시물 리스트
+	var startNum05 = $("#my_list_contents05 li").length/5; // list안의 li태그의 개수
+	var addListHtml05 = "";
+	var url05 = '/member/myPage05';
+	var param05 = {"startNum05" : startNum05};
+	var pathname05 = window.location.pathname;
+	var pn05 = pathname05.substring(pathname05.lastIndexOf('/')+1);
+		console.log(startNum05);
+	
+	$.ajax({
+		url : url05,
+		type : 'GET',
+		dataType : 'json',
+		data :param05,
+		success : function(data){
+			for (var i = 0; i < data.length; i++) {
+				addListHtml05 += "<li>";
+                addListHtml05 += "<ul>";
+				addListHtml05 += "<li class='my_list_subtitle'>"+data[i].title+"</li>";
+				addListHtml05 += "<li class='my_list_subcontent'>"+data[i].content+"</li>";
+				addListHtml05 += "<li class='my_list_hit'>"+data[i].hit+"</li>";
+				addListHtml05 += "<li class='my_list_date'>"+data[i].write_date+"</li>";
+				addListHtml05 += "</ul>";
+                addListHtml05 += "<a href='/board/review/reivewView?board_num="+data[i].board_num+"'></a></li>";
+				
+			}
+			if(data.length<5){
+				$("#moreView05").remove();
+			} 
+			$("#my_list_contents05").append(addListHtml05);
+			/* console.log(addListHtml); */
+		}
+	});
+				// (6)오늘뭐입지 게시물 리스트
+	var startNum06 = $("#my_list_contents05 li").length/5; // list안의 li태그의 개수
+	var addListHtml06 = "";
+	var url06 = '/member/myPage06';
+	var param06 = {"startNum06" : startNum06};
+	var pathname06 = window.location.pathname;
+	var pn06 = pathname06.substring(pathname06.lastIndexOf('/')+1);
+		console.log(startNum06);
+	
+	$.ajax({
+		url : url06,
+		type : 'GET',
+		dataType : 'json',
+		data :param06,
+		success : function(data){
+			for (var i = 0; i < data.length; i++) {
+				addListHtml06 += "<li>";
+                addListHtml06 += "<ul>";
+				addListHtml06 += "<li class='my_list_subtitle'>"+data[i].title+"</li>";
+				addListHtml06 += "<li class='my_list_subcontent'>"+data[i].content+"</li>";
+				addListHtml06 += "<li class='my_list_hit'>"+data[i].hit+"</li>";
+				addListHtml06 += "<li class='my_list_date'>"+data[i].write_date+"</li>";
+				addListHtml06 += "</ul>";
+                addListHtml06 += "<a href='/board/review/reivewView?board_num="+data[i].board_num+"'></a></li>";
+				
+			}
+			if(data.length<5){
+				$("#moreView06").remove();
+			} 
+			$("#my_list_contents06").append(addListHtml06);
+			/* console.log(addListHtml); */
+		}
+	});
+	//게시물 리스트(댓글)
+	var startNum07 = $("#my_list_contents07 li").length/3; 
+	var addListHtml07 = "";
+	
+	var url07 = '/member/myPage07';
+	var param07 = {"startNum07": startNum07};
+	var pathname07 = window.location.pathname;
+	var pn07 = pathname07.substring(pathname07.lastIndexOf('/')+1);
+	
+	console.log(startNum07);
+	
+	
+	$.ajax({
+		url : url07,
+		type : 'GET',
+		dataType : 'json',
+		data :param07,
+		success : function(data){
+			alert(data.length);
+			for (var i = 0; i < data.length; i++) {
+				addListHtml07 += "<li class='my_list_subtitle'>"+data[i].title+"</li>";
+				addListHtml07 += "<li class='my_list_subcontent'>"+data[i].coment+"</li>";
+				addListHtml07 += "<li class='my_list_date'>"+data[i].reply_date+"</li>";
+				
+			}
+			if(data.length<5){
+				$("#moreView07").remove();
+			} 
+			$("#my_list_contents07").append(addListHtml07);
+			console.log(addListHtml07);
+		}
+	});
+}
+//(1)오늘의 코디(더보기클릭)
+function viewMore01(){
+	var startNum01 = $("#my_list_contents01 li").length/5; // oldlist안에 li태그의 길이
+	var addListHtml01 = "";
+	var url01= '/member/myPage01';
+	var param01 = {"startNum01" : startNum01};
+	var pathname01 = window.location.pathname;
+	var pn01 = pathname01.substring(pathname01.lastIndexOf('/')+1);
+		console.log(startNum01);
+
+	$.ajax({
+		url : url01,
+		type : 'GET',
+		dataType : 'json',
+		data :param01,
+		success : function(data){
+			for (var i = 0; i < data.length; i++) {
+				addListHtml01 += "<li>";
+                addListHtml01 += "<ul>";
+				addListHtml01 += "<li class='my_list_subtitle'>"+data[i].title+"</li>";
+				addListHtml01 += "<li class='my_list_subcontent'>"+data[i].content+"</li>";
+				addListHtml01 += "<li class='my_list_hit'>"+data[i].hit+"</li>";
+				addListHtml01 += "<li class='my_list_date'>"+data[i].write_date+"</li>";
+				addListHtml01 += "</ul>";
+                addListHtml01 += "<a href='/board/old/oldView?board_num="+data[i].board_num+"'></a></li>";
+				            
+			}
+			if(data.length<5){
+				$("#moreView01").remove();
+			} 
+			$("#my_list_contents01").append(addListHtml01);
 			/* console.log(addListHtml); */
 		}
 	});
 }
+// (2) 추천(더보기클릭)
+function viewMore02(){
+	var startNum02 = $("#my_list_contents02 li").length/5; // oldlist안에 li태그의 길이
+	var addListHtml02 = "";
+	var url02= '/member/myPage02';
+	var param02 = {"startNum02" : startNum02};
+	var pathname02 = window.location.pathname;
+	var pn02 = pathname02.substring(pathname02.lastIndexOf('/')+1);
+		console.log(startNum02);
+
+	$.ajax({
+		url : url02,
+		type : 'GET',
+		dataType : 'json',
+		data :param02,
+		success : function(data){
+			for (var i = 0; i < data.length; i++) {
+				addListHtml02 += "<li>";
+                addListHtml02 += "<ul>";
+				addListHtml02 += "<li class='my_list_subtitle'>"+data[i].title+"</li>";
+				addListHtml02 += "<li class='my_list_subcontent'>"+data[i].content+"</li>";
+				addListHtml02 += "<li class='my_list_hit'>"+data[i].hit+"</li>";
+				addListHtml02 += "<li class='my_list_date'>"+data[i].write_date+"</li>";
+				addListHtml02 += "</ul>";
+                addListHtml02 += "<a href='/board/old/oldView?board_num="+data[i].board_num+"'></a></li>";
+				
+			}
+			if(data.length<5){
+				$("#moreView02").remove();
+			} 
+			$("#my_list_contents02").append(addListHtml02);
+			/* console.log(addListHtml); */
+		}
+	});
+}
+//(3) 중고거래(더보기클릭)
+function viewMore03(){
+	var startNum03 = $("#my_list_contents03 li").length/5; // oldlist안에 li태그의 길이
+	var addListHtml03 = "";
+	var url03= '/member/myPage03';
+	var param03 = {"startNum03" : startNum03};
+	var pathname03 = window.location.pathname;
+	var pn03 = pathname03.substring(pathname03.lastIndexOf('/')+1);
+		console.log(startNum03);
+
+	$.ajax({
+		url : url03,
+		type : 'GET',
+		dataType : 'json',
+		data :param03,
+		success : function(data){
+			for (var i = 0; i < data.length; i++) {
+				addListHtml03 += "<li>";
+                addListHtml03 += "<ul>";
+				addListHtml03 += "<li class='my_list_subtitle'>"+data[i].title+"</li>";
+				addListHtml03 += "<li class='my_list_subcontent'>"+data[i].content+"</li>";
+				addListHtml03 += "<li class='my_list_hit'>"+data[i].hit+"</li>";
+				addListHtml03 += "<li class='my_list_date'>"+data[i].write_date+"</li>";
+				addListHtml03 += "</ul>";
+                addListHtml03 += "<a href='/board/old/oldView?board_num="+data[i].board_num+"'></a></li>";
+				
+			}
+			if(data.length<5){
+				$("#moreView03").remove();
+			} 
+			$("#my_list_contents03").append(addListHtml03);
+			/* console.log(addListHtml); */
+		}
+	});
+}
+// (4) 구매후기 (더보기클릭)
+function viewMore04(){
+	var startNum04 = $("#my_list_contents04 li").length/5; // list안의 li태그의 개수
+	var addListHtml04 = "";
+	var url04 = '/member/myPage04';
+	var param04 = {"startNum04" : startNum04};
+	var pathname04 = window.location.pathname;
+	var pn04 = pathname04.substring(pathname04.lastIndexOf('/')+1);
+		console.log(startNum04);
+	
+	$.ajax({
+		url : url04,
+		type : 'GET',
+		dataType : 'json',
+		data :param04,
+		success : function(data){
+			for (var i = 0; i < data.length; i++) {
+				addListHtml04 += "<li>";
+                addListHtml04 += "<ul>";
+				addListHtml04 += "<li class='my_list_subtitle'>"+data[i].title+"</li>";
+				addListHtml04 += "<li class='my_list_subcontent'>"+data[i].content+"</li>";
+				addListHtml04 += "<li class='my_list_hit'>"+data[i].hit+"</li>";
+				addListHtml04 += "<li class='my_list_date'>"+data[i].write_date+"</li>";
+				addListHtml04 += "</ul>";
+                addListHtml04 += "<a href='/board/review/reivewView?board_num="+data[i].board_num+"'></a></li>";
+				
+			}
+			if(data.length<5){
+				$("#moreView04").remove();
+			} 
+			$("#my_list_contents04").append(addListHtml04);
+			/* console.log(addListHtml); */
+		}
+	});
+}
+// (5)QnA (더보기)
+function viewMore05(){
+	var startNum05 = $("#my_list_contents05 li").length/5; // list안의 li태그의 개수
+	var addListHtml05 = "";
+	var url05 = '/member/myPage05';
+	var param05 = {"startNum05" : startNum05};
+	var pathname05 = window.location.pathname;
+	var pn05 = pathname05.substring(pathname05.lastIndexOf('/')+1);
+		console.log(startNum05);
+	
+	$.ajax({
+		url : url05,
+		type : 'GET',
+		dataType : 'json',
+		data :param05,
+		success : function(data){
+			for (var i = 0; i < data.length; i++) {
+				addListHtml05 += "<li>";
+                addListHtml05 += "<ul>";
+				addListHtml05 += "<li class='my_list_subtitle'>"+data[i].title+"</li>";
+				addListHtml05 += "<li class='my_list_subcontent'>"+data[i].content+"</li>";
+				addListHtml05 += "<li class='my_list_hit'>"+data[i].hit+"</li>";
+				addListHtml05 += "<li class='my_list_date'>"+data[i].write_date+"</li>";
+				addListHtml05 += "</ul>";
+                addListHtml05 += "<a href='/board/review/reivewView?board_num="+data[i].board_num+"'></a></li>";
+				
+			}
+			if(data.length<5){
+				$("#moreView05").remove();
+			} 
+			$("#my_list_contents05").append(addListHtml05);
+			/* console.log(addListHtml); */
+		}
+	});
+}
+// (6)오늘뭐입지 (더보기)
+function viewMore06(){
+	var startNum06 = $("#my_list_contents05 li").length/5; // list안의 li태그의 개수
+	var addListHtml06 = "";
+	var url06 = '/member/myPage06';
+	var param06 = {"startNum06" : startNum06};
+	var pathname06 = window.location.pathname;
+	var pn06 = pathname06.substring(pathname06.lastIndexOf('/')+1);
+		console.log(startNum06);
+	
+	$.ajax({
+		url : url06,
+		type : 'GET',
+		dataType : 'json',
+		data :param06,
+		success : function(data){
+			for (var i = 0; i < data.length; i++) {
+				addListHtml06 += "<li>";
+                addListHtml06 += "<ul>";
+				addListHtml06 += "<li class='my_list_subtitle'>"+data[i].title+"</li>";
+				addListHtml06 += "<li class='my_list_subcontent'>"+data[i].content+"</li>";
+				addListHtml06 += "<li class='my_list_hit'>"+data[i].hit+"</li>";
+				addListHtml06 += "<li class='my_list_date'>"+data[i].write_date+"</li>";
+				addListHtml06 += "</ul>";
+                addListHtml06 += "<a href='/board/review/reivewView?board_num="+data[i].board_num+"'></a></li>";
+				
+			}
+			if(data.length<5){
+				$("#moreView06").remove();
+			} 
+			$("#my_list_contents06").append(addListHtml06);
+			/* console.log(addListHtml); */
+		}
+	});
+}
+//(7)댓글(더보기)
+function viewMore07(){
+	var startNum07 = $("#my_list_contents07 li").length/3; // oldlist안에 li태그의 길이
+	var addListHtml07 = "";
+	var url07 = '/member/myPage07';
+	var param07 = {"startNum07": startNum07};
+	var pathname07 = window.location.pathname;
+	var pn07 = pathname07.substring(pathname07.lastIndexOf('/')+1);
+	
+	console.log(startNum07);
+	
+	
+	$.ajax({
+		url : url07,
+		type : 'GET',
+		dataType : 'json',
+		data :param07,
+		success : function(data){
+			alert(data.length);
+			for (var i = 0; i < data.length; i++) {
+				addListHtml07 += "<li class='my_list_subtitle'>"+data[i].title+"</li>";
+				addListHtml07 += "<li class='my_list_subcontent'>"+data[i].coment+"</li>";
+				addListHtml07 += "<li class='my_list_date'>"+data[i].reply_date+"</li>";
+				
+			}
+			if(data.length<5){
+				$("#moreView07").remove();
+			} 
+			$("#my_list_contents07").append(addListHtml07);
+			console.log(addListHtml07);
+		}
+	});
+}
 </script>
+
+<!-- ---------------------------------------------------------------------------------------------------------------------------------------- -->
 <input type="hidden" name="user_id" value="${vo.user_id}"/>
 <div id="mypage_wrap">
 	<ul id="profile">
@@ -157,20 +548,9 @@ function viewMore(){
 					<li>조회수</li>
 					<li>작성날짜</li>
 				</ul>
-				<ul class="my_list_contents" id="my_list_contents01">
-					<!-- 게시물 리스트-->
-        			<!--<c:forEach var="vo1" items="${lst1}">
-						<li>
-							<ul>
-								<li class="my_list_subtitle">${vo1.title}</li>
-								<li class="my_list_subcontent">${vo1.content}</li>
-								<li class="my_list_hit">${vo1.hit}</li>
-								<li class="my_list_date">${vo1.write_date}</li>
-							</ul>
-							<a href="/board/old/oldView?board_num=${vo1.board_num}"></a>
-						</li>
-					</c:forEach>-->
+				<ul class="my_list_contents01" id="my_list_contents01">
 				</ul>
+				<a id="moreView01" onclick="viewMore01()"><img src="/img/더보기.png" style="width:100px;"></a>
 			</div>
 		</li>
 		<li>
@@ -183,20 +563,9 @@ function viewMore(){
 					<li>조회수</li>
 					<li>작성날짜</li>
 				</ul>
-				<ul class="my_list_contents">
-					<!-- 게시물 리스트-->
-        			<!--<c:forEach var="vo2" items="${lst2}">
-						<li>
-							<ul>
-								<li class="my_list_subtitle">${vo2.title}</li>
-								<li class="my_list_subcontent">${vo2.content}</li>
-								<li class="my_list_hit">${vo2.hit}</li>
-								<li class="my_list_date">${vo2.write_date}</li>
-							</ul>
-							<a href="/board/old/oldView?board_num=${vo2.board_num}"></a>
-						</li>
-					</c:forEach>-->
+				<ul class="my_list_contents02" id="my_list_contents02">
 				</ul>
+				<a id="moreView02" onclick="viewMore02()"><img src="/img/더보기.png" style="width:100px;"></a>
 			</div>
 		</li>
 		<li>
@@ -209,25 +578,9 @@ function viewMore(){
 					<li>조회수</li>
 					<li>작성날짜</li>
 				</ul>
-				
-				
 				<ul class="my_list_contents" id="my_list_contents03" >
-					<!-- 게시물 리스트-->
-        			<!--<c:forEach var="vo3" items="${lst3}">
-						<li>
-							<ul>
-								<li class="my_list_subtitle">${vo3.title}</li>
-								<li class="my_list_subcontent">${vo3.content}</li>
-								<li class="my_list_hit">${vo3.hit}</li>
-								<li class="my_list_date">${vo3.write_date}</li>
-							</ul>
-							<a class="my_list_alink" href="/board/old/oldView?board_num=${vo3.board_num}"></a>
-						</li>
-					</c:forEach>-->
 				</ul>
-				
-				<a id="moreView03" onclick="viewMore()"><img src="/img/더보기.png" style="width:100px;"></a>
-				
+				<a id="moreView03" onclick="viewMore03()"><img src="/img/더보기.png" style="width:100px;"></a>
 			</div>
 		</li>
 		<li>
@@ -240,20 +593,9 @@ function viewMore(){
 					<li>조회수</li>
 					<li>작성날짜</li>
 				</ul>
-				<ul class="my_list_contents">
-					<!-- 게시물 리스트-->
-        			<!--<c:forEach var="vo4" items="${lst4}">
-						<li>
-							<ul>
-								<li class="my_list_subtitle">${vo4.title}</li>
-								<li class="my_list_subcontent">${vo4.content}</li>
-								<li class="my_list_hit">${vo4.hit}</li>
-								<li class="my_list_date">${vo4.write_date}</li>
-							</ul>
-							<a class="my_list_alink" href="/board/old/oldView?board_num=${vo4.board_num}"></a>
-						</li>
-					</c:forEach>-->
+				<ul class="my_list_contents04" id="my_list_contents04">
 				</ul>
+				<a id="moreView04" onclick="viewMore04()"><img src="/img/더보기.png" style="width:100px;"></a>
 			</div>
 		</li>
 		<li>
@@ -266,20 +608,9 @@ function viewMore(){
 					<li>조회수</li>
 					<li>작성날짜</li>
 				</ul>
-				<ul class="my_list_contents">
-					<!-- 게시물 리스트-->
-        			<!--<c:forEach var="vo5" items="${lst5}">
-						<li>
-							<ul>
-								<li class="my_list_subtitle">${vo5.title}</li>
-								<li class="my_list_subcontent">${vo5.content}</li>
-								<li class="my_list_hit">${vo5.hit}</li>
-								<li class="my_list_date">${vo5.write_date}</li>
-							</ul>
-							<a href="/board/old/oldView?board_num=${vo5.board_num}"></a>
-						</li>
-					</c:forEach>-->
+				<ul class="my_list_contents05" id="my_list_contents05">
 				</ul>
+				<a id="moreView05" onclick="viewMore05()"><img src="/img/더보기.png" style="width:100px;"></a>
 			</div>
 		</li>
 		<li>
@@ -292,39 +623,26 @@ function viewMore(){
 					<li>조회수</li>
 					<li>작성날짜</li>
 				</ul>
-				<ul class="my_list_contents">
-					<!-- 게시물 리스트-->
-        			<!--<c:forEach var="vo6" items="${lst6}">
-						<li>
-							<ul>
-								<li class="my_list_subtitle">${vo6.title}</li>
-								<li class="my_list_subcontent">${vo6.content}</li>
-								<li class="my_list_hit">${vo6.hit}</li>
-								<li class="my_list_date">${vo6.write_date}</li>
-							</ul>
-							<a href="/board/old/oldView?board_num=${vo6.board_num}"></a>
-						</li>
-					</c:forEach>-->
+				<ul class="my_list_contents06" id="my_list_contents06">
 				</ul>
+				<a id="moreView06" onclick="viewMore06()"><img src="/img/더보기.png" style="width:100px;"></a>
 			</div>
 		</li>
 		<li>
-			<input type="radio" name="tab" id="tab8">
-			<label for="tab8">댓글</label>
-			<div>
-				<ul class="my_list_title">
-					<li>게시물 타입</li>
-					<li>내용</li>
-					<li>작성날짜</li>
-				</ul>
-				<ul class="my_list_contents">
-					<li>게시물 타입</li>
-					<li>내용</li>
-					<li>작성날짜</li>
-					<li  class="my_list_alink"><a href=""></a></li>
-				</ul>
-			</div>
-		</li>
+         <input type="radio" name="tab" id="tab8">
+         <label for="tab8">댓글</label>
+         <div>
+            <ul class="my_list_title">
+               <li>게시물 제목</li>
+               <li>댓글 내용</li>
+               <li>작성일</li>
+            </ul>
+            <ul class="my_list_contents" id="my_list_contents07">
+               
+            </ul>
+            <a id="moreView07" onclick="viewMore07()"><img src="/img/더보기.png" style="width:100px;"></a>
+         </div>
+</li>
 	</ul>
 </div>
 <!-- 프로필 사진 바꾸기 모달 -->

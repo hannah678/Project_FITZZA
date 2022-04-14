@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.team.fitzza.dao.BoardDAO;
 import com.team.fitzza.vo.BoardVO;
 import com.team.fitzza.vo.PagingVO;
+import com.team.fitzza.vo.ReplyVO;
 
 @Service
 public class BoardServiceImpl implements BoardService{
@@ -102,6 +103,11 @@ public class BoardServiceImpl implements BoardService{
 	@Override
 	public List<BoardVO> voteWriterSelect(String user_id, PagingVO pvo) {
 		return dao.voteWriterSelect(user_id, pvo);
+	}
+
+	@Override
+	public List<ReplyVO> replyWriterSelect(String user_id, PagingVO pvo) {
+		return dao.replyWriterSelect(user_id, pvo);
 	}
 	
 }
