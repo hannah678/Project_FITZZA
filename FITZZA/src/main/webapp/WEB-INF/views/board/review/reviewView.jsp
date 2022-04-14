@@ -210,7 +210,7 @@ window.onload=function(){
 				<div></div>
 			<hr />
 			<div id="replyList"></div>
-				<c:if test="${logStatus!='Y'}">
+				<c:if test="${logStatus =='Y'}">
 					<form id="replyFrm">
 						<input type="hidden" name="board_num" value="${vo.board_num}" />
 						<textarea name="coment" id='coment'
