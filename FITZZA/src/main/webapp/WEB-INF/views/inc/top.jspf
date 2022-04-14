@@ -38,7 +38,7 @@
                 <p id="logStatus2"><a href="/member/myPage">mypage</a></p>
             </c:if>
             <c:if test="${logStatus == 'Y' && logPermission =='admin'}">
-                <p id="logStatus3"><a href="/admin/adminHome">관리자 페이지</a></p>
+                <p id="logStatus3"><a href="/admin/adminHome"><img src="/img/setting.png"></a></p>
                 <p id="logStatus1"><a href="/member/logout">logout</a></p>
                 <p id="logStatus2"><a href="/member/myPage">mypage</a></p>
                 
