@@ -21,8 +21,7 @@
 </head>
 <body>
 <div id="review-wrapper"><!--  전체 틀  -->
-<h1>구매 후기</h1>
-<hr/>
+<h1 style="text-align: center;">구매 후기</h1>
 	<form method="post" action="/board/review/reviewWriteOk" id="reviewFrm" enctype="multipart/form-data">
   	  	<ul>
 			<li><input type="hidden" name="type_num" value="4"/></li> <!-- 게시판 타입num -->
@@ -48,31 +47,31 @@
 			<li><div class="img2">
                       상세이미지<br/>
                         <div class="img2_up">
-                            <img style="width: 300px;" id="img_section2" src="/img/이미지 없음.png"><br/>
+                            <img id="img_section2" src="/img/이미지 없음.png"><br/>
                             <input type="text" id="file_route02"  disabled="disabled" value="파일 선택" >
                             <label for="upload_file02">업로드</label>
                             <input type="file" id="upload_file02" name="filename" accept="image/*" style="position:absolute; clip:rect(0, 0, 0, 0);"><br/>
                             </div>
                         <div class="img2_up">   
-                            <img style="width: 300px;" id="img_section3" src="/img/이미지 없음.png"><br/>
+                            <img  id="img_section3" src="/img/이미지 없음.png"><br/>
                             <input type="text" id="file_route03"  disabled="disabled" value="파일 선택" >
                             <label for="upload_file03">업로드</label>
                             <input type="file" id="upload_file03" name="filename" accept="image/*" style="position:absolute; clip:rect(0, 0, 0, 0);"><br/>
                         </div>
                         <div class="img2_up">
-                            <img style="width: 300px;" id="img_section4" src="/img/이미지 없음.png"><br/>
+                            <img id="img_section4" src="/img/이미지 없음.png"><br/>
                             <input type="text" id="file_route04"  disabled="disabled" value="파일 선택" >
                             <label for="upload_file04">업로드</label>
                             <input type="file" id="upload_file04" name="filename" accept="image/*"style="position:absolute; clip:rect(0, 0, 0, 0);"><br/>
                         </div>
                         <div class="img2_up">
-                            <img style="width: 300px;" id="img_section5" src="/img/이미지 없음.png"><br/>				
+                            <img id="img_section5" src="/img/이미지 없음.png"><br/>				
                             <input type="text" id="file_route05"  disabled="disabled" value="파일 선택" >
                             <label for="upload_file05">업로드</label>
                             <input type="file" id="upload_file05" name="filename" accept="image/*" style="position:absolute; clip:rect(0, 0, 0, 0);"><br/>
                         </div>
 				</div></li>
-				<li style="height:70px;"><input type='submit' value='등록' id="reviewsubmit" class="button01" style="margin-right:20px;"/></li>
+				<li style="height:70px;"><input type='submit' value='등록' id="reviewsubmit" class="button01" style="margin-right:20px; margin-top:30px;"/></li>
 		</ul>
 	</form>
 </div>
