@@ -286,7 +286,34 @@
 	  })// 연락처
 	  
 	  $("#emailchk").on('click',function(){
-		  $('#Codebox').css('display','block');
+		  var email1 = $("#email1").val();
+		  var email2 = $("#email2").val();
+		  
+		  if(email1=='' || email2==''){
+			  alert('인증을 위해 이메일을 입력해 주세요');
+		  }else{
+			  $('#Codebox').css('display','block');
+			  var email = email1+"@"+email2;
+			  
+			  $.ajax({
+				 type:'post',
+				 url:'/member/mailAuth',
+				 data:{
+					 "mail":email
+				 },
+				 dataType:'json',
+				 success:function(result){
+					 alert('인증코드가 발송되었습니다. 메일을 확인해 주세요');
+					 $("#ConfirmCode").on("propertychange change keyup paste input", function(){
+						 if($("#ConfirmCode").val()==result){
+							 $("#authorized").val("Y");
+						 }else{
+							 $("#authorized").val("N");
+						 }
+					 });
+				 }
+			  });
+		  }
 	  }); //이메일 인증시 인증코드 나오게함.
 	  
 	  $(".joinbtn").on('click',function(){  
@@ -306,9 +333,20 @@
 			 $(".useremail3").css('display')=='block' || $(".useremail4").css('display')=='block' ||
 			 $(".usertel1").css('display')=='block' || $(".usertel2").css('display')=='block'
 		  ){
+			  alert('가입불가');
 			  console.log("에러체크용 콘솔메세지");
 			  return false;
 		  }else{
+			  if($("#Codebox").css('display')=='none'){
+				  alert('인증을 진행해 주세요');
+				  return;
+			  }else if($("#ConfirmCode").val()==''){
+				  alert('인증코드를 입력해 주세요');
+				  return;
+			  }else if($("#authorized").val()=='N'){
+				  alert('인증코드가 일치하지 않습니다');
+				  return;
+			  }
 			  $("#contents").submit();
 		  }
 	  }); //경고문 없으면 제출 가능하게함
@@ -335,8 +373,9 @@
          <li class="joinbox" ><input type="text" name="user_nickname" id="joinnickname" placeholder="닉네임" class="input01"/></li> 
          <li><input type="text" name="email1" id="email1" placeholder="이메일" class="input01"/>@<input type="text" name="email2" id="email2" class="input01"/><button type="button" id="emailchk">인증</button></li> 
          <li id="Codebox" style="display:none"><input type="text" name="ConfirmCode" id="ConfirmCode" placeholder="인증코드 입력"/></li> 
-         <li class="joinbox"><input type="text" name="tel" id="jointel" placeholder="전화번호(000-0000-0000)" class="input01"/></li> 
+         <li class="joinbox"><input type="text" name="tel" id="jointel" placeholder="전화번호(000-0000-0000)" class="input01"/></li>
        </ul>
+       <input type="text" id="authorized" value="N"/>
         <div class="joinbtn">
          <input type="button" class="button02" value="가입하기"/>
         </div>

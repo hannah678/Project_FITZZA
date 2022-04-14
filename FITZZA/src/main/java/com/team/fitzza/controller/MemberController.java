@@ -2,9 +2,20 @@ package com.team.fitzza.controller;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Properties;
+import java.util.Random;
 
 import javax.inject.Inject;
+import javax.mail.Authenticator;
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+import javax.mail.internet.AddressException;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -91,6 +102,63 @@ public class MemberController {
 		return "member/join"; // member폴더에 memberForm.jsp파일을 뷰로 사용한다.
 	}
 	
+	//메일 인증코드 발송
+	@PostMapping("/member/mailAuth")
+	@ResponseBody
+	public String sendMail(String mail) throws Exception {
+		String authcode = "";
+		Random random = new Random();
+
+		authcode += random.nextInt(9000) + 1000;
+		
+		Properties p = System.getProperties();
+        p.put("mail.smtp.starttls.enable", "true");
+        p.put("mail.smtp.host", "smtp.naver.com");
+        p.put("mail.smtp.auth","true");
+        p.put("mail.smtp.port", "587");
+           
+        String id = "메일주소"; //보내는 사람 메일주소
+		String pwd = "비밀번호"; //보내는 사람 비밀번호
+		
+        Authenticator auth = new Authenticator() {
+        	public PasswordAuthentication getPasswordAuthentication() {
+    	        return new PasswordAuthentication(id, pwd);
+    	    }
+		};
+        //session 생성 및  MimeMessage생성
+        Session session = Session.getInstance(p, auth);
+        MimeMessage msg = new MimeMessage(session);
+         
+        try{
+            //메일 전송시간
+            msg.setSentDate(new Date());
+            
+            //보내는 사람
+            InternetAddress from = new InternetAddress(id);
+            msg.setFrom(from);
+            
+            //받는 사람
+            InternetAddress to = new InternetAddress(mail);
+            msg.setRecipient(Message.RecipientType.TO, to);
+            //제목
+            msg.setSubject("FITZZA에 오신것을 환영합니다! 가입 완료를 위해서 인증코드를 입력해 주세요", "UTF-8");
+            //내용
+            msg.setText("인증코드는 ["+authcode+"] 입니다", "UTF-8");
+            //헤더
+            msg.setHeader("content-Type", "text/html");
+            //메일보내기
+            javax.mail.Transport.send(msg, msg.getAllRecipients());
+             
+        }catch (AddressException addr_e) {
+            addr_e.printStackTrace();
+        }catch (MessagingException msg_e) {
+            msg_e.printStackTrace();
+        }catch (Exception msg_e) {
+            msg_e.printStackTrace();
+        }
+		
+		return authcode;
+	}
 	
 	// 회원등록
 	@PostMapping("member/joinOk")
