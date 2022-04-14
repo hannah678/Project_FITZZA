@@ -90,6 +90,7 @@ li{
     width: 1200px;
     clear: both;
     margin-top:20px;
+    padding-left:30px;
 }
 #replybtn{
     position: relative;
@@ -101,6 +102,46 @@ li{
     font-family:'Nanum pen script';
     font-size: 1em;
     font-weight: bold;
+}
+#replybtn2{
+    position: relative;
+    right: 30px;
+    bottom: 16px;
+    width: 100px;
+    height: 50px;
+    border: 2px solid black;
+    font-family:'Nanum pen script';
+    font-size: 1em;
+    font-weight: bold;
+}
+#reply_profile{
+	width:50px; 
+	height:50px; 
+	border-radius:70%; 
+	position:relative; 
+	margin-left:10px;
+	margin-right:-62px;
+	top:0px;
+}
+#reply_level_frame{
+	width: 75px;
+    height: 75px;
+    border-radius: 70%;
+    position:relative;
+}
+#reply_edit{
+	width:37px;
+	height:30px;
+	text-align:center;
+	font-size:0.8em;
+	padding:0px;
+}
+#reply_del{
+	width:37px;
+	height:30px;
+	text-align:center;
+	font-size:0.8em;
+	padding:0px;
 }
 #pro_img{
     width: 60%;

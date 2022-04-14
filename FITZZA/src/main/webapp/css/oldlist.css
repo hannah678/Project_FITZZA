@@ -60,7 +60,7 @@ h1, h2, .oldlist>li:nth-child(3), .oldlist>li:nth-child(6n+1), .oldlist>li:nth-c
     width: 80px;
     height: 80px;
 }
-#profile_img{
+#real_product_img{
 	width:20px; height:20px; border-radius: 70%;
 }
 .paging{

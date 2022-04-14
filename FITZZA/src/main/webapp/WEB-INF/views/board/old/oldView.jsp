@@ -46,19 +46,19 @@
 					console.log(${vo.board_num});
 					var tag = "<ul>";
 					$result.each(function(idx, vo){		//vo에서 프로필사진 가져올 자리
-						tag += "<li><div>" + "<img src='/upload/"+vo.profile_image+"' style='width:50px; height:50px; border:1px solid black; border-radius:70%; margin-right:30px; position:relative; top:20px;'/><img src='"+vo.frame_img+"' >" + vo.user_nickname + " (" + vo.reply_date + ") ";
+						tag += "<li><div>" + "<img src='/upload/"+vo.profile_image+"' id='reply_profile'/><img src='"+vo.frame_img+"' id='reply_level_frame'/>" + vo.user_nickname + " (" + vo.reply_date + ") ";
 						
 						if(vo.user_id == '${logId}'){   // user_id
-							tag += "<input type='button' value='수정'/>";
-							tag += "<input type='button' value='삭제' title='"+vo.reply_num+"'/>";
+							tag += "<input type='button' value='수정' id='reply_edit'/>";
+							tag += "<input type='button' value='삭제' title='"+vo.reply_num+"' id='reply_del'/>";
 						}
-						tag += "<br/><br/>" + vo.coment + "</div>";
+						tag += "<br/>" + vo.coment + "</div>";
 						
 						if(vo.user_id == '${logId}'){   // user_id
 							tag += "<div style='display:none'><form method='post'>";
 							tag += "<input type='hidden' name='reply_num' value='"+vo.reply_num+"'/>";
 							tag += "<textarea name='coment' style='width:400px; height:50px;'>"+vo.coment+"</textarea>";
-							tag += "<input type='submit' value='수정'/></form></div>";
+							tag += "<input type='submit' value='수정' id='replybtn2'/></form></div>";
 						}	
 						tag += "<hr/></li>";
 					});
@@ -204,12 +204,14 @@
 			<!--댓글수정필요-->
 			<form id="replyFrm">
 				<input type="hidden" name="board_num" value="${vo.board_num}" />
-				<textarea name="coment" id='coment'
-					style="width: 500px; height: 50px" placeholder=" 상품문의 입력"></textarea>
-				<input type="submit" value="등록" id="replybtn" />
+				<c:if test="${logStatus=='Y'}">
+					<textarea name="coment" id='coment'
+						style="width: 500px; height: 50px" placeholder=" 상품문의 입력"></textarea>
+					<input type="submit" value="등록" id="replybtn" />
+					<hr />
+				</c:if>
 			</form>
 			<div></div>
-			<hr />
 			<div id="replyList"></div>
 		</div>
 
@@ -250,4 +252,6 @@
 			</div>
 		</div>
 	</div>
+</body>
+</div>
 </body>
