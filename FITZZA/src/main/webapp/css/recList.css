@@ -1,0 +1,73 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Hi+Melody&family=Nanum+Pen+Script&display=swap');
+.recboard h1, .recboard h2, .recboard h5, .rec_title{
+    font-family: 'Hi Melody', cursive;
+    text-align: center;
+}
+body{
+    background-image: url("../img/배경.png");
+    font-family:'Nanum pen script';
+    font-size: 1.5em;
+} 
+.recboard{
+    width:1200px;
+    margin:0 auto;
+    padding:0 30px;
+}
+.recli{
+    width:1200px;
+    float: left;
+}
+a:link, a:visited, a:hover{
+    text-decoration:none;
+    color:black;
+}
+#write{
+    height: 30px;
+}
+.recboard>#write a:link, .recboard>#write a:visited{
+    text-decoration:none;
+    font-weight: 800;
+    color:gray;
+}
+.recboard>#write a:hover{
+    font-weight: 900;
+    font-size: 2em;
+    color:black;
+}
+.recboard>#write{
+    margin-bottom: 30px;
+    text-align: right;
+}
+.recboard h1, .recboard h2{
+    text-align: center;
+}
+.reclist{
+    padding:20px 30px;
+    width: 238px;
+    height: 370px;
+    float: left;
+    border: 1px solid #bfbfbf;
+}
+.rec_img{
+    width: 240px;
+    height: 240px;
+    background: #f3f3f3;
+    margin-bottom: 20px;
+}
+#rec_img_link{
+    margin-bottom: 30px;
+}
+#profile_img{
+    width:30px; 
+    height:30px; 
+    border-radius: 70%;
+}
+.rec_title{
+    font-weight: bold;
+}
+#searchFrm{
+    width:304px;
+    margin-bottom:30px;
+    display: table; margin-left: auto; margin-right: auto;
+}
