@@ -31,8 +31,8 @@ ol, ul {
 
 html {width: 100%; height: 100%;}
 body {
-    font-family: 'Nanum Pen Script', cursive;
-    font-size:30px;
+    font-family: 'Noto Sans KR';
+    font-size:20px;
     -webkit-user-select:none; 
     -moz-user-select:none; 
     -ms-user-select:none; 
@@ -45,12 +45,12 @@ article {
     overflow: hidden;
 }
 h1{
-	font-size: 40px;
+	font-size: 36px;
     line-height: 100px;
-    font-family: 'Hi Melody', cursive;
+    font-family: 'Noto Sans KR';
 }
 h2 a {
-	font-family: 'Hi Melody', cursive;
+	font-family: 'Noto Sans KR';
     width: 200px; height: 60px;
     display: block; 
     border-top-left-radius: 30px; border-top-right-radius: 30px;
@@ -732,7 +732,7 @@ video::-webkit-media-controls-volume-slider {display: none !important;}
 footer {
 	width: 100%; height: 300px;
     background-color: #54bab9;
-    font-size: 24px; overflow:hidden;
+    font-size: 16px; overflow:hidden;
 }
 footer .footer_wrap{
 	width:1920px; height: 250px; padding-top:50px;

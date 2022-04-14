@@ -108,7 +108,7 @@
 }
 
 #my_list {
-	width:1200px; height:470px;
+	width:1200px; min-height:500px;
 	margin:0 auto;
 }
 #my_list input {display:none;}
@@ -124,7 +124,7 @@
 #my_list input:checked + label {background-color: #54bab9; color:#fff;}
 
 #my_list > li > div {
-	width:100%; height:500px;
+	width:100%; min-height:500px;
 	position:absolute; left:0; top:50px;
 	display:none;
 }
@@ -143,18 +143,28 @@
 .my_list_title li:nth-child(3) {width:10%;}
 
 /*중고게시판*/
-.my_list_title03 li{
-	width:20%; 
-	margin:20px 0;
-	overflow:hidden;
-}
+.my_list_title03 {margin:20px 0; font-weight:600}
 .my_list_title03 li:nth-child(1) {width:10%;}
+.my_list_title03 li:nth-child(2) {width:15%;}
 .my_list_title03 li:nth-child(3) {width:25%;}
-.my_list_title03 li:nth-child(4) {width:5%;}
+.my_list_title03 li:nth-child(4) {width:10%;}
+.my_list_title03 li:nth-child(5) {width:20%;}
+.my_list_title03 li:nth-child(6) {width:20%;}
 
-.my_list_contents a:hover li{background-color:rgba(0,0,0,0.1);}
-.my_list_contents a:link {color:#222;}
-.my_list_contents a:visited {color:#222;}
+.my_list_contents03 li{
+	font-size:20px;
+	overflow:hidden;
+	border-bottom : 1px solid #888;
+	white-space:nowrap;
+	text-overflow: ellipsis;
+	position:relative;
+}
+.my_list_contents03 .my_list_state {width:120px;}/* 10% */
+.my_list_contents03 .my_list_subtitle {width:180px;}/* 15% */
+.my_list_contents03 .my_list_subcontent {width:300px;}/* 25% */
+.my_list_contents03 .my_list_hit {width:120px;}/* 5% */
+.my_list_contents03 .my_list_date {width:240px;}/* 20% */
+.my_list_contents03 .my_list_tradedate {width:240px;}/* 20% */
 
 /* my댓글-start */
 #my_list > li:nth-child(7) .my_list_title li:nth-child(1) {width:20%;}
@@ -170,7 +180,6 @@
 	font-size:24px;
 	overflow:hidden;
 	border-bottom : 1px solid #888;
-	transition:all 0.3s;
 	white-space:nowrap;
 	text-overflow: ellipsis;
 	position:relative;
@@ -179,15 +188,6 @@
 .my_list_subcontent {width:480px;}/* 40% */
 .my_list_hit {width:120px;}/* 10% */
 .my_list_date {width:300px;}/* 25% */
-
-/*중고게시판*/
-.my_list_contents03 .my_list_state {width:120px;}/* 10% */
-.my_list_contents03 .my_list_subtitle {width:240px;}/* 20% */
-.my_list_contents03 .my_list_subcontent {width:300px;}/* 25% */
-.my_list_contents03 .my_list_hit {width:60px;}/* 5% */
-.my_list_contents03 .my_list_date {width:240px;}/* 20% */
-.my_list_contents03 .my_list_tradedate {width:240px;}/* 20% */
-
 
 .my_list_alink {
 	display:inline-block;
@@ -225,6 +225,10 @@ label[for="upload_file"] {
 }
 #changebtn {width:100px; height:50px; border-radius:25px}
 #upload_file {margin-left:30px;font-size:24px;}
+
+.moreViews {cursor:pointer}
+
+
 
 /* pwdCheck - start */
 

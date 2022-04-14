@@ -14,12 +14,12 @@
 	overflow:hidden;
 }
 .loginheader>div{
-	font-family: "Nanum pen script", cursive; 
+	font-family: 'Noto Sans KR';
 	font-size:2em	
 }
 
 .accounthidden>button,input,input[type=password],input[type=text]{
-	font:28px "Nanum pen script";
+	font:28px "Noto Sans KR";
 	color:black;
 	background-color:transparent
 }
@@ -109,7 +109,7 @@ fieldset{
 }
 
 .id input::placeholder,.password input::placeholder{
-	font:28px "Nanum pen script";
+	font:28px "Noto Sans KR";
 	color: gray;
 
 	}
@@ -120,7 +120,7 @@ fieldset{
 	margin-left:15px;
 	font-size:32px;
 	border-radius: 10px;
-	font-family:'Nanum pen script';
+	font-family: 'Noto Sans KR';
 	background-color:rgb( 253, 212, 149);
 	transition:all.15s linear
 }
@@ -234,10 +234,10 @@ fieldset{
 	margin-left:15px; 
 	width:12%;
 	height:60px;
-	font-size:24px;
+	font-size:18px;
 	color:#fff;
 	border-radius: 10px;
-	font-family:'Nanum pen script';
+	font-family:'Noto Sans KR';
 	background-color: black;
 	transition:all.15s linear;
 }
@@ -249,16 +249,16 @@ fieldset{
 	position:relative;
 	width:72%;
 	height:55px;
-	font-size:32px;
+	font-size:20px;
 	color:#fff;
 	border-radius: 10px;
-	font-family:'Nanum pen script';
+	font-family:'Noto Sans KR';
 	background-color: black;
 	transition:all.15s linear;
 }
 .inputMsg {
 	margin-left:80px;
-	font-size:24px; font-weight:400;
+	font-size:16px; font-weight:400;
 }
 
 /*회원가입 CSS 끝*/

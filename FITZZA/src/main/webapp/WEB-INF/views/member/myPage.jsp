@@ -4,11 +4,12 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
 
 <style>
-*{font-family:'Nanum pen script'; font-size:30px;text-decoration: none; }
-a {font-size:24px}
+*{font-family: 'Noto Sans KR'; font-size:20px;text-decoration: none; }
+a {font-size:20px}
+button a {font-size:16px}
 a:link {color:#fff; text-decoration: none;}
 a:visited {color:#fff}
-.my_list_title li {font-size:24px; font-weight:600;}
+.my_list_title li {font-size:20px; font-weight:600;}
 </style>
 <script>
 window.onload=function(){
@@ -43,7 +44,7 @@ window.onload=function(){
 				addListHtml01 += "<li class='my_list_hit'>"+data[i].hit+"</li>";
 				addListHtml01 += "<li class='my_list_date'>"+data[i].write_date+"</li>";
 				addListHtml01 += "</ul>";
-                addListHtml01 += "<a href='/board/old/oldView?board_num="+data[i].board_num+"'></a></li>";
+                addListHtml01 += "<a class='my_list_alink' href='/board/old/oldView?board_num="+data[i].board_num+"'></a></li>";
 				            
 			}
 			if(data.length<5){
@@ -76,7 +77,7 @@ window.onload=function(){
 				addListHtml02 += "<li class='my_list_hit'>"+data[i].hit+"</li>";
 				addListHtml02 += "<li class='my_list_date'>"+data[i].write_date+"</li>";
 				addListHtml02 += "</ul>";
-                addListHtml02 += "<a href='/board/old/oldView?board_num="+data[i].board_num+"'></a></li>";
+                addListHtml02 += "<a class='my_list_alink' href='/board/old/oldView?board_num="+data[i].board_num+"'></a></li>";
 				
 			}
 			if(data.length<5){
@@ -113,7 +114,7 @@ window.onload=function(){
 					addListHtml03 += "<li class='my_list_date'>"+data[i].write_date+"</li>";
 					addListHtml03 += "<li class='my_list_tradedate'>"+data[i].trade_date+"</li>";
 					addListHtml03 += "</ul>";
-	                addListHtml03 += "<a href='/board/old/oldView?board_num="+data[i].board_num+"'></a></li>";
+	                addListHtml03 += "<a class='my_list_alink' href='/board/old/oldView?board_num="+data[i].board_num+"'></a></li>";
 				}else{          
 					addListHtml03 += "<li>";
 	                addListHtml03 += "<ul>";
@@ -124,7 +125,7 @@ window.onload=function(){
 					addListHtml03 += "<li class='my_list_date'>"+data[i].write_date+"</li>";
 					addListHtml03 += "<li class='my_list_tradedate'>-</li>";
 					addListHtml03 += "</ul>";
-	                addListHtml03 += "<a href='/board/old/oldView?board_num="+data[i].board_num+"'></a></li>";
+	                addListHtml03 += "<a class='my_list_alink' href='/board/old/oldView?board_num="+data[i].board_num+"'></a></li>";
 				}
 			}
 			if(data.length<5){
@@ -157,7 +158,7 @@ window.onload=function(){
 				addListHtml04 += "<li class='my_list_hit'>"+data[i].hit+"</li>";
 				addListHtml04 += "<li class='my_list_date'>"+data[i].write_date+"</li>";
 				addListHtml04 += "</ul>";
-                addListHtml04 += "<a href='/board/old/oldView?board_num="+data[i].board_num+"'></a></li>";
+                addListHtml04 += "<a class='my_list_alink' href='/board/old/oldView?board_num="+data[i].board_num+"'></a></li>";
 				
 			}
 			if(data.length<5){
@@ -190,7 +191,7 @@ window.onload=function(){
 				addListHtml05 += "<li class='my_list_hit'>"+data[i].hit+"</li>";
 				addListHtml05 += "<li class='my_list_date'>"+data[i].write_date+"</li>";
 				addListHtml05 += "</ul>";
-                addListHtml05 += "<a href='/board/review/reivewView?board_num="+data[i].board_num+"'></a></li>";
+                addListHtml05 += "<a class='my_list_alink' href='/board/review/reivewView?board_num="+data[i].board_num+"'></a></li>";
 				
 			}
 			if(data.length<5){
@@ -223,7 +224,7 @@ window.onload=function(){
 				addListHtml06 += "<li class='my_list_hit'>"+data[i].hit+"</li>";
 				addListHtml06 += "<li class='my_list_date'>"+data[i].write_date+"</li>";
 				addListHtml06 += "</ul>";
-                addListHtml06 += "<a href='/board/review/reivewView?board_num="+data[i].board_num+"'></a></li>";
+                addListHtml06 += "<a class='my_list_alink' href='/board/review/reivewView?board_num="+data[i].board_num+"'></a></li>";
 				
 			}
 			if(data.length<5){
@@ -364,7 +365,7 @@ function viewMore03(){
 					addListHtml06 += "<li class='my_list_date'>"+data[i].write_date+"</li>";
 					addListHtml06 += "<li class='my_list_tradedate'>"+data[i].trade_date+"</li>";
 					addListHtml06 += "</ul>";
-	                addListHtml06 += "<a href='/board/old/oldView?board_num="+data[i].board_num+"'></a></li>";
+	                addListHtml06 += "<a class='my_list_alink' href='/board/old/oldView?board_num="+data[i].board_num+"'></a></li>";
 				}else{
 					addListHtml06 += "<li>";
 	                addListHtml06 += "<ul>";
@@ -576,9 +577,9 @@ function viewMore07(){
 					<li>조회수</li>
 					<li>작성날짜</li>
 				</ul>
-				<ul class="my_list_contents01" id="my_list_contents01">
+				<ul class="my_list_contents" id="my_list_contents01">
 				</ul>
-				<a id="moreView01" onclick="viewMore01()"><img src="/img/더보기.png" style="width:100px;"></a>
+				<a class="moreViews" id="moreView01" onclick="viewMore01()"><img src="/img/더보기.png" style="width:100px;"></a>
 			</div>
 		</li>
 		<li>
@@ -591,15 +592,15 @@ function viewMore07(){
 					<li>조회수</li>
 					<li>작성일</li>
 				</ul>
-				<ul class="my_list_contents02" id="my_list_contents02">
+				<ul class="my_list_contents" id="my_list_contents02">
 				</ul>
-				<a id="moreView02" onclick="viewMore02()"><img src="/img/더보기.png" style="width:100px;"></a>
+				<a class="moreViews" id="moreView02" onclick="viewMore02()"><img src="/img/더보기.png" style="width:100px;"></a>
 			</div>
 		</li>
 		<li>
 			<input type="radio" name="tab" id="tab3">
 			<label for="tab3">중고거래</label>
-			<div style="overflow:auto;">
+			<div>
 				<ul class="my_list_title03">
 					<li>거래 상태</li>
 					<li>게시물 제목</li>
@@ -610,7 +611,7 @@ function viewMore07(){
 				</ul>
 				<ul class="my_list_contents03" id="my_list_contents03" >
 				</ul>
-				<a id="moreView03" onclick="viewMore03()"><img src="/img/더보기.png" style="width:100px;"></a>
+				<a class="moreViews" id="moreView03" onclick="viewMore03()"><img src="/img/더보기.png" style="width:100px;"></a>
 			</div>
 		</li>
 		<li>
@@ -623,9 +624,9 @@ function viewMore07(){
 					<li>조회수</li>
 					<li>작성일</li>
 				</ul>
-				<ul class="my_list_contents04" id="my_list_contents04">
+				<ul class="my_list_contents" id="my_list_contents04">
 				</ul>
-				<a id="moreView04" onclick="viewMore04()"><img src="/img/더보기.png" style="width:100px;"></a>
+				<a class="moreViews" id="moreView04" onclick="viewMore04()"><img src="/img/더보기.png" style="width:100px;"></a>
 			</div>
 		</li>
 		<li>
@@ -638,9 +639,9 @@ function viewMore07(){
 					<li>조회수</li>
 					<li>작성일</li>
 				</ul>
-				<ul class="my_list_contents05" id="my_list_contents05">
+				<ul class="my_list_contents" id="my_list_contents05">
 				</ul>
-				<a id="moreView05" onclick="viewMore05()"><img src="/img/더보기.png" style="width:100px;"></a>
+				<a class="moreViews" id="moreView05" onclick="viewMore05()"><img src="/img/더보기.png" style="width:100px;"></a>
 			</div>
 		</li>
 		<li>
@@ -653,9 +654,9 @@ function viewMore07(){
 					<li>조회수</li>
 					<li>작성일</li>
 				</ul>
-				<ul class="my_list_contents06" id="my_list_contents06">
+				<ul class="my_list_contents" id="my_list_contents06">
 				</ul>
-				<a id="moreView06" onclick="viewMore06()"><img src="/img/더보기.png" style="width:100px;"></a>
+				<a class="moreViews" id="moreView06" onclick="viewMore06()"><img src="/img/더보기.png" style="width:100px;"></a>
 			</div>
 		</li>
 		<li>
@@ -670,7 +671,7 @@ function viewMore07(){
             <ul class="my_list_contents" id="my_list_contents07">
                
             </ul>
-            <a id="moreView07" onclick="viewMore07()"><img src="/img/더보기.png" style="width:100px;"></a>
+            <a class="moreViews" id="moreView07" onclick="viewMore07()"><img src="/img/더보기.png" style="width:100px;"></a>
          </div>
 </li>
 	</ul>
