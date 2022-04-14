@@ -134,13 +134,24 @@
 	width:1200px;
 	line-height:50px; text-align:center;
 }
-.my_list_title li{
+ .my_list_title li{
 	width:25%; 
 	margin:20px 0;
 	overflow:hidden;
 }
 .my_list_title li:nth-child(2) {width:40%;}
 .my_list_title li:nth-child(3) {width:10%;}
+
+/*중고게시판*/
+.my_list_title03 li{
+	width:20%; 
+	margin:20px 0;
+	overflow:hidden;
+}
+.my_list_title03 li:nth-child(1) {width:10%;}
+.my_list_title03 li:nth-child(3) {width:25%;}
+.my_list_title03 li:nth-child(4) {width:5%;}
+
 .my_list_contents a:hover li{background-color:rgba(0,0,0,0.1);}
 .my_list_contents a:link {color:#222;}
 .my_list_contents a:visited {color:#222;}
@@ -168,6 +179,14 @@
 .my_list_subcontent {width:480px;}/* 40% */
 .my_list_hit {width:120px;}/* 10% */
 .my_list_date {width:300px;}/* 25% */
+
+/*중고게시판*/
+.my_list_contents03 .my_list_state {width:120px;}/* 10% */
+.my_list_contents03 .my_list_subtitle {width:240px;}/* 20% */
+.my_list_contents03 .my_list_subcontent {width:300px;}/* 25% */
+.my_list_contents03 .my_list_hit {width:60px;}/* 5% */
+.my_list_contents03 .my_list_date {width:240px;}/* 20% */
+.my_list_contents03 .my_list_tradedate {width:240px;}/* 20% */
 
 
 .my_list_alink {

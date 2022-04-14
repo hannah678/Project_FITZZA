@@ -22,7 +22,7 @@
 		AND 	 A.board_num=D.board_num 
 		AND 	 A.type_num=3
 		ORDER BY A.board_num DESC
-		LIMIT #{start}, #{end}
+		LIMIT 	 #{start}, #{end}
     </select>
     
     <!-- oldView -->
@@ -64,16 +64,16 @@
   	</update>
 	
   	<update id="oldBoardStateUpdate">
-  		UPDATE trade_detail SET state_num=#{state_num} WHERE board_num=#{board_num}
+  		UPDATE trade_detail SET state_num=#{state_num}, trade_date=now() WHERE board_num=#{board_num}
   	</update> 
   	
   	<select id="oldBoardSearch" resultType="BoardVO">
-        SELECT   A.board_num, A.title, A.user_id, A.write_date, B.city, C.profile_image, C.user_nickname, D.file1 
+      SELECT   A.board_num, A.title, A.user_id, A.write_date, B.city, C.profile_image, C.user_nickname, D.file1 
       FROM     board A, board_old B, user C, board_common_image D 
       WHERE    A.board_num=B.board_num 
-      AND       A.user_id=C.user_id 
-      AND     A.board_num=D.board_num 
-      AND     A.type_num=3
+      AND      A.user_id=C.user_id 
+      AND      A.board_num=D.board_num 
+      AND      A.type_num=3
       <choose>
          <when test="param1.equals('title')">
             AND A.title like #{param2}

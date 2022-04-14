@@ -65,44 +65,50 @@
         SELECT   board_num, title, content, user_id, hit, ip, write_date
 		FROM     board
 		WHERE    user_id=#{param1} AND type_num=1
-		LIMIT 	#{param2.start}, #{param2.end}
+		LIMIT 	 #{param2.start}, #{param2.end}
     </select>
     <select id="recommendWriterSelect" resultType="com.team.fitzza.vo.BoardVO">
         SELECT   board_num, title, content, user_id, hit, ip, write_date
 		FROM     board
 		WHERE    user_id=#{param1} AND type_num=2
-		LIMIT 	#{param2.start}, #{param2.end}
+		LIMIT 	 #{param2.start}, #{param2.end}
     </select>
     <select id="oldWriterSelect" resultType="com.team.fitzza.vo.BoardVO">
-        SELECT   board_num, title, content, user_id, hit, ip, write_date
-		FROM     board
-		WHERE    user_id=#{param1} AND type_num=3
-		LIMIT 	#{param2.start}, #{param2.end}
+        SELECT   A.board_num, A.title, A.content, A.user_id, A.hit, A.ip, A.write_date,
+        		 B.state_num, B.trade_date,
+	   		     C.state_name
+		FROM     board A 
+		JOIN 	 trade_detail B 	 ON 	A.board_num=B.board_num
+		JOIN	 trade_state C		 ON 	B.state_num=C.state_num
+		WHERE    A.user_id=#{param1} AND    A.type_num=3
+		LIMIT 	 #{param2.start}, #{param2.end}
 
     </select>
     <select id="reviewWriterSelect" resultType="com.team.fitzza.vo.BoardVO">
         SELECT   board_num, title, content, user_id, hit, ip, write_date
 		FROM     board
 		WHERE    user_id=#{param1} AND type_num=4
-		LIMIT 	#{param2.start}, #{param2.end}
+		LIMIT 	 #{param2.start}, #{param2.end}
     </select>
     <select id="qnaWriterSelect" resultType="com.team.fitzza.vo.BoardVO">
         SELECT   board_num, title, content, user_id, hit, ip, write_date
 		FROM     board
 		WHERE    user_id=#{param1} AND type_num=5
-		LIMIT 	#{param2.start}, #{param2.end}
+		LIMIT 	 #{param2.start}, #{param2.end}
     </select>
     <select id="voteWriterSelect" resultType="com.team.fitzza.vo.BoardVO">
         SELECT   board_num, title, content, user_id, hit, ip, write_date
 		FROM     board
 		WHERE    user_id=#{param1} AND type_num=6
-		LIMIT 	#{param2.start}, #{param2.end}
+		LIMIT 	 #{param2.start}, #{param2.end}
     </select>
     <!-- 댓글 마이페이지 -->
     <select id="replyWriterSelect" resultType="com.team.fitzza.vo.ReplyVO">
-    	SELECT B.title, A.coment, A.reply_date 
-	FROM reply A JOIN board B ON A.board_num=B.board_num
-	WHERE A.user_id=#{param1}
-	LIMIT #{param2.start}, #{param2.end}
+    	SELECT	 A.coment, A.reply_date, B.title  
+		FROM   	 reply A 
+		JOIN 	 board B 
+		ON 		 A.board_num=B.board_num
+		WHERE 	 A.user_id=#{param1}
+		LIMIT 	 #{param2.start}, #{param2.end}
     </select>
 </mapper>
