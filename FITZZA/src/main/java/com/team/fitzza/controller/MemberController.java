@@ -161,7 +161,7 @@ public class MemberController {
 	}
 	
 	// 회원등록
-	@PostMapping("member/joinOk")
+	@PostMapping("/member/joinOk")
 	public String memberFormOk(MemberVO vo, Model model) {
 		// 회원등록
 		int cnt = service.memberInsert(vo);
@@ -172,7 +172,7 @@ public class MemberController {
 	}
 	
 	//마이페이지로 가기위한 비밀번호 입력 페이지
-	@GetMapping("member/pwdCheck")
+	@GetMapping("/member/pwdCheck")
 	public ModelAndView pwdCheck(HttpSession session) {
 		String user_id = (String)session.getAttribute("logId");
 		
@@ -185,7 +185,7 @@ public class MemberController {
 	}
 	
 	//정보수정으로 가는 pwdCheckOk
-	@PostMapping("member/pwdCheckOk")
+	@PostMapping("/member/pwdCheckOk")
 	public ModelAndView pwdCheckOk(MemberVO vo, HttpSession session) {
 		// session 로그인 아이디 
 		vo.setUser_id((String)session.getAttribute("logId"));
@@ -215,7 +215,7 @@ public class MemberController {
 	
 	
 	// 회원정보수정 (폼)
-	@GetMapping("member/memberEdit")
+	@GetMapping("/member/memberEdit")
 	public ModelAndView memberEdit(HttpSession session) {
 		String user_id = (String)session.getAttribute("logId");
 		
@@ -229,7 +229,7 @@ public class MemberController {
 	}
 	
 	// 회원정보수정 (DB)
-	@PostMapping("member/memberEditOk")
+	@PostMapping("/member/memberEditOk")
 	public String memberEditOk(MemberVO vo, HttpSession session) {
 		// session 로그인 아이디 
 		vo.setUser_id((String)session.getAttribute("logId"));
@@ -240,7 +240,7 @@ public class MemberController {
 	}
 	
 	//마이페이지 프로필
-	@GetMapping("member/myPage")
+	@GetMapping("/member/myPage")
 	public ModelAndView mypage(HttpSession session) {
 		String user_id = (String)session.getAttribute("logId");
 		MemberVO vo = service.myPage(user_id);
