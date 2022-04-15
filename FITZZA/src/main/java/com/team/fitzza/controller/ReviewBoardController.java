@@ -21,23 +21,19 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.team.fitzza.service.BoardService;
-import com.team.fitzza.service.ReviewBoardService;
 import com.team.fitzza.vo.BoardVO;
 
 @Controller
 public class ReviewBoardController {
 	
 	@Inject
-	ReviewBoardService service;
-	
-	@Inject
-	BoardService Bservice;
+	BoardService service;
 	
 	@GetMapping("/board/review/reviewList")
 	public ModelAndView dataList() {
 		ModelAndView mav = new ModelAndView();
 		
-		mav.addObject("lst", service.reviewBoardSelectAll());
+		mav.addObject("lst", service.BoardSelectAll(4));
 		
 		mav.setViewName("/board/review/reviewList");
 		return mav;
@@ -130,10 +126,10 @@ public class ReviewBoardController {
 			System.out.println(vo.getFile4());
 			System.out.println(vo.getFile5());
 			//DB등록
-			Bservice.BoardInsert(vo);
+			service.BoardInsert(vo);
 			String user_id = (String)request.getSession().getAttribute("logId");
-			vo.setBoard_num(Bservice.boardNum(user_id));
-			Bservice.BoardFileInsert(vo);
+			vo.setBoard_num(service.boardNum(user_id));
+			service.BoardFileInsert(vo);
 			//레코드 추가 성공
 			String msg = "<script>alert('자료실에 글이 등록되었습니다');location.href='/board/review/reviewList';</script>";
 			entity = new ResponseEntity<String>(msg, headers, HttpStatus.OK);	//200
@@ -168,8 +164,8 @@ public class ReviewBoardController {
 	public ModelAndView reviewBoardView(int board_num) {
 		ModelAndView mav = new ModelAndView();
 		System.out.println("조회수 증가!");
-		Bservice.hitCount(board_num); //조회수 증가
-		mav.addObject("vo", service.reviewBoardView(board_num));
+		service.hitCount(board_num); //조회수 증가
+		mav.addObject("vo", service.BoardView(board_num));
 		mav.setViewName("/board/review/reviewView");
 		return mav;
 	}
@@ -178,13 +174,7 @@ public class ReviewBoardController {
 	@GetMapping("/board/review/reviewEdit")
 	public ModelAndView reviewEdit(int board_num) {
 		ModelAndView mav = new ModelAndView();
-		BoardVO vo =service.reviewBoardView(board_num);
-//		// DB에 첨부된 파일의 수를 구한다.
-//		int fileCount =1;	//첫번째 첨부파일은 무조건 있음
-//		if(vo.getFile2()!=null) {	// 두 번째 첨부파일 있으면 1증가
-//			fileCount++;
-//		}
-//		mav.addObject("fileCount", fileCount);
+		BoardVO vo =service.BoardView(board_num);
 		mav.addObject("vo", vo);
 		mav.setViewName("/board/review/reviewEdit");
 		return mav;
@@ -206,21 +196,14 @@ public class ReviewBoardController {
 		List<String> newUpload = new ArrayList<String>();	// 폼에서 온 파일중 게시물에 없는 파일만 고른 컬렉션
 		try {
 			//	1. DB에서 파일명 가져오기
-			BoardVO dbfileVO = Bservice.getFileName(vo.getBoard_num());
+			BoardVO dbfileVO = service.getFileName(vo.getBoard_num());
 			fileList.add(dbfileVO.getFile1());
 			if(dbfileVO.getFile2()!=null) fileList.add(dbfileVO.getFile2());
 			if(dbfileVO.getFile3()!=null) fileList.add(dbfileVO.getFile3());
 			if(dbfileVO.getFile4()!=null) fileList.add(dbfileVO.getFile4());
 			if(dbfileVO.getFile5()!=null) fileList.add(dbfileVO.getFile5());
-		
-			//	2. 삭제된 파일이 있을 경우 List에서 같은 파일명을 지운다.
-//			if(vo.getDelFile() != null) {		// null은 삭제파일이 없다
-//				for(String delFile : vo.getDelFile()) {
-//					fileList.remove(delFile);
-//				}
-//			}
 			
-			//	3. 새로 업로드 하기
+			//	2. 새로 업로드 하기
 			MultipartHttpServletRequest mr = (MultipartHttpServletRequest)req;
 			
 			// 새로 업로드된 MultipartFile객체를 얻어오기
@@ -278,15 +261,8 @@ public class ReviewBoardController {
 			}
 			
 			// DB update
-			Bservice.BoardUpdate(vo);
-			Bservice.BoardFileUpdate(vo);
-			
-//			// DB수정되었을 때
-//			if(vo.getDelFile()!=null) {
-//				for(String fname:vo.getDelFile()) {
-//					fileDelete(path, fname);
-//				}
-//			}			
+			service.BoardUpdate(vo);
+			service.BoardFileUpdate(vo);		
 			
 			// 글 내용보기로 이동
 			String msg = "<script>alert('자료실 글이 수정되었습니다.\\n글내용보기로 이동합니다');";
