@@ -21,17 +21,18 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.team.fitzza.service.BoardService;
+import com.team.fitzza.service.TodayBoardService;
 import com.team.fitzza.vo.BoardVO;
 
 @Controller
 public class TodayCodiController {
 	@Inject
-	BoardService service;
+	BoardService Bservice;
 	
 	@GetMapping("/board/todayCodi/todayCodiList")
 	public ModelAndView dataList() {
 		ModelAndView mav = new ModelAndView();
-		mav.addObject("lst", service.BoardSelectAll(1));
+		mav.addObject("lst", Bservice.BoardSelectAll(1));
 		mav.setViewName("/board/todayCodi/todayCodiList");
 		return mav;
 	}
@@ -109,10 +110,10 @@ public class TodayCodiController {
 				}//	if 111
 				System.out.println(vo.getFile1());
 				//DB등록
-				service.BoardInsert(vo);
+				Bservice.BoardInsert(vo);
 				String user_id = (String)request.getSession().getAttribute("logId");
-				vo.setBoard_num(service.boardNum(user_id));
-				service.BoardFileInsert(vo);
+				vo.setBoard_num(Bservice.boardNum(user_id));
+				Bservice.BoardFileInsert(vo);
 				//레코드 추가 성공
 				String msg = "<script>alert('오늘의 코디가 등록되었습니다');location.href='/board/todayCodi/todayCodiList';</script>";
 				entity = new ResponseEntity<String>(msg, headers, HttpStatus.OK);	//200

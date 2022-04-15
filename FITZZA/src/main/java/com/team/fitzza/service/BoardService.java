@@ -7,7 +7,7 @@ import com.team.fitzza.vo.PagingVO;
 import com.team.fitzza.vo.ReplyVO;
 
 public interface BoardService {
-		//글등록
+	//글등록
 		public int BoardInsert(BoardVO vo);
 		//파일 업로드 
 		public int BoardFileInsert(BoardVO vo);

@@ -22,7 +22,7 @@
     <select id="boardNum" resultType="int">
   		SELECT board_num FROM board WHERE user_id=#{param1} ORDER BY board_num DESC LIMIT 1;
   	</select>
-  	<!-- reviewList --><!-- TodayList --><!-- QnAList -->
+  	<!-- reviewList --><!-- TodayList -->
 	<select id="BoardSelectAll" resultType="com.team.fitzza.vo.BoardVO">
         SELECT   A.board_num, A.title, A.user_id, A.write_date, B.profile_image, B.user_nickname, C.file1 
 		FROM     board A, user B, board_common_image C 
@@ -32,7 +32,7 @@
 		ORDER BY A.board_num DESC;
     </select>
     
-    <!-- reviewView --><!-- TodayView --><!-- QnAView -->
+    <!-- reviewView --><!-- TodayView -->
     <select id="BoardView" resultType="com.team.fitzza.vo.BoardVO">
 	    SELECT A.board_num, A.title, A.hit, A.write_date, A.content, A.user_id, 
 	    	   B.file1, B.file2, B.file3, B.file4, B.file5, 
