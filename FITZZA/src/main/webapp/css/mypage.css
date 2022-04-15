@@ -261,7 +261,7 @@ label[for="upload_file"] {
 }
 #contents li {
 	display:block;
-	font-size:40px; 
+	font-size:30px; 
 	line-height:50px;
 }
 #contents li:nth-child(1) {padding-top:80px;}
@@ -278,6 +278,7 @@ label[for="upload_file"] {
 	border:none;
 	border-top-left-radius: 20px; border-top-right-radius: 20px;
     border-bottom-left-radius: 20px; border-bottom-right-radius: 20px;
+	cursor:pointer
 }
 
 /* pwdCheck - end */
@@ -291,32 +292,32 @@ label[for="upload_file"] {
 	background:url(../img/vote_bg.png) 0 150px; 
 	text-align:center;
 }
-.contents form {
+.contents ul {
 	width:500px; height:500px;
 	margin: 150px auto 0 auto;
 	background-color:rgba(255,255,255,0.8);
 }
 .contents li {
 	display:block;
-	font-size:40px; 
+	font-size:30px; 
 	line-height:50px;
 }
 .contents li:nth-child(1) {padding-top:80px;}
-.contents li:nth-child(2) {padding-bottom:50px;}
-.contents li:nth-child(2) span {color:#888;}
-.contents li:nth-child(4) input {
+.contents li:nth-child(2) {padding-bottom:50px; color:#888}
+.contents li:nth-child(5) input {
 	width:200px; height:30px;
 	border:none;
 	margin-bottom:30px;
 }
-.contents li:nth-child(5) input {
+.contents li:nth-child(6) input {
 	width:80px; height:40px;
 	background-color: #54bab9; color:#fff;
 	border:none;
-	border-top-left-radius: 20px; border-top-right-radius: 20px;
-    border-bottom-left-radius: 20px; border-bottom-right-radius: 20px;
+	border-radius: 20px;  border-bottom-left-radius: 20px; border-bottom-right-radius: 20px;
+	cursor:pointer;
+	font-size:18px;
+	line-height:40px
 }
-
 /* byeCheck - end */
 
 
