@@ -1,0 +1,161 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Kaushan+Script&family=Nanum+Pen+Script&display=swap');
+*{
+    font-family:'Nanum pen script';
+    font-size: 1.12em;
+}
+body{
+    background-image: url("../img/배경.png");
+}
+.rec{
+    width:1200px;
+    margin:0 auto;
+    overflow:auto;
+    font-family:'Nanum pen script';
+    font-size: 0.8em;
+}
+.reclist{
+    padding: 30px;
+    padding-top: 0px;
+}
+#info a:link, #info a:visited, #info a:hover{
+    color:red;
+}
+#profile{
+    float: left;
+    margin-right: 50px;
+    width: 100px;
+    height: 100px;
+    border-radius: 70%;
+    position: relative;
+    top: 40px;
+    left: 10px;
+}
+#level_frame{
+    width: 140px;
+    height: 140px;
+    border-radius: 70%;
+    position:absolute;
+    left: 182px;
+    top: 170px;
+}
+#content{
+    font-size: 2em;
+}
+.rec_content img{
+    width: 680px;
+}
+li{
+    list-style-type: none;
+}
+#title{
+    font-size: 3em;
+}
+#info{
+    font-size: 1.3em;
+    color:dimgrey;
+}
+.reclist{
+    border: 1px solid black;
+}
+#report{
+    width: 70px;
+    height: 35px;
+    font-weight: 600;
+    background-image: url("/img/배경.png");
+    color: red;
+    border: 0;
+    position: absolute;
+    right: 200px;
+    top: 280px;
+    font-size: 1.2em;
+    line-height:35px;
+}
+.paging>form>input{
+    margin-top: 10px;
+    width: 100px;
+    height: 50px;
+    background-image: url("../img/배경.png");
+    border: 1px solid black;
+    font-weight: bold;
+}
+#coment{
+    width:500px; 
+    height:50px;
+    border: 2px solid black;
+    font-family:'Nanum pen script';
+    font-size: 1.1em;
+    font-weight: bold;
+}
+.reply{
+    width: 1200px;
+    clear: both;
+    margin-top:20px;
+    padding-left:30px;
+}
+#replyList{
+	font-size:0.8em;
+}
+#replybtn{
+    position: relative;
+    right: 30px;
+    bottom: 17px;
+    width: 100px;
+    height: 50px;
+    border: 2px solid black;
+    font-family:'Nanum pen script';
+    font-size: 1em;
+    font-weight: bold;
+}
+#replybtn2{
+    position: relative;
+    right: 30px;
+    bottom: 16px;
+    width: 100px;
+    height: 50px;
+    border: 2px solid black;
+    font-family:'Nanum pen script';
+    font-size: 1em;
+    font-weight: bold;
+}
+#reply_profile{
+	width:50px; 
+	height:50px; 
+	border-radius:70%; 
+	position:relative; 
+	margin-left:10px;
+	margin-right:-62px;
+	top:0px;
+}
+#reply_level_frame{
+	width: 75px;
+    height: 75px;
+    border-radius: 70%;
+    position:relative;
+}
+#reply_edit{
+	width:37px;
+	height:30px;
+	text-align:center;
+	font-size:0.8em;
+	padding:0px;
+}
+#reply_del{
+	width:37px;
+	height:30px;
+	text-align:center;
+	font-size:0.8em;
+	padding:0px;
+}
+/* 모달 */
+.modal {font-size: 20px; text-align:center}
+.modal-backdrop {margin-left:-340px}
+.modal-content {
+	display:block;
+	max-width:1000px; height: 650px;
+	position:absolute; left:50%; top:150px;
+	transform:translateX(-550px);
+}
+footer{
+	font-size: 1em;
+}

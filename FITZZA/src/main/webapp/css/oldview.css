@@ -1,0 +1,165 @@
+@import url('https://fonts.googleapis.com/css2?family=Kaushan+Script&family=Nanum+Pen+Script&display=swap');
+*{
+	font-family:'Nanum pen script';
+    font-size: 1.1em;
+}
+body{
+	background-image: url("../img/배경.png");
+}
+.oldboard{
+    width:1200px;
+    margin:0 auto;
+    overflow:auto;
+    font-family:'Nanum pen script';
+    font-size: 1.2em;
+}
+.oldlist{
+	padding:30px;
+}
+.content{
+	font-family: 'Hi Melody', cursive;
+	font-weight: 600;
+    font-size: xx-large;
+}
+#file_img{
+    float: left;
+    margin-right: 50px;
+    width: 400px;
+    height: 400px;
+    border: 1px solid black;
+}
+li{
+    list-style-type: none;
+}
+#call{
+    width: 300px;
+    height: 100px;
+    margin-top: 30px;
+    font-size: xx-large;
+    font-weight: 600;
+    background-color: orange;
+    color: white;
+    border: 0;
+}
+#report{
+    width: 70px;
+    height: 35px;
+    font-weight: 600;
+    background-color: white;
+    color: red;
+    border: 0;
+    position: relative;
+    bottom:50px;
+    left: 630px;
+    font-size: 1em;
+    line-height:35px;
+}
+/*.info>#item{
+    width: 500px;
+    float: left;
+    border-right: 1px solid black;
+    padding-right: 50px;
+    padding-left: 50px;
+}
+.info>#seller{
+    width: 500px;
+    float: left;
+    padding-left: 50px;
+}*/
+#seller{
+	font-size:1.2em;
+	font-weight: 200;
+}
+#seller_img{
+    width: 100px;
+    height: 100px;
+    border-radius: 70%;
+}
+#level_frame{
+	width: 140px;
+    height: 140px;
+    border-radius: 70%;
+    position:relative;
+    top:0px;
+	right:120px;
+}
+#user_nick{
+	font-size:1.5em;
+}
+.reply{
+    width: 1200px;
+    clear: both;
+    margin-top:20px;
+    padding-left:30px;
+}
+#replybtn{
+    position: relative;
+    right: 30px;
+    bottom: 17px;
+    width: 100px;
+    height: 50px;
+    border: 2px solid black;
+    font-family:'Nanum pen script';
+    font-size: 1em;
+    font-weight: bold;
+}
+#replybtn2{
+    position: relative;
+    right: 30px;
+    bottom: 16px;
+    width: 100px;
+    height: 50px;
+    border: 2px solid black;
+    font-family:'Nanum pen script';
+    font-size: 1em;
+    font-weight: bold;
+}
+#reply_profile{
+	width:50px; 
+	height:50px; 
+	border-radius:70%; 
+	position:relative; 
+	margin-left:10px;
+	margin-right:-62px;
+	top:0px;
+}
+#reply_level_frame{
+	width: 75px;
+    height: 75px;
+    border-radius: 70%;
+    position:relative;
+}
+#reply_edit{
+	width:37px;
+	height:30px;
+	text-align:center;
+	font-size:0.8em;
+	padding:0px;
+}
+#reply_del{
+	width:37px;
+	height:30px;
+	text-align:center;
+	font-size:0.8em;
+	padding:0px;
+}
+#pro_img{
+    width: 60%;
+    float: left;
+}
+#pro_con{
+    width: 40%;
+    float: left;
+}
+/* 모달 */
+.modal {font-size: 20px; text-align:center}
+.modal-backdrop {margin-left:-340px}
+.modal-content {
+	display:block;
+	max-width:1000px; height: 650px;
+	position:absolute; left:50%; top:150px;
+	transform:translateX(-550px);
+}
+footer{
+	font-size: 1em;
+}

@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.team.fitzza.dao.BoardDAO">
+	<!-- 글 등록 -->
+	<insert id="BoardInsert">
+  		INSERT INTO board(type_num, user_id, title, content, ip, gender_type)
+  		VALUES(#{type_num},#{user_id},#{title},#{content},#{ip},#{gender_type})
+  	</insert>
+	<!-- 파일 업로드 -->
+  	<insert id="BoardFileInsert">
+  		INSERT INTO board_common_image(board_num,file1,file2,file3,file4,file5) 
+  		VALUES(#{board_num},#{file1},#{file2},#{file3},#{file4},#{file5})
+  	</insert>
+  	<!-- 글1개 선택 -->
+  	<select id="boardSelect" resultType="com.team.fitzza.vo.BoardVO">
+        SELECT   board_num, title, user_id, hit, ip, write_date
+		FROM     board A
+		WHERE    board_num=${param1}
+    </select>
+    <select id="boardNum" resultType="int">
+  		SELECT board_num FROM board WHERE user_id=#{param1} ORDER BY board_num DESC LIMIT 1;
+  	</select>
+  	<!-- reviewList --><!-- TodayList --><!-- QnAList -->
+	<select id="BoardSelectAll" resultType="com.team.fitzza.vo.BoardVO">
+        SELECT   A.board_num, A.title, A.user_id, A.write_date, B.profile_image, B.user_nickname, C.file1 
+		FROM     board A, user B, board_common_image C 
+		WHERE    A.user_id=B.user_id 
+		AND 	 A.board_num=C.board_num 
+		AND 	 A.type_num=#{param1}
+		ORDER BY A.board_num DESC
+		LIMIT 	 #{start}, #{end}
+    </select>
+    
+    <!-- reviewView --><!-- TodayView --><!-- QnAView -->
+    <select id="BoardView" resultType="com.team.fitzza.vo.BoardVO">
+	    SELECT A.board_num, A.title, A.hit, A.write_date, A.content, A.user_id, 
+	    	   B.file1, B.file2, B.file3, B.file4, B.file5, 
+	   		   C.user_nickname, C.report_hit, C.profile_image, C.exp,
+	   		   D.gender_name,
+	   		   E.frame_img
+	    FROM   board A, board_common_image B, user C, gender D, user_grade E
+	    WHERE  A.board_num=B.board_num 
+	    AND    A.user_id=C.user_id 
+	    AND    A.gender_type=D.gender_type
+	    AND    A.board_num=${param1}
+	    AND    E.exp_min <![CDATA[<=]]> C.exp
+		AND    C.exp <![CDATA[<=]]> E.exp_max
+    </select>
+    
+    
+    
+    
+	<!-- 조회수 올리기 -->
+	<update id="hitCount">
+        UPDATE board SET hit = hit+1 WHERE board_num=#{param1}
+    </update>
+    <!-- 글 수정 -->
+    <update id="BoardUpdate">
+  		UPDATE  board SET title=#{title}, content=#{content}, gender_type=#{gender_type}
+		WHERE board_num=#{board_num}
+  	</update>
+  	<select id="getFileName" resultType="com.team.fitzza.vo.BoardVO">
+    	SELECT file1,file2,file3,file4,file5 FROM board_common_image 
+    	WHERE board_num=#{board_num}
+    </select>
+  	<update id="BoardFileUpdate">
+  		UPDATE board_common_image SET file1=#{file1},file2=#{file2},file3=#{file3},file4=#{file4},file5=#{file5}
+		WHERE board_num=#{board_num}
+  	</update>
+  	<!-- 신고하기 -->
+  	<insert id="reportInsert">
+  		INSERT INTO board_report(board_num, report_content, category_num, user_id)
+		VALUES(${board_num}, #{report_content}, ${category_num}, #{user_id});
+  	</insert>
+  	<!-- 신고 누적수 -->
+ 	<update id="reportUp">
+ 		UPDATE user SET report_hit=report_hit+1 WHERE user_id=(SELECT user_id FROM board WHERE board_num=${board_num});
+ 	</update>
+ 	
+ 	
+ 	
+ 	<!-- 게시글 삭제 -->
+ 	<delete id="boardDelete">
+ 		DELETE FROM board WHERE board_num=#{param1} AND user_id=#{param2}
+ 	</delete>
+ 	<!-- 타입넘버 가져오기 -->
+ 	<select id="getType_num" resultType="int">
+ 		select type_num from board where board_num=${param1}
+ 	</select>
+ 	<!-- 마이페이지 게시글 확인 (글쓴이검색?)-->
+ 	<select id="todayWriterSelect" resultType="com.team.fitzza.vo.BoardVO">
+        SELECT   board_num, title, content, user_id, hit, ip, write_date
+		FROM     board
+		WHERE    user_id=#{param1} AND type_num=1
+		LIMIT 	 #{param2.start}, #{param2.end}
+    </select>
+    <select id="recommendWriterSelect" resultType="com.team.fitzza.vo.BoardVO">
+        SELECT   board_num, title, content, user_id, hit, ip, write_date
+		FROM     board
+		WHERE    user_id=#{param1} AND type_num=2
+		LIMIT 	 #{param2.start}, #{param2.end}
+    </select>
+    <select id="oldWriterSelect" resultType="com.team.fitzza.vo.BoardVO">
+        SELECT   A.board_num, A.title, A.content, A.user_id, A.hit, A.ip, A.write_date,
+        		 B.state_num, B.trade_date,
+	   		     C.state_name
+		FROM     board A 
+		JOIN 	 trade_detail B 	 ON 	A.board_num=B.board_num
+		JOIN	 trade_state C		 ON 	B.state_num=C.state_num
+		WHERE    A.user_id=#{param1} AND    A.type_num=3
+		LIMIT 	 #{param2.start}, #{param2.end}
+
+    </select>
+    <select id="reviewWriterSelect" resultType="com.team.fitzza.vo.BoardVO">
+        SELECT   board_num, title, content, user_id, hit, ip, write_date
+		FROM     board
+		WHERE    user_id=#{param1} AND type_num=4
+		LIMIT 	 #{param2.start}, #{param2.end}
+    </select>
+    <select id="qnaWriterSelect" resultType="com.team.fitzza.vo.BoardVO">
+        SELECT   board_num, title, content, user_id, hit, ip, write_date
+		FROM     board
+		WHERE    user_id=#{param1} AND type_num=5
+		LIMIT 	 #{param2.start}, #{param2.end}
+    </select>
+    <select id="voteWriterSelect" resultType="com.team.fitzza.vo.BoardVO">
+        SELECT   board_num, title, content, user_id, hit, ip, write_date
+		FROM     board
+		WHERE    user_id=#{param1} AND type_num=6
+		LIMIT 	 #{param2.start}, #{param2.end}
+    </select>
+    <!-- 댓글 마이페이지 -->
+    <select id="replyWriterSelect" resultType="com.team.fitzza.vo.ReplyVO">
+    	SELECT	 A.coment, A.reply_date, B.title  
+		FROM   	 reply A 
+		JOIN 	 board B 
+		ON 		 A.board_num=B.board_num
+		WHERE 	 A.user_id=#{param1}
+		LIMIT 	 #{param2.start}, #{param2.end}
+    </select>
+</mapper>

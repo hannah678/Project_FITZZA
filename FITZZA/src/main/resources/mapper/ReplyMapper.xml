@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.team.fitzza.dao.ReplyDAO">
+	<insert id="replyWrite">
+		insert into reply(board_num, user_id, coment)
+		values(#{board_num}, #{user_id}, #{coment})
+	</insert>
+	<select id="replyList" resultType="com.team.fitzza.vo.ReplyVO">
+		SELECT A.reply_num, A.user_id, A.coment, A.reply_date, B.profile_image, B.user_nickname, 
+		C.frame_img
+		FROM   reply A join user B ON A.user_id = B.user_id 
+		JOIN user_grade C ON  B.exp BETWEEN C.exp_min AND C.exp_max
+		WHERE  A.board_num=${param1}
+		ORDER BY A.reply_num DESC;
+	</select>
+	<update id="replyEdit">
+		UPDATE reply SET coment=#{coment} WHERE reply_num=${reply_num} AND user_id=#{user_id}
+	</update>
+	<delete id="replyDel">
+		DELETE FROM reply where reply_num=#{param1} AND user_id=#{param2}
+	</delete>
+</mapper>
