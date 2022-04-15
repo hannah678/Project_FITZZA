@@ -5,19 +5,34 @@
 	header, footer {display:none}
 </style>
 <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
-<script type="text/javascript">
-$("#adminUser").click(function(){ 
-      $("#adminUserShow").css('display','block');
-   });
-$("#adminReport").click(function(){ 
-    $("#adminReportShow").css('display','block');
- });
-$("#adminOld").click(function(){ 
-    $("#adminOldShow").css('display','block');
- });
-$("#adminBoard").click(function(){ 
-    $("#adminBoardShow").css('display','block');
- });
+<script>
+$(document).ready(function(){
+	$("#adminUser").click(function(){ 
+		$("#adminUser_container").css('display','block');
+		$("#adminReport_container").css('display','none');
+		$("#adminOld_container").css('display','none');
+		$("#adminBoard_container").css('display','none');
+	   });
+	$("#adminReport").click(function(){ 
+		$("#adminUser_container").css('display','none');
+		$("#adminReport_container").css('display','block');
+		$("#adminOld_container").css('display','none');
+		$("#adminBoard_container").css('display','none');
+	 });
+	$("#adminOld").click(function(){ 
+		$("#adminUser_container").css('display','none');
+		$("#adminReport_container").css('display','none');
+		$("#adminOld_container").css('display','block');
+		$("#adminBoard_container").css('display','none');
+	 });
+	$("#adminBoard").click(function(){ 
+		$("#adminUser_container").css('display','none');
+		$("#adminReport_container").css('display','none');
+		$("#adminOld_container").css('display','none');
+		$("#adminBoard_container").css('display','block');
+	 });
+});
+
 </script>
 <div id="admin_container">
 	<div id="admin_wrap">
@@ -44,10 +59,10 @@ $("#adminBoard").click(function(){
 			</ul>
 		</div>
 		<div id="resultArea">
-			<p style="display:none" id="adminUserShow"><%@ include file="/WEB-INF/views/admin/adminUser.jsp" %></p>
-			<p style="display:none" id="adminReportShow"><%@ include file="/WEB-INF/views/admin/adminReport.jsp" %></p>
-			<p style="display:none" id="adminOldShow"><%@ include file="/WEB-INF/views/admin/adminOld.jsp" %></p>
-			<p style="display:none" id="adminBoardShow"><%@ include file="/WEB-INF/views/admin/adminBoard.jsp" %></p>
+			<p id="adminUserShow"><%@ include file="/WEB-INF/views/admin/adminUser.jsp" %></p>
+			<p id="adminReportShow"><%@ include file="/WEB-INF/views/admin/adminReport.jsp" %></p>
+			<p id="adminOldShow"><%@ include file="/WEB-INF/views/admin/adminOld.jsp" %></p>
+			<p id="adminBoardShow"><%@ include file="/WEB-INF/views/admin/adminBoard.jsp" %></p>
 		</div>
 	</div>
 </div>
