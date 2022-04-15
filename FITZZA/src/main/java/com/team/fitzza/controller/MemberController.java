@@ -283,7 +283,7 @@ public class MemberController {
 		String user_id = (String)session.getAttribute("logId");
 		pvo.setStart(Integer.parseInt(startNum04));
 		pvo.setEnd(5);
-		return Bservice.oldWriterSelect(user_id, pvo);
+		return Bservice.reviewWriterSelect(user_id, pvo);
 	}
 	//마이페이지 더보기페이징(5)
 	@ResponseBody //Ajax
