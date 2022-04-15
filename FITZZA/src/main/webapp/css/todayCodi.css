@@ -31,41 +31,70 @@
 #tc_box {
 	width:1600px; height:1500px;
 	display:inline-block;
+	margin-top:300px;
 }
 #tc_box li:nth-child(2n) {padding-top:300px;}
 .tc_img {
 	position:relative;
 	width:350px; height:600px;
 	display:inline-block;
-	margin-right:30px;
 }
 #tc_box li:nth-child(4n) {margin-right:0} 
 .tc_img > img {
 	position:absolute; left:0; top:0;
-	width:350px; height:600px;
+	width:350px; max-height:600px;
+	overflow:hidden;
+	background-color:rgba(0,0,0,0.1);
 }
 .tc_img a {
 	position:absolute; left:0; top:0;
 	width:350px; height:600px;
 	display:block;
 	transition:all 0.5s; opacity:0;
+	cursor:default;
 }
 .tc_img a:hover {background-color:rgba(0,0,0,0.4); opacity:1;}
 .tc_img a > img {
 	width:150px; height:150px;
-	border-top-left-radius: 75px; border-top-right-radius: 75px;
-    border-bottom-left-radius: 75px; border-bottom-right-radius: 75px;
-    margin:100px 0 50px 0;
+	border-radius:75px;
+    margin:50px 0 30px 0;
 }
-.tc_img a > p {
+.tc_img a:nth-child(2) p{
 	width:300px; height:100px;
 	margin:0 auto 50px auto;
 }
+.like_btn {
+	width:350px;
+	position:absolute; left:25px; top:300px;
+	display:block;
+}
+.like_btn .heart_empty {
+	display:block; margin:0 auto;
+	cursor:pointer;
+	margin-bottom:10px;
+}
 .tc_img a > span {
 	float:right;
-	margin-right:30px;
+	margin :30px 30px 0 0;
 	font-size:20px;
 }
+.buttons {
+	width:350px; height:50px;
+	display:block;
+	margin-top:180px;
+}
+.buttons button {
+	width:50px; height:30px;
+	border:2px solid #fff;
+	border-radius:10px;
+	margin:0 10px;
+	float:left;
+	background-color:transparent;
+	color:#fff;
+	cursor:pointer;
+}
+.buttons button:active {background-color:#fff; color:#222}
+.buttons button:nth-child(1) {margin-left:80px}
 /* todayCodiList - end */
 
 /* todayCodiWrite - start */

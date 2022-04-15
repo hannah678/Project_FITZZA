@@ -138,6 +138,18 @@ public class TodayCodiController {
 				file.delete();
 			}
 		}
+		
+		//todayCodiView
+		@GetMapping("/board/todayCodi/todayCodiView")
+		public String todayCodiView() {
+			return "/board/todayCodi/todayCodiView";
+		}
+		
+		//todayCodiEdit
+		@GetMapping("/board/todayCodi/todayCodiEdit")
+		public String todayCodiEdit() {
+			return "/board/todayCodi/todayCodiEdit";
+		}
 	  
 }
 
