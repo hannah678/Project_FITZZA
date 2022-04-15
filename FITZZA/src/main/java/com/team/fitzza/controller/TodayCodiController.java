@@ -52,7 +52,7 @@ public class TodayCodiController {
 			HttpHeaders headers = new HttpHeaders();
 			headers.setContentType(new MediaType("text","html", Charset.forName("UTF-8")));
 			
-			String path = request.getSession().getServletContext().getRealPath("/upload"); // 파일업로드를 위한 업로드 위치의 절대주소
+			String path = request.getSession().getServletContext().getRealPath("/upload/todayCodi"); // 파일업로드를 위한 업로드 위치의 절대주소
 			System.out.println("path -> "+path);
 			try {
 				// 파일 업로드를 처리하기 위해서 request 객체에서 multipart객체를 구하여야 한다.
@@ -63,7 +63,6 @@ public class TodayCodiController {
 				System.out.println("업로드 파일 수 -> "+files.size());
 				
 				if(files!=null) {	//if 111
-					int cnt = 1;	// 4번에서 업로드 순서에 따라 filename1, filename2 파일명을 대입하기 위한 변수
 					//첨부파일수 만큼 반복하여 업로드한다.
 					for(int i=0; i<files.size(); i++) {	// for 222
 						//	1. MultipartFile객체 얻어오기
@@ -77,33 +76,38 @@ public class TodayCodiController {
 						if(orgFileName!=null && !orgFileName.equals("")) {	//if 333, 파일명이 존재하면
 							File f = new File(path, orgFileName);
 							
-							//	파일이 존재하는 지 확인	true:파일이 존재/	false:파일 없음
-							if(f.exists()) {	//if 444
-								for(int renameNum=1;; renameNum++) {	//for 555
+								for(int renameNum=0;; renameNum++) {	//for 555
 									//	확장자와 파일을 분리한다.
-									int point = orgFileName.lastIndexOf(".");
-									String fileName = orgFileName.substring(0, point);
-									String ext = orgFileName.substring(point+1);
-									
-									f = new File(path, fileName+" ("+renameNum+")."+ext);
-									if(!f.exists()) {	//if 666 , 새로 생성된 파일 객체가 없으면
-										orgFileName = f.getName();
-										break;
-									}	//if 666
+									if(renameNum<10) {
+										int point = orgFileName.lastIndexOf(".");
+										String ext = orgFileName.substring(point+1);
+										
+										f = new File(path, "0"+renameNum+"."+ext);
+											if(!f.exists()) {	//if 666 , 새로 생성된 파일 객체가 없으면
+												orgFileName = f.getName();
+												break;
+											}
+									}else {
+										int point = orgFileName.lastIndexOf(".");
+										String ext = orgFileName.substring(point+1);
+										
+										f = new File(path, renameNum+"."+ext);
+											if(!f.exists()) {	//if 666 , 새로 생성된 파일 객체가 없으면
+												orgFileName = f.getName();
+												break;	
+											}//if 666
+									}
+
 									
 								}	//for 555
-								
-							}	//if 444
-							//	4. 파일 업로드 구현
+								//	5. 업로드한(새로운파일명) vo에 셋팅
+							vo.setFile1(orgFileName);
 							try {
 								mf.transferTo(f);	// 실제 업로드가 일어나는(발생하는) 시점
 								System.out.println(f);
 							}catch(Exception ee) {
 								ee.printStackTrace();
 							}
-							
-							//	5. 업로드한(새로운파일명) vo에 셋팅
-							vo.setFile1(orgFileName);
 						}	//if 333
 					}// for 222
 				}//	if 111

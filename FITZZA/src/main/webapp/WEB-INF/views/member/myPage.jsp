@@ -9,6 +9,7 @@ a {font-size:20px}
 button a {font-size:16px}
 a:link {color:#fff; text-decoration: none;}
 a:visited {color:#fff}
+.admin_setting {margin-top:-10px}
 .my_list_title li {font-size:20px; font-weight:600;}
 </style>
 <script>
@@ -291,7 +292,7 @@ function viewMore01(){
 				addListHtml01 += "<li class='my_list_hit'>"+data[i].hit+"</li>";
 				addListHtml01 += "<li class='my_list_date'>"+data[i].write_date+"</li>";
 				addListHtml01 += "</ul>";
-                addListHtml01 += "<a href='/board/old/oldView?board_num="+data[i].board_num+"'></a></li>";
+                addListHtml01 += "<a class='my_list_alink' href='/board/old/oldView?board_num="+data[i].board_num+"'></a></li>";
 				            
 			}
 			if(data.length<5){
@@ -326,7 +327,7 @@ function viewMore02(){
 				addListHtml02 += "<li class='my_list_hit'>"+data[i].hit+"</li>";
 				addListHtml02 += "<li class='my_list_date'>"+data[i].write_date+"</li>";
 				addListHtml02 += "</ul>";
-                addListHtml02 += "<a href='/board/old/oldView?board_num="+data[i].board_num+"'></a></li>";
+                addListHtml02 += "<a class='my_list_alink' href='/board/old/oldView?board_num="+data[i].board_num+"'></a></li>";
 				
 			}
 			if(data.length<5){
@@ -375,7 +376,7 @@ function viewMore03(){
 					addListHtml06 += "<li class='my_list_date'>"+data[i].write_date+"</li>";
 					addListHtml06 += "<li class='my_list_tradedate'>-</li>";
 					addListHtml06 += "</ul>";
-	                addListHtml06 += "<a href='/board/old/oldView?board_num="+data[i].board_num+"'></a></li>";
+	                addListHtml06 += "<a class='my_list_alink' href='/board/old/oldView?board_num="+data[i].board_num+"'></a></li>";
 				}
 			}
 			if(data.length<5){
@@ -410,7 +411,7 @@ function viewMore04(){
 				addListHtml04 += "<li class='my_list_hit'>"+data[i].hit+"</li>";
 				addListHtml04 += "<li class='my_list_date'>"+data[i].write_date+"</li>";
 				addListHtml04 += "</ul>";
-                addListHtml04 += "<a href='/board/review/reivewView?board_num="+data[i].board_num+"'></a></li>";
+                addListHtml04 += "<a class='my_list_alink' href='/board/review/reivewView?board_num="+data[i].board_num+"'></a></li>";
 				
 			}
 			if(data.length<5){
@@ -445,7 +446,7 @@ function viewMore05(){
 				addListHtml05 += "<li class='my_list_hit'>"+data[i].hit+"</li>";
 				addListHtml05 += "<li class='my_list_date'>"+data[i].write_date+"</li>";
 				addListHtml05 += "</ul>";
-                addListHtml05 += "<a href='/board/review/reivewView?board_num="+data[i].board_num+"'></a></li>";
+                addListHtml05 += "<a class='my_list_alink' href='/board/review/reivewView?board_num="+data[i].board_num+"'></a></li>";
 				
 			}
 			if(data.length<5){
@@ -480,7 +481,7 @@ function viewMore06(){
 				addListHtml06 += "<li class='my_list_hit'>"+data[i].hit+"</li>";
 				addListHtml06 += "<li class='my_list_date'>"+data[i].write_date+"</li>";
 				addListHtml06 += "</ul>";
-                addListHtml06 += "<a href='/board/vote/voteView?board_num="+data[i].board_num+"'></a></li>";
+                addListHtml06 += "<a class='my_list_alink' href='/board/vote/voteView?board_num="+data[i].board_num+"'></a></li>";
 			}
 			if(data.length<5){
 				$("#moreView06").remove();
