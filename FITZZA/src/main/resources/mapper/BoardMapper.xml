@@ -48,10 +48,7 @@
 	    AND    E.exp_min <![CDATA[<=]]> C.exp
 		AND    C.exp <![CDATA[<=]]> E.exp_max
     </select>
-    
-    
-    
-    
+ 
 	<!-- 조회수 올리기 -->
 	<update id="hitCount">
         UPDATE board SET hit = hit+1 WHERE board_num=#{param1}
@@ -140,4 +137,12 @@
 		WHERE 	 A.user_id=#{param1}
 		LIMIT 	 #{param2.start}, #{param2.end}
     </select>
+    <!-- 오늘의코디 Like --><!-- 오늘뭐입지 Like -->
+    <insert id="LikeInsert">
+  		INSERT INTO like_clicker (board_num, user_id)
+  		values (#{board_num}, #{user_id})
+  	</insert>
+  	<delete id="LikeDelete">
+ 		DELETE FROM like_clicker WHERE board_num=#{board_num} AND user_id=#{user_id}
+ 	</delete>
 </mapper>

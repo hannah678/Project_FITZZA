@@ -120,6 +120,11 @@ public class BoardServiceImpl implements BoardService{
 		return dao.BoardView(board_num);
 	}
 
+	@Override
+	public List<BoardVO> BoardSelectAll(int type_num) {
+		return dao.BoardSelectAll(type_num);
+	}
+
 	
 	
 }

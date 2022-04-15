@@ -20,6 +20,8 @@ public interface BoardDAO {
 	public BoardVO boardSelect(int board_num);
 	
 	public List<BoardVO> BoardSelectAll(PagingVO pvo);
+	public List<BoardVO> BoardSelectAll(int type_num);
+
 	public BoardVO BoardView(int board_num);
 	
 	public int boardNum(String user_id);
