@@ -20,19 +20,20 @@
     <div class="boardcontainer">
 		<br><br><br><br><br><br><br><br>
         <h1>질문하기</h1>
-        <form method="post" action="/board/qna/qnaWriteOk" id="boardFrm" enctype="multipart/form-data">
-        <input type="hidden" name="type_num" value="5"/>
-        <input type="hidden" name="gender_type" value="U">
+        <form method="post" action="" id="boardFrm">
             <ul>
                 <li>제목 &emsp; <input type="text" name="title" id="title" placeholder='	질문 제목을 입력해주세요.'/></li>
 				<hr/>
-				<li>내용 &emsp; <textarea name="content" id="introduce" rows="10" cols="90" placeholder='	질문 내용을 입력해주세요.'></textarea></li>
+				<li class="qna_introduce">
+					<span>내용</span>
+					<textarea name="introduce" id="introduce" rows="10" cols="90" placeholder='	질문 내용을 입력해주세요.'></textarea>
+				</li>
 				<hr/>
-				<li>이미지 &emsp; <input type="text" id="file_route" disabled="disabled" value="파일 선택">
+				<li class="qna_img_area"><span>이미지</span> &emsp; <input type="text" id="file_route" disabled="disabled" value="파일 선택">
 					<label for="upload_file" id="upload">업로드</label>
-					<input type="file" id="upload_file" name="filename" accept="image/*" required=true 
+					<input type="file" id="upload_file" name="file1" accept="image/*" required=true 
 						style="position:absolute; clip:rect(0, 0, 0, 0);">
-					<img style="width: 300px;" id="img_section" src="/img/이미지 없음.png"></li>
+					<img style="width: 300px; height:300px; display:inline-block" id="img_section" src="../img/이미지 없음.png"></li>
 					<script>
 						const reader = new FileReader();
 				

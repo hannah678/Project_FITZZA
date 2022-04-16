@@ -1,23 +1,23 @@
 @import url('https://fonts.googleapis.com/css2?family=Kaushan+Script&family=Nanum+Pen+Script&display=swap');
-*{
-	font-family:'Nanum pen script';
-    font-size: 1.1em;
-}
+
 body{
 	background-image: url("../img/배경.png");
+	font-family: 'Noto Sans KR';
+    font-size: 1em;
 }
 .oldboard{
     width:1200px;
     margin:0 auto;
     overflow:auto;
-    font-family:'Nanum pen script';
-    font-size: 1.2em;
+    font-family: 'Noto Sans KR';
+    font-size: 1em;
+    padding-top:100px
 }
 .oldlist{
 	padding:30px;
 }
 .content{
-	font-family: 'Hi Melody', cursive;
+	font-family: 'Noto Sans KR';
 	font-weight: 600;
     font-size: xx-large;
 }
@@ -49,8 +49,8 @@ li{
     color: red;
     border: 0;
     position: relative;
-    bottom:50px;
-    left: 630px;
+    top:0px;
+    left: 600px;
     font-size: 1em;
     line-height:35px;
 }
@@ -66,10 +66,13 @@ li{
     float: left;
     padding-left: 50px;
 }*/
+.oldViewId, .oldViewHit {display:block; height:65px;}
 #seller{
 	font-size:1.2em;
 	font-weight: 200;
 }
+#seller > b {font-size:24px}
+#item > b {font-size:24px}
 #seller_img{
     width: 100px;
     height: 100px;
@@ -84,7 +87,7 @@ li{
 	right:120px;
 }
 #user_nick{
-	font-size:1.5em;
+	font-size:1.1em;
 }
 .reply{
     width: 1200px;
@@ -94,14 +97,13 @@ li{
 }
 #replybtn{
     position: relative;
-    right: 30px;
+    right: 0px;
     bottom: 17px;
     width: 100px;
     height: 50px;
     border: 2px solid black;
-    font-family:'Nanum pen script';
+    font-family: 'Noto Sans KR';
     font-size: 1em;
-    font-weight: bold;
 }
 #replybtn2{
     position: relative;
@@ -135,6 +137,7 @@ li{
 	text-align:center;
 	font-size:0.8em;
 	padding:0px;
+	margin-left:30px
 }
 #reply_del{
 	width:37px;
@@ -143,6 +146,9 @@ li{
 	font-size:0.8em;
 	padding:0px;
 }
+#replyList #reply_level_frame {margin-right:30px}
+#replyList > ul li div p {margin-top:30px}
+
 #pro_img{
     width: 60%;
     float: left;

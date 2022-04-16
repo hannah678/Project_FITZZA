@@ -1,31 +1,33 @@
 @charset "UTF-8";
 @import url('https://fonts.googleapis.com/css2?family=Hi+Melody&family=Nanum+Pen+Script&display=swap');
 .qnaboard h1, .qnaboard h2, .qnaboard h5{
-    font-family: 'Hi Melody', cursive;
+    font-family: 'Noto Sans KR';
     text-align: center;
 }
 body{
     background-image: url("../img/배경.png");
 } 
 .qnaboard{
-    font-family:'Nanum pen script';
+    font-family: 'Noto Sans KR';
     font-size: 0.8em;
+   
 }
 a:link, a:visited, a:hover{
     text-decoration:none;
     color:black;
 }
 #write{
-    height: 30px;
+    height: 40px;
 }
 .qnaboard>#write a:link, .qnaboard>#write a:visited{
     text-decoration:none;
     font-weight: 800;
     color:gray;
 }
+.qnaboard>#write a {transition:all 0.5s;}
 .qnaboard>#write a:hover{
     font-weight: 900;
-    font-size: 2em;
+    font-size: 1.2em;
     color:black;
 }
 .qnaboard>#write{
@@ -35,6 +37,10 @@ a:link, a:visited, a:hover{
 .qnaboard h1, .qnaboard h2, .qnalist>li:nth-child(5n+1), .qnalist>li:nth-child(2), .qnalist>li:nth-child(5n+3), .qnalist>li:nth-child(5n+4), .qnalist>li:nth-child(5n){
     text-align: center;
 }
+.qndboard h1 {
+	font-size:1.5em; margin-bottom:20px;
+}
+.qnaboard h2 {font-size:1.2em}
 .qnaboard{
     width:1200px;
     margin:0 auto;
@@ -42,7 +48,14 @@ a:link, a:visited, a:hover{
 }
 .qnalist{
     border-top: 1px soli black;
+    font-size:16px;
+    min-height:500px;
 }
+.qnalist > li:nth-child(1) {font-size:20px;}
+.qnalist > li:nth-child(2) {font-size:20px;}
+.qnalist > li:nth-child(3) {font-size:20px;}
+.qnalist > li:nth-child(4) {font-size:20px;}
+.qnalist > li:nth-child(5) {font-size:20px;}
 .qnalist>li{
     float: left;
     height: 80px;
@@ -77,10 +90,12 @@ a:link, a:visited, a:hover{
     font-weight:bold;
 }
 #searchFrm{
-    width:304px;
-    margin-bottom:30px;
-    display: table; margin-left: auto; margin-right: auto;
-}
+    width:324px; height:50px;
+    margin:30px auto;
+    display: table;
+    padding-top:30px
+ }
+ #searchWord {margin:0 10px}
 
 .real_profile_img{
 	width:20px; height:20px; border-radius: 70%;

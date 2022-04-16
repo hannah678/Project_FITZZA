@@ -107,16 +107,16 @@ header > a {
     border-bottom-left-radius: 20px; border-bottom-right-radius: 20px;
     background-color: #54bab9;
 }
-#rnb #logStatus3 {position:absolute; right: 270px; top: 25px;}
+#rnb #logStatus3 {position:absolute; right: 270px; top: 35px;}
 #rnb #logStatus3 a {
     display:block;
-    width: 50px; height: 50px;
+    width: 30px; height: 30px;
 }
 #rnb #logStatus3 a :hover {animation:rotating linear infinite 2s; transform-origin: 50% 50%;}
 @keyframes rotating{
     100% {transform:rotate(270deg)}
 }
-#rnb #logStatus3 a img {width:50px; height:50px;}
+#rnb #logStatus3 a img {width:30px; height:30px;}
 #menu_bar{
     position:absolute; left: 50px; top: 32px;
     z-index: 2; cursor: pointer;  

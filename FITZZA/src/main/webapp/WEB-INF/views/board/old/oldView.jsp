@@ -52,7 +52,7 @@
 							tag += "<input type='button' value='수정' id='reply_edit'/>";
 							tag += "<input type='button' value='삭제' title='"+vo.reply_num+"' id='reply_del'/>";
 						}
-						tag += "<br/>" + vo.coment + "</div>";
+						tag += "<br/>" + "<p>" + vo.coment + "</p>" + "</div>";
 						
 						if(vo.user_id == '${logId}'){   // user_id
 							tag += "<div style='display:none'><form method='post'>";
@@ -140,6 +140,10 @@
 		document.getElementById("level_frame").src="${vo.frame_img}";
 	}
 </script>
+<style>
+header a {font-size:20px}
+.admin_setting {margin-top:-15px}
+</style>
 <body>
 	<div class="oldboard">
 		<br> <br> <br> <br> <br>
@@ -155,9 +159,9 @@
 			</ul>
 			<hr />
 			<ul>
-				<li>조회수 &nbsp; ${vo.hit}<!--hit--> &emsp; &emsp; 게시일 &nbsp;
+				<li class="oldViewHit">조회수 &nbsp; ${vo.hit}<!--hit--> &emsp; &emsp; 게시일 &nbsp;
 					${vo.write_date} <!--enter_date--></li>
-				<li>${vo.user_id}</li>
+				<li class="oldViewId">${vo.user_id}</li>
 				<c:if test="${logId != vo.user_id}">
 					<li><input type="button" value="신고" id="report"
 						data-target="#reportModal" data-toggle="modal" /></li>
@@ -199,7 +203,7 @@
 		</div>
 		<div class="reply">
 			<hr />
-			<li style="font-size: 1.5em;"><b>상품문의</b></li>
+			<li style="font-size: 24px;"><b>상품문의</b></li>
 			<hr />
 			<!--댓글수정필요-->
 			<form id="replyFrm">

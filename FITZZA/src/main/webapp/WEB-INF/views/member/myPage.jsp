@@ -253,6 +253,7 @@ window.onload=function(){
 		dataType : 'json',
 		data :param07,
 		success : function(data){
+			alert(data.length);
 			for (var i = 0; i < data.length; i++) {
 				addListHtml07 += "<li class='my_list_subtitle'>"+data[i].title+"</li>";
 				addListHtml07 += "<li class='my_list_subcontent'>"+data[i].coment+"</li>";
@@ -508,6 +509,7 @@ function viewMore07(){
 		dataType : 'json',
 		data :param07,
 		success : function(data){
+			alert(data.length);
 			for (var i = 0; i < data.length; i++) {
 				addListHtml07 += "<li class='my_list_subtitle'>"+data[i].title+"</li>";
 				addListHtml07 += "<li class='my_list_subcontent'>"+data[i].coment+"</li>";

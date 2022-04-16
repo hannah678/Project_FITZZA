@@ -2,14 +2,13 @@
 <link rel="stylesheet" href="/css/qnaList.css" type="text/css">
 <body>
 <div class="qnaboard">
-    <br><br><br><br><br><br>
-    <h1>패션 관련 그 어떤 질문이라도 궁금하면 뭐든지</h1>
-    <h2>Q & A</h2>
-    <h5>도배/홍보성 글은 삭제 및 경고 처리됩니다.</h5>
+    <br><br><br><br><br><br><br><br>
+    <h1>Q & A</h1>
+    <h2>도배/홍보성 글은 삭제 및 경고 처리됩니다.</h2>
     <div id="write">
         <a href="/board/qna/qnaWrite">글쓰기</a>
     </div>
-    <ul class="qnalist" id="qnalist">
+    <ul class="qnalist">
         <li>번호</li>
         <li>제목</li>
         <li>작성자</li>
@@ -17,8 +16,12 @@
         <li>조회</li>
 
 		<!-- 게시물 리스트 -->
+        <li>124</li>
+        <li><a href="">트러커 어디껀지 알고싶어요ㅜㅜ</a></li>
+        <li><img src="/img/profileDefault.png" style="width:20px; height:20px; border-radius: 70%;"/>도발이</li>
+        <li>04-01</li>
+        <li>123</li>
         
-     </ul>   
         
 
         <!-- 리스트 더보기 -->
@@ -27,16 +30,16 @@
             
         </ul>
     
-        <form action="/board/qna/search" id="searchFrm">
+        <form action="get" action="/board/qna/search" id="searchFrm">
             <select name="searchKey">
-                <option value="title">제목</option>
+                <option value="subject">제목</option>
                 <option value="content">내용</option>
-                <option value="user_id">작성자</option>
+                <option value="userid">작성자</option>
             </select>
             <input type="text" name="searchWord" id="searchWord"/>
             <input type="submit" value="Search"/>
         </form>
-    
+    </ul>
 </div>
 </body>
 <script>
@@ -49,7 +52,7 @@ $("#searchFrm").submit(function() {
 });
 	
 window.onload=function(){
-		var startNum = $("#qnalist li").length/5 -1; // oldlist안에 li태그의 길이
+		var startNum = $("#qnalist li").length/5; // oldlist안에 li태그의 길이
 		var addListHtml = "";
 		 console.log(startNum); 
 		var url;
@@ -59,13 +62,13 @@ window.onload=function(){
 		var word = params.get('searchWord');
 		var pathname = window.location.pathname;
 		var pn = pathname.substring(pathname.lastIndexOf('/')+1);
-		if(pn=='qnaList'){
+		if(pn=='oldList'){
 			url = '/board/qna/qnaLists';
 			param = {
 				"startNum" : startNum 
 			};
 		}else if(pn='search'){
-			url = '/board/qna/searchLists';
+			url = '/board/old/searchLists';
 			param = {
 				"startNum" : startNum ,
 				"searchKey" : key,
@@ -89,14 +92,14 @@ window.onload=function(){
 				if(data.length<5){
 					$("#moreView").remove();
 				} 
-				$("#qnalist").append(addListHtml);
-				console.log(addListHtml); 
+				$("#oldlist").append(addListHtml);
+				/* console.log(addListHtml); */
 			}
 		});
 }
 
 $('#moreView').click(function(){
-		var startNum = $("#qnalist li").length/5 -1; // oldlist안에 li태그의 길이
+		var startNum = $("#qnalist li").length/5; // oldlist안에 li태그의 길이
 		var addListHtml = "";
 		 console.log(startNum); 
 		var url;
@@ -108,12 +111,11 @@ $('#moreView').click(function(){
 		var pn = pathname.substring(pathname.lastIndexOf('/')+1);
 		if(pn=='qnaList'){
 			url = '/board/qna/qnaLists';
-			console.log("if문")
 			param = {
 				"startNum" : startNum 
 			};
 		}else if(pn='search'){
-			url = '/board/qna/searchLists';
+			url = '/board/old/searchLists';
 			param = {
 				"startNum" : startNum ,
 				"searchKey" : key,
@@ -130,7 +132,7 @@ $('#moreView').click(function(){
 				for (var i = 0; i < data.length; i++) {
 					addListHtml += "<li>"+data[i].board_num+"</li>";
 					addListHtml += "<li><a href='/board/qna/qnaView?board_num="+data[i].board_num+"'>"+data[i].title+"</a></li>";
-					addListHtml += "<li><img src='/upload/"+data[i].profile_image+"' class='real_profile_img' />&nbsp;"+data[i].user_nickname+"</li>";
+					addListHtml += "<li><img src='/upload/"+data[i].profile_image+"' class='real_profile_img'/>&nbsp;"+data[i].user_nickname+"</li>";
 					addListHtml += "<li>"+data[i].write_date+"</li>";
 					addListHtml += "<li>"+data[i].hit+"</li>";
 					
@@ -138,7 +140,7 @@ $('#moreView').click(function(){
 				if(data.length<5){
 					$("#moreView").remove();
 				} 
-				$("#qnalist").append(addListHtml);
+				$("#oldlist").append(addListHtml);
 				/* console.log(addListHtml); */
 			}
 		});

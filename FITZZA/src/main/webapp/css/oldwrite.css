@@ -36,8 +36,7 @@
     background-color: orange;
     line-height:100px;  color: white;
     border: 0;
-    border-top-left-radius: 50px; border-top-right-radius: 50px;
-    border-bottom-left-radius: 50px; border-bottom-right-radius: 50px;
+    border-radius: 50px;
 	cursor:pointer;
 }
 #boardFrm label{
@@ -47,8 +46,7 @@
     background-color: beige;
     font-size: x-large;
     cursor:pointer;
-    border-top-left-radius: 50px; border-top-right-radius: 50px;
-    border-bottom-left-radius: 50px; border-bottom-right-radius: 50px;
+	border-radius: 50px;
 }
 #file_route01, #file_route02, #file_route03, #file_route04, #file_route05{
     height: 30px;
@@ -66,3 +64,4 @@
     margin-bottom: 30px;
 }
 #boardFrm textarea {margin-top:30px}
+

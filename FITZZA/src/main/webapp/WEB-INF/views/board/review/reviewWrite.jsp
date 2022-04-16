@@ -71,7 +71,7 @@
                             <input type="file" id="upload_file05" name="filename" accept="image/*" style="position:absolute; clip:rect(0, 0, 0, 0);"><br/>
                         </div>
 				</div></li>
-				<li style="height:70px;"><input type='submit' value='등록' id="reviewsubmit" class="button01" style="margin-right:20px; margin-top:30px;"/></li>
+				<li style="height:200px;"><input type='submit' value='등록' id="reviewsubmit" class="button01"/></li>
 		</ul>
 	</form>
 </div>
