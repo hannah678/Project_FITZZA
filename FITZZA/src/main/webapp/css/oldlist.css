@@ -30,6 +30,7 @@ a:link, a:visited, a:hover{
     margin-bottom: 30px;
     text-align:right;
     height:40px;
+    transition:all 0.5s;
 }
 h1, h2, .oldlist>li:nth-child(3), .oldlist>li:nth-child(6n+1), .oldlist>li:nth-child(6n+2), .oldlist>li:nth-child(6n+4), .oldlist>li:nth-child(6n+5), .oldlist>li:nth-child(6n){
     text-align: center;
@@ -50,6 +51,8 @@ h1, h2, .oldlist>li:nth-child(3), .oldlist>li:nth-child(6n+1), .oldlist>li:nth-c
     border-bottom: 1px solid rgb(192, 192, 192);
     width: 10%;
     background-color: white;
+    overflow:hidden;
+    text-align:center;
 }
 .oldlist>li:nth-child(1) {font-size:20px}
 .oldlist>li:nth-child(2) {font-size:20px}
@@ -61,7 +64,6 @@ h1, h2, .oldlist>li:nth-child(3), .oldlist>li:nth-child(6n+1), .oldlist>li:nth-c
     width: 40%;
     white-space: nowrap;
     overflow: hidden;
-    
     text-overflow: ellipsis;
 }
 .oldlist>li:nth-child(6n+5){
