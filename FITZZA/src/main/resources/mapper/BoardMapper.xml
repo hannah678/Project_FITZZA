@@ -138,6 +138,16 @@
 		LIMIT 	 #{param2.start}, #{param2.end}
     </select>
     <!-- 오늘의코디 Like --><!-- 오늘뭐입지 Like -->
+    <select id="LikeCount" resultType="com.team.fitzza.vo.BoardVO">		<!-- 0이면 Insert&Update 1이면 Delete -->
+    	SELECT COUNT(user_id) CNT 
+    	FROM like_clicker 
+    	WHERE board_num=#{board_num} AND user_id=#{user_id}
+    </select>
+    <update id="LikeUpdate">	<!-- 좋아요 수 늘리기-->
+    	UPDATE SET like=like+1 
+    	FROM  board 
+    	WHERE board_num=#{board_num}
+    </update>   
     <insert id="LikeInsert">
   		INSERT INTO like_clicker (board_num, user_id)
   		values (#{board_num}, #{user_id})

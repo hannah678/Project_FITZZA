@@ -125,6 +125,26 @@ public class BoardServiceImpl implements BoardService{
 		return dao.BoardSelectAll(type_num);
 	}
 
+	@Override
+	public int LikeCount(BoardVO vo) {
+		return dao.LikeCount(vo);
+	}
+
+	@Override
+	public void LikeInsert(BoardVO vo) {
+		dao.LikeInsert(vo);
+	}
+
+	@Override
+	public void LikeUpdate(BoardVO vo) {
+		dao.LikeUpdate(vo);
+	}
+
+	@Override
+	public void LikeDelete(BoardVO vo) {
+		dao.LikeDelete(vo);
+	}
+
 	
 	
 }

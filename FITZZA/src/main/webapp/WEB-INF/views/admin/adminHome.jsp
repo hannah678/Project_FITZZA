@@ -49,7 +49,7 @@ $(document).ready(function(){
 				<img id ="ad_p_img" src="/img/profileDefault.png" alt="프로필 이미지">
 				<!-- <img id ="ad_p_img" src="/upload/${vo.profile_image}" alt="프로필 이미지"> -->
 				<a href="/member/myPage"></a>
-				<p>마이페이지 ^</p>
+				<p>마이페이지 ^ </p>
 			</div>
 			<ul>
 				<li><span id="adminUser">회원 관리</span></li>

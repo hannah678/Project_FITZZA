@@ -43,5 +43,11 @@ public interface BoardService {
 		public List<BoardVO> qnaWriterSelect(String user_id, PagingVO pvo);
 		public List<BoardVO> voteWriterSelect(String user_id, PagingVO pvo);
 		public List<ReplyVO> replyWriterSelect(String user_id, PagingVO pvo);
+		
+		public int LikeCount(BoardVO vo);
+		public void LikeInsert(BoardVO vo);
+		public void LikeUpdate(BoardVO vo);
+		public void LikeDelete(BoardVO vo);
+		
 }
 

@@ -41,10 +41,16 @@ public class BoardVO {
 	private String category_name; //광고, 사기거래, 욕설/비방, 사칭
 	private String report_time;
 	
-	
+	private int like;
 	
 	
 
+	public int getLike() {
+		return like;
+	}
+	public void setLike(int like) {
+		this.like = like;
+	}
 	public int getExp() {
 		return exp;
 	}

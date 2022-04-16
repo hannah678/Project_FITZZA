@@ -20,46 +20,48 @@
 	</script> -->
 	<script>
 		var imgTag='';
-		function insertImage(){
-			for(i=1;i<51;i++){
+		function ImgInsert(){		
 				//imgTag +='<img src="img/'+ imgList[i] +'"/>';
-				
-				imgTag +="<figure>";
-				if(i<10)
-					imgTag +=    "<img src='/upload/todayCodi/0"+ i+".png'/><a href='javascript:;'><img src='/upload/"+vo.profile_image+"'><p>"+vo.user_nickname+"</p><span>"+vo.write_date+"</span><p class='like_btn'><img src='/img/heart_empty.png' class='heart_empty' alt='빈하트'><span>추천 수 : xxx</span></p><div class='buttons'><button>수정</button><button>삭제</button><button>신고</button></div></a>";
-				else
-					imgTag +=    "<img src='/upload/todayCodi/"+ i+".png'/><a href='javascript:;'><img src='/upload/"+vo.profile_image+"'><p>"+vo.user_nickname+"</p><span>"+vo.write_date+"</span><p class='like_btn'><img src='/img/heart_empty.png' class='heart_empty' alt='빈하트'><span>추천 수 : xxx</span></p><div class='buttons'><button>수정</button><button>삭제</button><button>신고</button></div></a>";	
-				//imgTag +=    "<figcaption>Cinderella wearing European fashion of the mid-1860’s</figcaption>";
-				imgTag +="</figure>";
-			}
-			document.getElementById("columns").innerHTML = imgTag;
-			
-			
-			document.getElementsByClass("heart_empty").on('click',function(){
-				document.getElementsByClass(this).toggleClass('checked');
-			})
+				<c:forEach var="vo" items="${lst}">//값은 들어옴
+					imgTag +="<figure>";
+					imgTag += "<img src='/upload/todayCodi/"+${vo.file1}+"'/>";
+					imgTag += "<a href='javascript:;'>";
+					imgTag += "<img src='/upload/"+${vo.profile_image}+"'>";
+					imgTag += "<p>"+${vo.user_nickname}+"</p>";
+					imgTag += "<span>"+${vo.write_date}+"</span>";
+					imgTag += "<p class='like_btn'><img src='/img/heart_empty.png' class='heart_empty' alt='빈하트'>";
+					imgTag += "<span>추천 수 : xxx</span></p>";
+					imgTag += "<div class='buttons'><button>수정</button><button>삭제</button><button>신고</button></div></a>";	
+					//imgTag +=    "<figcaption>Cinderella wearing European fashion of the mid-1860’s</figcaption>";
+					imgTag +="</figure>";
+				</c:forEach>
+			$("#columns").append(imgTag);
+			//document.getElementById("columns").innerHTML = imgTag;
 		}
-	</script>
-	<script>
-	$(document).ready(function(){
+		
+	/* $(document).ready(function(){
 		$('.heart_empty').on('click',function(){
-			$(this).toggleClass('checked');
+			var params = {board_num: $("#board_num").val()}
+			$.ajax({
+				url : '/board/like',
+				type : 'POST',
+				dataType : 'json',
+				data :params,
+				success : function(data){
+				} 				
+			});
 		});
-	});
+	});*/
 	</script>
-<body onload="insertImage();">
+<body onload="ImgInsert()">
 	<div id="tc_container">
 		<div id="tc_wrap">
 			<h1>오늘의 코디</h1>
 			<div id="write"><a href="/board/todayCodi/todayCodiWrite">글쓰기</a></div>
-			<ul id="tc_box">
-				<c:forEach var="vo" items="${lst}">
+			<ul id="tc_box" >
 					<li class='tc_img' style='margin: -270px 40px 0 0px;'>
-						<%-- <img src='/upload/${vo.file1}' > --%>
 						<div id="columns"></div>
-							
 					</li>
-				</c:forEach>
 			</ul>
 		</div>
 	</div>

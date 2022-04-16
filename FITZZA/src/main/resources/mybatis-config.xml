@@ -8,5 +8,10 @@
   		<mapper resource="mapper/boardMapper.xml"></mapper>
   		<mapper resource="mapper/ReplyMapper.xml"></mapper>
   		<mapper resource="mapper/OldBoardMapper.xml"></mapper>
+  		<mapper resource="mapper/AdminBoardMapper.xml"></mapper>
+  		<mapper resource="mapper/AdminMemberMapper.xml"></mapper>
+  		<mapper resource="mapper/AdminOldMapper.xml"></mapper>
+  		<mapper resource="mapper/AdminReplyMapper.xml"></mapper>
+  		
   	</mappers>
   </configuration>

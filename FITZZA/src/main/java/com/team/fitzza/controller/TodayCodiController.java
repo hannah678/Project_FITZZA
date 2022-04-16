@@ -29,8 +29,9 @@ public class TodayCodiController {
 	BoardService service;
 	
 	@GetMapping("/board/todayCodi/todayCodiList")
-	public ModelAndView dataList() {
+	public ModelAndView dataList(BoardVO vo) {
 		ModelAndView mav = new ModelAndView();
+		//mav.addObject("LikeCount",service.LikeCount(vo));
 		mav.addObject("lst", service.BoardSelectAll(1));
 		mav.setViewName("/board/todayCodi/todayCodiList");
 		return mav;
