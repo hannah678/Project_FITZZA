@@ -1,7 +1,9 @@
 @charset "UTF-8";
 @import url('https://fonts.googleapis.com/css2?family=Hi+Melody&family=Nanum+Pen+Script&display=swap');
 body{
-    background-image: url("../img/배경.png");
+    background-image: url("../img/trade_bg.png");
+    position:relative;
+	z-index:-2	
 }
 .boardcontainer{
     width:1200px;
@@ -83,4 +85,10 @@ label{
     top: 5.5px;
     background-color: #efefef;
     font-size: 0.7em;
+}
+
+#particles-js{
+	width:100%; height:100%;
+    position:fixed;left: 0; top: 0;
+    z-index: -1;    
 }

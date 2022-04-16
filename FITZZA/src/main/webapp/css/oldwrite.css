@@ -1,3 +1,9 @@
+body {
+	background:url(../img/trade_bg.png) 0 0;
+	position:relative;
+	z-index:-2	
+}
+
 .boardcontainer{
     width:1200px;
     margin:0 auto;
@@ -65,3 +71,8 @@
 }
 #boardFrm textarea {margin-top:30px}
 
+#particles-js{
+	width:100%; height:100%;
+    position:fixed;left: 0; top: 0;
+    z-index: -1;    
+}

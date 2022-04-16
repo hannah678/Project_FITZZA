@@ -5,14 +5,14 @@
 }
 body{
 	font-size: 1.2em;
-	background-image: url("../img/배경.png");
-	min-height:800px
+	background-image: url("../img/trade_bg.png");
+	
 }
 a:link, a:visited, a:hover{
     text-decoration:none;
     color:black;
 }
-.oldboard {min-height:500px}
+.oldboard {min-height:600px}
 .oldboard option {font-size:0.4em}
 .oldboard>#write a:link, .oldboard>#write a:visited{
     text-decoration:none;
