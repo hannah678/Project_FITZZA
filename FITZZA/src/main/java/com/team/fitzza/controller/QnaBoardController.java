@@ -48,18 +48,41 @@ public class QnaBoardController {
 		
 		@ResponseBody //Ajax
 		@RequestMapping(value = "/board/qna/qnaLists")
-		public List<BoardVO> newsMoreView(PagingVO pvo, Model model
+		public List<BoardVO> qnaMoreView(PagingVO pvo, Model model
 				, @RequestParam(value="startNum", required=false)String startNum) throws Exception {
-			System.out.println("리뷰 페이지vo"+pvo);
+			System.out.println("qnaMoreView START:::");
 //			startNum="5";
 			pvo.setStart(Integer.parseInt(startNum));
 			pvo.setEnd(5);
-			return service.BoardSelectAll(pvo);
+			return service.BoardSelectAllSE(5,pvo);
 		}
-
+		
+		
+		//검색 기능
+		@GetMapping("/board/qna/search")
+		   public ModelAndView search(String searchKey, String searchWord) {
+			System.out.println("search START!!!");
+		      ModelAndView mav = new ModelAndView();
+		      mav.setViewName("/board/qna/qnaList");
+		      return mav;
+			}
+		
+		@ResponseBody //Ajax
+		@RequestMapping(value = "/board/qna/searchLists")
+		public List<BoardVO> searchMoreView(@RequestParam(value="startNum", required=false)String startNum,
+				String searchKey, String searchWord) throws Exception {
+			System.out.println("searchMoreView START!!!");
+			int start = Integer.parseInt(startNum);
+			int end = 5;
+			System.out.println("searchKey -> "+searchKey);
+			System.out.println("searchWord -> "+searchWord);
+			return service.boardSearch(searchKey, "%"+searchWord+"%", start, end, 5);
+			}
+		
+		
 		@PostMapping("/board/qna/qnaWriteOk")
-		public ResponseEntity<String> qnaWriteOk(BoardVO vo, HttpServletRequest request) {
-			System.out.println("reviewWriteOk START");
+		public ResponseEntity<String> boardWriteOk(BoardVO vo, HttpServletRequest request) {
+			System.out.println("qnaWriteOk START");
 			vo.setIp(request.getRemoteAddr()); // 접속자 아이피
 			vo.setUser_id((String)request.getSession().getAttribute("logId"));	// 글쓴이
 			
@@ -72,9 +95,11 @@ public class QnaBoardController {
 			String path = request.getSession().getServletContext().getRealPath("/upload"); // 파일업로드를 위한 업로드 위치의 절대주소
 			System.out.println("path -> "+path);
 			try {
+				System.out.println("try문");
 				// 파일 업로드를 처리하기 위해서 request 객체에서 multipart객체를 구하여야 한다.
 				MultipartHttpServletRequest mr = (MultipartHttpServletRequest)request;
-				
+				System.out.println("11121313131");
+				System.out.println(mr);
 				//mr에 파일의 수만큼 MultipartFile객체가존재한다
 				List<MultipartFile> files = mr.getFiles("filename");
 				System.out.println("업로드 파일 수 -> "+files.size());
@@ -120,8 +145,8 @@ public class QnaBoardController {
 							}
 							
 							//	5. 업로드한(새로운파일명) vo에 셋팅
-							vo.setFile1(orgFileName);
-							
+							if(cnt==1) vo.setFile1(orgFileName);
+							cnt++;
 						}	//if 333
 						
 					}// for 222
@@ -134,7 +159,7 @@ public class QnaBoardController {
 				vo.setBoard_num(service.boardNum(user_id));
 				service.BoardFileInsert(vo);
 				//레코드 추가 성공
-				String msg = "<script>alert('Q&A 글이 등록되었습니다');location.href='/board/qna/qnaList';</script>";
+				String msg = "<script>alert('자료실에 글이 등록되었습니다');location.href='/board/qna/qnaList';</script>";
 				entity = new ResponseEntity<String>(msg, headers, HttpStatus.OK);	//200
 				
 			}catch(Exception e) {
@@ -149,6 +174,7 @@ public class QnaBoardController {
 				entity = new ResponseEntity<String>(msg, headers, HttpStatus.BAD_REQUEST);	//400
 			}
 			return entity;
+		
 		}
 		// 파일지우기
 		public void fileDelete(String p, String f) {

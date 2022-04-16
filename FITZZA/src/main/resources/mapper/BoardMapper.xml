@@ -30,7 +30,16 @@
 		AND 	 A.board_num=C.board_num 
 		AND 	 A.type_num=#{param1}
 		ORDER BY A.board_num DESC
-		LIMIT 	 #{start}, #{end}
+    </select>
+    
+    <select id="BoardSelectAllSE" resultType="com.team.fitzza.vo.BoardVO">
+        SELECT   A.board_num, A.title, A.user_id, A.write_date, A.content, B.profile_image, B.user_nickname, C.file1 
+		FROM     board A, user B, board_common_image C 
+		WHERE    A.user_id=B.user_id 
+		AND 	 A.board_num=C.board_num 
+		AND 	 A.type_num=#{param1}
+		ORDER BY A.board_num DESC
+		LIMIT 	 #{param2.start}, #{param2.end}
     </select>
     
     <!-- reviewView --><!-- TodayView --><!-- QnAView -->
@@ -48,6 +57,28 @@
 	    AND    E.exp_min <![CDATA[<=]]> C.exp
 		AND    C.exp <![CDATA[<=]]> E.exp_max
     </select>
+    
+    <!-- reviewView --><!-- TodayView --><!-- QnAView --><!-- 검색 -->
+    <select id="boardSearch" resultType="BoardVO">
+      SELECT   A.board_num, A.title, A.user_id, A.write_date, A.hit, C.profile_image, C.user_nickname, D.file1 
+      FROM     board A, user C, board_common_image D 
+      WHERE    A.board_num=D.board_num 
+      AND      A.user_id=C.user_id 
+      AND      A.type_num=#{param5}
+      <choose>
+         <when test="param1.equals('title')">
+            AND A.title like #{param2}
+         </when>
+         <when test="param1.equals('content')">
+            AND A.content like #{param2}
+         </when>
+         <when test="param1.equals('user_id')">
+            AND A.user_id like #{param2}
+         </when>
+      </choose>
+      ORDER BY A.board_num DESC
+      LIMIT #{param3}, #{param4}
+     </select>
  
 	<!-- 조회수 올리기 -->
 	<update id="hitCount">
@@ -75,7 +106,6 @@
  	<update id="reportUp">
  		UPDATE user SET report_hit=report_hit+1 WHERE user_id=(SELECT user_id FROM board WHERE board_num=${board_num});
  	</update>
- 	
  	
  	
  	<!-- 게시글 삭제 -->
@@ -108,8 +138,8 @@
 		JOIN	 trade_state C		 ON 	B.state_num=C.state_num
 		WHERE    A.user_id=#{param1} AND    A.type_num=3
 		LIMIT 	 #{param2.start}, #{param2.end}
-
     </select>
+    
     <select id="reviewWriterSelect" resultType="com.team.fitzza.vo.BoardVO">
         SELECT   board_num, title, content, user_id, hit, ip, write_date
 		FROM     board
@@ -138,7 +168,7 @@
 		LIMIT 	 #{param2.start}, #{param2.end}
     </select>
     <!-- 오늘의코디 Like --><!-- 오늘뭐입지 Like -->
-    <select id="LikeCount" resultType="com.team.fitzza.vo.BoardVO">		<!-- 0이면 Insert&Update 1이면 Delete -->
+     <select id="LikeCount" resultType="com.team.fitzza.vo.BoardVO"><!-- 0이면 Insert&Update 1이면 Delete -->
     	SELECT COUNT(user_id) CNT 
     	FROM like_clicker 
     	WHERE board_num=#{board_num} AND user_id=#{user_id}
@@ -147,7 +177,7 @@
     	UPDATE SET like=like+1 
     	FROM  board 
     	WHERE board_num=#{board_num}
-    </update>   
+    </update>  
     <insert id="LikeInsert">
   		INSERT INTO like_clicker (board_num, user_id)
   		values (#{board_num}, #{user_id})

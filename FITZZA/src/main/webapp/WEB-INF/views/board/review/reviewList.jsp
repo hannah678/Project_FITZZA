@@ -13,10 +13,9 @@
   </div>
 	<hr/>
 	<div id="review_container"><!--  리뷰 글 들어갈곳 -->
-	  <ul>
-	  	<c:forEach var="vo" items="${lst}">
-		  	<li class="reviewList">
-			  	<div class="post_area">
+	  <ul id="reviewListUl">
+		  	<!-- <li class="reviewList"> -->
+			  	<%--<div class="post_area">
 			  	 	<div class="sum-img">
 			  			<a href="/board/review/reviewView?board_num=${vo.board_num}"><img src="/upload/${vo.file1}" width="130" width="130"/></a> <!--  이미지 들어갈곳 -->
 			   		</div>
@@ -31,24 +30,26 @@
 				  			<span>조회수 : ${vo.hit}</span><!--  조회수 -->
 				  		</div>
 				  	</div>
-			  	</div>
-		  	</li>
-	  	</c:forEach>
+			  	</div> --%>
+			  	
+		  	<!-- </li> -->
+		  	
 	  </ul>
+	  <a id="moreViewReview"><img src="/img/더보기.png" style="width:100px;"></a>
 	</div>
 	 
-    
-        <form action="/board/review/search" id="searchFrm">
+    <div>
+        <form method="get" action="/board/review/search" id="searchFrm">
             <select name="searchKey">
-                <option value="subject">제목</option>
+                <option value="title">제목</option>
                 <option value="content">내용</option>
-                <option value="userid">작성자</option>
+                <option value="user_id">작성자</option>
             </select>
             <input type="text" name="searchWord" id="searchWord"/>
             <input type="submit" value="Search"/>
         </form>
+	</div>
 </div>
-
 <script>
        $("#searchFrm").submit(function() {
           if ($("#searchWord").val() == "") {
@@ -59,7 +60,7 @@
        });
    		
        window.onload=function(){
-			var startNum = $("#reviewList").length; // oldlist안에 li태그의 길이
+			var startNum = $(".reviewList").length; 
 			var addListHtml = "";
 			 console.log(startNum); 
 			var url;
@@ -69,19 +70,19 @@
 			var word = params.get('searchWord');
 			var pathname = window.location.pathname;
 			var pn = pathname.substring(pathname.lastIndexOf('/')+1);
-			if(pn=='oldList'){
-				url = '/board/old/oldLists';
+			if(pn=='reviewList'){
+				url = '/board/review/reviewLists';
 				param = {
 					"startNum" : startNum 
 				};
 			}else if(pn='search'){
-				url = '/board/old/searchLists';
+				url = '/board/review/searchLists';
 				param = {
 					"startNum" : startNum ,
 					"searchKey" : key,
 					"searchWord" : word
 				};
-				console.log(startNum);
+				console.log("search이다 : "+startNum);
 			}
 			$.ajax({
 				url : url,
@@ -89,28 +90,29 @@
 				dataType : 'json',
 				data :param,
 				success : function(data){
-					
 					for (var i = 0; i < data.length; i++) {
-						addListHtml += "<li>"+data[i].city+"</li>";
-						addListHtml += "<li><a href='/board/old/oldView?board_num="+data[i].board_num+"'><img src='/upload/"+data[i].file1+"'/></a></li>";
-						addListHtml += "<li><a href='/board/old/oldView?board_num="+data[i].board_num+"'>"+data[i].title+"</a></li>";
-						addListHtml += "<li><img src=/upload/'"+data[i].profile_image+"' style='width:20px; height:20px; border-radius: 70%;'/>"+data[i].user_nickname+"</li>";
-						addListHtml += "<li>"+data[i].write_date+"</li>";
-						addListHtml += "<li>"+data[i].hit+"</li>";
-						if(data[i].board_num==1){
+						addListHtml += "<li class='reviewList'><div class='post_area'><div class='sum-img'>";
+						addListHtml += "<a href='/board/review/reviewView?board_num="+ data[i].board_num +"'><img src='/upload/"+ data[i].file1 +"' width='130' height='130'/></a>";
+						addListHtml += "</div><div class='post'><div class='post_top'>";
+						addListHtml += "<div class='title_area'>"+ data[i].title +"</div><div class='txt'>" + data[i].content + "</div></div>";
+						addListHtml += "<div class='post_bottom'>";
+						addListHtml += "<span><img src='/upload/" + data[i].profile_image + "' style='width:20px; height:20px; border-radius: 70%;'/>&nbsp;"+ data[i].user_nickname+ "</span>";
+						addListHtml += "<span>${vo.write_date}</span><span>조회수 : " + data[i].hit + "</span>";
+						addListHtml += "</div></div></div></li>";
+						if(data[i].board_num==0){
 							$("#moreView").remove();
 						} 
 					}
-					$("#oldlist").append(addListHtml);
+					$("#reviewListUl").append(addListHtml);
 					/* console.log(addListHtml); */
 				}
 			});
        }
    
-	   $('#moreView').click(function(){
-			var startNum = $("#oldlist li").length/6 -1; // oldlist안에 li태그의 길이
+       $('#moreViewReview').click(function(){
+			var startNum = $(".reviewList").length; // oldlist안에 li태그의 길이
 			var addListHtml = "";
-			 console.log(startNum); 
+			 console.log("moreView START!! :::" + startNum); 
 			var url;
 			var param;
 			const params = new URL(window.location.href).searchParams;
@@ -118,19 +120,19 @@
 			var word = params.get('searchWord');
 			var pathname = window.location.pathname;
 			var pn = pathname.substring(pathname.lastIndexOf('/')+1);
-			if(pn=='oldList'){
-				url = '/board/old/oldLists';
+			if(pn=='reviewList'){
+				url = '/board/review/reviewLists';
 				param = {
 					"startNum" : startNum 
 				};
 			}else if(pn='search'){
-				url = '/board/old/searchLists';
+				url = '/board/review/searchLists';
 				param = {
 					"startNum" : startNum ,
 					"searchKey" : key,
 					"searchWord" : word
 				};
-				console.log(startNum);
+				console.log("moreView startNum :: "+startNum);
 			}
 			$.ajax({
 				url : url,
@@ -138,19 +140,20 @@
 				dataType : 'json',
 				data :param,
 				success : function(data){
-					
 					for (var i = 0; i < data.length; i++) {
-						addListHtml += "<li>"+data[i].city+"</li>";
-						addListHtml += "<li><a href='/board/old/oldView?board_num="+data[i].board_num+"'><img src='/upload/"+data[i].file1+"'/></a></li>";
-						addListHtml += "<li><a href='/board/old/oldView?board_num="+data[i].board_num+"'>"+data[i].title+"</a></li>";
-						addListHtml += "<li><img src=/upload/'"+data[i].profile_image+"' style='width:20px; height:20px; border-radius: 70%;'/>"+data[i].user_nickname+"</li>";
-						addListHtml += "<li>"+data[i].write_date+"</li>";
-						addListHtml += "<li>"+data[i].hit+"</li>";
-						if(data[i].board_num==1){
-							$("#moreView").remove();
-						} 
+						addListHtml += "<li class='reviewList'><div class='post_area'><div class='sum-img'>";
+						addListHtml += "<a href='/board/review/reviewView?board_num="+ data[i].board_num +"'><img src='/upload/"+ data[i].file1 +"' width='130' height='130'/></a>";
+						addListHtml += "</div><div class='post'><div class='post_top'>";
+						addListHtml += "<div class='title_area'>"+ data[i].title +"</div><div class='txt'>" + data[i].content + "</div></div>";
+						addListHtml += "<div class='post_bottom'>";
+						addListHtml += "<span><img src='/upload/" + data[i].profile_image + "' style='width:20px; height:20px; border-radius: 70%;'/>&nbsp;"+ data[i].user_nickname+ "</span>";
+						addListHtml += "<span>${vo.write_date}</span><span>조회수 : " + data[i].hit + "</span>";
+						addListHtml += "</div></div></div></li>";
 					}
-					$("#oldlist").append(addListHtml);
+					if(data.length<5){
+						$("#moreViewReview").remove();
+					} 
+					$("#reviewListUl").append(addListHtml);
 					/* console.log(addListHtml); */
 				}
 			});

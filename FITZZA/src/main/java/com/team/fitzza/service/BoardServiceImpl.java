@@ -110,10 +110,6 @@ public class BoardServiceImpl implements BoardService{
 		return dao.replyWriterSelect(user_id, pvo);
 	}
 
-	@Override
-	public List<BoardVO> BoardSelectAll(PagingVO pvo) {
-		return dao.BoardSelectAll(pvo);
-	}
 
 	@Override
 	public BoardVO BoardView(int board_num) {
@@ -125,6 +121,10 @@ public class BoardServiceImpl implements BoardService{
 		return dao.BoardSelectAll(type_num);
 	}
 
+	@Override
+	public List<BoardVO> BoardSelectAllSE(int type_num, PagingVO pvo) {
+		return dao.BoardSelectAllSE(type_num, pvo);
+	}
 	@Override
 	public int LikeCount(BoardVO vo) {
 		return dao.LikeCount(vo);
@@ -143,6 +143,12 @@ public class BoardServiceImpl implements BoardService{
 	@Override
 	public void LikeDelete(BoardVO vo) {
 		dao.LikeDelete(vo);
+	}
+
+	@Override
+	public List<BoardVO> boardSearch(String searchKey, String string, int start, int end, int type_num) {
+		// TODO Auto-generated method stub
+		return dao.boardSearch(searchKey, string, start, end, type_num);
 	}
 
 	

@@ -19,7 +19,7 @@ public interface BoardDAO {
 	//글1개 선택
 	public BoardVO boardSelect(int board_num);
 	
-	public List<BoardVO> BoardSelectAll(PagingVO pvo);
+	public List<BoardVO> BoardSelectAllSE(int type_num, PagingVO pvo);
 	public List<BoardVO> BoardSelectAll(int type_num);
 
 	public BoardVO BoardView(int board_num);
@@ -53,4 +53,6 @@ public interface BoardDAO {
 	public void LikeInsert(BoardVO vo);
 	public void LikeUpdate(BoardVO vo);
 	public void LikeDelete(BoardVO vo);
+	//검색
+	public List<BoardVO> boardSearch(String searchKey, String string, int start, int end, int type_num);
 }

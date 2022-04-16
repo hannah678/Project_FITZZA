@@ -12,6 +12,5 @@
   		<mapper resource="mapper/AdminMemberMapper.xml"></mapper>
   		<mapper resource="mapper/AdminOldMapper.xml"></mapper>
   		<mapper resource="mapper/AdminReplyMapper.xml"></mapper>
-  		
   	</mappers>
   </configuration>

@@ -35,10 +35,11 @@ public class ReviewBoardController {
 	BoardService service;
 	
 	@GetMapping("/board/review/reviewList")
-	public String dataList() {
-		
+	public String reviewList() {
+		System.out.println("reviewList:::START");
 		return "/board/review/reviewList";
-	}
+		}
+	
 	@ResponseBody //Ajax
 	@RequestMapping(value = "/board/review/reviewLists")
 	public List<BoardVO> newsMoreView(PagingVO pvo, Model model
@@ -47,8 +48,28 @@ public class ReviewBoardController {
 //		startNum="5";
 		pvo.setStart(Integer.parseInt(startNum));
 		pvo.setEnd(5);
-		return service.BoardSelectAll(pvo);
-	}
+		return service.BoardSelectAllSE(4,pvo);
+		}
+	
+	//검색 기능
+	@GetMapping("/board/review/search")
+	   public ModelAndView search(String searchKey, String searchWord) {
+	      ModelAndView mav = new ModelAndView();
+	      mav.setViewName("/board/review/reviewList");
+	      return mav;
+		}
+	
+	@ResponseBody //Ajax
+	@RequestMapping(value = "/board/review/searchLists")
+	public List<BoardVO> searchMoreView(@RequestParam(value="startNum", required=false)String startNum,
+			String searchKey, String searchWord) throws Exception {
+		int start = Integer.parseInt(startNum);
+		int end = 5;
+		System.out.println("searchKey -> "+searchKey);
+		System.out.println("searchWord -> "+searchWord);
+		return service.boardSearch(searchKey, "%"+searchWord+"%", start, end, 4);
+		}
+	
 	// 글쓰기 폼
 	@GetMapping("/board/review/reviewWrite")
 	public String reviewWrite() {
