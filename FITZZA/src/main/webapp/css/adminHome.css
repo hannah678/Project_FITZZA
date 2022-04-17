@@ -1,7 +1,7 @@
 @charset "UTF-8";
 
-#admin_container {width:100%; height:100vh; color:#fff; overflow:hidden}
-#admin_wrap {min-width:1200px; height:100%x; margin:0 auto;
+#admin_container {width:100%; height:100%; color:#fff; overflow:hidden}
+#admin_wrap {min-width:1200px; height:100%x; margin:0 auto;overflow:hidden
 }
 #ad_logo {
 	display:block;
@@ -55,10 +55,11 @@
 	cursor:pointer;
 }
 #resultArea {
-	width:80vw; height:100vh;
+	width:100vw; height:100%;
 	transform:translateX(20vw);
 	text-align:left;
 	background-color:rgba(0,0,0,0.1);
-	color:#222
+	color:#222;
+	position:relative; z-index:1;
 }
 #resultArea p {display:none}

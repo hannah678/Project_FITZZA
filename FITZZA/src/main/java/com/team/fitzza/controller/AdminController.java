@@ -48,4 +48,9 @@ public class AdminController {
 	public String adminBoard() {
 		return "/admin/adminBoard";
 	}
+	//회원 추가
+	@RequestMapping("/admin/adminMemberInsert")
+	public String adminMemberInsert() {
+		return "/admin/adminMemberInsert";
+	}
 }

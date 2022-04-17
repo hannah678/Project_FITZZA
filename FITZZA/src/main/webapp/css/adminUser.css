@@ -1,64 +1,110 @@
 @charset "UTF-8";
 
-#admin_container {width:100%; height:100vh; color:#fff; overflow:hidden}
-#admin_wrap {min-width:1200px; height:100%x; margin:0 auto;
+
+#adminUser_container {width:80vw; height:100vh}
+#adminUser_wrap {
+	position:relative; z-index:2;
 }
-#ad_logo {
+
+#adminUser_wrap h3 {
+	font-size:30px;
+	line-height:100px;
+	display:inline-block;
+	margin-left:-23%;
+}
+.member_status {
+	width:96%; height:100px;
+	background-color:#fff;
 	display:block;
-	width:200px; height:55px;
-	margin:50px auto 50px auto;
-	transform:translateX(-20px);
+	margin-left:2%;
 }
-#admin_lnb {
-	width:20vw; height:100vh;
+.member_status li {
 	float:left;
-	background-color:rgba(0,0,0,0.8);
+	margin:0 1%;
+	line-height:100px;
+	font-size:24px;
 }
-#ad_searchFrm input:nth-child(1){
+.member_status li span {
+	padding:0 50px
+}
+.member_status li:nth-child(1) {margin-left:-20%}
+.member_status li:nth-child(3) {margin-top:-5px}
+.member_status li form select {height:25px;}
+.member_status li form input {height:20px;line-height:20px}
+#memberSearch {height:25px;}
+.member_buttons {
 	display:inline-block;
-	border:none;
-	border-bottom : 1px solid #888;
-	background-color:rgba(0,0,0,0);
-	margin-left:16%;
-	color:#fff
+	margin:30px 0 30px -23%;
+	position:relative; z-index:1;
 }
-#ad_searchFrm input:nth-child(2) {
-	height:30px;
+.member_buttons button {
+	width:100px; height:30px;
+	margin:0 10px;
+	border:0;
 	border-radius:15px;
-	background-color:rgba(255,255,255,0.8);
-	color:#222;
-}
-#ad_profile {position:relative; text-align:center;}
-#ad_p_img{
-	width:150px; height:150px;
-	display:block;
-	margin:50px auto 0 auto;
-	border-radius:75px;
-}
-#ad_profile a {width:150px; height:150px;
-	display:inline-block;
-	margin:30px auto 0 auto;
-	border-radius:75px;
-	position:absolute; left:50%px; top:-30px;
-	transform:translateX(-75px);
-	background-color:rgba(0,0,0,0.3);
-	opacity:0; transition:all 0.5s;
-}
-#ad_profile a:hover {opacity:1}
-#ad_profile p {line-height:100px}
-#admin_lnb ul {margin-top:50px}
-#admin_lnb ul li span {
-	height:70px;
-	display:inline-block;
-	margin-left:20%;
-	line-height:70px;
+	background-color:#54bab9;
+	color:#fff;
 	cursor:pointer;
 }
-#resultArea {
-	width:80vw; height:100vh;
-	transform:translateX(20vw);
-	text-align:left;
-	background-color:rgba(0,0,0,0.1);
-	color:#222
+.member_buttons button:active {background-color:#276968;}
+
+.member_list_box {
+	width:96%; height:550px;
+	background-color:#fff;
+	margin-left:2%;
+	overflow:hidden;
+	position:absolute; left:0; top:300px;
 }
-#resultArea p {display:none}
+.member_title {
+	width:100%; height:50px;
+	display:block;
+	line-height:50px;
+	text-align:center;
+	margin:10px 0 30px 0;
+}
+.member_list_box > ul li{
+	float:left;
+	text-align:center;
+}
+.member_title > li {
+	position:relative;
+	font-size:20px; font-weight:600;
+}
+.member_title li::after {
+	content:"";
+	width:80%; height:50px;
+	display:block;
+	border-bottom:1px solid gray;
+	position:absolute; left:10%; top:0;
+}
+.member_title li:nth-child(1) {width:2%; text-indent:-99999px}
+.member_title li:nth-child(2) {width:10%}
+.member_title li:nth-child(3) {width:10%}
+.member_title li:nth-child(4) {width:10%}
+.member_title li:nth-child(5) {width:24%}
+.member_title li:nth-child(6) {width:14%}
+.member_title li:nth-child(7) {width:5%}
+.member_title li:nth-child(8) {width:5%}
+.member_title li:nth-child(9) {width:15%}
+.member_title li:nth-child(10) {width:5%}
+
+.member_list > li{
+	width:100%; height:50px;
+	display:block;
+	line-height:50px;
+	text-align:center;
+	border-bottom:1px solid #b5b5b5;
+	font-size:18px;
+}
+
+.member_list li ul li:nth-child(1) {width:2%}
+.member_list li ul li:nth-child(2) {width:10%}
+.member_list li ul li:nth-child(3) {width:10%}
+.member_list li ul li:nth-child(4) {width:10%}
+.member_list li ul li:nth-child(5) {width:24%}
+.member_list li ul li:nth-child(6) {width:14%}
+.member_list li ul li:nth-child(7) {width:5%}
+.member_list li ul li:nth-child(8) {width:5%}
+.member_list li ul li:nth-child(9) {width:15%}
+.member_list li ul li:nth-child(10) {width:5%}
+
