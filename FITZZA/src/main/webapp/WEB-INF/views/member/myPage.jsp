@@ -45,7 +45,7 @@ window.onload=function(){
 				addListHtml01 += "<li class='my_list_hit'>"+data[i].hit+"</li>";
 				addListHtml01 += "<li class='my_list_date'>"+data[i].write_date+"</li>";
 				addListHtml01 += "</ul>";
-                addListHtml01 += "<a class='my_list_alink' href='/board/old/oldView?board_num="+data[i].board_num+"'></a></li>";
+                addListHtml01 += "<a class='my_list_alink' href='/board/todayCodi/todayCodiView?board_num="+data[i].board_num+"'></a></li>";
 				            
 			}
 			if(data.length<5){
@@ -78,7 +78,7 @@ window.onload=function(){
 				addListHtml02 += "<li class='my_list_hit'>"+data[i].hit+"</li>";
 				addListHtml02 += "<li class='my_list_date'>"+data[i].write_date+"</li>";
 				addListHtml02 += "</ul>";
-                addListHtml02 += "<a class='my_list_alink' href='/board/old/oldView?board_num="+data[i].board_num+"'></a></li>";
+                addListHtml02 += "<a class='my_list_alink' href='/board/recommend/recommendView?board_num="+data[i].board_num+"'></a></li>";
 				
 			}
 			if(data.length<5){
@@ -159,7 +159,7 @@ window.onload=function(){
 				addListHtml04 += "<li class='my_list_hit'>"+data[i].hit+"</li>";
 				addListHtml04 += "<li class='my_list_date'>"+data[i].write_date+"</li>";
 				addListHtml04 += "</ul>";
-                addListHtml04 += "<a class='my_list_alink' href='/board/old/oldView?board_num="+data[i].board_num+"'></a></li>";
+                addListHtml04 += "<a class='my_list_alink' href='/board/review/reviewView?board_num="+data[i].board_num+"'></a></li>";
 				
 			}
 			if(data.length<5){
@@ -192,7 +192,7 @@ window.onload=function(){
 				addListHtml05 += "<li class='my_list_hit'>"+data[i].hit+"</li>";
 				addListHtml05 += "<li class='my_list_date'>"+data[i].write_date+"</li>";
 				addListHtml05 += "</ul>";
-                addListHtml05 += "<a class='my_list_alink' href='/board/review/reivewView?board_num="+data[i].board_num+"'></a></li>";
+                addListHtml05 += "<a class='my_list_alink' href='/board/qna/qnaView?board_num="+data[i].board_num+"'></a></li>";
 				
 			}
 			if(data.length<5){
@@ -225,7 +225,7 @@ window.onload=function(){
 				addListHtml06 += "<li class='my_list_hit'>"+data[i].hit+"</li>";
 				addListHtml06 += "<li class='my_list_date'>"+data[i].write_date+"</li>";
 				addListHtml06 += "</ul>";
-                addListHtml06 += "<a class='my_list_alink' href='/board/review/reivewView?board_num="+data[i].board_num+"'></a></li>";
+                addListHtml06 += "<a class='my_list_alink' href='/board/vote/voteView?board_num="+data[i].board_num+"'></a></li>";
 				
 			}
 			if(data.length<5){
@@ -253,16 +253,26 @@ window.onload=function(){
 		dataType : 'json',
 		data :param07,
 		success : function(data){
-			alert(data.length);
 			for (var i = 0; i < data.length; i++) {
 				addListHtml07 += "<li>";
                 addListHtml07 += "<ul>";
 				addListHtml07 += "<li class='my_list_subtitle'>"+data[i].title+"</li>";
 				addListHtml07 += "<li class='my_list_subcontent'>"+data[i].coment+"</li>";
-				addListHtml07 += "<li class='my_list_date'>"+data[i].reply_date+"</li>";
+				addListHtml07 += "<li class='my_list_date'>"+data[i].reply_date+data[i].type_num+"</li>";
 				addListHtml07 += "</ul>";
-                addListHtml07 += "<a class='my_list_alink' href='/board/review/reivewView?board_num="+data[i].board_num+"'></a></li>";
-				
+				if(data[i].type_num==1){
+					 addListHtml07 += "<a class='my_list_alink' href='/board/today/todayView?board_num="+data[i].board_num+"'></a></li>";
+				}else if(data[i].type_num==2){
+					 addListHtml07 += "<a class='my_list_alink' href='/board/recommenc/recommendView?board_num="+data[i].board_num+"'></a></li>";
+				}else if(data[i].type_num==3){
+					 addListHtml07 += "<a class='my_list_alink' href='/board/old/oldView?board_num="+data[i].board_num+"'></a></li>";
+				}else if(data[i].type_num==4){
+					 addListHtml07 += "<a class='my_list_alink' href='/board/review/reviewView?board_num="+data[i].board_num+"'></a></li>";
+				}else if(data[i].type_num==5){
+					 addListHtml07 += "<a class='my_list_alink' href='/board/qna/qnaView?board_num="+data[i].board_num+"'></a></li>";
+				}else if(data[i].type_num==6){
+					 addListHtml07 += "<a class='my_list_alink' href='/board/vote/voteView?board_num="+data[i].board_num+"'></a></li>";
+				}		
 			}
 			if(data.length<5){
 				$("#moreView07").remove();
@@ -296,7 +306,7 @@ function viewMore01(){
 				addListHtml01 += "<li class='my_list_hit'>"+data[i].hit+"</li>";
 				addListHtml01 += "<li class='my_list_date'>"+data[i].write_date+"</li>";
 				addListHtml01 += "</ul>";
-                addListHtml01 += "<a class='my_list_alink' href='/board/old/oldView?board_num="+data[i].board_num+"'></a></li>";
+                addListHtml01 += "<a class='my_list_alink' href='/board/todayCodi/todayCodiView?board_num="+data[i].board_num+"'></a></li>";
 				            
 			}
 			if(data.length<5){
@@ -331,7 +341,7 @@ function viewMore02(){
 				addListHtml02 += "<li class='my_list_hit'>"+data[i].hit+"</li>";
 				addListHtml02 += "<li class='my_list_date'>"+data[i].write_date+"</li>";
 				addListHtml02 += "</ul>";
-                addListHtml02 += "<a class='my_list_alink' href='/board/old/oldView?board_num="+data[i].board_num+"'></a></li>";
+                addListHtml02 += "<a class='my_list_alink' href='/board/recommend/recommendView?board_num="+data[i].board_num+"'></a></li>";
 				
 			}
 			if(data.length<5){
@@ -450,7 +460,7 @@ function viewMore05(){
 				addListHtml05 += "<li class='my_list_hit'>"+data[i].hit+"</li>";
 				addListHtml05 += "<li class='my_list_date'>"+data[i].write_date+"</li>";
 				addListHtml05 += "</ul>";
-                addListHtml05 += "<a class='my_list_alink' href='/board/review/reivewView?board_num="+data[i].board_num+"'></a></li>";
+                addListHtml05 += "<a class='my_list_alink' href='/board/qna/qnaView?board_num="+data[i].board_num+"'></a></li>";
 				
 			}
 			if(data.length<5){
@@ -513,7 +523,6 @@ function viewMore07(){
 		dataType : 'json',
 		data :param07,
 		success : function(data){
-			alert(data.length);
 			for (var i = 0; i < data.length; i++) {
 				addListHtml07 += "<li>";
                 addListHtml07 += "<ul>";
@@ -521,8 +530,19 @@ function viewMore07(){
 				addListHtml07 += "<li class='my_list_subcontent'>"+data[i].coment+"</li>";
 				addListHtml07 += "<li class='my_list_date'>"+data[i].reply_date+"</li>";
 				addListHtml07 += "</ul>";
-                addListHtml07 += "<a class='my_list_alink' href='/board/vote/voteView?board_num="+data[i].board_num+"'></a></li>";
-			
+				if(data[i].type_num==1){
+					 addListHtml07 += "<a class='my_list_alink' href='/board/today/todayView?board_num="+data[i].board_num+"'></a></li>";
+				}else if(data[i].type_num==2){
+					 addListHtml07 += "<a class='my_list_alink' href='/board/recommenc/recommendView?board_num="+data[i].board_num+"'></a></li>";
+				}else if(data[i].type_num==3){
+					 addListHtml07 += "<a class='my_list_alink' href='/board/old/oldView?board_num="+data[i].board_num+"'></a></li>";
+				}else if(data[i].type_num==4){
+					 addListHtml07 += "<a class='my_list_alink' href='/board/review/reviewView?board_num="+data[i].board_num+"'></a></li>";
+				}else if(data[i].type_num==5){
+					 addListHtml07 += "<a class='my_list_alink' href='/board/qna/qnaView?board_num="+data[i].board_num+"'></a></li>";
+				}else if(data[i].type_num==6){
+					 addListHtml07 += "<a class='my_list_alink' href='/board/vote/voteView?board_num="+data[i].board_num+"'></a></li>";
+				}			
 			}
 			if(data.length<5){
 				$("#moreView07").remove();
@@ -568,7 +588,7 @@ function viewMore07(){
 				<li>xxx</li>
 			</ul>
 			<ul>
-				<li>신고 누적</li>
+				<li>받은 신고</li>
 				<li>${vo.report_hit}</li>
 			</ul>
 		</li>

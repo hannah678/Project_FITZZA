@@ -4,6 +4,7 @@ public class ReplyVO {
 	
 	private int reply_num;
 	private int board_num;
+	private int type_num;
 	private String title;
 	private String user_id;
 	private String user_nickname;
@@ -14,6 +15,12 @@ public class ReplyVO {
 	
 	
 	
+	public int getType_num() {
+		return type_num;
+	}
+	public void setType_num(int type_num) {
+		this.type_num = type_num;
+	}
 	public String getTitle() {
 		return title;
 	}
