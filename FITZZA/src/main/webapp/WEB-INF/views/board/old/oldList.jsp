@@ -12,6 +12,7 @@
 <br><br><br><br><br><br><br><br>
 	<div class="oldboard">
     <a href="/board/old/oldList"><h2 id="title">중고거래</h2></a>
+		
     <div id="write">
         <a href="/board/old/oldWrite">글쓰기</a>
     </div>
