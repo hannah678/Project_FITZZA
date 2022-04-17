@@ -255,9 +255,13 @@ window.onload=function(){
 		success : function(data){
 			alert(data.length);
 			for (var i = 0; i < data.length; i++) {
+				addListHtml07 += "<li>";
+                addListHtml07 += "<ul>";
 				addListHtml07 += "<li class='my_list_subtitle'>"+data[i].title+"</li>";
 				addListHtml07 += "<li class='my_list_subcontent'>"+data[i].coment+"</li>";
 				addListHtml07 += "<li class='my_list_date'>"+data[i].reply_date+"</li>";
+				addListHtml07 += "</ul>";
+                addListHtml07 += "<a class='my_list_alink' href='/board/review/reivewView?board_num="+data[i].board_num+"'></a></li>";
 				
 			}
 			if(data.length<5){
@@ -459,7 +463,7 @@ function viewMore05(){
 }
 // (6)오늘뭐입지 (더보기)
 function viewMore06(){
-	var startNum06 = $("#my_list_contents05 li").length/5; // list안의 li태그의 개수
+	var startNum06 = $("#my_list_contents06 li").length/5; // list안의 li태그의 개수
 	var addListHtml06 = "";
 	var url06 = '/member/myPage06';
 	var param06 = {"startNum06" : startNum06};
@@ -511,10 +515,14 @@ function viewMore07(){
 		success : function(data){
 			alert(data.length);
 			for (var i = 0; i < data.length; i++) {
+				addListHtml07 += "<li>";
+                addListHtml07 += "<ul>";
 				addListHtml07 += "<li class='my_list_subtitle'>"+data[i].title+"</li>";
 				addListHtml07 += "<li class='my_list_subcontent'>"+data[i].coment+"</li>";
 				addListHtml07 += "<li class='my_list_date'>"+data[i].reply_date+"</li>";
-				
+				addListHtml07 += "</ul>";
+                addListHtml07 += "<a class='my_list_alink' href='/board/vote/voteView?board_num="+data[i].board_num+"'></a></li>";
+			
 			}
 			if(data.length<5){
 				$("#moreView07").remove();
@@ -661,8 +669,8 @@ function viewMore07(){
 			</div>
 		</li>
 		<li>
-         <input type="radio" name="tab" id="tab8">
-         <label for="tab8">댓글</label>
+         <input type="radio" name="tab" id="tab7">
+         <label for="tab7">댓글</label>
          <div>
             <ul class="my_list_title">
                <li>게시물 제목</li>
@@ -670,7 +678,6 @@ function viewMore07(){
                <li>작성일</li>
             </ul>
             <ul class="my_list_contents" id="my_list_contents07">
-               
             </ul>
             <a class="moreViews" id="moreView07" onclick="viewMore07()"><img src="/img/더보기.png" style="width:100px;"></a>
          </div>

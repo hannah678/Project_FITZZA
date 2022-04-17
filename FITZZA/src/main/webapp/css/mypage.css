@@ -184,9 +184,29 @@
 #my_list > li:nth-child(7) .my_list_title li:nth-child(2) {width:60%;}
 #my_list > li:nth-child(7) .my_list_title li:nth-child(3) {width:20%;}
 
-#my_list > li:nth-child(7) .my_list_contents li:nth-child(1) {width:20%;}
-#my_list > li:nth-child(7) .my_list_contents li:nth-child(2) {width:60%;}
-#my_list > li:nth-child(7) .my_list_contents li:nth-child(3) {width:20%;}
+#my_list > li:nth-child(7) .my_list_contents li{
+	font-size:20px;
+	overflow:hidden;
+	border-bottom : 1px solid #888;
+	white-space:nowrap;
+	text-overflow: ellipsis;
+	position:relative;
+}
+#my_list > li:nth-child(7) .my_list_contents .my_list_subtitle {width:240px;}/* 20% */
+#my_list > li:nth-child(7) .my_list_contents .my_list_subcontent {width:720px;}/* 60% */
+#my_list > li:nth-child(7) .my_list_contents .my_list_date {width:240px;}/* 20% */
+
+#my_list > li:nth-child(7) .my_list_contents .my_list_alink {
+	display:inline-block;
+	width:1200px; height:50px;
+	position:absolute; left:0; top:0;
+	transition:all 0.5s;
+}
+.my_list_alink:hover {background-color:rgba(0,0,0,0.1);}
+
+
+
+
 /* my댓글-end */
 
 .my_list_contents li{
