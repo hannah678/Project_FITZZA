@@ -6,15 +6,23 @@
     <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
 <style>
 	header, footer {display:none}
-	#user_all,#user_leaved{left:0;position:absolute;}
-	#user_all li{float:left; width:10%;}
-	
-	#user_leaved li{float:left; width:33.33%;}
-	#memberSearchFrm {
-	   float:right;
-	   margin:30px 50px 0 0
-	}
 </style>
+<script>
+/*토글 메뉴*/
+$(document).ready(function(){
+	$('#left_member_btn').addClass('button_normal');
+	$('#user_leaved').addClass('user_leaved');
+	$('#left_member_btn').click( function() {
+		if($(this).hasClass('button_normal')) {
+	        $(this).removeClass('button_normal').addClass('button_toggled');
+	        $('#user_leaved').removeClass('user_leaved').addClass('leaved_user_show');
+	    } else {
+	        $(this).removeClass('button_toggled').addClass('button_normal');
+	        $('#user_leaved').removeClass('leaved_user_show').addClass('user_leaved');
+	    }
+      } );
+});
+</script>
 <script>
 function adminMemberInsert(href, w, h) {
 	var xPos = (window.screen.width/2) - (600/2); // 가운데 정렬
@@ -27,13 +35,15 @@ function adminMemberInsert(href, w, h) {
  <div id="adminUser_container">
  	<h1 class="hidden">회원관리</h1>
  	<div id="adminUser_wrap">
+ 		<h3>회원 관리</h3>
 	 	<!-- 남은일: 회원 클릭 시 모달창 띄우기(게시물,댓글확인(마이페이지가져오기)/ 블랙리스트 추가하기(DB??)button/ 강제탈퇴button/ 관리자 지정button) -->
 	 	<ul class="member_status">
  			<li>총 회원 수&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : 
  				<span>${user_num} 명</span>
  			</li>
- 			<li>강제탈퇴 된 회원&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : 
+ 			<li>탈퇴한 회원&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : 
  				<span>${user_leave_num}명</span>
+ 				<button id="left_member_btn">명단보기</button>
  			</li>
  		</ul>
 	 	<form method="get" action="" id="memberSearchFrm">
@@ -81,24 +91,26 @@ function adminMemberInsert(href, w, h) {
 					 </li>
 				</c:forEach>
 	 		</ul>
-	 		<h3>탈퇴한 회원 명단</h3>
-	 		<ul id="user_leaved" style="bottom:100px;position:absolute;width:100%;"><!-- 데이터 테스트용 임시style -->
-	 			
-	 			<li>아이디</li>
-	 			<li>이메일</li>
-	 			<li>분류</li>
-	 			
-	 			<c:forEach var="vo" items="${leaveList}">
-	 			<li>${vo.user_id}</li>
-	 			<li>${vo.email}</li>
-	 			<li>
-	 				<c:choose>
-						<c:when test="${vo.leave_forced eq 'Y'}">강제탈퇴</c:when>
-						<c:when test="${vo.leave_forced eq 'N'}">자진탈퇴</c:when>
-					</c:choose>
-				</li>
-	 			</c:forEach>
-	 		</ul>
  		</div>
+ 		<div id="user_leaved">
+		 		<h4>탈퇴한 회원 명단</h4>
+		 		<ul><!-- 데이터 테스트용 임시style -->
+		 			
+		 			<li>아이디</li>
+		 			<li>이메일</li>
+		 			<li>분류</li>
+		 			
+		 			<c:forEach var="vo" items="${leaveList}">
+		 			<li>${vo.user_id}</li>
+		 			<li>${vo.email}</li>
+		 			<li>
+		 				<c:choose>
+							<c:when test="${vo.leave_forced eq 'Y'}">강제탈퇴</c:when>
+							<c:when test="${vo.leave_forced eq 'N'}">자진탈퇴</c:when>
+						</c:choose>
+					</li>
+		 			</c:forEach>
+		 		</ul>
+	 		</div>
  	</div>
  </div>

@@ -1,5 +1,6 @@
 @charset "UTF-8";
 
+/*  */
 
 #adminUser_container {width:80vw; height:100vh}
 #adminUser_wrap {
@@ -108,3 +109,54 @@
 .member_list li ul li:nth-child(9) {width:15%}
 .member_list li ul li:nth-child(10) {width:5%}
 
+#memberSearchFrm {
+	float:right;
+	margin:30px 50px 0 0
+}
+
+/* 탈퇴명단 토글 css -start */
+.user_leaved{
+	width:96%; height:550px;
+	background-color:#fff;
+	margin-left:2%;
+	overflow:hidden;
+	position:absolute; left:0; top:300px;
+	display:none;
+}
+.leaved_user_show {
+	width:96%; height:550px;
+	background-color:#fff;
+	margin-left:2%;
+	overflow:hidden;
+	position:absolute; left:0; top:300px;
+	display:block;
+}
+.button_toggled{
+	width:100px; height:30px;
+	margin:0 10px;
+	border:0;
+	border-radius:15px;
+	color:#fff;
+	cursor:pointer;
+	background-color:#276968;
+}
+.button_normal {
+	width:100px; height:30px;
+	margin:0 10px;
+	border:0;
+	border-radius:15px;
+	background-color:#54bab9;
+	color:#fff;
+	cursor:pointer;
+}
+/* 탈퇴명당 토글 css - end */
+
+
+#user_leaved h4 {
+	font-size:24px;
+	line-height:100px;
+	margin-left:30px
+}
+#user_all li{float:left; width:10%;}
+	
+#user_leaved li{float:left; width:33.33%;}
