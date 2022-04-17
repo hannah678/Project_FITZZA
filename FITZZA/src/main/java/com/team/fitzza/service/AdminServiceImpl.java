@@ -24,6 +24,11 @@ public class AdminServiceImpl implements AdminService{
 		return dao.AllUser(vo);
 	}
 
+	@Override
+	public List<MemberVO> LeavedUser(MemberVO vo) {
+		return dao.LeavedUser(vo);
+	}
+
 	
 	
 }

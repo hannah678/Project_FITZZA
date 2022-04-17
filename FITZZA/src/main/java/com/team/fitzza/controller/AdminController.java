@@ -1,5 +1,7 @@
 package com.team.fitzza.controller;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Controller;
@@ -20,11 +22,11 @@ public class AdminController {
 		ModelAndView mav = new ModelAndView();
 		//회원관리-----------------------------------------------------------------------------------------------------------------------------------
 		//전체 회원 수
-		mav.addObject("user_num",service.CountUser(vo));
-		
+		mav.addObject("user_num",service.CountUser(vo));	
 		//회원 명단
 		mav.addObject("userList", service.AllUser(vo));
-		
+		//탈퇴한 회원 명단
+		mav.addObject("leaveList", service.LeavedUser(vo));
 		
 		mav.setViewName("admin/adminHome");
 		return mav;

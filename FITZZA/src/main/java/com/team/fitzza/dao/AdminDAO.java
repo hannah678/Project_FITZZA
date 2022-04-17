@@ -16,4 +16,6 @@ public interface AdminDAO {
 	public int CountUser(MemberVO vo);
 	//전체 회원 명단
 	public List<MemberVO> AllUser(MemberVO vo);
+	//탈퇴한 회원 명단
+	public List<MemberVO> LeavedUser(MemberVO vo);
 }

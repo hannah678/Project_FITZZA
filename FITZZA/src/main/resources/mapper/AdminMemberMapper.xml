@@ -8,7 +8,14 @@
 	</select>
 	<!-- 전체 회원 명단 -->
 	<select id="AllUser"  resultType="MemberVO">
-		SELECT * FROM user
+		SELECT  * 
+		FROM  	user A
+		JOIN	user_grade B
+		ON		B.exp_min <![CDATA[<=]]> A.exp
+		AND 	A.exp <![CDATA[<=]]> B.exp_max
 	</select>
-
+	<!-- 탈퇴한 회원 명단 -->
+	<select id="LeavedUser"  resultType="MemberVO">
+		SELECT * FROM user_leave
+	</select>
 </mapper>
