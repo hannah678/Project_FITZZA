@@ -82,7 +82,7 @@ h2 a:hover {background-color: #54bab9;}
 header {
     width: 100%; height: 100px;
     background-color: #f7ecde;
-    position:fixed; z-index: 999;
+    position:fixed; z-index: 998;
 }
 header a:link {color:#222; text-decoration: none;}
 header a:visited {color:#222}

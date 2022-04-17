@@ -24,8 +24,83 @@
     <title>FITZZA | 패션 커뮤니티</title>
 
     <link rel="shortcut icon" type="image/x-icon" href="/img/favicon.ico">
+    <!-- ---------------------------실시간 알림 전용구역------------------------------- -->
+    <style>
+		#alarmZone{
+			background-color:rgba(0, 0, 0, 0.5);
+			width:300px;
+			height:100px;
+			position:fixed;
+			top:0px;
+			right:-300px;
+			z-index:999;
+			animation-duration:5s;
+			color:red;
+		}
+		@keyframes alarm {
+			10%{
+				right:0px;
+			}
+			90%{
+				right:0px;
+			}
+		}
+		@keyframes alarms {
+			10%{
+				right:0px;
+			}
+			90%{
+				right:0px;
+			}
+		}
+	</style>
+	<script>
+		var ws;
+		
+		$(function(){
+			if(${logId!=null} && ${logStatus=='Y'}){
+				wsOpen();
+			}else{
+				ws = null;
+			}
+		});
+		
+		function wsOpen(){
+			ws = new WebSocket("ws://"+location.host+"/alarm");
+			addEL();
+		}
+		
+		function addEL(){
+			ws.onopen = function(result){
+				//소켓이 열리면 실행되는 부분
+				//초기화 필요시 세팅
+			}
+			ws.onmessage = function(result){
+				//소켓으로부터 메세지가 오면 실행되는 부분
+				var msg = result.data;
+
+				if($("#alarmZone").css("animation-name")=="alarm"){
+					$("#alarmZone").css("animation-name", "alarms");
+					$("#alarmMsg").text(msg);
+				}else{
+					$("#alarmZone").css("animation-name", "alarm");
+					$("#alarmMsg").text(msg);
+				}
+			}
+		}
+		
+		function replyAlarm(bnum){
+			var data = new Object();
+			data.board_num = ""+bnum;
+			data.alarmType = "reply";
+			ws.send(JSON.stringify(data));
+		}
+	</script>
 </head>
 <body>
+	<div id="alarmZone">
+		<span id="alarmMsg">알람 내용</span>
+	</div>
    <header>
     	<a href="/"><img id="logo" src="/img/logo_text.png" alt="logo"/></a>
     	<div id="rnb">

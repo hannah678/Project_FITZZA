@@ -87,6 +87,7 @@
 					success:function(r){
 						$("#coment").val("");
 						alert("댓글 등록 완료");
+						replyAlarm(${vo.board_num});
 						replyListAll();
 					},error:function(e){
 						console.log(e.responseText);

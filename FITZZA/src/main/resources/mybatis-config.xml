@@ -12,5 +12,6 @@
   		<mapper resource="mapper/AdminMemberMapper.xml"></mapper>
   		<mapper resource="mapper/AdminOldMapper.xml"></mapper>
   		<mapper resource="mapper/AdminReplyMapper.xml"></mapper>
+  		<mapper resource="mapper/AlarmMapper.xml"></mapper>
   	</mappers>
   </configuration>
