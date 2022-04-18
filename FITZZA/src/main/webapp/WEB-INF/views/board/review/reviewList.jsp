@@ -96,7 +96,7 @@
 						addListHtml += "<div class='title_area'>"+ data[i].title +"</div><div class='txt'>" + data[i].content + "</div></div>";
 						addListHtml += "<div class='post_bottom'>";
 						addListHtml += "<span><img src='/upload/" + data[i].profile_image + "' />"+ data[i].user_nickname+ "</span>";
-						addListHtml += "<span>조회수 : " + data[i].hit + "</span><span>${vo.write_date}날짜</span>";
+						addListHtml += "<span>조회수 : " + data[i].hit + "</span><span>날짜: "+data[i].write_date+"</span>";
 						addListHtml += "</div></div></div></li>";
 						if(data[i].board_num==0){
 							$("#moreView").remove();
