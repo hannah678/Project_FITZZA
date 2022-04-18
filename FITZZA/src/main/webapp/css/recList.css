@@ -1,13 +1,12 @@
 @charset "UTF-8";
 @import url('https://fonts.googleapis.com/css2?family=Hi+Melody&family=Nanum+Pen+Script&display=swap');
 .recboard h1, .recboard h2, .recboard h5, .rec_title{
-    font-family: 'Hi Melody', cursive;
     text-align: center;
 }
 body{
-    background-image: url("../img/배경.png");
-    font-family:'Nanum pen script';
-    font-size: 1.5em;
+    background-image: url("/img/배경.png");
+    font-family:'Noto Sans KR';
+    font-size: 1em;
 } 
 .recboard{
     width:1200px;
@@ -29,10 +28,13 @@ a:link, a:visited, a:hover{
     text-decoration:none;
     font-weight: 800;
     color:gray;
+    transition:all 0.5s;
+    line-height:40px;
+    font-size: 1.2em;
 }
 .recboard>#write a:hover{
     font-weight: 900;
-    font-size: 2em;
+    font-size: 1.5em;
     color:black;
 }
 .recboard>#write{

@@ -3,7 +3,7 @@
 <link rel="stylesheet" href="/css/recList.css" type="text/css">
 <body>
 <div class="recboard">
-    <br><br><br><br><br>
+    <br><br><br><br><br><br><br>
     <h1>다양한 패션을 나누고 싶다면</h1>
     <h2>스타일 추천</h2>
     <br/>

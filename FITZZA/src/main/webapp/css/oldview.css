@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Kaushan+Script&family=Nanum+Pen+Script&display=swap');
 
 body{
-	background-image: url("../img/배경.png");
+	background-image: url("/img/배경.png");
 	font-family: 'Noto Sans KR';
     font-size: 1em;
 }
@@ -45,7 +45,7 @@ li{
     width: 70px;
     height: 35px;
     font-weight: 600;
-    background-color: white;
+    background-image: url("/img/배경.png");
     color: red;
     border: 0;
     position: relative;
@@ -54,24 +54,12 @@ li{
     font-size: 1em;
     line-height:35px;
 }
-/*.info>#item{
-    width: 500px;
-    float: left;
-    border-right: 1px solid black;
-    padding-right: 50px;
-    padding-left: 50px;
-}
-.info>#seller{
-    width: 500px;
-    float: left;
-    padding-left: 50px;
-}*/
 .oldViewId, .oldViewHit {display:block; height:65px;}
 #seller{
 	font-size:1.2em;
 	font-weight: 200;
 }
-#seller > b {font-size:24px}
+#seller > b {font-size:24px; font-weight:600;}
 #item > b {font-size:24px}
 #seller_img{
     width: 100px;
@@ -87,7 +75,9 @@ li{
 	right:120px;
 }
 #user_nick{
-	font-size:1.1em;
+	margin-left:-100px;
+	font-size:1.2em;
+	font-weight:500;
 }
 .reply{
     width: 1200px;
@@ -107,14 +97,13 @@ li{
 }
 #replybtn2{
     position: relative;
-    right: 30px;
-    bottom: 16px;
+    left: 10px;
+    bottom: 17px;
     width: 100px;
     height: 50px;
     border: 2px solid black;
-    font-family:'Nanum pen script';
+    font-family: 'Noto Sans KR';
     font-size: 1em;
-    font-weight: bold;
 }
 #reply_profile{
 	width:50px; 
@@ -136,18 +125,26 @@ li{
 	height:30px;
 	text-align:center;
 	font-size:0.8em;
+	font-weight:600;
 	padding:0px;
-	margin-left:30px
+	margin-left:10px;
+	border:0;
+	background-image: url("../img/배경.png");
+	color:blue;
 }
 #reply_del{
 	width:37px;
 	height:30px;
 	text-align:center;
 	font-size:0.8em;
+	font-weight:600;
 	padding:0px;
+	border:0;
+	background-image: url("../img/배경.png");
+	color:blue;
 }
 #replyList #reply_level_frame {margin-right:30px}
-#replyList > ul li div p {margin-top:30px}
+#replyList > ul li div p {margin-top:10px; margin-left:10px;}
 
 #pro_img{
     width: 60%;

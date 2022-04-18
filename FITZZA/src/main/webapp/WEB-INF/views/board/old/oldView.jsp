@@ -172,10 +172,10 @@ header a {font-size:20px}
 						<a href="/board/old/oldEdit?board_num=${vo.board_num}" style="color: blue;">수정</a> 
 						<a id="del" href="javascript:delCheck()" style="color: blue;">삭제</a>
 					</li>
-					<br/>
+					<br/><br/>
 				</c:if>
 				<hr />
-				<li id="seller"><b><b>판매자 정보</b></b>
+				<li id="seller"><b>판매자 정보</b>
 					<hr /> <img src="/upload/${vo.profile_image}" alt="프로필 이미지"
 					id="seller_img"><img id="level_frame" alt="등급 프레임 이미지">
 					<span id="user_nick">${vo.user_nickname}</span><!--user_nickname--> <br /> 거래 가능 지역 :

@@ -20,10 +20,11 @@ a:link, a:visited, a:hover{
     color:gray;
     transition:all 0.5s;
     line-height:40px;
+    font-size: 1.2em;
 }
 .oldboard>#write a:hover{
     font-weight: 900;
-    font-size: 1.2em;
+    font-size: 1.5em;
     color:black;
 }
 .oldboard>#write{
@@ -56,16 +57,17 @@ h1, h2, .oldlist>li:nth-child(3), .oldlist>li:nth-child(6n+1), .oldlist>li:nth-c
 }
 .oldlist>li:nth-child(1) {font-size:20px}
 .oldlist>li:nth-child(2) {font-size:20px}
-.oldlist>li:nth-child(3) {font-size:20px}
 .oldlist>li:nth-child(4) {font-size:20px}
 .oldlist>li:nth-child(5) {font-size:20px}
 .oldlist>li:nth-child(6) {font-size:20px}
 .oldlist>li:nth-child(6n+3){
+	text-align:left;
     width: 40%;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
 }
+.oldlist>li:nth-child(3) {font-size:20px; text-align:center;}
 .oldlist>li:nth-child(6n+5){
     width: 20%;
 }
