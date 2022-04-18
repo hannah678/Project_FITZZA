@@ -155,7 +155,7 @@
 				</c:if>
 				<c:if test="${logId == vo.user_id}">
 					<li style="float: right;">
-						<a href="/board/old/oldEdit?board_num=${vo.board_num}" style="color: blue;">수정</a> 
+						<a href="/board/recommend/recommendEdit?board_num=${vo.board_num}" style="color: blue;">수정</a> 
 						<a id="del" href="javascript:delCheck()" style="color: blue;">삭제</a>
 					</li>
 					<br/>
