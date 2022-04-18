@@ -1,5 +1,7 @@
 package com.team.fitzza.vo;
 
+import java.util.List;
+
 public class MemberVO {
 	
 	private String user_id;
@@ -20,9 +22,16 @@ public class MemberVO {
 	private int exp_min;
 	private int exp_max;
 	private String frame_img;
+	private List<String> ChkList;
 	
 	
 	
+	public List<String> getChkList() {
+		return ChkList;
+	}
+	public void setChkList(List<String> chkList) {
+		ChkList = chkList;
+	}
 	
 	public int getGrade() {
 		return grade;
@@ -73,6 +82,16 @@ public class MemberVO {
 	public void setEmail2(String email2) {
 		this.email2 = email2;
 	}
+	public String getEmail() {
+		email = email1 +"@"+ email2;
+		return email;
+	}
+	public void setEmail(String email) {
+		String emailSp[] = email.split("@");
+		email1 = emailSp[0];
+		email2 = emailSp[1];
+		this.email = email;
+	}
 	public String getUser_id() {
 		return user_id;
 	}
@@ -97,16 +116,7 @@ public class MemberVO {
 	public void setUser_nickname(String user_nickname) {
 		this.user_nickname = user_nickname;
 	}
-	public String getEmail() {
-		email = email1 +"@"+ email2;
-		return email;
-	}
-	public void setEmail(String email) {
-		String emailSp[] = email.split("@");
-		email1 = emailSp[0];
-		email2 = emailSp[1];
-		this.email = email;
-	}
+	
 	public String getTel() {
 		return tel;
 	}

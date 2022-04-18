@@ -37,7 +37,7 @@
  	
  	<!-- 회원탈퇴 -->
  	<insert id="selfBye">
- 		INSERT INTO user_leave(leave_forced, email, user_id) VALUES('N',#{email},#{user_id})
+ 		INSERT INTO user_leave(leave_forced, email) VALUES('N',#{email})
  	</insert>
  	<delete id="memberBye">
  		DELETE FROM user WHERE user_id=#{user_id} AND user_pwd=#{user_pwd}

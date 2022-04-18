@@ -17,6 +17,7 @@ public interface AdminService {
 	public List<MemberVO> LeaveUser(MemberVO vo);
 	//강제탈퇴
 	public int forcedBye(MemberVO vo);
+	public int memberDel(MemberVO vo);
 	//회원 게시물 목록
 	public List<MemberVO> UserBoard(MemberVO vo);	
 	//회원 댓글 목록

@@ -241,14 +241,19 @@ public class MemberController {
 	
 	//마이페이지 프로필
 	@GetMapping("/member/myPage")
-	public ModelAndView mypage(HttpSession session) {
-		String user_id = (String)session.getAttribute("logId");
-		MemberVO vo = service.myPage(user_id);
+	public ModelAndView mypage(String user_id, HttpSession session) {
+		String log_id = "";
+		if(user_id!=null) {
+			log_id = user_id;
+		}else {
+			log_id = (String)session.getAttribute("logId");
+		}
+		MemberVO vo = service.myPage(log_id);
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("vo", vo);
 		mav.setViewName("/member/myPage");
 		return mav;
-	}
+		}
 	//마이페이지 더보기페이징(1)
 	@ResponseBody //Ajax
 	@RequestMapping(value = "/member/myPage01")

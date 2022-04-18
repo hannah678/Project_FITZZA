@@ -1,23 +1,24 @@
 package com.team.fitzza.controller;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.team.fitzza.service.AdminService;
 import com.team.fitzza.service.MemberService;
+import com.team.fitzza.vo.BoardVO;
 import com.team.fitzza.vo.MemberVO;
 
 @Controller
 public class AdminController {
 	@Inject
 	AdminService service;
-	@Inject
-	MemberService Mservice;
-	
+
 	@GetMapping("/admin/adminHome")
 	public ModelAndView adminHome(MemberVO vo) {
 		ModelAndView mav = new ModelAndView();
@@ -48,9 +49,18 @@ public class AdminController {
 		mav.setViewName("/admin/adminUserBoard");
 		return mav;
 	}
+	
+	@PostMapping("admin/multiDel")
+	public ModelAndView multiDelete(MemberVO vo, HttpSession session) {
+		System.out.println("memberDelete!");
+		ModelAndView mav = new ModelAndView();
+		service.forcedBye(vo);
+		service.memberDel(vo);
+		mav.setViewName("redirect:adminHome");
+		return mav;
+	}
 	/*//강제 탈퇴
-	service.forcedBye(vo);
-	Mservice.memberBye(vo);	
+		
 	
 	//관리자 권한 부여
 	service.makeAdmin(vo);*/

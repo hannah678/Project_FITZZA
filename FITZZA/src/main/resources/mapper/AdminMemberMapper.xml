@@ -16,17 +16,30 @@
 	</select>
 	<!-- 탈퇴한 회원 수 -->
 	<select id="CountLeaveUser" resultType="int">
-		SELECT COUNT(user_id) CNT from user_leave
+		SELECT COUNT(email) CNT from user_leave
 	</select>
 	<!-- 탈퇴한 회원 명단 -->
 	<select id="LeaveUser"  resultType="MemberVO">
 		SELECT * FROM user_leave
 	</select>
 	<!-- 강제탈퇴 -->
-	<!-- MemberMapper의 memberBye 사용-->
-	<insert id="forcedBye">
- 		INSERT INTO user_leave(leave_forced, email, user_id) VALUES('Y',#{email},#{user_id})
- 	</insert>
+	<insert id="memberDel" parameterType="hashmap">
+ 		INSERT INTO user_leave(leave_forced, email)
+ 		VALUES	 
+ 				<foreach collection="ChkList" item="item" separator=","> 
+ 					('Y', #{item.email}) 
+ 				</foreach>
+ 	</insert>	
+ 	
+	<delete id="forcedBye" parameterType="hashmap">
+        delete from user
+        <where>
+            <foreach item="item" collection="ChkList" open="email in (" separator="," close=")">
+                #{item.email}
+            </foreach>
+        </where>
+    </delete>
+	
  	<!-- 회원 게시물 목록 -->
  	<select id="UserBoard"  resultType="BoardVO">
 		SELECT  * 

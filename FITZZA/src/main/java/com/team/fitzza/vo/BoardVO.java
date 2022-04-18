@@ -1,5 +1,7 @@
 package com.team.fitzza.vo;
 
+import java.util.List;
+
 public class BoardVO {
 	
 	private int board_num;
@@ -42,7 +44,6 @@ public class BoardVO {
 	private String report_time;
 	
 	private int heart_type; 
-	
 	
 	
 	public int getHeart_type() {

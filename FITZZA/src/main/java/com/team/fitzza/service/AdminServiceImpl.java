@@ -54,6 +54,12 @@ public class AdminServiceImpl implements AdminService{
 		return dao.makeAdmin(vo);
 	}
 
+	@Override
+	public int memberDel(MemberVO vo) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 	
 	
 }
