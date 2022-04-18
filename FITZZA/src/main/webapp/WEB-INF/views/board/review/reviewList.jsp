@@ -1,19 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <link rel="stylesheet" href="/css/reviewList.css" type="text/css">
-<!DOCTYPE html>
+
 <br/><br/><br/><br/><br/>
 <div id="review-wrapper"><!-- 전체 틀 -->
-  <div id="sub-title">
-	<h1 style="text-align: center;">구매후기</h1>
-	<p>구매 후, 개인적인 평가를 적는 곳입니다.</p>
-  </div>
-  <div id="list-menu">
-	<a href="/board/review/reviewWrite" style="color:grey;">글쓰기</a>
-  </div>
-	<hr/>
+ 	<div id="sub-title">
+		<h1 style="text-align: center;">구매후기</h1>
+		<p>구매 후, 개인적인 평가를 적는 곳입니다.</p>
+ 	</div>
+  	<div id="list-menu">
+		<a href="/board/review/reviewWrite">글쓰기</a>
+  	</div>
 	<div id="review_container"><!--  리뷰 글 들어갈곳 -->
-	  <ul id="reviewListUl">
+		<ul id="reviewListUl">
 		  	<!-- <li class="reviewList"> -->
 			  	<%--<div class="post_area">
 			  	 	<div class="sum-img">
@@ -34,20 +33,20 @@
 			  	
 		  	<!-- </li> -->
 		  	
-	  </ul>
-	  <a id="moreViewReview"><img src="/img/더보기.png" style="width:100px;"></a>
-	</div>
-	 
-    <div>
-        <form method="get" action="/board/review/search" id="searchFrm">
-            <select name="searchKey">
-                <option value="title">제목</option>
-                <option value="content">내용</option>
-                <option value="user_id">작성자</option>
-            </select>
-            <input type="text" name="searchWord" id="searchWord"/>
-            <input type="submit" value="Search"/>
-        </form>
+		</ul>
+	  	<a id="moreViewReview"><img src="/img/더보기.png" style="width:100px;"></a>
+	
+		<div>
+			<form method="get" action="/board/review/search" id="searchFrm">
+		    	<select name="searchKey">
+		        	<option value="title">제목</option>
+		            <option value="content">내용</option>
+		            <option value="user_id">작성자</option>
+		        </select>
+		        <input type="text" name="searchWord" id="searchWord"/>
+		        <input type="submit" value="Search"/>
+		    </form>
+		</div>
 	</div>
 </div>
 <script>
@@ -96,8 +95,8 @@
 						addListHtml += "</div><div class='post'><div class='post_top'>";
 						addListHtml += "<div class='title_area'>"+ data[i].title +"</div><div class='txt'>" + data[i].content + "</div></div>";
 						addListHtml += "<div class='post_bottom'>";
-						addListHtml += "<span><img src='/upload/" + data[i].profile_image + "' style='width:20px; height:20px; border-radius: 70%;'/>&nbsp;"+ data[i].user_nickname+ "</span>";
-						addListHtml += "<span>${vo.write_date}</span><span>조회수 : " + data[i].hit + "</span>";
+						addListHtml += "<span><img src='/upload/" + data[i].profile_image + "' />"+ data[i].user_nickname+ "</span>";
+						addListHtml += "<span>조회수 : " + data[i].hit + "</span><span>${vo.write_date}날짜</span>";
 						addListHtml += "</div></div></div></li>";
 						if(data[i].board_num==0){
 							$("#moreView").remove();

@@ -86,7 +86,7 @@
 						addListHtml += "<li>"+data[i].city+"</li>";
 						addListHtml += "<li><a href='/board/old/oldView?board_num="+data[i].board_num+"'><img src='/upload/"+data[i].file1+"' id='product_img'/></a></li>";
 						addListHtml += "<li><a href='/board/old/oldView?board_num="+data[i].board_num+"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+data[i].title+"</a></li>";
-						addListHtml += "<li><img src='/upload/"+data[i].profile_image+"' class='real_profile_img'/>&nbsp;"+data[i].user_nickname+"</li>";
+						addListHtml += "<li><img src='/upload/"+data[i].profile_image+"' class='real_profile_img'/>"+data[i].user_nickname+"</li>";
 						addListHtml += "<li>"+data[i].write_date+"</li>";
 						addListHtml += "<li>"+data[i].hit+"</li>";
 					}

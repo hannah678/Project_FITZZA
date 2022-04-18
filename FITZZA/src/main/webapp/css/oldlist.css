@@ -1,38 +1,36 @@
 @import url('https://fonts.googleapis.com/css2?family=Kaushan+Script&family=Nanum+Pen+Script&display=swap');
 #title{
     font-family: 'Noto Sans KR';
-    font-size: 1.5em;
+    font-size: 36px;
 }
 body{
-	font-size: 1.2em;
-	background-image: url("../img/trade_bg.png");
+	background-image: url("../img/tc_bg_1.png");
 	
 }
 a:link, a:visited, a:hover{
     text-decoration:none;
     color:black;
 }
-.oldboard {min-height:600px}
+.oldboard {font-size: 0.8em;}
 .oldboard option {font-size:0.4em}
-.oldboard>#write a:link, .oldboard>#write a:visited{
-    text-decoration:none;
-    font-weight: 800;
-    color:gray;
+#write {
+	width:100px; height:50px; border:1px solid gray;	
+	display:block;
+	border-radius: 25px;
     transition:all 0.5s;
-    line-height:40px;
-    font-size: 1.2em;
+    margin: 20px 0 20px 1100px;
 }
-.oldboard>#write a:hover{
-    font-weight: 900;
-    font-size: 1.5em;
-    color:black;
+#write a {
+	width:100px; height:50px; 
+	color:gray;
+	line-height:50px;
+	transition:all 0.5s;
+	text-align:center;
+	display:block;
 }
-.oldboard>#write{
-    margin-bottom: 30px;
-    text-align:right;
-    height:40px;
-    transition:all 0.5s;
-}
+#write:hover {transform:scale(1.1);color:#222;}
+#write:hover a {transform:scale(1.1);color:#222;}
+
 h1, h2, .oldlist>li:nth-child(3), .oldlist>li:nth-child(6n+1), .oldlist>li:nth-child(6n+2), .oldlist>li:nth-child(6n+4), .oldlist>li:nth-child(6n+5), .oldlist>li:nth-child(6n){
     text-align: center;
 }
@@ -43,7 +41,8 @@ h1, h2, .oldlist>li:nth-child(3), .oldlist>li:nth-child(6n+1), .oldlist>li:nth-c
 }
 .oldlist{
     border-top: 1px solid black;
-    font-size:16px
+    font-size:16px;
+    min-height:400px;
 }
 .oldlist>li{
     float: left;
@@ -104,3 +103,8 @@ h1, h2, .oldlist>li:nth-child(3), .oldlist>li:nth-child(6n+1), .oldlist>li:nth-c
     padding-top:30px
  }
  #searchWord {margin:0 10px}
+ .real_profile_img{
+	width:20px; height:20px; border-radius: 70%;
+	display:inline-block;
+	margin:0 5px -3px 0
+}

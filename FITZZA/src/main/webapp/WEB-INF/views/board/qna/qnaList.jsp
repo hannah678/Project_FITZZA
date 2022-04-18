@@ -5,7 +5,7 @@
     <br><br><br><br><br><br><br><br>
     <h1>Q & A</h1>
     <h2>도배/홍보성 글은 삭제 및 경고 처리됩니다.</h2>
-    <div id="write">
+    <div id="q_write">
         <a href="/board/qna/qnaWrite">글쓰기</a>
     </div>
     <ul class="qnalist" id="qnalist">

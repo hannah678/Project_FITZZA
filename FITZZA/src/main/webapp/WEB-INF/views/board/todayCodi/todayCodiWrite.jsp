@@ -26,12 +26,11 @@
 				<hr/>
 				<li>설명 &emsp; <br/><textarea name="content" id="content" rows="10" cols="100"></textarea></li>
 				<hr/>
-				<li>의상 타입 &emsp;  <select id="gender_type" name="gender_type">
+				<li style="display:none">의상 타입 &emsp;  <select id="gender_type" name="gender_type">
 					<option value="W" name="W">여성의류</option>
 					<option value="M" name="M">남성의류</option>
 					<option value="U" name="U">남여공용</option>
 				</select></li>
-				<hr/>
 				<div class="tc_img1">
                     <li id="tc_img1">대표이미지<br/>
                         <div>
@@ -59,4 +58,131 @@
 			</ul>
         </form>
     </div>
+	<!-- particles.js container -->
+    <div id="particles-js"></div>
+            
+    <!-- scripts -->
+    <script src="/js/particles.js"></script>
+    <script>
+    particlesJS('particles-js',
+    		  
+    		  {
+    		    "particles": {
+    		      "number": {
+    		        "value": 100,
+    		        "density": {
+    		          "enable": true,
+    		          "value_area": 1000
+    		        }
+    		      },
+    		      "color": {
+    		        "value": "#276968"
+    		      },
+    		      "shape": {
+    		        "type": "star",
+    		        "stroke": {
+    		          "width": 0,
+    		          "color": "#000000"
+    		        },
+    		        "polygon": {
+    		          "nb_sides": 5
+    		        },
+    		        "image": {
+    		          "src": "img/github.svg",
+    		          "width": 50,
+    		          "height": 50
+    		        }
+    		      },
+    		      "opacity": {
+    		        "value": 0.5,
+    		        "random": false,
+    		        "anim": {
+    		          "enable": false,
+    		          "speed": 3,
+    		          "opacity_min": 0.1,
+    		          "sync": false
+    		        }
+    		      },
+    		      "size": {
+    		        "value": 4,
+    		        "random": true,
+    		        "anim": {
+    		          "enable": false,
+    		          "speed": 2,
+    		          "size_min": 0.1,
+    		          "sync": false
+    		        }
+    		      },
+    		      "line_linked": {
+    		        "enable": true,
+    		        "distance": 150,
+    		        "color": "#54bab9",
+    		        "opacity": 0.4,
+    		        "width": 1
+    		      },
+    		      "move": {
+    		        "enable": true,
+    		        "speed": 1,
+    		        "direction": "none",
+    		        "random": false,
+    		        "straight": false,
+    		        "out_mode": "out",
+    		        "attract": {
+    		          "enable": false,
+    		          "rotateX": 600,
+    		          "rotateY": 1200
+    		        }
+    		      }
+    		    },
+    		    "interactivity": {
+    		      "detect_on": "canvas",
+    		      "events": {
+    		        "onhover": {
+    		          "enable": true,
+    		          "mode": "repulse"
+    		        },
+    		        "onclick": {
+    		          "enable": true,
+    		          "mode": "push"
+    		        },
+    		        "resize": true
+    		      },
+    		      "modes": {
+    		        "grab": {
+    		          "distance": 400,
+    		          "line_linked": {
+    		            "opacity": 1
+    		          }
+    		        },
+    		        "bubble": {
+    		          "distance": 400,
+    		          "size": 40,
+    		          "duration": 3,
+    		          "opacity": 8,
+    		          "speed": 3
+    		        },
+    		        "repulse": {
+    		          "distance": 200
+    		        },
+    		        "push": {
+    		          "particles_nb": 4
+    		        },
+    		        "remove": {
+    		          "particles_nb": 2
+    		        }
+    		      }
+    		    },
+    		    "retina_detect": true,
+    		    "config_demo": {
+    		      "hide_card": false,
+    		      "background_color": "#b61924",
+    		      "background_image": "",
+    		      "background_position": "50% 50%",
+    		      "background_repeat": "no-repeat",
+    		      "background_size": "cover"
+    		    }
+    		  }
+
+    		);
+    </script>
 </body>

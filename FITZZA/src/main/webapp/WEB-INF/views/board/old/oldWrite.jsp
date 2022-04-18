@@ -7,8 +7,6 @@
 </head>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <link rel="stylesheet" href="/css/oldwrite.css" type="text/css">
-<link rel="stylesheet" href="/css/gradientStars.css" type="text/css">
-<script type="text/javascript" src="/js/gradientStars.js"></script>
 <script>
 	$(function(){
 		$("#boardFrm").submit(function(){
@@ -213,7 +211,7 @@
     		        }
     		      },
     		      "color": {
-    		        "value": "#222222"
+    		        "value": "#276968"
     		      },
     		      "shape": {
     		        "type": "star",
@@ -253,7 +251,7 @@
     		      "line_linked": {
     		        "enable": true,
     		        "distance": 150,
-    		        "color": "#222222",
+    		        "color": "#54bab9",
     		        "opacity": 0.4,
     		        "width": 1
     		      },

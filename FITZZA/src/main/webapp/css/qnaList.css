@@ -5,35 +5,31 @@
     text-align: center;
 }
 body{
-    background-image: url("../img/배경.png");
+    background-image: url("../img/tc_bg_1.png");
 } 
 .qnaboard{
     font-family: 'Noto Sans KR';
     font-size: 0.8em;
    
 }
-a:link, a:visited, a:hover{
-    text-decoration:none;
-    color:black;
+#q_write {
+	width:100px; height:50px; border:1px solid gray;	
+	display:block;
+	border-radius: 25px;
+    transition:all 0.5s;
+    margin:20px 0 20px 1100px;
 }
-#write{
-    height: 40px;
+#q_write a {
+	width:100px; height:50px; 
+	color:gray;
+	line-height:50px;
+	transition:all 0.5s;
+	text-align:center;
+	display:block;
 }
-.qnaboard>#write a:link, .qnaboard>#write a:visited{
-    text-decoration:none;
-    font-weight: 800;
-    color:gray;
-}
-.qnaboard>#write a {transition:all 0.5s;}
-.qnaboard>#write a:hover{
-    font-weight: 900;
-    font-size: 1.2em;
-    color:black;
-}
-.qnaboard>#write{
-    margin-bottom: 30px;
-    text-align: right;
-}
+#q_write:hover {transform:scale(1.1);color:#222;}
+#q_write:hover a {transform:scale(1.1);color:#222;}
+
 .qnaboard h1, .qnaboard h2, .qnalist>li:nth-child(5n+1), .qnalist>li:nth-child(2), .qnalist>li:nth-child(5n+3), .qnalist>li:nth-child(5n+4), .qnalist>li:nth-child(5n){
     text-align: center;
 }
@@ -49,8 +45,9 @@ a:link, a:visited, a:hover{
 .qnalist{
     border-top: 1px soli black;
     font-size:16px;
-    min-height:500px;
+     min-height:300px;
 }
+.qnalist > li {overflow:hidden}
 .qnalist > li:nth-child(1) {font-size:20px;}
 .qnalist > li:nth-child(2) {font-size:20px;}
 .qnalist > li:nth-child(3) {font-size:20px;}
@@ -99,4 +96,6 @@ a:link, a:visited, a:hover{
 
 .real_profile_img{
 	width:20px; height:20px; border-radius: 70%;
+	display:inline-block;
+	margin:0 5px -3px 0
 }

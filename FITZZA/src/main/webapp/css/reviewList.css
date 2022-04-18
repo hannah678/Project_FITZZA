@@ -6,75 +6,101 @@
 	box-sizing: border-box;
     list-style-type:none;
 }
-
+body {background:url(../img/tc_bg_1.png);}
 #review-wrapper{
-    width:860px;
-	height:980px;
+    width:1200px;
 	margin:0 auto;
-	border:1px solid red; /*임시경계선*/
+    font-family: 'Noto Sans KR';
+    font-size: 0.8em;
 }
 
 #sub-title{
 	width:100%;
-	height:70px;
-	border:1px solid red; /*임시경계선*/
+	text-align:center;
+	padding-top:50px
 }
+#sub-title h1 {font-size:36px;}
+#sub-title p {font-size:1.2em; font-weight:600}
 
 #list-menu{
-	width:100%;
-	height:50px;
-	background-color:black;
-	border:1px solid red; /*임시경계선*/
+	width:100px; height:50px; 
+	border:1px solid gray;	
+	border-radius: 25px;
+    transition:all 0.5s;
+    margin:20px 0 20px 1100px;
 }
+#list-menu a {
+	width:100px; height:50px; 
+	color:gray;
+	line-height:50px;
+	transition:all 0.5s;
+	display:block; text-align:center
+}
+#list-menu:hover {transform:scale(1.1);color:#222;}
+#list-menu:hover a {transform:scale(1.1);color:#222;}
 
-#review_container{
-	width:100%;
-	height:750px;
-	border:1px solid blue; /*임시경계선*/
-}
+#review_container{width:100%;}
 
 .post_area{
-	display:table;
+	display:inline-block;
 	position:relative;
-	width:100%;
-	table-layout : fixed;
-	border:1px solid #d3d1d1; /*임시경계선*/
+	width:100%; height:150px;
+	border-bottom:1px solid #d3d1d1; /*임시경계선*/
 }
 
 .sum-img{
-	display:table-cell;
-	position:relative;
-	width:150px;
-	height:130px;
-	padding-right:30px;
-	vertical-align: top;
+	display:inline-block;
+	width:130px; height:130px;
+	margin:10px 50px 10px 10px;
 }
 
 .post{
-	display:table-cell;
-	position:relative;
-	padding-top:15px;
+	display:inline-block;
+	width:80%; height:150px;
+	position:absolute; left:200px; top:0;
 }
-
+.post_top {
+	width:570px; height:150px;
+	float:left;
+}
+.post_bottom {
+	width:390px; height:150px;
+	float:right;
+}
+.post_bottom span > img {
+	width:25px; height:25px; 
+	border-radius: 50%;
+	display:inline-block;
+	margin: 0 15px -5px 0;
+}
+.post_bottom span:nth-child(n+1) {
+	display:block;
+	margin:30px 0 0 50px;
+	line-height:25px
+}
+.post_bottom span:nth-child(n+2) {
+	display:inline-block;
+	width:100px; height:30px;
+	line-height:30px;
+}
+.post_bottom span:nth-child(n+3) {
+	line-height:30px;	
+	display:inline-block;
+	width:50px; height:30px
+}
 .title_area{
-	display:table;
-}
-
-.txt{
-	margin-top:7px;
-	font-size:15px;
-	line-height: 22px;
-	display: -webkit-box;
-	overflow:auto;
+	font-size:24px;
+	font-weight:500;
+	line-height:60px;
+	white-space:nowrap;
 	text-overflow: ellipsis;
 }
 
-.post_bottom{
-	position:absolute;
-	bottom:15px;
-	left:0;
-	width:100%;
-	padding-top:35px;
+.txt{
+	font-size:18px;
+	overflow:auto;
+	white-space:nowrap;
+	text-overflow: ellipsis;
 }
 
 
@@ -99,9 +125,10 @@
     font-weight:bold;
 }
 #searchFrm{
-    width:304px;
-    margin-bottom:30px;
-    display: table; margin-left: auto; margin-right: auto;
-}
-
+    width:324px; height:50px;
+    margin:30px auto;
+    display: table;
+    padding-top:30px
+ }
+ #searchWord {margin:0 10px}
 
