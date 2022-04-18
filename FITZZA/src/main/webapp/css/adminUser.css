@@ -120,7 +120,7 @@
 }
 
 /* 탈퇴명단 토글 css -start */
-.user_leaved{
+.user_leave{
 	width:96%; height:550px;
 	background-color:#fff;
 	margin-left:2%;
@@ -128,7 +128,7 @@
 	position:absolute; left:0; top:300px;
 	display:none;
 }
-.leaved_user_show {
+.leave_user_show {
 	width:96%; height:550px;
 	background-color:#fff;
 	margin-left:2%;
