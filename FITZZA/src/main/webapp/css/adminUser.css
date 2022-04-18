@@ -97,6 +97,11 @@
 	border-bottom:1px solid #b5b5b5;
 	font-size:18px;
 }
+.member_list li ul li{
+	white-space:nowrap;
+	text-overflow: ellipsis;
+	overflow:hidden;
+}
 
 .member_list li ul li:nth-child(1) {width:2%}
 .member_list li ul li:nth-child(2) {width:10%}

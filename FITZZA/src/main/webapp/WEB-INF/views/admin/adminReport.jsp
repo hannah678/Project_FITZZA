@@ -137,14 +137,12 @@ $(document).ready(function(){
  		</ul>
  		<form method="get" action="" id="reportSearchFrm">
 			<select name="ReportSearchKey">
-		    	<option value="todayCodi">오늘의 코디</option>
-		        <option value="styleRecom">스타일 추천</option>
-		        <option value="trade">중고거래</option>
-		        <option value="review">구매후기</option>
-		        <option value="qna">QnA</option>
-		        <option value="vote">오늘 뭐 입지?</option>
+		    	<option value="category">게시물 타입</option>
+		        <option value="userid">아이디</option>
+		        <option value="rep_status">처리상태</option>
+		        <option value="blackList">회원분류</option>
 		    </select>
-		    <input type="text" name="searchMember" id="searchReport"/>
+		    <input type="text" name="searchReport" id="searchReport"/>
 		    <input type="submit" value="검색" id="reportSearch"/>
 	     </form>
  		<div class="report_cate_buttons">
