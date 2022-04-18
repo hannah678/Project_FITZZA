@@ -2,10 +2,9 @@
 <link rel="stylesheet" href="/css/qnaList.css" type="text/css">
 <body>
 <div class="qnaboard">
-    <br><br><br><br><br><br>
-    <h1>패션 관련 그 어떤 질문이라도 궁금하면 뭐든지</h1>
-    <h2>Q & A</h2>
-    <h5>도배/홍보성 글은 삭제 및 경고 처리됩니다.</h5>
+    <br><br><br><br><br><br><br><br>
+    <h1>Q & A</h1>
+    <h2>도배/홍보성 글은 삭제 및 경고 처리됩니다.</h2>
     <div id="write">
         <a href="/board/qna/qnaWrite">글쓰기</a>
     </div>
