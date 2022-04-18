@@ -14,4 +14,9 @@ public class HomeController {
                 
         return "home";
     }
+	//공지 팝업
+	@RequestMapping("/notice_popup")
+	public String notice_popup() {
+		return "/notice_popup";
+	}
 }

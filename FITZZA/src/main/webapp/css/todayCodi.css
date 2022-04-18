@@ -33,7 +33,6 @@
 	display:inline-block;
 	margin-top:300px;
 }
-#tc_box li:nth-child(2n) {padding-top:300px;}
 .tc_img {
     position:relative;
 	width:100%; height:100%;
@@ -45,55 +44,44 @@
 }
 #columns figure{
 	position:relative;
-    display: inline-block;
-    border:1px solid rgba(0,0,0,0.2);
-    margin:0;
-    margin-bottom: 15px;
-    padding:10px;
-    width:350px;
+    display:block;
+    margin-bottom:30px;
+    width:350px; height:100%;
+    overflow:hidden
  }
- #columns figure img{
-    width:100%;
- }
-
-#tc_box li:nth-child(4n) {margin-right:0} 
-/* .tc_img > img {
-	position:absolute; left:0; top:0;
-	width:350px; max-height:600px;
-	overflow:hidden;
-	background-color:rgba(0,0,0,0.1);
-} */
-/* .tc_img a {
-	position:absolute; left:15px; top:0;
+ #columns figure > img{width:100%;min-height:400px;}
+ #columns figure > div {
+	position:absolute; left:0px; top:0;
 	transition:all 0.5s; opacity:0;
-	cursor:default;
-	width:350px;
+	width:350px; min-height:400px; height:99%;
+	background-color:rgba(0,0,0,0.4);
 }
-.tc_img a:hover {background-color:rgba(0,0,0,0.4); opacity:1;}
-.tc_img a > img {
-	width:150px; height:150px;
-	border-radius:75px;
-    margin:50px 0 30px 0;
-}
-.tc_img a:nth-child(2) p{
-	width:300px; height:100px;
-	margin:0 auto 50px auto;
-}
-.like_btn {
-	width:350px;
-	position:absolute; left:25px; top:300px;
-	display:block;
+#columns figure > div:hover {opacity:1}
+#columns figure > div > a {
+ 	width:350px; height:400px;
+ 	display:block;
+ 	position:absolute; left:0; top:50%;
+ 	transform:translateY(-200px)
+ 	
+ }
+#columns figure > div > a > img {
+  	width:80px; height:80px;
+  	border-radius:50%;
+  	margin-top:20px;
+  }
+#columns figure > div > a > p {margin-bottom:30px}
+#columns figure > div > a > span {
+	position:absolute; right:20px; top:280px
 }
 .like_btn .heart_empty {
 	display:block; margin:0 auto;
 	cursor:pointer;
 	margin-bottom:10px;
+	width:50px; height:50px;
 }
-.tc_img a > span {
-	float:right;
-	margin :30px 30px 0 0;
-	font-size:20px;
-} */
+/* #columns figure a > div {height:90%; background-color:red; position:relative}
+#tc_box li:nth-child(4n) {margin-right:0} 
+
 #columns figure {overflow:hidden}
 #columns figure a {
 	position:absolute; left:0px; top:0;
@@ -127,11 +115,11 @@
 	float:right;
 	margin :30px 30px 0 0;
 	font-size:20px;
-}
+} */
 .buttons {
 	width:350px; height:50px;
 	display:block;
-	margin-top:180px;
+	margin-top:100px;
 }
 .buttons button {
 	width:50px; height:30px;
