@@ -99,7 +99,7 @@ $(document).ready(function(){
 			$('#rec_btn').removeClass('button_toggled').addClass('button_normal');
 			$('#oldb_btn').removeClass('button_toggled').addClass('button_normal');
 			$('#rev_btn').removeClass('button_toggled').addClass('button_normal');
-			$('#vote_btn').removeClass('button_toggled').addClass('button_normal');
+			$('#qna_btn').removeClass('button_toggled').addClass('button_normal');
 		    $('#todayCodi_box').removeClass('report_box_show').addClass('report_box_hide');
 		    $('#recommend_box').removeClass('report_box_show').addClass('report_box_hide');
 		    $('#oldBoard_box').removeClass('report_box_show').addClass('report_box_hide');
