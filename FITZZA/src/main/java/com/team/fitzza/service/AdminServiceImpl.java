@@ -25,8 +25,33 @@ public class AdminServiceImpl implements AdminService{
 	}
 
 	@Override
-	public List<MemberVO> LeavedUser(MemberVO vo) {
-		return dao.LeavedUser(vo);
+	public List<MemberVO> LeaveUser(MemberVO vo) {
+		return dao.LeaveUser(vo);
+	}
+
+	@Override
+	public int CountLeaveUser(MemberVO vo) {
+		return dao.CountLeaveUser(vo);
+	}
+
+	@Override
+	public int forcedBye(MemberVO vo) {
+		return dao.forcedBye(vo);
+	}
+
+	@Override
+	public List<MemberVO> UserBoard(MemberVO vo) {
+		return dao.UserBoard(vo);
+	}
+
+	@Override
+	public List<MemberVO> UserReply(MemberVO vo) {
+		return dao.UserReply(vo);
+	}
+
+	@Override
+	public int makeAdmin(MemberVO vo) {
+		return dao.makeAdmin(vo);
 	}
 
 	

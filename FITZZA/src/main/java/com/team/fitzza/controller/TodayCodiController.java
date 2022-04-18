@@ -2,7 +2,6 @@ package com.team.fitzza.controller;
 
 import java.io.File;
 import java.nio.charset.Charset;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -29,10 +28,12 @@ public class TodayCodiController {
 	BoardService service;
 	
 	@GetMapping("/board/todayCodi/todayCodiList")
-	public ModelAndView dataList(BoardVO vo) {
+	public ModelAndView dataList(HttpSession session, BoardVO bvo) {
 		ModelAndView mav = new ModelAndView();
-		//mav.addObject("LikeCount",service.LikeCount(vo));
-		mav.addObject("lst", service.BoardSelectAll(1));
+		String user_id = (String)session.getAttribute("logId");	
+		List<BoardVO> vo = service.BoardSelectLike(1, user_id);
+		mav.addObject("lst", vo);
+		System.out.println(vo.get(0).toString());
 		mav.setViewName("/board/todayCodi/todayCodiList");
 		return mav;
 	}

@@ -136,21 +136,21 @@ public class BoardServiceImpl implements BoardService{
 	}
 
 	@Override
-	public void LikeUpdate(BoardVO vo) {
-		dao.LikeUpdate(vo);
-	}
-
-	@Override
 	public void LikeDelete(BoardVO vo) {
 		dao.LikeDelete(vo);
 	}
 
 	@Override
 	public List<BoardVO> boardSearch(String searchKey, String string, int start, int end, int type_num) {
-		// TODO Auto-generated method stub
 		return dao.boardSearch(searchKey, string, start, end, type_num);
 	}
 
+	@Override
+	public List<BoardVO> BoardSelectLike(int type_num, String user_id) {
+		return dao.BoardSelectLike(type_num, user_id);
+	}
+
+	
 	
 	
 }

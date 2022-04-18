@@ -14,8 +14,35 @@
 		ON		B.exp_min <![CDATA[<=]]> A.exp
 		AND 	A.exp <![CDATA[<=]]> B.exp_max
 	</select>
+	<!-- 탈퇴한 회원 수 -->
+	<select id="CountLeaveUser" resultType="int">
+		SELECT COUNT(user_id) CNT from user_leave
+	</select>
 	<!-- 탈퇴한 회원 명단 -->
-	<select id="LeavedUser"  resultType="MemberVO">
+	<select id="LeaveUser"  resultType="MemberVO">
 		SELECT * FROM user_leave
 	</select>
+	<!-- 강제탈퇴 -->
+	<!-- MemberMapper의 memberBye 사용-->
+	<insert id="forcedBye">
+ 		INSERT INTO user_leave(leave_forced, email, user_id) VALUES('Y',#{email},#{user_id})
+ 	</insert>
+ 	<!-- 회원 게시물 목록 -->
+ 	<select id="UserBoard"  resultType="BoardVO">
+		SELECT  * 
+		FROM  	board
+		WHERE	user_id=#{user_id}
+	</select>
+ 	<!-- 회원 댓글 목록 -->
+ 	<select id="UserReply"  resultType="ReplyVO">
+		SELECT  * 
+		FROM  	reply
+		WHERE	user_id=#{user_id}
+	</select>
+ 	<!-- 관리자 권한 부여 -->
+ 	<update id="makeAdmin">
+ 		UPDATE user 
+ 		SET    permission='admin' 
+ 		WHERE  user_id=#{user_id}
+ 	</update>
 </mapper>

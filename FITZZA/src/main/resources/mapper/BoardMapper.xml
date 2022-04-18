@@ -24,7 +24,7 @@
   	</select>
   	<!-- reviewList --><!-- TodayList --><!-- QnAList -->
 	<select id="BoardSelectAll" resultType="com.team.fitzza.vo.BoardVO">
-        SELECT   A.board_num, A.title, A.user_id, A.write_date, B.profile_image, B.user_nickname, C.file1 
+        SELECT   A.board_num, A.title, A.user_id, A.write_date, A.like, B.profile_image, B.user_nickname, C.file1 
 		FROM     board A, user B, board_common_image C 
 		WHERE    A.user_id=B.user_id 
 		AND 	 A.board_num=C.board_num 
@@ -168,16 +168,11 @@
 		LIMIT 	 #{param2.start}, #{param2.end}
     </select>
     <!-- 오늘의코디 Like --><!-- 오늘뭐입지 Like -->
-     <select id="LikeCount" resultType="com.team.fitzza.vo.BoardVO"><!-- 0이면 Insert&Update 1이면 Delete -->
+     <select id="LikeCount" resultType="int"><!-- 0이면 Insert&Update 1이면 Delete -->
     	SELECT COUNT(user_id) CNT 
     	FROM like_clicker 
     	WHERE board_num=#{board_num} AND user_id=#{user_id}
     </select>
-    <update id="LikeUpdate">	<!-- 좋아요 수 늘리기-->
-    	UPDATE SET like=like+1 
-    	FROM  board 
-    	WHERE board_num=#{board_num}
-    </update>  
     <insert id="LikeInsert">
   		INSERT INTO like_clicker (board_num, user_id)
   		values (#{board_num}, #{user_id})
@@ -185,4 +180,15 @@
   	<delete id="LikeDelete">
  		DELETE FROM like_clicker WHERE board_num=#{board_num} AND user_id=#{user_id}
  	</delete>
+ 	<select id="BoardSelectLike" resultType="com.team.fitzza.vo.BoardVO">
+ 		SELECT   A.board_num, A.title, A.user_id, A.write_date, B.profile_image, B.user_nickname, C.file1, 
+ 				 COUNT( case when ifnull(D.user_id, 0)=#{param2} then 1 end) AS heart_type
+		FROM     board A LEFT JOIN user B ON A.user_id=B.user_id
+				LEFT JOIN board_common_image C ON A.board_num=C.board_num
+                LEFT JOIN like_clicker D ON A.board_num=D.board_num
+		WHERE A.type_num=#{param1}
+		GROUP BY A.board_num
+		ORDER BY A.board_num DESC;
+ 	
+    </select>
 </mapper>

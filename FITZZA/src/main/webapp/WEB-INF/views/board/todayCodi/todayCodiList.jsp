@@ -20,40 +20,53 @@
 	</script> -->
 	<script>
 		var imgTag='';
-		function ImgInsert(){		
+		$(document).ready(function(){		
 				//imgTag +='<img src="img/'+ imgList[i] +'"/>';
-				<c:forEach var="vo" items="${lst}">//값은 들어옴
+				<c:forEach var="vo" items="${lst}">
+				
 					imgTag +="<figure>";
-					imgTag += "<img src='/upload/todayCodi/"+${vo.file1}+"'/>";
+					imgTag += "<img src='/upload/todayCodi/"+"${vo.file1}"+"'/>";
 					imgTag += "<a href='javascript:;'>";
-					imgTag += "<img src='/upload/"+${vo.profile_image}+"'>";
-					imgTag += "<p>"+${vo.user_nickname}+"</p>";
-					imgTag += "<span>"+${vo.write_date}+"</span>";
-					imgTag += "<p class='like_btn'><img src='/img/heart_empty.png' class='heart_empty' alt='빈하트'>";
+					imgTag += "<img src='/upload/"+"${vo.profile_image}"+"'>";
+					imgTag += "<p>"+"${vo.user_nickname}"+"</p>";
+					imgTag += "<span>"+"${vo.write_date}"+"${vo.heart_type}"+"</span>";
+					<c:choose>
+						<c:when test="${vo.heart_type eq '1'}">
+							imgTag += "<p class='like_btn'><img src='/img/heart_fill.png' class='heart_empty' alt='채운하트'>";
+						</c:when>
+						<c:otherwise>
+							imgTag += "<p class='like_btn'><img src='/img/heart_empty.png' class='heart_empty' alt='빈하트'>";
+						</c:otherwise>
+					</c:choose>
 					imgTag += "<span>추천 수 : xxx</span></p>";
+					imgTag += "<input type='hidden' value='${vo.board_num}'/>";			
 					imgTag += "<div class='buttons'><button>수정</button><button>삭제</button><button>신고</button></div></a>";	
-					//imgTag +=    "<figcaption>Cinderella wearing European fashion of the mid-1860’s</figcaption>";
 					imgTag +="</figure>";
+					
 				</c:forEach>
 			$("#columns").append(imgTag);
-			//document.getElementById("columns").innerHTML = imgTag;
-		}
-		
-	/* $(document).ready(function(){
-		$('.heart_empty').on('click',function(){
-			var params = {board_num: $("#board_num").val()}
-			$.ajax({
-				url : '/board/like',
-				type : 'POST',
-				dataType : 'json',
-				data :params,
-				success : function(data){
-				} 				
-			});
+			
+			$(".like_btn").click(function(){
+				var heart_click = $(this).next().val();
+				var params = {board_num: heart_click}
+				$.ajax({
+					url : '/board/Like',
+					type : 'POST',
+					dataType : 'json',
+					data :params,
+					success : function(data){
+						if(data==1){
+							$(".heart_empty").attr("src", "/img/heart_empty.png");
+						}else{
+							$(".heart_empty").attr("src", "/img/heart_fill.png");
+						}	 
+					} 				
+				});
+			})
 		});
-	});*/
+	
 	</script>
-<body onload="ImgInsert()">
+<body>
 	<div id="tc_container">
 		<div id="tc_wrap">
 			<h1>오늘의 코디</h1>

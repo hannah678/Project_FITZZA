@@ -11,14 +11,14 @@
 /*토글 메뉴*/
 $(document).ready(function(){
 	$('#left_member_btn').addClass('button_normal');
-	$('#user_leaved').addClass('user_leaved');
+	$('#user_leave').addClass('user_leave');
 	$('#left_member_btn').click( function() {
 		if($(this).hasClass('button_normal')) {
 	        $(this).removeClass('button_normal').addClass('button_toggled');
-	        $('#user_leaved').removeClass('user_leaved').addClass('leaved_user_show');
+	        $('#user_leave').removeClass('user_leave').addClass('leave_user_show');
 	    } else {
 	        $(this).removeClass('button_toggled').addClass('button_normal');
-	        $('#user_leaved').removeClass('leaved_user_show').addClass('user_leaved');
+	        $('#user_leave').removeClass('leave_user_show').addClass('user_leave');
 	    }
       } );
 });
@@ -31,12 +31,13 @@ function adminMemberInsert(href, w, h) {
 
 	window.open("/admin/adminMemberInsert", "회원 생성", "width="+600+", height="+300+", left="+xPos+", top="+yPos+", menubar=yes, status=yes, titlebar=yes, resizable=yes");
 }
+
 </script>
  <div id="adminUser_container">
  	<h1 class="hidden">회원관리</h1>
  	<div id="adminUser_wrap">
  		<h3>회원 관리</h3>
-	 	<!-- 남은일: 회원 클릭 시 모달창 띄우기(게시물,댓글확인(마이페이지가져오기)/ 블랙리스트 추가하기(DB??)button/ 강제탈퇴button/ 관리자 지정button) -->
+	 	<!-- 남은일: 회원 클릭 시 창 띄우기(게시물,댓글확인(마이페이지가져오기)) -->
 	 	<ul class="member_status">
  			<li>총 회원 수&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : 
  				<span>${user_num} 명</span>
@@ -76,9 +77,9 @@ function adminMemberInsert(href, w, h) {
 	 		<ul class="member_list">
 	 			<c:forEach var="vo" items="${userList}">
 	 				<li>
-			 			<ul>
+			 			<ul>		
 			 				<li><input type="checkbox" name="adminMemberSelect"></li>
-					 		<li>${vo.user_id}</li>
+					 		<li><a href="/admin/adminUserBoard?user_id=${vo.user_id}">${vo.user_id}</a></li>
 					 		<li>${vo.user_name}</li>
 					 		<li>${vo.user_nickname}</li>
 					 		<li>${vo.email}</li>
@@ -92,9 +93,9 @@ function adminMemberInsert(href, w, h) {
 				</c:forEach>
 	 		</ul>
  		</div>
- 		<div id="user_leaved">
+ 		<div id="user_leave">
 		 		<h4>탈퇴한 회원 명단</h4>
-		 		<ul><!-- 데이터 테스트용 임시style -->
+		 		<ul>
 		 			
 		 			<li>아이디</li>
 		 			<li>이메일</li>
