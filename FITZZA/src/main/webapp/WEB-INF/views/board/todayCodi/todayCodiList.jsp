@@ -47,8 +47,9 @@
 			$("#columns").append(imgTag);
 			
 			$(".like_btn").click(function(){
-				var heart_click = $(this).next().val();
-				var params = {board_num: heart_click}
+				var cb = $(this);
+				var heart_click = cb.next().val();
+				var params = {board_num: heart_click};
 				$.ajax({
 					url : '/board/Like',
 					type : 'POST',
@@ -56,9 +57,9 @@
 					data :params,
 					success : function(data){
 						if(data==1){
-							$(".heart_empty").attr("src", "/img/heart_empty.png");
+							cb.children().first().attr("src", "/img/heart_empty.png");
 						}else{
-							$(".heart_empty").attr("src", "/img/heart_fill.png");
+							cb.children().first().attr("src", "/img/heart_fill.png");
 						}	 
 					} 				
 				});
