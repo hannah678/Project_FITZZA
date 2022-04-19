@@ -47,6 +47,7 @@
 	color:#fff;
 	cursor:pointer;
 }
+.member_buttons button:nth-child(2) {width:150px}
 .member_buttons button:active {background-color:#276968;}
 
 .member_list_box {
@@ -62,6 +63,10 @@
 	line-height:50px;
 	text-align:center;
 	margin:10px 0 30px 0;
+}
+.member_list_box {
+	overflow-x:hidden;
+	overflow-y:auto
 }
 .member_list_box > ul li{
 	float:left;
@@ -118,6 +123,51 @@
 	float:right;
 	margin:30px 50px 0 0
 }
+.user_lists {
+	cursor:pointer;
+	transition:all 0.5s;
+}
+.user_lists:hover {background-color:rgba(0,0,0,0.3)} 
+#user_leave {
+	overflow-x:hidden;
+	overflow-y:auto
+}
+#user_leave h4{
+	font-size:20px;
+	line-height:50px;
+	margin:30px 0 30px 50px;
+	display:block;
+}
+#user_leave ul {
+	margin-left:50px;
+	display:block;
+	width:1000px;
+}
+.user_left_title li {
+	float:left;
+	text-align:center;
+	line-height:50px;
+	position:relative;
+	margin-bottom:50px
+}
+.user_left_title li::after {
+	content:"";
+	width:80%; height:50px;
+	display:block;
+	border-bottom:1px solid gray;
+	position:absolute; left:10%; top:0;
+}
+.user_left_title li:nth-child(1) {width:500px}
+.user_left_title li:nth-child(2) {width:400px}
+
+.user_left_list li {
+	float:left;
+	line-height:40px;
+	text-align:center;
+	border-bottom:1px solid #c0c0c0
+}
+.user_left_list li:nth-child(2n-1) {width:500px}
+.user_left_list li:nth-child(2n) {width:400px}
 
 /* 탈퇴명단 토글 css -start */
 .user_leave{

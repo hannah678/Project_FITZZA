@@ -75,7 +75,7 @@ li{list-style-type: none;}
     border: 2px solid red;
     border-radius:20px;
     position: absolute;
-    right: 30px; top: 120px;
+    right: 20px; top: 100px;
     font-size: 1.2em;
     line-height:35px;
     transition:all 0.5s;
@@ -200,6 +200,15 @@ li{list-style-type: none;}
 	position:relative;
 	top:50px;
 	right:163px;
+}
+#reportForm textarea {margin-top:20px}
+#reportForm ul li:nth-child(1) {
+	display:block;
+	height:80px;
+	line-height:80px;
+}
+#reportForm ul li:nth-child(3) {
+	margin-top:50px
 }
 footer{
 	font-size: 1em;

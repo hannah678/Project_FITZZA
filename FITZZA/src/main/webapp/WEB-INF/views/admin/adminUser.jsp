@@ -129,7 +129,7 @@ function UserBoard(user_id) {
 	  	</form> 		
  		<div class="member_buttons">
  			<button onclick="adminMemberInsert()">+ 회원 생성</button>
- 			<button id="multiAdmin">x 관리자 권한 부여</button>
+ 			<button id="multiAdmin">+ 관리자 권한 부여</button>
  			<button id="multiDel">x 회원 강퇴</button>
  		</div>		
  		<form method="post" id="DelFrm">
@@ -148,18 +148,18 @@ function UserBoard(user_id) {
 		 		</ul>
 		 		<ul class="member_list">
 		 			<c:forEach var="vo" items="${userList}">
-		 				<li>
+		 				<li class="user_lists">
 				 			<ul>		
 				 				<li><input type="checkbox" name="ChkList" value='${vo.email}' class="chk"></li>
 						 		<li onclick="UserBoard('${vo.user_id}')">${vo.user_id}</li>
-						 		<li>${vo.user_name}</li>
-						 		<li>${vo.user_nickname}</li>
-						 		<li>${vo.email}</li>
-						 		<li>${vo.tel}</li>
-						 		<li>level ${vo.grade}</li>
-			 					<li>${vo.report_hit}</li>
-			 					<li>${vo.register_date}</li>
-			 					<li>${vo.permission}</li>
+						 		<li onclick="UserBoard('${vo.user_id}')">${vo.user_name}</li>
+						 		<li onclick="UserBoard('${vo.user_id}')">${vo.user_nickname}</li>
+						 		<li onclick="UserBoard('${vo.user_id}')">${vo.email}</li>
+						 		<li onclick="UserBoard('${vo.user_id}')">${vo.tel}</li>
+						 		<li onclick="UserBoard('${vo.user_id}')">level ${vo.grade}</li>
+			 					<li onclick="UserBoard('${vo.user_id}')">${vo.report_hit}</li>
+			 					<li onclick="UserBoard('${vo.user_id}')">${vo.register_date}</li>
+			 					<li onclick="UserBoard('${vo.user_id}')">${vo.permission}</li>
 						 	</ul>
 						 </li>
 					</c:forEach>
@@ -167,14 +167,13 @@ function UserBoard(user_id) {
 	 		</div>
 	 	</form>
  		<div id="user_leave">
-		 		<h4>탈퇴한 회원 명단</h4>
-		 		<ul>
-		 			
-		 			<li>아이디</li>
-		 			<li>이메일</li>
-		 			<li>분류</li>
-		 			
-		 			<c:forEach var="vo" items="${leaveList}">
+		 	<h4>탈퇴한 회원 명단</h4>
+		 	<ul class="user_left_title">
+		 		<li>이메일</li>
+		 		<li>분류</li>
+		 	</ul>
+		 	<ul class="user_left_list">	
+		 		<c:forEach var="vo" items="${leaveList}">
 		 			<li>${vo.email}</li>
 		 			<li>
 		 				<c:choose>
@@ -182,8 +181,8 @@ function UserBoard(user_id) {
 							<c:when test="${vo.leave_forced eq 'N'}">자진탈퇴</c:when>
 						</c:choose>
 					</li>
-		 			</c:forEach>
-		 		</ul>
-	 		</div>
+				</c:forEach>
+		 	</ul>
+	 	</div>
  	</div>
  </div>

@@ -148,15 +148,8 @@ $(document).ready(function(){
 		    <input type="text" name="searchReport" id="searchReport"/>
 		    <input type="submit" value="검색" id="reportSearch"/>
 	     </form>
- 		<div class="report_cate_buttons">
- 			<button id="tc_btn">오늘의 코디</button>
- 			<button id="rec_btn">스타일 추천</button>
- 			<button id="oldb_btn">중고거래</button>
- 			<button id="rev_btn">구매후기</button>
- 			<button id="qna_btn">QnA</button>
- 			<button id="vote_btn">오늘 뭐 입지?</button>
- 		</div>
- 		<div id="todayCodi_box" class="Report_box" style="background-color:red">
+ 		
+ 		<div id="todayCodi_box" class="Report_box">
 	 		<ul class="report_box_title">
 	 			<li>신고번호</li>
 	 			<li>신고분류</li>
@@ -167,7 +160,6 @@ $(document).ready(function(){
 		 		<li>상세내용</li>
 		 		<li>신고일</li>
 		 		<li>처리상태</li>
-		 		
 	 		</ul>
 	 		<ul class="report_list">
 	 			<c:forEach var="vo" items="${reportList}">
