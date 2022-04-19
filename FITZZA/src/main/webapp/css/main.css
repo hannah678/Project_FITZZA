@@ -107,7 +107,7 @@ header > a {
     border-bottom-left-radius: 20px; border-bottom-right-radius: 20px;
     background-color: #54bab9;
 }
-#rnb #logStatus3 {position:absolute; right: 270px; top: 35px;}
+#rnb #logStatus3 {position:absolute; right: 270px; top: 33px;}
 #rnb #logStatus3 a {
     display:block;
     width: 30px; height: 30px;
@@ -117,6 +117,38 @@ header > a {
     100% {transform:rotate(270deg)}
 }
 #rnb #logStatus3 a img {width:30px; height:30px;}
+#rnb #logStatus4 {
+	position:absolute; right: 330px; top: 28px;
+	cursor:pointer;
+	width:50px; height:50px;
+}
+#rnb #logStatus4 img {height:30px}
+#rnb #logStatus4:hover {
+	animation:alarm_icon infinite 1s; 
+	transform-origin : 50% 0;
+}
+#rnb #logStatus5 {
+	position:absolute; right: 280px; top: 35px;
+	cursor:pointer;
+	width:50px; height:50px;
+}
+#rnb #logStatus5 img {height:30px}
+#rnb #logStatus5:hover {
+	animation:alarm_icon infinite 1s; 
+	transform-origin : 50% 0;
+}
+@keyframes alarm_icon{
+	0% {transform: rotate(0deg);}
+    10% {transform: rotate(45deg)}
+    20% {transform: rotate(-45deg);}
+    30% {transform: rotate(30deg);}
+    40% {transform: rotate(-30deg);}
+    50% {transform: rotate(15deg);}
+    60% {transform: rotate(-15deg);}
+    70% {transform: rotate(0deg);}
+    100% {transform: rotate(0deg);}
+  }
+
 #menu_bar{
     position:absolute; left: 50px; top: 32px;
     z-index: 2; cursor: pointer;  
@@ -774,4 +806,8 @@ footer .f_copy p{height: 20px; padding-top:20px;}
 	    width: 700px;
 	    transform:translateX(-350px);
 	}
+}
+
+#alarmZone {
+	background-color:white;
 }

@@ -59,7 +59,7 @@ public class AlarmHandler extends TextWebSocketHandler {
 			return;
 		}
 		if(alarmType.equals("reply")) {
-			alarmMsg = logNickName+"님이 \""+title+"\"글에 댓글을 남겼습니다";
+			alarmMsg = logNickName+" 님이"+"<br/>"+" \""+title+"\" 글에 댓글을 남겼습니다.";
 		}
 		
 		//현재 소켓이 열린(접속해 있는) 사람의 아이디를 순회

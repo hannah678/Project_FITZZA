@@ -27,15 +27,20 @@
     <!-- ---------------------------실시간 알림 전용구역------------------------------- -->
     <style>
 		#alarmZone{
-			background-color:rgba(0, 0, 0, 0.5);
-			width:300px;
-			height:100px;
+			background-color:rgba(0, 0, 0, 0.8);
+			width:300px; min-height:150px;
 			position:fixed;
 			top:0px;
 			right:-300px;
 			z-index:999;
 			animation-duration:5s;
-			color:red;
+			color:white;
+			transition:all 0.5s;
+		}
+		#alarmMsg {
+			display:block;
+			line-height:50px; 
+			padding:25px 15px;
 		}
 		@keyframes alarm {
 			10%{
@@ -52,6 +57,11 @@
 			90%{
 				right:0px;
 			}
+		}
+		
+		#alarm_close {
+			position:absolute; right:10px; top:10px;
+			cursor:pointer;
 		}
 	</style>
 	<script>
@@ -81,10 +91,10 @@
 
 				if($("#alarmZone").css("animation-name")=="alarm"){
 					$("#alarmZone").css("animation-name", "alarms");
-					$("#alarmMsg").text(msg);
+					$("#alarmMsg").html(msg);
 				}else{
 					$("#alarmZone").css("animation-name", "alarm");
-					$("#alarmMsg").text(msg);
+					$("#alarmMsg").html(msg);
 				}
 			}
 		}
@@ -97,6 +107,7 @@
 		}
 	</script>
 	<script>
+	
 	function Alert(){
 		alert("준비 중입니다.")
 	}
@@ -108,10 +119,36 @@
 		window.open("/notice_popup", "공지사항", "width="+1400+", height="+1080+", left="+xPos+", top="+yPos+", menubar=yes, status=yes, titlebar=yes, resizable=yes");
 	}
 	</script>
+	<script>
+		$(document).ready(function(){
+			$('#logStatus4').on('click',function(){
+				$('#alarmZone').css({
+					"position" : "fixed",
+		   			"right" : "0px",
+		   			"top" : "0px"
+				});
+			});
+			$('#logStatus5').on('click',function(){
+				$('#alarmZone').css({
+					"position" : "fixed",
+		   			"right" : "0px",
+		   			"top" : "0px"
+				});
+			});
+			$('#alarm_close').on('click',function(){
+				$('#alarmZone').css({
+					"position" : "fixed",
+		   			"right" : "-300px",
+		   			"top" : "0px"
+				});
+			});
+		});
+	</script>
 </head>
 <body>
 	<div id="alarmZone">
 		<span id="alarmMsg">알람 내용</span>
+		<img src='/img/close_w.png' id='alarm_close'>
 	</div>
    <header>
     	<a href="/"><img id="logo" src="/img/logo_text.png" alt="logo"/></a>
@@ -121,10 +158,12 @@
                 <p id="logStatus2"><a href="/member/login">login</a></p>
             </c:if>
             <c:if test="${logStatus == 'Y' && logPermission =='user'}">
+            	<p id="logStatus5"><img src="/img/alarm.png"></p>
                 <p id="logStatus1"><a href="/member/logout">logout</a></p>
                 <p id="logStatus2"><a href="/member/myPage">mypage</a></p>
             </c:if>
             <c:if test="${logStatus == 'Y' && logPermission =='admin'}">
+            	<p id="logStatus4"><img src="/img/alarm.png"></p>
                 <p id="logStatus3"><a href="/admin/adminHome"><img src="/img/setting.png" class="admin_setting"></a></p>
                 <p id="logStatus1"><a href="/member/logout">logout</a></p>
                 <p id="logStatus2"><a href="/member/myPage">mypage</a></p>
