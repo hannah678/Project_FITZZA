@@ -119,14 +119,23 @@ $(document).ready(function(){
  	<div id="adminReport_wrap">
  		<h3>신고 관리</h3>
  		<ul class="ad_report_status">
- 			<li>전체 신고&nbsp;&nbsp; : 
- 				<span>${reportCount }건</span>
+ 			<li>오늘의 코디&nbsp;&nbsp; : 
+ 				<span>xxx건</span>
  			</li>
- 			<li>미처리 신고&nbsp;&nbsp; : 
- 				<span>${reportNoCount }건</span>
+ 			<li>스타일 추천&nbsp;&nbsp; : 
+ 				<span>xxx건</span>
  			</li>
- 			<li>처리된 신고&nbsp;&nbsp; : 
- 				<span>${reportYesCount }건</span>
+ 			<li>중고거래&nbsp;&nbsp; : 
+ 				<span>xxx건</span>
+ 			</li>
+ 			<li>구매후기&nbsp;&nbsp; : 
+ 				<span>xxx건</span>
+ 			</li>
+ 			<li>QnA&nbsp;&nbsp; : 
+ 				<span>xxx건</span>
+ 			</li>
+ 			<li>오늘 뭐 입지?&nbsp;&nbsp; : 
+ 				<span>xxx건</span>
  			</li>
  		</ul>
  		<form method="get" action="" id="reportSearchFrm">
@@ -181,7 +190,6 @@ $(document).ready(function(){
 	 	var reportOffOk = confirm("신고 내용을 확인처리 하시겠습니까?");
 		
 		if(reportOffOk == true){
-			document.location.href="/admin/adminReportOff?report_num="+repo_num;
 			$.ajax({
 				url : "/admin/adminReportOff",
 				type : "get",
@@ -193,6 +201,7 @@ $(document).ready(function(){
 				}
 			})
 		}
+		
 	});
  </script>
  

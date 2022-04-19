@@ -174,16 +174,16 @@ window.onload=function(){
 				<ul class="review_profile">
 					<li>작성자 정보</li>
 					<li>
-						<img src="/upload/${vo.profile_image}" alt="프로필 이미지" width="130" width="130" id="profile_frame">
+						<img src="/upload/${vo.profile_image}" alt="프로필 이미지" id="profile_frame">
 						<img src="${vo.frame_img}" id="level_frame" alt="등급 프레임 이미지" >
 					</li>
-					<li style="width:200px;">작성자 이름: ${vo.user_nickname}</li>
-					<li style="width:200px;">신고받은 횟수: ${vo.report_hit}</li>
+					<li>작성자 : ${vo.user_nickname}</li>
+					<li>신고받은 횟수 : ${vo.report_hit}</li>
 				</ul>
 			</li>
 			<li>
 				<c:if test="${logId != vo.user_id && logPermission !='admin'}">
-					<p><input type="button" value="신고" id="button02"
+					<p><input type="button" value="신고" id="rev_report"
 						data-target="#reportModal" data-toggle="modal" /></p>
 				</c:if>
 				<c:if test="${logId == vo.user_id||logPermission =='admin'}">
@@ -219,20 +219,21 @@ window.onload=function(){
 	</div>
 	<hr/>
 	<div class="reply">
+        	<br/>
+			<li style="font-size: 24px;"><b>댓글</b></li>
 			<hr />
-			<b>댓글</b>
-			<hr />
-				<div></div>
-			<hr />
-			<div id="replyList"></div>
-				<c:if test="${logStatus =='Y'}">
-					<form id="replyFrm">
-						<input type="hidden" name="board_num" value="${vo.board_num}" />
-						<textarea name="coment" id='coment'
-							placeholder=" 댓글 입력"></textarea>
-						<input type="submit" value="등록" id="replybtn" />
-					</form>
+			<!--댓글수정필요-->
+			<form id="replyFrm">
+				<input type="hidden" name="board_num" value="${vo.board_num}" />
+				<c:if test="${logStatus=='Y'}">
+					<textarea name="coment" id='coment'
+						style="width: 1000px; height: 98px; margin:10px 0 -35px 35px; font-size:18px" placeholder=" 댓글 입력"></textarea>
+					<input type="submit" value="등록" id="replybtn" />
+					<hr />
 				</c:if>
+			</form>
+			<div></div>
+			<div id="replyList"></div>
 		</div>
 </div>
 

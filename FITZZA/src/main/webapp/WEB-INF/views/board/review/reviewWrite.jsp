@@ -45,7 +45,7 @@
 			</li>
 			<li><textarea name="content" id="content" rows="30" cols="100" placeholder="본문입력하세요"></textarea> </li>
 			<li><div class="img2">
-                      상세이미지<br/>
+                      상세이미지<br/><br/>
                         <div class="img2_up">
                             <img id="img_section2" src="/img/이미지 없음.png"><br/>
                             <input type="text" id="file_route02"  disabled="disabled" value="파일 선택" >
@@ -71,7 +71,7 @@
                             <input type="file" id="upload_file05" name="filename" accept="image/*" style="position:absolute; clip:rect(0, 0, 0, 0);"><br/>
                         </div>
 				</div></li>
-				<li style="height:200px;"><input type='submit' value='등록' id="reviewsubmit" class="button01"/></li>
+				<li style="height:200px; margin-bottom:50px"><input type='submit' value='등록' id="reviewsubmit" class="button01"/></li>
 		</ul>
 	</form>
 </div>
@@ -131,7 +131,7 @@
 		fileName5.value = imgFile5.name;
 	});
 </script>
-		<!-- particles.js container -->
+	<!-- particles.js container -->
     <div id="particles-js"></div>
             
     <!-- scripts -->

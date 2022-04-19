@@ -98,7 +98,6 @@
                         </div>
                     </li>
                 </div>
-                <hr/>
                 <div class="img2">
                     <li id="img2">상세이미지<br/>
                         <div>
@@ -186,12 +185,6 @@
 				<li><input type='submit' value='등록하기' id="enter"/></li>
             </ul>
         </form>
-        <!-- particles.js container -->
-            <div id="w_particles-js"></div>
-            
-            <!-- scripts -->
-            <script src="/js/w_particles.js"></script>
-            <script src="/js/w_app.js"></script>
     </div>
     <!-- particles.js container -->
     <div id="particles-js"></div>

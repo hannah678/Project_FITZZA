@@ -1,5 +1,5 @@
 body {
-	background:url(../img/trade_bg.png) 0 0;
+	background-image: url("../img/tc_bg_1.png");
 	position:relative;
 	z-index:-2	
 }
@@ -35,7 +35,7 @@ body {
 }
 #boardFrm li select {font-size:18px; height:30px; line-height:30px}
 #enter{
-    margin-top: 150px;
+    margin-top: 30px;
     text-align: center;
     width: 300px; height: 100px;
     font-size: xx-large; font-weight: 600;
@@ -60,7 +60,6 @@ body {
 }
 #img1>div{
     margin-top: 30px;
-    border: 1px solid black;
 }
 #img2>div{
     width: 50%;

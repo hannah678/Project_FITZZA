@@ -1,7 +1,7 @@
 @charset "UTF-8";
 @import url('https://fonts.googleapis.com/css2?family=Kaushan+Script&family=Nanum+Pen+Script&display=swap');
 body{
-    background-image: url("/img/배경.png");
+    background-image: url("/img/tc_bg_1.png");
 }
 .qna{
     width:1200px;
@@ -12,51 +12,84 @@ body{
 }
 .qnalist{
     padding: 30px;
-}
-#info a:link, #info a:visited, #info a:hover{
-    color:red;
-}
-#profile{
-    float: left;
-    margin-right: 50px;
-    width: 100px;
-    height: 100px;
-    border-radius: 70%;
-    position: relative;
-    bottom: 10px;
-    left: 10px;
-}
-#level_frame{
-	width: 130px;
-    height: 130px;
-    position:absolute;
-    bottom:345px;
-    left:185px;
-}
-#content{
-    font-size: 2em;
-}
-li{
-    list-style-type: none;
-}
-#title{
-    font-size: 3em;
-    position: relative;
-    bottom:10px;
-}
-#info{
-    font-size: 1.3em;
-    color:dimgrey;
-    position: relative;
-    bottom:10px;
-}
-#report{
-	position:relative;
-	left:600px;
-}
-.qnalist{
     border: 1px solid black;
 }
+.qnalist ul:nth-child(2) li:nth-child(2) img {
+	display:block;
+	padding:10px;
+	margin:0 auto;
+}
+#info {
+	float:left;
+	margin-left:150px; margin-top:30px;
+	line-height:50px;
+	font-size: 1.3em;
+    color:dimgrey;
+}
+#info > span {
+	color:#222; font-size:18px;
+	font-weight:50px;
+}
+.qna_top {position:relative}
+.qna_top li:nth-child(1) a{
+	font-size:24px;
+	float:right;
+	color:#222;
+	margin:30px 20px 0 0
+}
+.qna_top li:nth-child(2) {
+	display:inline-block;
+	width:110px; height:110px;
+	position:relative;
+	margin:25px 0 30px -460px;
+}
+#profile{
+	display:block;
+    margin:0 auto;
+    width: 80px; height: 80px;
+    border-radius: 50%;
+    margin-top:13px;
+    position: relative;
+}
+#level_frame{
+    width: 110px;
+    height: 110px;
+    border-radius: 70%;
+    position:absolute;
+    left:0; top:0;
+}
+#content{
+	font-size: 2em; min-height:100px;
+	margin-bottom:30px
+}
+li{list-style-type: none;}
+#title{
+	width:750px; min-height:50px;
+    font-size: 3em;
+    text-align:left; line-height:50px;
+   	display:block;
+   	margin:-70px 0 0 150px;
+}
+
+#qna_report{
+    width: 100px; height: 40px;
+    font-weight: 600;
+    color:red;
+    border: 2px solid red;
+    border-radius:20px;
+    position: absolute;
+    right: 20px; top: 100px;
+    font-size: 1.2em;
+    line-height:35px;
+    transition:all 0.5s;
+}
+.edit_delete {
+	display:block;
+	margin:-60px 10px 0 0;
+	float:right;
+}
+#qna_report:hover {color:white; background-color:red}
+
 .paging>form>input{
     margin-top: 10px;
     width: 100px;
@@ -65,18 +98,26 @@ li{
     border: 1px solid black;
     font-weight: bold;
 }
+#coment{
+    width:500px; 
+    height:50px;
+    border: 2px solid black;
+    font-family:'Noto Sans KR';
+    font-size: 1.1em;
+    font-weight: bold;
+}
 .reply{
-    width: 1200px;
+    width: 1200px; min-height:300px;
     clear: both;
     margin-top:20px;
     padding-left:30px;
 }
 #replybtn{
     position: relative;
-    right: 0px;
-    bottom: 17px;
+    right: 3px;
+    bottom: 8px;
     width: 100px;
-    height: 50px;
+    height: 98px;
     border: 2px solid black;
     font-family: 'Noto Sans KR';
     font-size: 1.4em;
@@ -101,10 +142,11 @@ li{
 	top:0px;
 }
 #reply_level_frame{
-	width: 75px;
-    height: 75px;
+	width: 65px;
+    height: 65px;
     border-radius: 70%;
     position:relative;
+    left:5px;
 }
 #reply_edit{
 	width:37px;
@@ -130,17 +172,14 @@ li{
 	color:blue;
 }
 #replyList{font-size:20px;}
-#replyList #reply_level_frame {margin-right:30px}
+#replyList #reply_level_frame {margin-right:30px; margin-left:-1px}
 #replyList > ul li div p {margin-top:10px; margin-left:10px;}
+#replyList > ul li div span {
+	display:inline-block;
+	width:90%;
+	margin-left:100px;
+}
 
-#pro_img{
-    width: 60%;
-    float: left;
-}
-#pro_con{
-    width: 40%;
-    float: left;
-}
 /* 모달 */
 .modal {font-size: 20px; text-align:center}
 .modal-backdrop {margin-left:-340px}
@@ -159,4 +198,16 @@ li{
 	position:relative;
 	top:50px;
 	right:163px;
+}
+#reportForm textarea {margin-top:20px}
+#reportForm ul li:nth-child(1) {
+	display:block;
+	height:80px;
+	line-height:80px;
+}
+#reportForm ul li:nth-child(3) {
+	margin-top:50px
+}
+footer{
+	font-size: 1em;
 }

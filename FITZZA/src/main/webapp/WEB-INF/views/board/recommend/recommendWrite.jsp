@@ -30,7 +30,7 @@
        		<input type="hidden" name="type_num" value="2"/>
        		<input type="hidden" name="gender_type" value="U">
             <ul>
-            	<h1>오늘의 추천</h1>
+            	<h1>스타일 추천</h1>
                 <li>제목 &emsp;  <input type="text" name="title" id="title" placeholder='  제목을 입력해주세요.'/></li>
 				<hr/>
 				<li>설명 &emsp;  <br/><textarea name="content" id="content" rows="30" cols="100" 

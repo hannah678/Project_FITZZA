@@ -6,6 +6,7 @@
 	a:link {color:#54bab9; text-decoration: none;}
 	a:visited {color:#54bab9}
 	#logStatus4 > img {vertical-align:top;}
+	#logStatus5 > img {vertical-align:top;}
 	#logStatus3 > a > img {margin-top:-15px}
 }
 </style>

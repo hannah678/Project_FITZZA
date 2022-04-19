@@ -27,13 +27,13 @@ body{
 	width:400px; height:50px;
 	line-height:50px;
 	display:block;
-	position:absolute; right:0; top:300px
+	position:absolute; right:0; top:330px
 }
 .review_container > ul > li:nth-child(4){
-	width:400px; height:200px;
+	width:400px; height:50px;
 	line-height:50px;
 	display:block;
-	position:absolute; right:0; top:350px
+	position:absolute; right:0; top:390px
 }
 .review_container > ul > li:nth-child(5) {
 	width:100%; height:250px;
@@ -45,10 +45,14 @@ body{
 	position:absolute;
 	right:0; top:300px;
 }
+.review_container > ul > li:nth-child(7){
+	display:block;
+	width:100%; height:200px;
+	margin:260px 0 30px 0
+}
 #main_img{
 	text-align: center;
 	width:100%;
-	border-top:1px solid black;
 	margin:0 auto;
 	
 }
@@ -67,20 +71,36 @@ body{
 	width:80%;
 }
 
-.review_profile {position:relative}
-.review_profile li:nth-child(1) {line-height:50px}
-
+.review_profile {
+	position:relative;
+	width:700px; height:230px;
+}
+.review_profile li {
+	line-height:30px;
+	margin:30px 0 0 250px
+}
+.review_profile li:nth-child(1) {
+	line-height:50px;
+	font-weight:500;
+	margin:0 0 0 55px
+}
+.review_profile li:nth-child(3) {
+	display:block;
+	width:350px;
+	overflow:hidden;
+}
 #profile_frame{
+	width:110px; height:110px;
 	position:absolute;
-	left:30px;
-	top:5px;
+	left:50px; top:75px;
 	z-index: 1;
+	border-radius:50%
 }
 
 #level_frame{
+	width:160px; height:160px;
 	position: absolute;
-	top:-30px;
-	left: -5px;
+	left:25px; top:55px;
 	z-index: 2;
 }
 
@@ -95,7 +115,6 @@ body{
 	text-align:center;
 	background-color:rgba(0,0,0,0.1);
 	border:1px solid #888;
-	border-top:none;
 	margin-right:30px;
 	float:left;
 }
@@ -106,6 +125,8 @@ body{
 	word-break:break-all;
 	overflow-x:hidden;
 	overflow-y:auto;
+	border-top:1px solid #222;
+	border-bottom:1px solid #222;
 }
 #content_img > img{
 	display:block;
@@ -223,10 +244,15 @@ body{
 	bottom:5px;
 	left:5px;
 }
-
-.reply_buttond{
-	position:relative;
-	padding-top:5px;
+#replybtn{
+    position: relative;
+    right: 3px;
+    bottom: 2px;
+    width: 100px;
+    height: 98px;
+    border: 2px solid black;
+    font-family: 'Noto Sans KR';
+    font-size: 1.4em;
 }
 .reply_button{
 	width:40px;
@@ -235,6 +261,7 @@ body{
 	background-color: rgb( 244, 156, 21);
 	border-radius: 5px;
 	border:none;
+	font-size:18px
 }
 
 .reply_button3{
@@ -247,6 +274,26 @@ body{
 	border-radius: 5px;
 	border:none;
 }
+
+#rev_report{
+    width: 100px; height: 40px;
+    font-weight: 600;
+    color:red;
+    border: 2px solid red;
+    border-radius:20px;
+    position: absolute;
+    right: 20px; top: -20px;
+    font-size: 1em;
+    line-height:35px;
+    transition:all 0.5s;
+}
+.edit_delete {
+	display:block;
+	margin:-60px 10px 0 0;
+	float:right;
+}
+#rev_report:hover {color:white; background-color:red}
+
 /* 글쓰기 */
 #gender_type {margin:30px 0}
 #content {margin-bottom:50px}
@@ -266,13 +313,15 @@ body{
 	display:block; margin:100px 500px 0 0;
 }
 .img1 div > input {font-size:18px; height:30px}
+.img1 label {cursor:pointer}
 
+.img2_up {margin:0 35px}
 .img2_up >input {font-size:18px}
-.img2_up:nth-child(2) input {width:150px; margin-right:10px; height:30px}
 .img2_up:nth-child(3) input {width:150px; margin-right:10px; height:30px}
 .img2_up:nth-child(4) input {width:150px; margin-right:10px; height:30px}
 .img2_up:nth-child(5) input {width:150px; margin-right:10px; height:30px}
-
+.img2_up:nth-child(6) input {width:150px; margin-right:10px; height:30px}
+.img2_up > label {cursor:pointer}
 #title{
 	width:100%;
 	height:60px;

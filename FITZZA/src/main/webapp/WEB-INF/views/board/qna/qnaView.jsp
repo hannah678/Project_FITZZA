@@ -1,6 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
 <link rel="stylesheet" href="/css/qnaView.css" type="text/css">
+<style>
+	a:link {color:#54bab9; text-decoration: none;}
+	a:visited {color:#54bab9}
+	#logStatus4 > img {vertical-align:top;}
+	#logStatus5 > img {vertical-align:top;}
+	#logStatus3 > a > img {margin-top:-15px}
+}
+</style>
 <script>
     function delCheck(){
         if(confirm("삭제하시겠습니까?")){
@@ -49,7 +57,7 @@
 							tag += "<input type='button' value='수정' id='reply_edit'/>";
 							tag += "<input type='button' value='삭제' title='"+vo.reply_num+"' id='reply_del'/>";
 						}
-						tag += "<br/>" + "<p>" + vo.coment + "</p>" + "</div>";
+						tag += "<br/>" + "<span>" + vo.coment + "</span>" + "</div>";
 						
 						if(vo.user_id == '${logId}'){   // user_id
 							tag += "<div style='display:none'><form method='post'>";
@@ -140,23 +148,28 @@
     <br><br><br><br><br><br><br><br>
     <div class="qna">
         <div class="qnalist">
-            <ul>
-                <img src="/upload/${vo.profile_image}" id="profile"/><img id="level_frame" alt="등급 프레임 이미지">
-                <br/>
-                <li id="title">${vo.title}</li>
+            <ul class="qna_top">
+            	<li><a href="/board/qna/qnaList">목록으로</a></li>
+            	<li>
+                	<img src="/upload/${vo.profile_image}" id="profile"/>
+                	<img id="level_frame" alt="등급 프레임 이미지">
+                </li>
                 <li id="info">
-                	<span style="color: black">${vo.user_nickname}</span>&ensp;${vo.write_date} | ${vo.hit}
-                	<c:if test="${logId != vo.user_id}">
-						<input type="button" value="신고" id="report"
-							data-target="#reportModal" data-toggle="modal" />
-					</c:if>
-					<c:if test="${logId == vo.user_id}">
-						&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-						<a href="/board/qna/qnaEdit?board_num=${vo.board_num}" style="color: blue;">수정</a> 
-						<a id="del" href="javascript:delCheck()" style="color: blue;">삭제</a>
-					</c:if>
-				</li>
+                	<span>${vo.user_nickname}</span>&ensp;${vo.write_date} | ${vo.hit}
+                </li>
+                <li id="title">${vo.title}</li>
                 <hr/>
+                <c:if test="${logId != vo.user_id}">
+					<li><input type="button" value="신고" id="qna_report"
+						data-target="#reportModal" data-toggle="modal" /></li>
+				</c:if>
+				<c:if test="${logId == vo.user_id}">
+					<li class="edit_delete">
+						<a class="edit" href="/board/recommend/recommendEdit?board_num=${vo.board_num}" style="width:60px; height:30px; border:2px solid #54bab9; border-radius:15px; font-size:18px; display:inline-block; line-height:25px; text-align:center;">수정</a> 
+						<a id="del" href="javascript:delCheck()" style="width:60px; height:30px; border:2px solid #54bab9; border-radius:15px; font-size:18px; display:inline-block; line-height:25px; text-align:center; margin-left:20px">삭제</a>
+					</li>
+					<br/>
+				</c:if>
             </ul>
             <ul>
                 <li id="content">${vo.content}</li>
@@ -172,7 +185,7 @@
 				<input type="hidden" name="board_num" value="${vo.board_num}" />
 				<c:if test="${logStatus=='Y'}">
 					<textarea name="coment" id='coment'
-						style="width: 500px; height: 50px" placeholder=" 댓글 입력"></textarea>
+						style="width: 1000px; height: 98px; margin:10px 0 -35px 35px; font-size:18px" placeholder=" 댓글 입력"></textarea>
 					<input type="submit" value="등록" id="replybtn" />
 					<hr />
 				</c:if>

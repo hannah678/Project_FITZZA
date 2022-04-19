@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Kaushan+Script&family=Nanum+Pen+Script&display=swap');
 
 body{
-	background-image: url("/img/배경.png");
+	background-image: url("../img/tc_bg_1.png");
 	font-family: 'Noto Sans KR';
     font-size: 1em;
 }
