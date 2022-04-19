@@ -150,6 +150,11 @@ public class BoardServiceImpl implements BoardService{
 		return dao.BoardSelectLike(type_num, user_id);
 	}
 
+	@Override
+	public int totalLike(String user_id) {
+		return dao.totalLike(user_id);
+	}
+
 	
 	
 	

@@ -23,7 +23,7 @@ window.onload=function(){
 	y.src="${vo.frame_img}";
 	
 	// (1) 오늘의코디 게시물 리스트
-	var startNum01 = $("#my_list_contents01 li").length/5; // oldlist안에 li태그의 길이
+	var startNum01 = $("#my_list_contents01 li").length/6; // oldlist안에 li태그의 길이
 	var addListHtml01 = "";
 	var url01= '/member/myPage01';
 	var param01 = {"startNum01" : startNum01};
@@ -40,13 +40,13 @@ window.onload=function(){
 			for (var i = 0; i < data.length; i++) {
 				addListHtml01 += "<li>";
                 addListHtml01 += "<ul>";
+                addListHtml01 += "<li><img src='/upload/todayCodi/"+data[i].file1+"' onclick='fnImgPop(this.src)' width='80' height='100'/></li>";
 				addListHtml01 += "<li class='my_list_subtitle'>"+data[i].title+"</li>";
 				addListHtml01 += "<li class='my_list_subcontent'>"+data[i].content+"</li>";
-				addListHtml01 += "<li class='my_list_hit'>"+data[i].hit+"</li>";
+				addListHtml01 += "<li class='my_list_hit'>"+data[i].like_num+"</li>";
 				addListHtml01 += "<li class='my_list_date'>"+data[i].write_date+"</li>";
-				addListHtml01 += "</ul>";
-                addListHtml01 += "<a class='my_list_alink' href='/board/todayCodi/todayCodiView?board_num="+data[i].board_num+"'></a></li>";
-				            
+				addListHtml01 += "</ul></li>";
+               
 			}
 			if(data.length<5){
 				$("#moreView01").remove();
@@ -284,7 +284,7 @@ window.onload=function(){
 }
 //(1)오늘의 코디(더보기클릭)
 function viewMore01(){
-	var startNum01 = $("#my_list_contents01 li").length/5; // oldlist안에 li태그의 길이
+	var startNum01 = $("#my_list_contents01 li").length/6; // oldlist안에 li태그의 길이
 	var addListHtml01 = "";
 	var url01= '/member/myPage01';
 	var param01 = {"startNum01" : startNum01};
@@ -301,13 +301,12 @@ function viewMore01(){
 			for (var i = 0; i < data.length; i++) {
 				addListHtml01 += "<li>";
                 addListHtml01 += "<ul>";
+                addListHtml01 += "<li><img src='/upload/todayCodi/"+data[i].file1+"' onclick='fnImgPop(this.src)' width='80' height='100'/></li>";
 				addListHtml01 += "<li class='my_list_subtitle'>"+data[i].title+"</li>";
 				addListHtml01 += "<li class='my_list_subcontent'>"+data[i].content+"</li>";
-				addListHtml01 += "<li class='my_list_hit'>"+data[i].hit+"</li>";
+				addListHtml01 += "<li class='my_list_hit'>"+data[i].like_num+"</li>";
 				addListHtml01 += "<li class='my_list_date'>"+data[i].write_date+"</li>";
-				addListHtml01 += "</ul>";
-                addListHtml01 += "<a class='my_list_alink' href='/board/todayCodi/todayCodiView?board_num="+data[i].board_num+"'></a></li>";
-				            
+				addListHtml01 += "</ul></li>";            
 			}
 			if(data.length<5){
 				$("#moreView01").remove();
@@ -552,6 +551,17 @@ function viewMore07(){
 		}
 	});
 }
+
+function fnImgPop(url){
+	  var img=new Image();
+	  img.src=url;
+	  var img_width=img.width;
+	  var win_width=img.width+25;
+	  var img_height=img.height;
+	  var win=img.height+30;
+	  var OpenWindow=window.open('','_blank', 'width='+img_width+', height='+img_height+', menubars=no, scrollbars=auto');
+	  OpenWindow.document.write("<style>body{margin:0px;}</style><img src='"+url+"' width='"+win_width+"'>");
+}
 </script>
 
 <!-- ---------------------------------------------------------------------------------------------------------------------------------------- -->
@@ -585,7 +595,7 @@ function viewMore07(){
 			</ul>
 			<ul>
 				<li>받은 추천</li>
-				<li>xxx</li>
+				<li>${total_like}</li>
 			</ul>
 			<ul>
 				<li>받은 신고</li>
@@ -600,13 +610,14 @@ function viewMore07(){
 			<input type="radio" name="tab" id="tab1" checked>
 			<label for="tab1">오늘의 코디</label>
 			<div>
-				<ul class="my_list_title">
+				<ul class="my_list_title01">
+					<li>코디</li>
 					<li>게시물 제목</li>
 					<li>내용</li>
-					<li>조회수</li>
+					<li>추천수</li>
 					<li>작성날짜</li>
 				</ul>
-				<ul class="my_list_contents" id="my_list_contents01">
+				<ul class="my_list_contents01" id="my_list_contents01">
 				</ul>
 				<a class="moreViews" id="moreView01" onclick="viewMore01()"><img src="/img/더보기.png" style="width:100px;"></a>
 			</div>

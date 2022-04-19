@@ -106,8 +106,6 @@
  	<update id="reportUp">
  		UPDATE user SET report_hit=report_hit+1 WHERE user_id=(SELECT user_id FROM board WHERE board_num=${board_num});
  	</update>
- 	
- 	
  	<!-- 게시글 삭제 -->
  	<delete id="boardDelete">
  		DELETE FROM board WHERE board_num=#{param1} AND user_id=#{param2}
@@ -116,11 +114,25 @@
  	<select id="getType_num" resultType="int">
  		select type_num from board where board_num=${param1}
  	</select>
+ 	<!-- 마이페이지 총 추천 수 -->
+ 	<select id="totalLike" resultType="int">
+ 		SELECT   COUNT(C.user_id) AS total_like
+		FROM     like_clicker C
+		JOIN	 board A
+		ON 		 A.board_num = C.board_num
+		WHERE    A.user_id=#{param1}
+	</select>
  	<!-- 마이페이지 게시글 확인 (글쓴이검색?)-->
  	<select id="todayWriterSelect" resultType="com.team.fitzza.vo.BoardVO">
-        SELECT   board_num, title, content, user_id, hit, ip, write_date
-		FROM     board
-		WHERE    user_id=#{param1} AND type_num=1
+        SELECT   A.board_num, A.title, A.content, A.user_id, A.ip, A.write_date, B.file1,
+        		 COUNT(C.user_id) AS like_num
+		FROM     board A
+		JOIN	 board_common_image B
+		ON		 A.board_num = B.board_num
+		LEFT JOIN	 like_clicker C
+		ON 		 A.board_num = C.board_num
+		WHERE    A.user_id=#{param1} AND A.type_num=1
+		GROUP BY A.board_num
 		LIMIT 	 #{param2.start}, #{param2.end}
     </select>
     <select id="recommendWriterSelect" resultType="com.team.fitzza.vo.BoardVO">

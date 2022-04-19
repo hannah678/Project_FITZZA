@@ -21,4 +21,5 @@ public interface MemberService{
 	public int expDown_reply(String user_id);
 	public MemberVO getFileName(String user_id);
 	public int changeProfileImg(MemberVO vo);
+
 }

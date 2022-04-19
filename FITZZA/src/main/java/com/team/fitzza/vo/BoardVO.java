@@ -45,9 +45,16 @@ public class BoardVO {
 	
 	private int heart_type; 
 	private int like_num; 
-
+	private int total_like;
 	
 	
+	
+	public int getTotal_like() {
+		return total_like;
+	}
+	public void setTotal_like(int total_like) {
+		this.total_like = total_like;
+	}
 	public int getLike_num() {
 		return like_num;
 	}

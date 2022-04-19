@@ -36,7 +36,6 @@ public interface MemberDAO {
 	public MemberVO getFileName(String user_id);
 	public int changeProfileImg(MemberVO vo);
 
-
 	public int expUp_board(String user_id);
 	public int expUp_reply(String user_id);
 	public int expDown_board(String user_id);

@@ -154,6 +154,29 @@
 .my_list_title li:nth-child(2) {width:40%;}
 .my_list_title li:nth-child(3) {width:10%;}
 
+/*오늘의 코디*/
+.my_list_title01 li{
+	width:20%; 
+	margin:20px 0;
+	line-height:50px
+}
+.my_list_title01 li:nth-child(2) {width:25%;}
+.my_list_title01 li:nth-child(3) {width:25%;}
+.my_list_title01 li:nth-child(4) {width:10%;}
+
+.my_list_contents01 li{
+	font-size:20px;
+	overflow:hidden;
+	border-bottom : 1px solid #888;
+	white-space:nowrap;
+	text-overflow: ellipsis;
+	position:relative;
+}
+.my_list_contents01 .my_list_file {width:240px;}/* 20% */
+.my_list_contents01 .my_list_subtitle {width:300px;}/* 25% */
+.my_list_contents01 .my_list_subcontent {width:300px;}/* 25% */
+.my_list_contents01 .my_list_hit {width:120px;}/* 10% */
+.my_list_contents01 .my_list_date {width:240px;}/* 20% */
 /*중고게시판*/
 .my_list_title03 {margin:20px 0; font-weight:600;}
 .my_list_title03 li {line-height:50px;margin:20px 0;}
