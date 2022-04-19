@@ -140,7 +140,7 @@
 	}
 </script>
 <body>
-    <br><br><br><br><br>
+    <br><br><br><br><br><br><br>
     <div class="rec">
         <div class="reclist">
             <ul>
@@ -148,15 +148,17 @@
                 <img id="level_frame" alt="등급 프레임 이미지">
                 <br/>
                 <li id="title">${vo.title}</li>
-                <li id="info">&emsp;&emsp;&emsp;&emsp;&emsp;<span style="color: black">${vo.user_nickname}</span>&ensp;${vo.write_date} | ${vo.hit}</li>
+                <li id="info">
+                	<span style="color: black">${vo.user_nickname}</span>&ensp;${vo.write_date} | ${vo.hit}
+                </li>
                 <c:if test="${logId != vo.user_id}">
 					<li><input type="button" value="신고" id="report"
 						data-target="#reportModal" data-toggle="modal" /></li>
 				</c:if>
 				<c:if test="${logId == vo.user_id}">
 					<li style="float: right;">
-						<a href="/board/recommend/recommendEdit?board_num=${vo.board_num}" style="color: blue;">수정</a> 
-						<a id="del" href="javascript:delCheck()" style="color: blue;">삭제</a>
+						<a href="/board/recommend/recommendEdit?board_num=${vo.board_num}" style="color: blue; font-size:24px;">수정</a> 
+						<a id="del" href="javascript:delCheck()" style="color: blue; font-size:24px;">삭제</a>
 					</li>
 					<br/>
 				</c:if>
@@ -164,39 +166,40 @@
             </ul>
             <ul class="rec_content">
                 <li id="content">${vo.content}</li>
-                <li><img src=""/upload/${vo.file1}""/></li>
+                <li><img src="/upload/${vo.file1}"/></li>
                 <c:if test="${vo.file2!=null && vo.file2 !=''}">
-							<li><img src=""/upload/${vo.file2}""/></li>
-						</c:if>
-						<c:if test="${vo.file3!=null && vo.file3 !=''}">
-							<li><img src=""/upload/${vo.file3}""/></li>
-						</c:if>
-						<c:if test="${vo.file4!=null && vo.file4 !=''}">
-							<li><img src=""/upload/${vo.file4}""/></li>
-						</c:if>
-						<c:if test="${vo.file5!=null && vo.file5 !=''}">
-							<li><img src=""/upload/${vo.file5}""/></li>
-						</c:if>
+					<li><img src="/upload/${vo.file2}"/></li>
+				</c:if>
+				<c:if test="${vo.file3!=null && vo.file3 !=''}">
+					<li><img src="/upload/${vo.file3}"/></li>
+				</c:if>
+				<c:if test="${vo.file4!=null && vo.file4 !=''}">
+					<li><img src="/upload/${vo.file4}"/></li>
+				</c:if>
+				<c:if test="${vo.file5!=null && vo.file5 !=''}">
+					<li><img src="/upload/${vo.file5}"/></li>
+				</c:if>
             </ul>
         </div>
         <div class="reply">
-            <br/>
-            <li style="font-size: 1.5em;"><b>댓글</b></li>
-            <!--댓글수정필요-->
-            <br/>
-            <c:if test="">
-                <form id="replyFrm">
-                    <input type="hidden" name="board_num" value="${vo.board_num}"/>
-                    <textarea name="coment" id='coment' placeholder=" 댓글을 남겨주세요"></textarea>
-                    <input type="submit" id="replybtn" value="등록"/>
-                </form>
-            </c:if>
-            <div id="replyList">
-                
-            </div>
-        </div>
+        	<br/>
+			<li style="font-size: 24px;"><b>댓글</b></li>
+			<hr />
+			<!--댓글수정필요-->
+			<form id="replyFrm">
+				<input type="hidden" name="board_num" value="${vo.board_num}" />
+				<c:if test="${logStatus=='Y'}">
+					<textarea name="coment" id='coment'
+						style="width: 500px; height: 50px" placeholder=" 댓글 입력"></textarea>
+					<input type="submit" value="등록" id="replybtn" />
+					<hr />
+				</c:if>
+			</form>
+			<div></div>
+			<div id="replyList"></div>
+		</div>
 
-        		<!-- 신고 모달 -->
+        <!-- 신고 모달 -->
 		<div id="reportModal" class="modal">
 			<!-- modal -->
 			<div class="modal-dialog">
@@ -210,7 +213,7 @@
 							<form method="post" id="reportForm">
 								<input type="hidden" name="board_num" value="${vo.board_num}" />
 								<ul>
-									<li>신고 이유 &emsp; <select name="category_num">
+									<li>신고 이유 &emsp; <select name="category_num" style="border:1px solid black;">
 											<option value="1">광고</option>
 											<option value="2">사기거래</option>
 											<option value="3">욕설/비방</option>
@@ -219,7 +222,7 @@
 									</li>
 									<hr />
 									<li>신고 내용<br /> <textarea name="report_content" rows="5"
-											cols="30"></textarea> <input type='submit' value='신고 접수'
+											cols="30" id="report_content"></textarea> <input type='submit' value='신고 접수'
 										id="reportbtn" />
 									</li>
 								</ul>

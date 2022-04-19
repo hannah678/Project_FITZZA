@@ -1,7 +1,8 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <link rel="stylesheet" href="/css/recWrite.css" type="text/css">
+<link rel="stylesheet" href="/css/gradientStars.css" type="text/css">
+<script type="text/javascript" src="/js/gradientStars.js"></script>
 <script>
 	$(function(){
 		$("#boardFrm").submit(function(){
@@ -27,8 +28,9 @@
 <body>
     <div class="boardcontainer">
     	
-        <form method="post" action="" id="boardFrm" enctype="multipart/form-data">
-       		<input type="hidden" name="type_num" value="3"/>
+        <form method="post" action="/board/recommend/recommendWriteOk" id="boardFrm" enctype="multipart/form-data">
+       		<input type="hidden" name="type_num" value="2"/>
+       		<input type="hidden" name="gender_type" value="U">
             <ul>
             	<h1>오늘의 추천</h1>
                 <li>제목 &emsp;  <input type="text" name="title" id="title" placeholder='  제목을 입력해주세요.'/></li>
@@ -45,19 +47,19 @@
                             <label for="upload_file01">업로드</label>
                             <input type="file" id="upload_file01" name="filename" accept="image/*" style="position:absolute; clip:rect(0, 0, 0, 0);"><br/>
                         </div>
-                        <div class="img2">
+                        <div class="img2" style="margin-left:230px; margin-bottom: 100px;">
                             <img class="img3" id="img_section2" src="/img/이미지 없음.png"><br/>
                             <input type="text" id="file_route02"  disabled="disabled" value="파일 선택" >
                             <label for="upload_file02">업로드</label>
                             <input type="file" id="upload_file02" name="filename" accept="image/*" style="position:absolute; clip:rect(0, 0, 0, 0);"><br/>
                         </div>
-                        <div class="img2">   
+                        <div class="img2" style="margin-bottom: 100px;">   
                             <img class="img3" id="img_section3" src="/img/이미지 없음.png"><br/>
                             <input type="text" id="file_route03"  disabled="disabled" value="파일 선택" >
                             <label for="upload_file03">업로드</label>
                             <input type="file" id="upload_file03" name="filename" accept="image/*" style="position:absolute; clip:rect(0, 0, 0, 0);"><br/>
                         </div>
-                        <div class="img2">
+                        <div class="img2" style="margin-left:230px;">
                             <img class="img3" id="img_section4" src="/img/이미지 없음.png"><br/>
                             <input type="text" id="file_route04"  disabled="disabled" value="파일 선택" >
                             <label for="upload_file04">업로드</label>
@@ -131,3 +133,131 @@
             </ul>
         </form>
     </div>
+</body>
+<!-- particles.js container -->
+    <div id="particles-js"></div>
+            
+    <!-- scripts -->
+    <script src="/js/particles.js"></script>
+    <script>
+    particlesJS('particles-js',
+    		  
+    		  {
+    		    "particles": {
+    		      "number": {
+    		        "value": 100,
+    		        "density": {
+    		          "enable": true,
+    		          "value_area": 1000
+    		        }
+    		      },
+    		      "color": {
+    		        "value": "#276968"
+    		      },
+    		      "shape": {
+    		        "type": "star",
+    		        "stroke": {
+    		          "width": 0,
+    		          "color": "#000000"
+    		        },
+    		        "polygon": {
+    		          "nb_sides": 5
+    		        },
+    		        "image": {
+    		          "src": "img/github.svg",
+    		          "width": 50,
+    		          "height": 50
+    		        }
+    		      },
+    		      "opacity": {
+    		        "value": 0.5,
+    		        "random": false,
+    		        "anim": {
+    		          "enable": false,
+    		          "speed": 3,
+    		          "opacity_min": 0.1,
+    		          "sync": false
+    		        }
+    		      },
+    		      "size": {
+    		        "value": 4,
+    		        "random": true,
+    		        "anim": {
+    		          "enable": false,
+    		          "speed": 2,
+    		          "size_min": 0.1,
+    		          "sync": false
+    		        }
+    		      },
+    		      "line_linked": {
+    		        "enable": true,
+    		        "distance": 150,
+    		        "color": "#54bab9",
+    		        "opacity": 0.4,
+    		        "width": 1
+    		      },
+    		      "move": {
+    		        "enable": true,
+    		        "speed": 1,
+    		        "direction": "none",
+    		        "random": false,
+    		        "straight": false,
+    		        "out_mode": "out",
+    		        "attract": {
+    		          "enable": false,
+    		          "rotateX": 600,
+    		          "rotateY": 1200
+    		        }
+    		      }
+    		    },
+    		    "interactivity": {
+    		      "detect_on": "canvas",
+    		      "events": {
+    		        "onhover": {
+    		          "enable": true,
+    		          "mode": "repulse"
+    		        },
+    		        "onclick": {
+    		          "enable": true,
+    		          "mode": "push"
+    		        },
+    		        "resize": true
+    		      },
+    		      "modes": {
+    		        "grab": {
+    		          "distance": 400,
+    		          "line_linked": {
+    		            "opacity": 1
+    		          }
+    		        },
+    		        "bubble": {
+    		          "distance": 400,
+    		          "size": 40,
+    		          "duration": 3,
+    		          "opacity": 8,
+    		          "speed": 3
+    		        },
+    		        "repulse": {
+    		          "distance": 200
+    		        },
+    		        "push": {
+    		          "particles_nb": 4
+    		        },
+    		        "remove": {
+    		          "particles_nb": 2
+    		        }
+    		      }
+    		    },
+    		    "retina_detect": true,
+    		    "config_demo": {
+    		      "hide_card": false,
+    		      "background_color": "#b61924",
+    		      "background_image": "",
+    		      "background_position": "50% 50%",
+    		      "background_repeat": "no-repeat",
+    		      "background_size": "cover"
+    		    }
+    		  }
+
+    		);
+    </script>

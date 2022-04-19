@@ -27,8 +27,9 @@
 <body>
     <div class="boardcontainer">
     	
-        <form method="post" action="" id="boardFrm" enctype="multipart/form-data">
-       		<input type="hidden" name="type_num" value="3"/>
+        <form method="post" action="/board/recommend/recommendEditOk" id="boardFrm" enctype="multipart/form-data">
+       		<input type="hidden" name="type_num" value="2"/>
+       		<input type="hidden" name="gender_type" value="U">
             <ul>
                 <li><input type="hidden" name="board_num" value="${vo.board_num}"/><li></li>
             	<h1>오늘의 추천</h1>
@@ -46,7 +47,7 @@
                             <label for="upload_file01">업로드</label>
                             <input type="file" id="upload_file01" name="filename" accept="image/*" style="position:absolute; clip:rect(0, 0, 0, 0);"><br/>
                         </div>
-                        <div class="img2">
+                        <div class="img2"  style="margin-left:230px; margin-bottom: 100px;">
                         	<c:if test="${vo.file2!=null && vo.file2 !=''}">
                                 <img class="img3" id="img_section2" src="/upload/${vo.file2}"><br/>
                                 <input type="text" id="file_route02"  disabled="disabled" value="파일 선택" >
@@ -60,7 +61,7 @@
                                 <input type="file" id="upload_file02" name="filename" accept="image/*" style="position:absolute; clip:rect(0, 0, 0, 0);"><br/>
                             </c:if>
                         </div>
-                        <div class="img2">   
+                        <div class="img2"  style="margin-bottom: 100px;">   
                         	<c:if test="${vo.file3!=null && vo.file3!=''}">
                                 <img class="img3" id="img_section3" src="/upload/${vo.file3}"><br/>
                                 <input type="text" id="file_route03"  disabled="disabled" value="파일 선택" >
@@ -74,7 +75,7 @@
                                 <input type="file" id="upload_file03" name="filename" accept="image/*" style="position:absolute; clip:rect(0, 0, 0, 0);"><br/>
                             </c:if>
                         </div>
-                        <div class="img2">
+                        <div class="img2"  style="margin-left:230px;">
                             <c:if test="${vo.file4!=null && vo.file4 !=''}">
                                 <img class="img3" id="img_section4" src="/upload/${vo.file4}"><br/>
                                 <input type="text" id="file_route04"  disabled="disabled" value="파일 선택" >

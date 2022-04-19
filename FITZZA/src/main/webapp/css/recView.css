@@ -1,18 +1,14 @@
 @charset "UTF-8";
 @import url('https://fonts.googleapis.com/css2?family=Kaushan+Script&family=Nanum+Pen+Script&display=swap');
-*{
-    font-family:'Nanum pen script';
-    font-size: 1.12em;
-}
 body{
-    background-image: url("../img/배경.png");
+    background-image: url("/img/배경.png");
 }
 .rec{
     width:1200px;
     margin:0 auto;
     overflow:auto;
-    font-family:'Nanum pen script';
-    font-size: 0.8em;
+    font-family:'Noto Sans KR';
+    font-size: 0.6em;
 }
 .reclist{
     padding: 30px;
@@ -24,20 +20,20 @@ body{
 #profile{
     float: left;
     margin-right: 50px;
-    width: 100px;
-    height: 100px;
+    width: 80px;
+    height: 80px;
     border-radius: 70%;
     position: relative;
-    top: 40px;
-    left: 10px;
+    top:20px;
+    left: 20px;
 }
 #level_frame{
-    width: 140px;
-    height: 140px;
+    width: 110px;
+    height: 110px;
     border-radius: 70%;
     position:absolute;
-    left: 182px;
-    top: 170px;
+    left: 195px;
+    top: 215px;
 }
 #content{
     font-size: 2em;
@@ -54,6 +50,8 @@ li{
 #info{
     font-size: 1.3em;
     color:dimgrey;
+    position: relative;
+    top:10px;
 }
 .reclist{
     border: 1px solid black;
@@ -75,7 +73,7 @@ li{
     margin-top: 10px;
     width: 100px;
     height: 50px;
-    background-image: url("../img/배경.png");
+    background-image: url("/img/배경.png");
     border: 1px solid black;
     font-weight: bold;
 }
@@ -83,7 +81,7 @@ li{
     width:500px; 
     height:50px;
     border: 2px solid black;
-    font-family:'Nanum pen script';
+    font-family:'Noto Sans KR';
     font-size: 1.1em;
     font-weight: bold;
 }
@@ -93,30 +91,25 @@ li{
     margin-top:20px;
     padding-left:30px;
 }
-#replyList{
-	font-size:0.8em;
-}
 #replybtn{
     position: relative;
-    right: 30px;
+    right: 0px;
     bottom: 17px;
     width: 100px;
     height: 50px;
     border: 2px solid black;
-    font-family:'Nanum pen script';
-    font-size: 1em;
-    font-weight: bold;
+    font-family: 'Noto Sans KR';
+    font-size: 1.4em;
 }
 #replybtn2{
     position: relative;
-    right: 30px;
-    bottom: 16px;
+    left: 10px;
+    bottom: 17px;
     width: 100px;
     height: 50px;
     border: 2px solid black;
-    font-family:'Nanum pen script';
+    font-family: 'Noto Sans KR';
     font-size: 1em;
-    font-weight: bold;
 }
 #reply_profile{
 	width:50px; 
@@ -128,25 +121,39 @@ li{
 	top:0px;
 }
 #reply_level_frame{
-	width: 75px;
-    height: 75px;
+	width: 65px;
+    height: 65px;
     border-radius: 70%;
     position:relative;
+    left:5px;
 }
 #reply_edit{
 	width:37px;
 	height:30px;
 	text-align:center;
 	font-size:0.8em;
+	font-weight:600;
 	padding:0px;
+	margin-left:10px;
+	border:0;
+	background-image: url("/img/배경.png");
+	color:blue;
 }
 #reply_del{
 	width:37px;
 	height:30px;
 	text-align:center;
 	font-size:0.8em;
+	font-weight:600;
 	padding:0px;
+	border:0;
+	background-image: url("/img/배경.png");
+	color:blue;
 }
+#replyList{font-size:20px;}
+#replyList #reply_level_frame {margin-right:30px}
+#replyList > ul li div p {margin-top:10px; margin-left:10px;}
+
 /* 모달 */
 .modal {font-size: 20px; text-align:center}
 .modal-backdrop {margin-left:-340px}
@@ -155,6 +162,16 @@ li{
 	max-width:1000px; height: 650px;
 	position:absolute; left:50%; top:150px;
 	transform:translateX(-550px);
+}
+#report_content{
+	position:relative;
+	left:53px;
+	border:1px solid black;
+}
+#reportbtn{
+	position:relative;
+	top:50px;
+	right:163px;
 }
 footer{
 	font-size: 1em;
