@@ -4,8 +4,8 @@
 <body>
 <div class="recboard">
     <br><br><br><br><br><br><br>
-    <h1>다양한 패션을 나누고 싶다면</h1>
-    <h2>스타일 추천</h2>
+    <a href="/board/recommend/recommendList"><h1>다양한 패션을 나누고 싶다면</h1></a>
+     <a href="/board/recommend/recommendList"><h2>스타일 추천</h2></a>
     <br/>
     <h5>도배/홍보성 글은 삭제 및 경고 처리됩니다.</h5>
     <div id="r_write">
