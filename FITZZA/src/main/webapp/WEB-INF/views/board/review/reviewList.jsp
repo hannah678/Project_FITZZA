@@ -123,8 +123,8 @@
 						addListHtml += "</div><div class='post'><div class='post_top'>";
 						addListHtml += "<div class='title_area'>"+ data[i].title +"</div><div class='txt'>" + data[i].content + "</div></div>";
 						addListHtml += "<div class='post_bottom'>";
-						addListHtml += "<span><img src='/upload/" + data[i].profile_image + "' style='width:20px; height:20px; border-radius: 70%;'/>&nbsp;"+ data[i].user_nickname+ "</span>";
-						addListHtml += "<span>${vo.write_date}</span><span>조회수 : " + data[i].hit + "</span>";
+						addListHtml += "<span><img src='/upload/" + data[i].profile_image + "' />"+ data[i].user_nickname+ "</span>";
+						addListHtml += "<span>조회수 : " + data[i].hit + "</span><span>날짜: "+data[i].write_date+"</span>";
 						addListHtml += "</div></div></div></li>";
 					}
 					if(data.length<5){

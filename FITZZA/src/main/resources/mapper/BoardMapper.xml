@@ -33,7 +33,7 @@
     </select>
     
     <select id="BoardSelectAllSE" resultType="com.team.fitzza.vo.BoardVO">
-        SELECT   A.board_num, A.title, A.user_id, A.write_date, A.content, B.profile_image, B.user_nickname, C.file1 
+        SELECT   A.board_num, A.title, A.user_id, A.write_date, A.hit, A.content, B.profile_image, B.user_nickname, C.file1 
 		FROM     board A, user B, board_common_image C 
 		WHERE    A.user_id=B.user_id 
 		AND 	 A.board_num=C.board_num 
