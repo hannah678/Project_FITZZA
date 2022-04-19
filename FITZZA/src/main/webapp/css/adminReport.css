@@ -78,15 +78,15 @@
 	text-overflow: ellipsis;
 	overflow:hidden;
 }
-.report_list li:nth-child(10n-9) {width:10%}
-.report_list li:nth-child(10n-8) {width:10%}
-.report_list li:nth-child(10n-7) {width:10%}
-.report_list li:nth-child(10n-6) {width:10%}
-.report_list li:nth-child(10n-5) {width:10%}
-.report_list li:nth-child(10n-4) {width:10%}
-.report_list li:nth-child(10n-3) {width:10%}
-.report_list li:nth-child(10n-2) {width:15%}
-.report_list li:nth-child(10n-1) {width:15%}
+.report_list li:nth-child(9n-8) {width:10%}
+.report_list li:nth-child(9n-7) {width:10%}
+.report_list li:nth-child(9n-6) {width:10%}
+.report_list li:nth-child(9n-5) {width:10%}
+.report_list li:nth-child(9n-4) {width:10%}
+.report_list li:nth-child(9n-3) {width:10%}
+.report_list li:nth-child(9n-2) {width:10%}
+.report_list li:nth-child(9n-1) {width:15%}
+.report_list li:nth-child(9n) {width:15%}
 
 #reportSearchFrm {
 	float:left;
