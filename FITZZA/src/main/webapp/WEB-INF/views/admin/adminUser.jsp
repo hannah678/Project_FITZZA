@@ -42,10 +42,10 @@ $(document).ready(function(){
 				$.ajax({
 					url : '/admin/multiDel',
 					type : 'POST',
-					dataType : 'json',
+					dataType : 'text',
 					data :params,
 					success : function(data){
-						alert("탈퇴 처리되었습니다.");
+						alert(data);
 						location.reload();
 					}
 				});

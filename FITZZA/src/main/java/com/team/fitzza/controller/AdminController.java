@@ -52,15 +52,12 @@ public class AdminController {
 		return mav;
 	}
 	//강제 탈퇴
-	@ResponseBody //Ajax
-	@RequestMapping(value = "/admin/multiDel", method=RequestMethod.POST)
-	public ModelAndView multiDelete(MemberVO vo, HttpSession session) {
-		System.out.println("memberDelete!");
-		ModelAndView mav = new ModelAndView();
+	@PostMapping("/admin/multiDel")
+	@ResponseBody
+	public String multiDelete(MemberVO vo, HttpSession session) {
 		service.forcedBye(vo);
 		service.memberDel(vo);
-		mav.setViewName("redirect:adminHome");
-		return mav;
+		return "선택한 회원이 강퇴되었습니다";
 	}
 	//관리자 권한 부여
 	@ResponseBody //Ajax

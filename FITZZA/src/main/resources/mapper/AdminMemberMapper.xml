@@ -23,14 +23,13 @@
 		SELECT * FROM user_leave
 	</select>
 	<!-- 강제탈퇴 -->
-	<insert id="memberDel">		
-		INSERT INTO user_leave(leave_forced, email)
-		VALUES 
-		<foreach item="item" index="index" collection="ChkList" open="('Y', " separator="," close=")">
-			${item}
-		</foreach>
-   		
-	</insert>
+	<insert id="memberDel">
+ 		INSERT INTO user_leave(leave_forced, email)
+ 		VALUES	 
+ 				<foreach collection="ChkList" item="item" separator=","> 
+ 					('Y', #{item}) 
+ 				</foreach>
+ 	</insert>
  	
 	<delete id="forcedBye">
         DELETE FROM user
