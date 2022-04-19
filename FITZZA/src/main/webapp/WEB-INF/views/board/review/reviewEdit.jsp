@@ -5,70 +5,111 @@
 <script>
  $(function(){
 	 $("#reviewFrm").submit(function(){
-	 if($("#title").val()==''){
-		 alert("제목을 입력해주세요");
-		 return false;
-	 }
-	 
-	 if($("#content").val()==''){
-		 alert("본문을 입력해주세요");
-		 return false;
-	 }
-	 });
- });
+		 if($("#title").val()==''){
+			 alert("제목을 입력해주세요");
+			 $("#reviewFrm").focus();
+			 return false;
+		 }
+		 
+		 if($("#content").val()==''){
+			 alert("본문을 입력해주세요");
+			 $("#content").focus();
+			 return false;
+		 }
+		 
+		 if($("#upload_file01").val()==''){
+			alert("이미지를 1개 이상 첨부하세요");
+			$("#upload_file01").focus();
+			return false;
+		}
+	});
+});
 </script>
 
 </head>
 <body>
 <div id="review-wrapper"><!--  전체 틀  -->
-<h1 style="text-align: center;">구매 후기</h1>
-	<form method="post" action="/board/review/reviewWriteOk" id="reviewFrm" enctype="multipart/form-data">
+<a href="/board/review/reviewList"><h1 style="text-align: center;">구매 후기</h1></a>
+	<form method="post" action="/board/review/reviewEditOk" id="reviewFrm" enctype="multipart/form-data">
+  	  	<input type="hidden" name="board_num" value="${vo.board_num}"/>
   	  	<ul>
 			<li><input type="hidden" name="type_num" value="4"/></li> <!-- 게시판 타입num -->
-			<li><input type="text" name="title" id="title" class="input01" placeholder="제목을 입력해주세요"/></li>
+			<li><input type="text" name="title" id="title" class="input01" placeholder="제목을 입력해주세요" value='${vo.title}'/></li>
 			<li><div class="img1">
                     대표이미지<br/>
                         <div>
-                            <img style="width: 500px;" id="img_section" src="/img/이미지 없음.png"><br/>
-                            <input type="text" id="file_route01"  disabled="disabled" value="파일 선택" >
+                            <img style="width: 500px;" id="img_section" src="/upload/${vo.file1}"><br/>
+                            <input type="text" id="file_route01"  disabled="disabled" value="${vo.file1 }" >
                             <label for="upload_file01">업로드</label>
-                            <input type="file" id="upload_file01" name="filename" accept="image/*" required=true style="position:absolute; clip:rect(0, 0, 0, 0);"><br/>
+                            <input type="file" id="upload_file01" name="filename" accept="image/*" style="position:absolute; clip:rect(0, 0, 0, 0);"><br/>
                         </div>
                 </div>
             </li>
             <li>상품 종류 &emsp;  
             	<select id="gender_type" name="gender_type">
-					<option value="W" name="W">여성의류</option>
-					<option value="M" name="M">남성의류</option>
-					<option value="U" name="U">남여공용</option>
+					<option value="W" name="W" <c:if test="${gender_type} == 'W'">selected</c:if>>여성의류</option>
+					<option value="M" name="M" <c:if test="${gender_type} == 'M'">selected</c:if>>남성의류</option>
+					<option value="U" name="U" <c:if test="${gender_type} == 'U'">selected</c:if>>남여공용</option>
 				</select>
 			</li>
-			<li><textarea name="content" id="content" rows="30" cols="100" placeholder="본문입력하세요"></textarea> </li>
+			<li><textarea name="content" id="content" rows="30" cols="100" placeholder="본문입력하세요">${vo.content}</textarea> </li>
 			<li><div class="img2">
                       상세이미지<br/>
                         <div class="img2_up">
+                            <c:if test="${vo.file2!=null && vo.file2 !=''}">
+                            <img id="img_section2" src="/upload/${vo.file2}"><br/>
+                            <input type="text" id="file_route02"  disabled="disabled" value="파일 선택" >
+                            <label for="upload_file02">업로드</label>
+                            <input type="file" id="upload_file02" value="${vo.file2}" name="filename" accept="image/*" style="position:absolute; clip:rect(0, 0, 0, 0);"><br/>
+                            </c:if>
+                            <c:if test="${vo.file2==null || vo.file2 ==''}">
                             <img id="img_section2" src="/img/이미지 없음.png"><br/>
                             <input type="text" id="file_route02"  disabled="disabled" value="파일 선택" >
                             <label for="upload_file02">업로드</label>
                             <input type="file" id="upload_file02" name="filename" accept="image/*" style="position:absolute; clip:rect(0, 0, 0, 0);"><br/>
-                            </div>
+                            </c:if>
+                        </div>
                         <div class="img2_up">   
-                            <img  id="img_section3" src="/img/이미지 없음.png"><br/>
+                            <c:if test="${vo.file3!=null && vo.file3!=''}">
+                            <img id="img_section3" src="/upload/${vo.file3}"><br/>
+                            <input type="text" id="file_route03"  disabled="disabled" value="파일 선택" >
+                            <label for="upload_file03">업로드</label>
+                            <input type="file" id="upload_file03" value="${vo.file3}" name="filename" accept="image/*" style="position:absolute; clip:rect(0, 0, 0, 0);"><br/>
+                            </c:if>
+                            <c:if test="${vo.file3==null || vo.file3 ==''}">
+                            <img id="img_section3" src="/img/이미지 없음.png"><br/>
                             <input type="text" id="file_route03"  disabled="disabled" value="파일 선택" >
                             <label for="upload_file03">업로드</label>
                             <input type="file" id="upload_file03" name="filename" accept="image/*" style="position:absolute; clip:rect(0, 0, 0, 0);"><br/>
+                            </c:if>
                         </div>
                         <div class="img2_up">
+                            <c:if test="${vo.file4!=null && vo.file4 !=''}">
+                            <img id="img_section4" src="/upload/${vo.file4}"><br/>
+                            <input type="text" id="file_route04"  disabled="disabled" value="파일 선택" >
+                            <label for="upload_file04">업로드</label>
+                            <input type="file" id="upload_file04" value="${vo.file4}" name="filename" accept="image/*" style="position:absolute; clip:rect(0, 0, 0, 0);"><br/>
+                            </c:if>
+                            <c:if test="${vo.file4==null || vo.file4 ==''}">
                             <img id="img_section4" src="/img/이미지 없음.png"><br/>
                             <input type="text" id="file_route04"  disabled="disabled" value="파일 선택" >
                             <label for="upload_file04">업로드</label>
-                            <input type="file" id="upload_file04" name="filename" accept="image/*"style="position:absolute; clip:rect(0, 0, 0, 0);"><br/>
+                            <input type="file" id="upload_file04" name="filename" accept="image/*" style="position:absolute; clip:rect(0, 0, 0, 0);"><br/>
+                            </c:if>
                         </div>
                         <div class="img2_up">
-                            <img id="img_section5" src="/img/이미지 없음.png"><br/>				
+                            <c:if test="${vo.file5!=null && vo.file5 !=''}">
+                            <img id="img_section5" src="/upload/${vo.file5}"><br/>
+                            <input type="text" id="file_route05"  disabled="disabled" value="파일 선택" >
+                            <label for="upload_file05">업로드</label>
+                            <input type="file" id="upload_file05" value="${vo.file5}" name="filename" accept="image/*" style="position:absolute; clip:rect(0, 0, 0, 0);"><br/>
+                            </c:if>
+                            <c:if test="${vo.file5==null || vo.file5 ==''}">
+                            <img id="img_section5" src="/img/이미지 없음.png"><br/>
                             <input type="text" id="file_route05"  disabled="disabled" value="파일 선택" >
                             <label for="upload_file05">업로드</label>
                             <input type="file" id="upload_file05" name="filename" accept="image/*" style="position:absolute; clip:rect(0, 0, 0, 0);"><br/>
+                            </c:if>
                         </div>
 				</div></li>
 				<li style="height:200px;"><input type='submit' value='등록' id="reviewsubmit" class="button01"/></li>

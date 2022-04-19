@@ -228,6 +228,7 @@ public class ReviewBoardController {
 		try {
 			//	1. DB에서 파일명 가져오기
 			BoardVO dbfileVO = service.getFileName(vo.getBoard_num());
+			System.out.println(vo.getBoard_num());
 			fileList.add(dbfileVO.getFile1());
 			if(dbfileVO.getFile2()!=null) fileList.add(dbfileVO.getFile2());
 			if(dbfileVO.getFile3()!=null) fileList.add(dbfileVO.getFile3());
