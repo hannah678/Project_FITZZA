@@ -89,9 +89,8 @@ public class AdminController {
 	
 	@ResponseBody
 	@GetMapping("/admin/adminReportOff")
-	public void adminReportOff(@RequestParam(value="report_num", required=false)int report_num) {
-		
-		service.reportOff(report_num);
+	public int adminReportOff(@RequestParam(value="report_num", required=false)int report_num) {
+		return service.reportOff(report_num);
 	}
 	//중고거래 관리--------------------------------------------------------------------------------------------------------------------------------
 	@RequestMapping("/admin/adminOld")

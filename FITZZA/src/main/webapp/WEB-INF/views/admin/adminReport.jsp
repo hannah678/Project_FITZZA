@@ -173,7 +173,7 @@ $(document).ready(function(){
 			 		<li>${vo.report_time }</li>
 			 		
 			 		<c:if test="${vo.state !='Y'}">
-			 		<li>${vo.state },<button class="report_off">처리확인</button><input type="hidden" name="${vo.report_num}" value="${vo.report_num}"></li>
+			 		<li id="repo_state">${vo.state },<button class="report_off">처리확인</button><input type="hidden" name="${vo.report_num}" value="${vo.report_num}"></li>
 			 		</c:if>
 			 		<c:if test="${vo.state == 'Y'}">
 			 		<li>처리 완료</li>
@@ -189,12 +189,19 @@ $(document).ready(function(){
 		var repo_num = $(this).next().val();
 	 	var reportOffOk = confirm("신고 내용을 확인처리 하시겠습니까?");
 		
-		alert(reportOffOk);
-		
 		if(reportOffOk == true){
-			document.location.href="/admin/adminReportOff?report_num="+repo_num;
+			$.ajax({
+				url : "/admin/adminReportOff",
+				type : "get",
+				data : {"report_num" : repo_num},
+				dataType : "json",
+				success : function(result){
+					alert('신고 처리가 완료되었습니다.');
+					$("#repo_state").text('처리 완료');
+				}
+			})
 		}
-		document.location.href="/admin/adminHome";
+		
 	});
  </script>
  
