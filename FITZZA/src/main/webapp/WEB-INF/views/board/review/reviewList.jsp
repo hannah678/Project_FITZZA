@@ -12,30 +12,8 @@
 		<a href="/board/review/reviewWrite">글쓰기</a>
   	</div>
 	<div id="review_container"><!--  리뷰 글 들어갈곳 -->
-		<ul id="reviewListUl">
-		  	<!-- <li class="reviewList"> -->
-			  	<%--<div class="post_area">
-			  	 	<div class="sum-img">
-			  			<a href="/board/review/reviewView?board_num=${vo.board_num}"><img src="/upload/${vo.file1}" width="130" width="130"/></a> <!--  이미지 들어갈곳 -->
-			   		</div>
-				   	<div class="post">
-				  		<div class="post_top">
-				  		  	<div class="title_area">${vo.title}</div><!--  제목 -->
-				  		 	<div class="txt">${vo.content}</div><!-- 글 내용 일부분 -->
-				  		</div>
-				  		<div class="post_bottom"> <!--  작성자 작성일 조회수 등 들어갈곳 -->
-				  		 	<span><img src="/upload/${vo.profile_image}" style='width:20px; height:20px; border-radius: 70%;'/>&nbsp;${vo.user_nickname}</span><!--  닉네임 -->
-				  			<span>${vo.write_date}</span><!--  작성일자 -->
-				  			<span>조회수 : ${vo.hit}</span><!--  조회수 -->
-				  		</div>
-				  	</div>
-			  	</div> --%>
-			  	
-		  	<!-- </li> -->
-		  	
-		</ul>
+		<ul id="reviewListUl"></ul>
 	  	<a id="moreViewReview"><img src="/img/더보기.png" style="width:100px;"></a>
-	
 		<div>
 			<form method="get" action="/board/review/search" id="searchFrm">
 		    	<select name="searchKey">

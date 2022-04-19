@@ -3,7 +3,14 @@
 <!DOCTYPE html>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
 <link rel="stylesheet" href="/css/review.css?ver=1" type="text/css">
-
+<style>
+#rnb #logStatus4 {
+	position:absolute; right: 330px; top: 28px;
+}
+#rnb #logStatus5 {
+	position:absolute; right: 280px; top: 28px;
+}
+</style>
 <script>
 function delCheck(){
 	if(confirm("삭제하시겠습니까?")){
@@ -155,16 +162,42 @@ window.onload=function(){
 	<div class="review_container">
 		<ul>
 			<li style="display:none;">${vo.board_num }</li>
-			<li class="Top_menu"><div id="Top_name">제목 : ${vo.title }</div>
-			<div style="float:right;">
-			<a href="/board/review/reviewList">목록으로</a></div></li>
-			<li>옷 분류 : ${vo.gender_name}</li>
-			<li>작성 날짜 : ${vo.write_date}</li>
-			
-			<li><div id="main_img"><img src="/upload/${vo.file1}"></div></li>
-			<li>
-				<div id="content">${vo.content}</div>
+			<li class="Top_menu">
+				<div id="Top_name">제목&nbsp;&nbsp; :&nbsp;&nbsp; ${vo.title }</div>
+				<div style="float:right;">
+					<a href="/board/review/reviewList">목록으로</a>
+				</div>
 			</li>
+			<li>옷 분류&nbsp;&nbsp; :&nbsp;&nbsp; ${vo.gender_name}</li>
+			<li>작성 날짜&nbsp;&nbsp; :&nbsp;&nbsp; ${vo.write_date}</li>
+			<li>
+				<ul class="review_profile">
+					<li>작성자 정보</li>
+					<li>
+						<img src="/upload/${vo.profile_image}" alt="프로필 이미지" width="130" width="130" id="profile_frame">
+						<img src="${vo.frame_img}" id="level_frame" alt="등급 프레임 이미지" >
+					</li>
+					<li style="width:200px;">작성자 이름: ${vo.user_nickname}</li>
+					<li style="width:200px;">신고받은 횟수: ${vo.report_hit}</li>
+				</ul>
+			</li>
+			<li>
+				<c:if test="${logId != vo.user_id && logPermission !='admin'}">
+					<p><input type="button" value="신고" id="button02"
+						data-target="#reportModal" data-toggle="modal" /></p>
+				</c:if>
+				<c:if test="${logId == vo.user_id||logPermission =='admin'}">
+					<p style="float: right;">
+						<a href="/board/review/reviewEdit?board_num=${vo.board_num}" style="color: blue;">수정</a> 
+						<a id="del" href="javascript:delCheck()" style="color: blue;">삭제</a>
+					</p>
+					<br/><br/>
+				</c:if>
+			</li>
+			<li>
+				<div id="content"><strong>설명</strong><span>${vo.content}</span></div>
+			</li>
+			<li><div id="main_img"><img src="/upload/${vo.file1}"></div></li>
 			<li>
 				<div id="content_img">
 					 <c:if test="${vo.file2!=null && vo.file2 !=''}">
@@ -181,25 +214,7 @@ window.onload=function(){
                       		   </c:if>
 				</div>
 			</li>
-			<hr>
-			<li class="Top_menu">
-				<a><div id="report" data-target="#reportModal" data-toggle="modal" class="button02">신고</div></a> 
-				<a href="/board/review/reviewEdit"><div class="button01">수정</div></a>
-				<a href="javascript:delCheck()"><div class="button01">삭제</div></a>
-			</li>
-			<hr>
-			<li><table>
-				<tbody style="text-align:center; margin:0 auto;">
-				<tr>
-				<td colspan='4'>작성자 정보</td>
-				</tr>
-					<tr>
-						<td><div style="position:relative; width:200px;height:140px;"><img src="/upload/${vo.profile_image}" alt="프로필 이미지" width="130" width="130" id="profile_frame"><img src="${vo.frame_img}" id="level_frame" alt="등급 프레임 이미지" ></div></td>
-						<td style="width:200px;">작성자 이름: ${vo.user_nickname}</td>
-						<td style="width:200px;">신고받은 횟수: ${vo.report_hit}</td>
-					</tr>
-				</tbody>
-			</table></li>
+			
 		</ul>
 	</div>
 	<hr/>

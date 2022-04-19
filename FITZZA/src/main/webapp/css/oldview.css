@@ -173,6 +173,15 @@ li{
 	top:50px;
 	right:163px;
 }
+#reportForm textarea {margin-top:20px}
+#reportForm ul li:nth-child(1) {
+	display:block;
+	height:80px;
+	line-height:80px;
+}
+#reportForm ul li:nth-child(3) {
+	margin-top:50px
+}
 footer{
 	font-size: 1em;
 }

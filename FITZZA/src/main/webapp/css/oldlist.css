@@ -39,6 +39,11 @@ h1, h2, .oldlist>li:nth-child(3), .oldlist>li:nth-child(6n+1), .oldlist>li:nth-c
     margin:0 auto;
     padding:0 30px;
 }
+.oldboard > a:nth-child(1) {
+	display:block;
+	width:150px; height:60px;
+	margin:0 auto;
+}
 .oldlist{
     border-top: 1px solid black;
     font-size:16px;
@@ -59,17 +64,16 @@ h1, h2, .oldlist>li:nth-child(3), .oldlist>li:nth-child(6n+1), .oldlist>li:nth-c
 .oldlist>li:nth-child(4) {font-size:20px}
 .oldlist>li:nth-child(5) {font-size:20px}
 .oldlist>li:nth-child(6) {font-size:20px}
+.oldlist>li:nth-child(6n+4){width:20%}
 .oldlist>li:nth-child(6n+3){
-	text-align:left;
-    width: 40%;
+	text-align:center;
+    width: 30%;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
 }
 .oldlist>li:nth-child(3) {font-size:20px; text-align:center;}
-.oldlist>li:nth-child(6n+5){
-    width: 20%;
-}
+.oldlist>li:nth-child(6n+5){width: 20%;}
 #product_img{
     width: 80px;
     height: 80px;
@@ -77,25 +81,7 @@ h1, h2, .oldlist>li:nth-child(3), .oldlist>li:nth-child(6n+1), .oldlist>li:nth-c
 .real_profile_img{
 	width:20px; height:20px; border-radius: 70%;
 }
-.paging{
-    height:30px;
-    display: table; margin-left: auto; margin-right: auto;
-}
-.paging>li{
-    text-align:center;
-    float:left;
-    width:32px;
-    height:24px;
-    margin:15px;
-}
-.paging>li a:link, .paging>li a:visited, .paging>li a:hover{
-    text-decoration:none;
-    color:black;
-}
-.paging>li a:hover{
-    text-decoration:none;
-    font-weight:bold;
-}
+
 #searchFrm{
     width:324px; height:50px;
     margin:30px auto;
