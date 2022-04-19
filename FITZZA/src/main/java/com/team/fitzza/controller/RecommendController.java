@@ -49,14 +49,15 @@ public class RecommendController {
 	
 	@ResponseBody //Ajax
 	@RequestMapping(value = "/board/recommend/recommendLists")
-	public List<BoardVO> recommendMoreView(PagingVO pvo, Model model
-			, @RequestParam(value="startNum", required=false)String startNum) throws Exception {
+	public List<BoardVO> recommendMoreView(String startNum, String gender_type) {
 		System.out.println("recommendMoreView START:::");
-		System.out.println(Integer.parseInt(startNum));
-		//startNum="5";
+		System.out.println("gender_type = "+gender_type);
+		
+		PagingVO pvo = new PagingVO();
 		pvo.setStart(Integer.parseInt(startNum));
 		pvo.setEnd(4);
-		return service.BoardSelectAllSE(2,pvo);
+		
+		return service.recommendBoardSelect(2, pvo, gender_type);
 	}
 	
 	//검색 기능

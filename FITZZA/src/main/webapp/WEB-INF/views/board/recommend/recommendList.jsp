@@ -11,6 +11,12 @@
     <div id="r_write">
         <a href="/board/recommend/recommendWrite">글쓰기</a>
     </div>
+    <div>
+    	<button onclick="change()">전체보기</button>
+    	<button onclick="change('M')">남성의류</button>
+    	<button onclick="change('W')">여성의류</button>
+    	<button onclick="change('U')">남녀공용</button>
+    </div>
     <div class="recli">
 	    <ul class="recommendlist" id="recommendlist">
 		    
@@ -32,6 +38,7 @@
 </div>
 </body>
 <script>
+var gType;
 $("#searchFrm").submit(function() {
    if ($("#searchWord").val() == "") {
       alert("검색어를 입력하세요");
@@ -54,7 +61,7 @@ window.onload=function(){
 		if(pn=='recommendList'){
 			url = '/board/recommend/recommendLists';
 			param = {
-				"startNum" : startNum 
+				"startNum" : startNum
 			};
 		}else if(pn='search'){
 			url = '/board/recommend/searchLists';
@@ -74,67 +81,79 @@ window.onload=function(){
 				for (var i = 0; i < data.length; i++) {
 					addListHtml += "<li class='reclist'>";
 					addListHtml += "<a href='/board/recommend/recommendView?board_num="+data[i].board_num+"'><img src='/upload/"+data[i].file1+"' class='rec_img'></a>";
-					addListHtml += "<a href='/board/recommend/recommendView?board_num="+data[i].board_num+"' class='rec_title'>"+data[i].title+"</a><br/>";
+					addListHtml += "<a href='/board/recommend/recommendView?board_num="+data[i].board_num+"' class='rec_title'>["+data[i].gender_name+"] "+data[i].title+"</a><br/>";
 					addListHtml += "<img src='/upload/"+data[i].profile_image+"'id='profile_img'/>"+data[i].user_nickname+"<br/><br/>";
 					addListHtml += data[i].write_date+" | "+data[i].hit+"</li>";
 				}
 				if(data.length<4){
-					$("#moreView").remove();
-				} 
+					$("#moreView").css("display", "none");
+				}else{
+					$("#moreView").css("display", "block");
+				}
 				$("#recommendlist").append(addListHtml);
 				console.log(addListHtml); 
 			}
 		});
 }
 
-$('#moreView').click(function(){
-		var startNum = $("#recommendlist li").length/1; // oldlist안에 li태그의 길이
-		var addListHtml = "";
-		 console.log(startNum); 
-		var url;
-		var param;
-		const params = new URL(window.location.href).searchParams;
-		var key = params.get('searchKey');
-		var word = params.get('searchWord');
-		var pathname = window.location.pathname;
-		var pn = pathname.substring(pathname.lastIndexOf('/')+1);
-		if(pn=='qnaList'){
-			url = '/board/recommend/recommendLists';
-			console.log("if문")
-			param = {
-				"startNum" : startNum 
-			};
-		}else if(pn='search'){
-			url = '/board/recommend/searchLists';
-			param = {
-				"startNum" : startNum ,
-				"searchKey" : key,
-				"searchWord" : word
-			};
-			console.log(startNum);
-		}
-		$.ajax({
-			url : url,
-			type : 'POST',
-			dataType : 'json',
-			data :param,
-			success : function(data){
-				for (var i = 0; i < data.length; i++) {
-					addListHtml += "<li class='reclist'>";
-					addListHtml += "<a href='/board/recommend/recommendView?board_num="+data[i].board_num+"'><img src='/upload/"+data[i].file1+"' class='rec_img'></a>";
-					addListHtml += "<a href='/board/recommend/recommendView?board_num="+data[i].board_num+"' class='rec_title'>"+data[i].title+"</a><br/>";
-					addListHtml += "<img src='/upload/"+data[i].profile_image+"'id='profile_img'/>"+data[i].user_nickname+"<br/><br/>";
-					addListHtml += data[i].write_date+" | "+data[i].hit+"</li>";
-					
-				}
-				if(data.length<4){
-					$("#moreView").remove();
-				} 
-				$("#recommendlist").append(addListHtml);
-				/* console.log(addListHtml); */
+$('#moreView').click(function(){ 
+	moreList();
+});
+function change(gender_type){
+	if(gType!=gender_type){
+		gType = gender_type;
+		$("#recommendlist").empty();
+		moreList();
+	}
+}
+function moreList(){
+	var startNum = $("#recommendlist li").length/1; // oldlist안에 li태그의 길이
+	var addListHtml = "";
+	 console.log(startNum); 
+	var url;
+	var param;
+	const params = new URL(window.location.href).searchParams;
+	var key = params.get('searchKey');
+	var word = params.get('searchWord');
+	var pathname = window.location.pathname;
+	var pn = pathname.substring(pathname.lastIndexOf('/')+1);
+	if(pn=='recommendList'){
+		url = '/board/recommend/recommendLists';
+		param = {
+			"startNum" : startNum,
+			"gender_type" : gType
+		};
+	}else if(pn='search'){
+		url = '/board/recommend/searchLists';
+		param = {
+			"startNum" : startNum ,
+			"searchKey" : key,
+			"searchWord" : word
+		};
+		console.log(startNum);
+	}
+	$.ajax({
+		url : url,
+		type : 'POST',
+		dataType : 'json',
+		data :param,
+		success : function(data){
+			for (var i = 0; i < data.length; i++) {
+				addListHtml += "<li class='reclist'>";
+				addListHtml += "<a href='/board/recommend/recommendView?board_num="+data[i].board_num+"'><img src='/upload/"+data[i].file1+"' class='rec_img'></a>";
+				addListHtml += "<a href='/board/recommend/recommendView?board_num="+data[i].board_num+"' class='rec_title'>["+data[i].gender_name+"] "+data[i].title+"</a><br/>";
+				addListHtml += "<img src='/upload/"+data[i].profile_image+"'id='profile_img'/>"+data[i].user_nickname+"<br/><br/>";
+				addListHtml += data[i].write_date+" | "+data[i].hit+"</li>";
+				
 			}
-		});
-	   
-		
+			if(data.length<4){
+				$("#moreView").css("display", "none");
+			}else{
+				$("#moreView").css("display", "block");
+			}
+			$("#recommendlist").append(addListHtml);
+			/* console.log(addListHtml); */
+		}
 	});
+}
 </script>

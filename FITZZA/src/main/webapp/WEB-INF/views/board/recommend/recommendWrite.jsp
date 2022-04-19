@@ -28,10 +28,18 @@
     	
         <form method="post" action="/board/recommend/recommendWriteOk" id="boardFrm" enctype="multipart/form-data">
        		<input type="hidden" name="type_num" value="2"/>
-       		<input type="hidden" name="gender_type" value="U">
             <ul>
             	<h1>스타일 추천</h1>
                 <li>제목 &emsp;  <input type="text" name="title" id="title" placeholder='  제목을 입력해주세요.'/></li>
+				<hr/>
+				<li>
+				상품 종류 &emsp;  
+				<select id="gender_type" name="gender_type">
+					<option value="W">여성의류</option>
+					<option value="M">남성의류</option>
+					<option value="U">남여공용</option>
+				</select>
+				</li>
 				<hr/>
 				<li>설명 &emsp;  <br/><textarea name="content" id="content" rows="30" cols="100" 
 				placeholder='	

@@ -202,6 +202,19 @@
 		WHERE    A.type_num=#{param1}
 		GROUP BY A.board_num
 		ORDER BY A.board_num DESC;
- 	
+    </select>
+    <select id="recommendBoardSelect" resultType="BoardVO">
+    	SELECT   A.board_num, A.title, A.user_id, A.write_date, A.hit, A.content, 
+    			 B.profile_image, B.user_nickname, C.file1, D.gender_name
+		FROM     board A, user B, board_common_image C, gender D 
+		WHERE    A.user_id=B.user_id 
+		AND 	 A.board_num=C.board_num
+		AND 	 A.gender_type=D.gender_type 
+		AND 	 A.type_num=#{param1}
+		<if test="param3!=null">
+			AND		 A.gender_type=#{param3}
+		</if>
+		ORDER BY A.board_num DESC
+		LIMIT 	 #{param2.start}, #{param2.end}
     </select>
 </mapper>
