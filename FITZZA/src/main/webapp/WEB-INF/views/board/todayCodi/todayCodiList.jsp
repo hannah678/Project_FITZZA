@@ -46,9 +46,13 @@
 					data :params,
 					success : function(data){
 						if(data==1){
-							cb.children().first().attr("src", "/img/heart_empty.png");
+						    cb.children().first().attr("src", "/img/heart_empty.png");
+						    window.location.reload();
+
+
 						}else{
 							cb.children().first().attr("src", "/img/heart_fill.png");
+							window.location.reload();
 						}	 
 					} 				
 				});

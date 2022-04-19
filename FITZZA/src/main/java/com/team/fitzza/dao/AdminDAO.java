@@ -7,6 +7,7 @@ import org.springframework.stereotype.Repository;
 
 import com.team.fitzza.vo.BoardVO;
 import com.team.fitzza.vo.MemberVO;
+import com.team.fitzza.vo.PagingVO;
 
 @Mapper
 @Repository
@@ -16,7 +17,7 @@ public interface AdminDAO {
 	//전체 회원 수
 	public int CountUser(MemberVO vo);
 	//전체 회원 명단
-	public List<MemberVO> AllUser(MemberVO vo);	
+	public List<MemberVO> AllUser(PagingVO vo);	
 	//전체 회원 수
 	public int CountLeaveUser(MemberVO vo);
 	//탈퇴한 회원 명단
@@ -50,4 +51,6 @@ public interface AdminDAO {
 	public int reserveOldList(BoardVO bvo);
 	//거래완료 개수
 	public int completeOldList(BoardVO bvo);
+	//검색
+	public List<MemberVO> memberSearch(String searchKey, String string, int start, int end);
 }

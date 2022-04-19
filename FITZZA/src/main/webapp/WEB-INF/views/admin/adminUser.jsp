@@ -8,6 +8,68 @@
 	header, footer {display:none}
 </style>
 <script>
+$("#membersearchFrm").submit(function() {
+   if ($("#searchWord").val() == "") {
+      alert("검색어를 입력하세요");
+      return false;
+   }
+   
+});
+	
+window.onload=function(){
+		var startNum = $(".member_list li").length/11; // oldlist안에 li태그의 길이
+		var addListHtml = "";
+		 console.log(startNum); 
+		var url;
+		var param;
+		const params = new URL(window.location.href).searchParams;
+		var key = params.get('searchKey');
+		var word = params.get('searchWord');
+		var pathname = window.location.pathname;
+		var pn = pathname.substring(pathname.lastIndexOf('/')+1);
+		console.log(pn);
+		if(pn=='adminHome'){
+			url = '/admin/member/memberLists';
+			param = {
+				"startNum" : startNum 
+			};
+		}else if(pn='search'){
+			url = '/admin/member/searchLists';
+			param = {
+				"startNum" : startNum ,
+				"searchKey" : key,
+				"searchWord" : word
+			};
+			console.log(startNum);
+		}
+		$.ajax({
+			url : url,
+			type : 'POST',
+			dataType : 'json',
+			data :param,
+			success : function(data){
+				for (var i = 0; i < data.length; i++) {
+					addListHtml += "<li><ul>"					
+			 		addListHtml += "<li><input type='checkbox' name='ChkList' value='"+data[i].email+"' class='chk'></li>"
+			 		addListHtml += "<li onclick=\'UserBoard(\""+data[i].user_id+"\")\'>"+data[i].user_id+"</li>"
+			 		addListHtml += "<li onclick=\'UserBoard(\""+data[i].user_id+"\")\'>"+data[i].user_name+"</li>"
+			 		addListHtml += "<li onclick=\'UserBoard(\""+data[i].user_id+"\")\'>"+data[i].user_nickname+"</li>"
+			 		addListHtml += "<li onclick=\'UserBoard(\""+data[i].user_id+"\")\'>"+data[i].email+"</li>"
+			 		addListHtml += "<li onclick=\'UserBoard(\""+data[i].user_id+"\")\'>"+data[i].tel+"</li>"
+			 		addListHtml += "<li onclick=\'UserBoard(\""+data[i].user_id+"\")\'>level "+data[i].grade+"</li>"
+			 		addListHtml += "<li onclick=\'UserBoard(\""+data[i].user_id+"\")\'>"+data[i].report_hit+"</li>"
+			 		addListHtml += "<li onclick=\'UserBoard(\""+data[i].user_id+"\")\'>"+data[i].register_date+"</li>"
+			 		addListHtml += "<li onclick=\'UserBoard(\""+data[i].user_id+"\")\'>"+data[i].permission+"</li>"
+			 		addListHtml += "</ul></li>"
+				}
+				if(data.length<8){
+					$("#moreViewMember01").remove();
+				} 
+				$(".member_list").append(addListHtml);
+				/* console.log(addListHtml); */
+			}
+		});
+}
 /*토글 메뉴*/
 $(document).ready(function(){
 	$('#left_member_btn').addClass('button_normal');
@@ -83,6 +145,62 @@ $(document).ready(function(){
 			}
 		}
 	});
+	
+	$('#moreViewMember01').click(function(){
+		
+		var startNum = $(".member_list li").length/11; // oldlist안에 li태그의 길이
+		var addListHtml = "";
+		 console.log(startNum); 
+		var url;
+		var param;
+		const params = new URL(window.location.href).searchParams;
+		var key = params.get('searchKey');
+		var word = params.get('searchWord');
+		var pathname = window.location.pathname;
+		var pn = pathname.substring(pathname.lastIndexOf('/')+1);
+		console.log(pn);
+		if(pn=='adminHome'){
+			url = '/admin/member/memberLists';
+			param = {
+				"startNum" : startNum 
+			};
+		}else if(pn='search'){
+			url = '/admin/member/searchLists';
+			param = {
+				"startNum" : startNum ,
+				"searchKey" : key,
+				"searchWord" : word
+			};
+			console.log(startNum);
+		}
+		$.ajax({
+			url : url,
+			type : 'POST',
+			dataType : 'json',
+			data :param,
+			success : function(data){
+				for (var i = 0; i < data.length; i++) {
+					addListHtml += "<li><ul>"					
+				 	addListHtml += "<li><input type='checkbox' name='ChkList' value='"+data[i].email+"' class='chk'></li>"
+				 	addListHtml += "<li onclick=\'UserBoard(\""+data[i].user_id+"\")\'>"+data[i].user_id+"</li>"
+				 	addListHtml += "<li onclick=\'UserBoard(\""+data[i].user_id+"\")\'>"+data[i].user_name+"</li>"
+				 	addListHtml += "<li onclick=\'UserBoard(\""+data[i].user_id+"\")\'>"+data[i].user_nickname+"</li>"
+				 	addListHtml += "<li onclick=\'UserBoard(\""+data[i].user_id+"\")\'>"+data[i].email+"</li>"
+				 	addListHtml += "<li onclick=\'UserBoard(\""+data[i].user_id+"\")\'>"+data[i].tel+"</li>"
+				 	addListHtml += "<li onclick=\'UserBoard(\""+data[i].user_id+"\")\'>level "+data[i].grade+"</li>"
+				 	addListHtml += "<li onclick=\'UserBoard(\""+data[i].user_id+"\")\'>"+data[i].report_hit+"</li>"
+				 	addListHtml += "<li onclick=\'UserBoard(\""+data[i].user_id+"\")\'>"+data[i].register_date+"</li>"
+				 	addListHtml += "<li onclick=\'UserBoard(\""+data[i].user_id+"\")\'>"+data[i].permission+"</li>"
+				 	addListHtml += "</ul></li>"
+				}
+				if(data.length<8){
+					$("#moreViewMember01").remove();
+				} 
+				$(".member_list").append(addListHtml);
+				/* console.log(addListHtml); */
+			}
+		});
+	});
 });
 
 function adminMemberInsert(href, w, h) {
@@ -93,6 +211,7 @@ function adminMemberInsert(href, w, h) {
 	window.open("/admin/adminMemberInsert", "회원 생성", "width="+600+", height="+300+", left="+xPos+", top="+yPos+", menubar=yes, status=yes, titlebar=yes, resizable=yes");
 }
 function UserBoard(user_id) {
+	console.log("userboard!");
 	var xPos = (window.screen.width/2) - (1300/2); // 가운데 정렬
 	xPos += window.screenLeft; // 듀얼 모니터일 때
 	var yPos = (window.screen.height/2) - (900/2);
@@ -118,13 +237,14 @@ function UserBoard(user_id) {
  				<button id="left_member_btn">명단보기</button>
  			</li>
  		</ul>
-	 	<form method="get" action="" id="memberSearchFrm">
-		 	<select name="memberSearchKey">
-		    	<option value="title">아이디</option>
-		   		<option value="content">이름</option>
-		   		<option value="city">닉네임</option>
+ 		
+	 	<form method="get" action="/admin/member/search" id="memberSearchFrm">
+		 	<select name="searchKey">
+		    	<option value="user_id">아이디</option>
+		   		<option value="user_name">이름</option>
+		   		<option value="user_nickname">닉네임</option>
 			</select>
-			<input type="text" name="searchMember" id="searchMember"/>
+			<input type="text" name="searchWord" id="searchMember"/>
 		 	<input type="submit" value="검색" id="memberSearch"/>
 	  	</form> 		
  		<div class="member_buttons">
@@ -146,28 +266,13 @@ function UserBoard(user_id) {
 			 		<li>가입일</li>
 			 		<li>권한</li>
 		 		</ul>
-		 		<ul class="member_list">
-		 			<c:forEach var="vo" items="${userList}">
-		 				<li class="user_lists">
-				 			<ul>		
-				 				<li><input type="checkbox" name="ChkList" value='${vo.email}' class="chk"></li>
-						 		<li onclick="UserBoard('${vo.user_id}')">${vo.user_id}</li>
-						 		<li onclick="UserBoard('${vo.user_id}')">${vo.user_name}</li>
-						 		<li onclick="UserBoard('${vo.user_id}')">${vo.user_nickname}</li>
-						 		<li onclick="UserBoard('${vo.user_id}')">${vo.email}</li>
-						 		<li onclick="UserBoard('${vo.user_id}')">${vo.tel}</li>
-						 		<li onclick="UserBoard('${vo.user_id}')">level ${vo.grade}</li>
-			 					<li onclick="UserBoard('${vo.user_id}')">${vo.report_hit}</li>
-			 					<li onclick="UserBoard('${vo.user_id}')">${vo.register_date}</li>
-			 					<li onclick="UserBoard('${vo.user_id}')">${vo.permission}</li>
-						 	</ul>
-						 </li>
-					</c:forEach>
+		 		<ul class="member_list"><!-- 멤버 리스트 출력 -->
 		 		</ul>
+		 		<a id="moreViewMember01"><img src="/img/더보기.png" style="width:100px;"></a>
 	 		</div>
 	 	</form>
  		<div id="user_leave">
-		 	<h4>탈퇴한 회원 명단</h4>
+		 		<h4>탈퇴한 회원 명단</h4>
 		 	<ul class="user_left_title">
 		 		<li>이메일</li>
 		 		<li>분류</li>
@@ -181,7 +286,7 @@ function UserBoard(user_id) {
 							<c:when test="${vo.leave_forced eq 'N'}">자진탈퇴</c:when>
 						</c:choose>
 					</li>
-				</c:forEach>
+		 		</c:forEach>
 		 	</ul>
 	 	</div>
  	</div>

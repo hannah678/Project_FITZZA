@@ -251,6 +251,7 @@ public class MemberController {
 		MemberVO vo = service.myPage(log_id);
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("vo", vo);
+		mav.addObject("log_id", log_id);
 		mav.setViewName("/member/myPage");
 		mav.addObject("total_like", Bservice.totalLike(log_id));
 		return mav;
@@ -258,68 +259,66 @@ public class MemberController {
 	//마이페이지 더보기페이징(1)
 	@ResponseBody //Ajax
 	@RequestMapping(value = "/member/myPage01")
-	public List<BoardVO> MoreView01(PagingVO pvo, HttpSession session, @RequestParam(value="startNum01", required=false)String startNum01) throws Exception {
-		String user_id = (String)session.getAttribute("logId");
+	public List<BoardVO> MoreView01(PagingVO pvo, HttpSession session, @RequestParam(value="startNum01", required=false)String startNum01,
+			@RequestParam(value="log_id", required=false)String log_id) throws Exception {
 		pvo.setStart(Integer.parseInt(startNum01));
 		pvo.setEnd(5);
-		return Bservice.todayWriterSelect(user_id, pvo);
+		return Bservice.todayWriterSelect(log_id, pvo);
 	}
 	//마이페이지 더보기페이징(2)
 	@ResponseBody //Ajax
 	@RequestMapping(value = "/member/myPage02")
-	public List<BoardVO> MoreView02(PagingVO pvo, HttpSession session, @RequestParam(value="startNum02", required=false)String startNum02) throws Exception {			
-		String user_id = (String)session.getAttribute("logId");
+	public List<BoardVO> MoreView02(PagingVO pvo, HttpSession session, @RequestParam(value="startNum02", required=false)String startNum02,
+			@RequestParam(value="log_id", required=false)String log_id) throws Exception {			
 		pvo.setStart(Integer.parseInt(startNum02));
 		pvo.setEnd(5);
-		return Bservice.recommendWriterSelect(user_id, pvo);
+		return Bservice.recommendWriterSelect(log_id, pvo);
 	}
 	//마이페이지 더보기페이징(3)
 	@ResponseBody //Ajax
 	@RequestMapping(value = "/member/myPage03")
-	public List<BoardVO> MoreView03(PagingVO pvo, HttpSession session, @RequestParam(value="startNum03", required=false)String startNum03) throws Exception {
-		String user_id = (String)session.getAttribute("logId");
+	public List<BoardVO> MoreView03(PagingVO pvo, HttpSession session, @RequestParam(value="startNum03", required=false)String startNum03,
+			@RequestParam(value="log_id", required=false)String log_id) throws Exception {
 		pvo.setStart(Integer.parseInt(startNum03));
 		pvo.setEnd(5);
-		return Bservice.oldWriterSelect(user_id, pvo);
+		return Bservice.oldWriterSelect(log_id, pvo);
 	}
 	//마이페이지 더보기페이징(4)
 	@ResponseBody //Ajax
 	@RequestMapping(value = "/member/myPage04")
-	public List<BoardVO> MoreView04(PagingVO pvo, HttpSession session, @RequestParam(value="startNum04", required=false)String startNum04) throws Exception {
-		String user_id = (String)session.getAttribute("logId");
+	public List<BoardVO> MoreView04(PagingVO pvo, HttpSession session, @RequestParam(value="startNum04", required=false)String startNum04,
+			@RequestParam(value="log_id", required=false)String log_id) throws Exception {
 		pvo.setStart(Integer.parseInt(startNum04));
 		pvo.setEnd(5);
-		return Bservice.reviewWriterSelect(user_id, pvo);
+		return Bservice.reviewWriterSelect(log_id, pvo);
 	}
 	//마이페이지 더보기페이징(5)
 	@ResponseBody //Ajax
 	@RequestMapping(value = "/member/myPage05")
-	public List<BoardVO> MoreView05(PagingVO pvo, HttpSession session, @RequestParam(value="startNum05", required=false)String startNum05) throws Exception {
-		String user_id = (String)session.getAttribute("logId");
+	public List<BoardVO> MoreView05(PagingVO pvo, HttpSession session, @RequestParam(value="startNum05", required=false)String startNum05,
+			@RequestParam(value="log_id", required=false)String log_id) throws Exception {
 		pvo.setStart(Integer.parseInt(startNum05));
 		pvo.setEnd(5);
-		return Bservice.qnaWriterSelect(user_id, pvo);
+		return Bservice.qnaWriterSelect(log_id, pvo);
 	}
 	//마이페이지 더보기페이징(6)
 	@ResponseBody //Ajax
 	@RequestMapping(value = "/member/myPage06")
-	public List<BoardVO> MoreView06(PagingVO pvo, HttpSession session, @RequestParam(value="startNum06", required=false)String startNum06) throws Exception {
-		String user_id = (String)session.getAttribute("logId");
+	public List<BoardVO> MoreView06(PagingVO pvo, HttpSession session, @RequestParam(value="startNum06", required=false)String startNum06,
+			@RequestParam(value="log_id", required=false)String log_id) throws Exception {
 		pvo.setStart(Integer.parseInt(startNum06));
 		pvo.setEnd(5);
-		return Bservice.voteWriterSelect(user_id, pvo);
+		return Bservice.voteWriterSelect(log_id, pvo);
 	}
 	//마이페이지 댓글
 		@ResponseBody //Ajax
 		@RequestMapping(value = "/member/myPage07")
 		public List<ReplyVO> mypageReplyView(PagingVO pvo, HttpSession session
-				, @RequestParam(value="startNum07", required=false)String startNum07) throws Exception {
-			System.out.println("댓글페이징");
-			String user_id = (String)session.getAttribute("logId");
-			
+				, @RequestParam(value="startNum07", required=false)String startNum07,
+				@RequestParam(value="log_id", required=false)String log_id) throws Exception {
 			pvo.setStart(Integer.parseInt(startNum07));
 			pvo.setEnd(5);
-			return Bservice.replyWriterSelect(user_id, pvo);
+			return Bservice.replyWriterSelect(log_id, pvo);
 		}
 	//회원 탈퇴
 	@GetMapping("member/byeCheck")

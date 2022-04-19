@@ -26,11 +26,16 @@ window.onload=function(){
 	var startNum01 = $("#my_list_contents01 li").length/6; // oldlist안에 li태그의 길이
 	var addListHtml01 = "";
 	var url01= '/member/myPage01';
-	var param01 = {"startNum01" : startNum01};
+	var param01 = 
+		{"startNum01" : startNum01,
+			"log_id" : '${log_id}'
+		};
 	var pathname01 = window.location.pathname;
 	var pn01 = pathname01.substring(pathname01.lastIndexOf('/')+1);
 		console.log(startNum01);
-
+		console.log("pn01: "+pn01);
+		console.log("pathname01: "+pathname01);
+	
 	$.ajax({
 		url : url01,
 		type : 'GET',
@@ -59,8 +64,10 @@ window.onload=function(){
 	var startNum02 = $("#my_list_contents02 li").length/5; // oldlist안에 li태그의 길이
 	var addListHtml02 = "";
 	var url02= '/member/myPage02';
-	var param02 = {"startNum02" : startNum02};
-	var pathname02 = window.location.pathname;
+	var param02 = 
+	{"startNum02" : startNum02,
+		"log_id" : '${log_id}'
+	};	var pathname02 = window.location.pathname;
 	var pn02 = pathname02.substring(pathname02.lastIndexOf('/')+1);
 		console.log(startNum02);
 
@@ -92,8 +99,10 @@ window.onload=function(){
 	var startNum03 = $("#my_list_contents03 li").length/7; // oldlist안에 li태그의 길이
 	var addListHtml03 = "";
 	var url03= '/member/myPage03';
-	var param03 = {"startNum03" : startNum03};
-	var pathname03 = window.location.pathname;
+	var param03 = 
+	{"startNum03" : startNum03,
+		"log_id" : '${log_id}'
+	};	var pathname03 = window.location.pathname;
 	var pn03 = pathname03.substring(pathname03.lastIndexOf('/')+1);
 		console.log(startNum03);
 
@@ -140,8 +149,10 @@ window.onload=function(){
 	var startNum04 = $("#my_list_contents04 li").length/5; // oldlist안에 li태그의 길이
 	var addListHtml04 = "";
 	var url04= '/member/myPage04';
-	var param04 = {"startNum04" : startNum04};
-	var pathname04 = window.location.pathname;
+	var param04 = 
+	{"startNum04" : startNum04,
+		"log_id" : '${log_id}'
+	};	var pathname04 = window.location.pathname;
 	var pn04 = pathname04.substring(pathname04.lastIndexOf('/')+1);
 		console.log(startNum04);
 
@@ -173,8 +184,10 @@ window.onload=function(){
 	var startNum05 = $("#my_list_contents05 li").length/5; // list안의 li태그의 개수
 	var addListHtml05 = "";
 	var url05 = '/member/myPage05';
-	var param05 = {"startNum05" : startNum05};
-	var pathname05 = window.location.pathname;
+	var param05 = 
+	{"startNum05" : startNum05,
+		"log_id" : '${log_id}'
+	};	var pathname05 = window.location.pathname;
 	var pn05 = pathname05.substring(pathname05.lastIndexOf('/')+1);
 		console.log(startNum05);
 	
@@ -206,8 +219,10 @@ window.onload=function(){
 	var startNum06 = $("#my_list_contents05 li").length/5; // list안의 li태그의 개수
 	var addListHtml06 = "";
 	var url06 = '/member/myPage06';
-	var param06 = {"startNum06" : startNum06};
-	var pathname06 = window.location.pathname;
+	var param06 = 
+	{"startNum06" : startNum06,
+		"log_id" : '${log_id}'
+	};	var pathname06 = window.location.pathname;
 	var pn06 = pathname06.substring(pathname06.lastIndexOf('/')+1);
 		console.log(startNum06);
 	

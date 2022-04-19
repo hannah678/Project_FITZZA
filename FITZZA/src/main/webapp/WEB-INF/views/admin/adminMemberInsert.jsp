@@ -11,7 +11,7 @@ ul > li:nth-child(5) span {margin-right:65px}
 ul > li:nth-child(6) input {margin-left:45px}
 form > input {margin: 10px 0 0 270px}
 </style>
-<form method="post" action="/member/joinOk">
+<form method="post" action="/admin/MemberInsertOk">
 	<ul id="adminMemberInsertBox">
     	<li class="joinbox" >아이디 <input type="text" name="user_id" id="joinid" placeholder="아이디" class="input01"/></li>
         <li class="joinbox" >비밀번호 <input type="password" name="user_pwd" id="joinpwd"placeholder="비밀번호" class="input01"/></li>
@@ -20,5 +20,5 @@ form > input {margin: 10px 0 0 270px}
         <li><span>이메일</span><input type="text" name="email1" id="email1" placeholder="이메일" class="input01"/>@<input type="text" name="email2" id="email2" class="input01"/></li> 
         <li class="joinbox">전화번호<input type="text" name="tel" id="jointel" placeholder="전화번호(000-0000-0000)" class="input01"/></li>
     </ul>
-    <input type="button" value="등록하기"/>
+    <input type="submit" value="등록하기"/>
 </form>

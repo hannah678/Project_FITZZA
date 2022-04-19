@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.team.fitzza.dao.AdminDAO;
 import com.team.fitzza.vo.BoardVO;
 import com.team.fitzza.vo.MemberVO;
+import com.team.fitzza.vo.PagingVO;
 
 @Service
 public class AdminServiceImpl implements AdminService{
@@ -20,10 +21,6 @@ public class AdminServiceImpl implements AdminService{
 		return dao.CountUser(vo);
 	}
 
-	@Override
-	public List<MemberVO> AllUser(MemberVO vo) {
-		return dao.AllUser(vo);
-	}
 
 	@Override
 	public List<MemberVO> LeaveUser(MemberVO vo) {
@@ -71,6 +68,16 @@ public class AdminServiceImpl implements AdminService{
 	}
 
 	@Override
+	public List<MemberVO> memberSearch(String searchKey, String string, int start, int end) {
+		return dao.memberSearch(searchKey, string, start, end);
+	}
+
+
+	@Override
+	public List<MemberVO> AllUser(PagingVO vo) {
+		return dao.AllUser(vo);
+	}
+	@Override
 	public int reportCount(BoardVO bvo) {
 		return dao.reportCount(bvo);
 	}
@@ -109,7 +116,6 @@ public class AdminServiceImpl implements AdminService{
 	public int allOldList(BoardVO bvo) {
 		return dao.allOldList(bvo);
 	}
-
 	
 	
 }

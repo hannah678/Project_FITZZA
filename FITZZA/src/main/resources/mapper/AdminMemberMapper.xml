@@ -13,6 +13,7 @@
 		JOIN	user_grade B
 		ON		B.exp_min <![CDATA[<=]]> A.exp
 		AND 	A.exp <![CDATA[<=]]> B.exp_max
+		LIMIT 	 #{start}, #{end}
 	</select>
 	<!-- 탈퇴한 회원 수 -->
 	<select id="CountLeaveUser" resultType="int">
@@ -60,5 +61,24 @@
 		FROM  	reply
 		WHERE	user_id=#{user_id}
 	</select>
- 	
+ 	<!-- 검색 -->
+    <select id="memberSearch" resultType="MemberVO">
+        SELECT  * 
+		FROM  	user A
+		JOIN	user_grade B
+		ON		B.exp_min <![CDATA[<=]]> A.exp
+		AND 	A.exp <![CDATA[<=]]> B.exp_max
+      <choose>
+         <when test="param1.equals('user_id')">
+            AND A.user_id like #{param2}
+         </when>
+         <when test="param1.equals('user_name')">
+            AND A.user_name like #{param2}
+         </when>
+         <when test="param1.equals('user_nickname')">
+            AND A.user_nickname like #{param2}
+         </when>
+      </choose>
+      LIMIT #{param3}, #{param4}
+    </select>
 </mapper>
