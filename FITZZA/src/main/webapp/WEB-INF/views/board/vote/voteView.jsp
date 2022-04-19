@@ -13,6 +13,38 @@ function delCheck(){
 
 
 $(function(){
+	//투표제출
+	$("#voteFrm").submit(function(){
+		event.preventDefault(); 
+		var params = $("#voteFrm").serialize();
+		
+		$.ajax({
+			url : '#',
+			data:params,
+			type:'POST',
+			success : function(su){
+				$(".summary").css("display","none");
+				
+				var tag ="<div class='summary'>";
+					tag += "<h2>제목</h2>";
+					tag += "<p>총 투표수</p></div>";
+					tag += "<ol class='result'><li>";
+					tag += "<p id='img_1'><strong title='이미지1'>이미지 1</strong><span title='투표수'>~~표</span></p><p class='graph'>";
+					tag += "<span class='box'><span style='width:31%'>&nbsp;</span></span>";
+					tag += "<em title='투표율"'>(~~%)</em></p></li>";
+					tag += "<li><p id='img_2'><strong title='이미지2'>이미지 2</strong><span title='투표수'>~~표</span></p><p class='graph'>";
+					tag += "<span class='box'><span style='width:31%'>&nbsp;</span></span>";
+					tag += "<em title='투표율"'>(~~%)</em></p></li></ol>";
+					
+					$("#vote").html(tag);
+
+			},
+			error : function(er){
+				console.log(e.responseText);
+				alert("투표 에러 발생");
+			}
+		})
+	});
 	//모달 신고
 	$("#reportForm").submit(function(){
 		event.preventDefault(); //form 기본이벤트 제거
@@ -138,8 +170,8 @@ $(function(){
 			});
 		}
 	});
-	//조회수 두배 방지용 주석!
-	//아래 함수의 url 관련 문제로 추정됩니다
+	//조회수 두배 방지용 주석
+	//
 	replyListAll();
 });
 
@@ -159,10 +191,11 @@ window.onload=function(){
 					<div class="vote_box"><a href="#"><img src="../images/31.png"></a></div><!-- 이미지와 상품 링크 연동 -->
 					<div class="vote_box"><a href="#"><img src="../images/31.png"></a></div>
 				</div>
-				<div id="vote"> <!--  결과창 c:if 를 쓸까 ajax 를 쓸까 생각중 ㅠㅠ-->
+				<div id="vote">
+				<!--  결과창 
 						<div class="summary">
 							<h2>제목</h2>
-							<p>총 투표수</p>
+							<p>총 투표수</p>4
 						</div>
 						<ol class="result">
 							<li>
@@ -180,14 +213,15 @@ window.onload=function(){
 								</p>
 							</li>
 						</ol>
-				</div>
+				</div> -->
 				<!-- 투표할때 -->
-				<div id="vote"> <!--  결과창 -->
+				<!--  -->
+				<div id="vote">
 						<div class="summary">
 							<h2>제목</h2>
 							<p>더 나은곳에 투표하세요</p>
 						</div>
-						<form>
+						<form method="post" id="voteFrm">
 						<ol class="result">
 							<li>
 								<input type="radio" name="1" value="img1"/>
