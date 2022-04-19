@@ -23,23 +23,32 @@
 		SELECT * FROM user_leave
 	</select>
 	<!-- 강제탈퇴 -->
-	<insert id="memberDel" parameterType="hashmap">
- 		INSERT INTO user_leave(leave_forced, email)
- 		VALUES	 
- 				<foreach collection="ChkList" item="item" separator=","> 
- 					('Y', #{item.email}) 
- 				</foreach>
- 	</insert>	
+	<insert id="memberDel">		
+		INSERT INTO user_leave(leave_forced, email)
+		VALUES 
+		<foreach item="item" index="index" collection="ChkList" open="('Y', " separator="," close=")">
+			${item}
+		</foreach>
+   		
+	</insert>
  	
-	<delete id="forcedBye" parameterType="hashmap">
-        delete from user
+	<delete id="forcedBye">
+        DELETE FROM user
         <where>
             <foreach item="item" collection="ChkList" open="email in (" separator="," close=")">
-                #{item.email}
+                #{item}
             </foreach>
         </where>
     </delete>
-	
+	<!-- 관리자 권한 부여 -->
+	<update id="makeAdmin">
+		UPDATE user SET permission='admin'
+		<where>
+            <foreach item="item" collection="ChkList" open="email in (" separator="," close=")">
+                #{item}
+            </foreach>
+        </where>
+	</update>
  	<!-- 회원 게시물 목록 -->
  	<select id="UserBoard"  resultType="BoardVO">
 		SELECT  * 
@@ -52,10 +61,5 @@
 		FROM  	reply
 		WHERE	user_id=#{user_id}
 	</select>
- 	<!-- 관리자 권한 부여 -->
- 	<update id="makeAdmin">
- 		UPDATE user 
- 		SET    permission='admin' 
- 		WHERE  user_id=#{user_id}
- 	</update>
+ 	
 </mapper>

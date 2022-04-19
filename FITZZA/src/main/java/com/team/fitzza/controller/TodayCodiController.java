@@ -33,7 +33,6 @@ public class TodayCodiController {
 		String user_id = (String)session.getAttribute("logId");	
 		List<BoardVO> vo = service.BoardSelectLike(1, user_id);
 		mav.addObject("lst", vo);
-		System.out.println(vo.get(0).toString());
 		mav.setViewName("/board/todayCodi/todayCodiList");
 		return mav;
 	}

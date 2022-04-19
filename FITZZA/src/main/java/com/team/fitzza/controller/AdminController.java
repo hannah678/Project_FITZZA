@@ -7,6 +7,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.team.fitzza.service.AdminService;
@@ -49,8 +51,9 @@ public class AdminController {
 		mav.setViewName("/admin/adminUserBoard");
 		return mav;
 	}
-	
-	@PostMapping("admin/multiDel")
+	//강제 탈퇴
+	@ResponseBody //Ajax
+	@RequestMapping(value = "/admin/multiDel", method=RequestMethod.POST)
 	public ModelAndView multiDelete(MemberVO vo, HttpSession session) {
 		System.out.println("memberDelete!");
 		ModelAndView mav = new ModelAndView();
@@ -59,11 +62,17 @@ public class AdminController {
 		mav.setViewName("redirect:adminHome");
 		return mav;
 	}
-	/*//강제 탈퇴
-		
-	
 	//관리자 권한 부여
-	service.makeAdmin(vo);*/
+	@ResponseBody //Ajax
+	@RequestMapping(value = "/admin/multiAdmin", method=RequestMethod.POST)
+	public ModelAndView multiAdmin(MemberVO vo) {
+		System.out.println("memberAdmin!");
+		ModelAndView mav = new ModelAndView();
+		service.makeAdmin(vo);
+		mav.setViewName("redirect:adminHome");
+		return mav;
+	}
+	
 	
 	//신고관리-----------------------------------------------------------------------------------------------------------------------------------
 	@RequestMapping("/admin/adminReport")

@@ -182,11 +182,12 @@
  	</delete>
  	<select id="BoardSelectLike" resultType="com.team.fitzza.vo.BoardVO">
  		SELECT   A.board_num, A.title, A.user_id, A.write_date, B.profile_image, B.user_nickname, C.file1, 
- 				 COUNT( case when ifnull(D.user_id, 0)=#{param2} then 1 end) AS heart_type
+ 				 COUNT( case when ifnull(D.user_id, 0)=#{param2} then 1 end) AS heart_type,
+ 				 COUNT(D.user_id) AS like_num
 		FROM     board A LEFT JOIN user B ON A.user_id=B.user_id
-				LEFT JOIN board_common_image C ON A.board_num=C.board_num
-                LEFT JOIN like_clicker D ON A.board_num=D.board_num
-		WHERE A.type_num=#{param1}
+				 LEFT JOIN board_common_image C ON A.board_num=C.board_num
+                 LEFT JOIN like_clicker D ON A.board_num=D.board_num
+		WHERE    A.type_num=#{param1}
 		GROUP BY A.board_num
 		ORDER BY A.board_num DESC;
  	

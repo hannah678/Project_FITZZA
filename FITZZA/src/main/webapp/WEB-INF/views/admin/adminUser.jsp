@@ -21,6 +21,8 @@ $(document).ready(function(){
 	        $('#user_leave').removeClass('leave_user_show').addClass('user_leave');
 	    }
       } );
+	
+	//강제탈퇴
 	$("#multiDel").click(function(){
 		var cnt = 0;
 		$(".chk").each(function(i, obj){
@@ -35,7 +37,49 @@ $(document).ready(function(){
 			var answer;
 			answer= confirm("탈퇴처리된 회원은 복구할 수 없습니다. \n탈퇴 처리하시겠습니까?");
 			if(answer == true){
-				$("#DelFrm").submit();
+				var params = $("#DelFrm").serialize();
+				
+				$.ajax({
+					url : '/admin/multiDel',
+					type : 'POST',
+					dataType : 'json',
+					data :params,
+					success : function(data){
+						alert("탈퇴 처리되었습니다.");
+						location.reload();
+					}
+				});
+			}
+		}
+	});
+	
+	//관리자 권한 부여
+	$("#multiAdmin").click(function(){
+		var cnt = 0;
+		$(".chk").each(function(i, obj){
+			if(obj.checked){
+				cnt++;//checkbox가 체크 상태일 때...
+			}
+		});
+		if(cnt<1){
+			alert("권한을 부여할 회원을 선택하세요.")
+			return false;
+		}else{
+			var answer;
+			answer= confirm("선택된 회원에게 관리자 권한을 부여하시겠습니까?");
+			if(answer == true){
+				var params = $("#DelFrm").serialize();
+				
+				$.ajax({
+					url : '/admin/multiAdmin',
+					type : 'POST',
+					dataType : 'json',
+					data :params,
+					success : function(data){
+						alert("관리자 권한이 부여되었습니다.");
+						location.reload();
+					}
+				});
 			}
 		}
 	});
@@ -85,10 +129,10 @@ function UserBoard(user_id) {
 	  	</form> 		
  		<div class="member_buttons">
  			<button onclick="adminMemberInsert()">+ 회원 생성</button>
- 			<button>x 관리자 권한 부여</button>
+ 			<button id="multiAdmin">x 관리자 권한 부여</button>
  			<button id="multiDel">x 회원 강퇴</button>
- 		</div>
- 		<form method="post" action="multiDel" id="DelFrm">
+ 		</div>		
+ 		<form method="post" id="DelFrm">
 	 		<div class="member_list_box">
 		 		<ul class="member_title">
 		 			<li>a</li>
@@ -121,7 +165,7 @@ function UserBoard(user_id) {
 					</c:forEach>
 		 		</ul>
 	 		</div>
- 		</form>
+	 	</form>
  		<div id="user_leave">
 		 		<h4>탈퇴한 회원 명단</h4>
 		 		<ul>

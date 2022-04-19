@@ -44,8 +44,16 @@ public class BoardVO {
 	private String report_time;
 	
 	private int heart_type; 
+	private int like_num; 
+
 	
 	
+	public int getLike_num() {
+		return like_num;
+	}
+	public void setLike_num(int like_num) {
+		this.like_num = like_num;
+	}
 	public int getHeart_type() {
 		return heart_type;
 	}

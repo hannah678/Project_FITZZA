@@ -27,7 +27,7 @@
 							imgTag += "<p class='like_btn'><img src='/img/heart_empty.png' class='heart_empty' alt='빈하트'>";
 						</c:otherwise>
 					</c:choose>
-					imgTag += "<span>추천 수 : xxx</span></p>";
+					imgTag += "<span>추천 수 : ${vo.like_num}</span></p>";
 					imgTag += "<input type='hidden' value='${vo.board_num}'/>";			
 					imgTag += "<div class='buttons'><button>수정</button><button>삭제</button><button>신고</button></div></a></div>";	
 					imgTag +="</figure>";
