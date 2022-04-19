@@ -25,7 +25,30 @@ public interface AdminService {
 	public List<MemberVO> UserReply(MemberVO vo);	
 	//관리자 권한 부여
 	public int makeAdmin(MemberVO vo);
+	
+	//신고관리
+	
 	//신고 목록
 	public List<BoardVO> reportSelect(BoardVO vo);
+	//신고 처리
 	public int reportOff(int report_num);
+	//신고글 개수
+	public int reportCount(BoardVO bvo);
+	//미처리 신고 개수
+	public int reportNoCount(BoardVO bvo);
+	//처리 신고 개수
+	public int reportYesCount(BoardVO bvo);
+	
+	//중고 거래 관리
+	
+	//중고 게시물 리스트
+	public List<BoardVO> adminOldList(BoardVO bvo);
+	//전체 개수
+	public int allOldList(BoardVO bvo);
+	//판매중 개수
+	public int saleOldList(BoardVO bvo);
+	//예약중 개수
+	public int reserveOldList(BoardVO bvo);
+	//거래완료 개수
+	public int completeOldList(BoardVO bvo);
 }

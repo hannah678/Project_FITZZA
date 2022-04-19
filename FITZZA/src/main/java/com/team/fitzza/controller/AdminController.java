@@ -27,8 +27,28 @@ public class AdminController {
 		System.out.println("adminHome START");
 		
 		ModelAndView mav = new ModelAndView();
+		//중고 거래 관리 ----------------------------------------------------------
+		//중고 리스트
+		mav.addObject("adminOldList", service.adminOldList(bvo));
+		//전체 개수
+		mav.addObject("allOldList", service.saleOldList(bvo));
+		//판매중
+		mav.addObject("saleOldList", service.saleOldList(bvo));
+		//예약중
+		mav.addObject("reserveOldList", service.reserveOldList(bvo));
+		//거래완료
+		mav.addObject("completeOldList", service.completeOldList(bvo));
+		
+		//신고 관리 ------------------------------------------------------------------
+		//신고 리스트
 		mav.addObject("reportList", service.reportSelect(bvo));
-		System.out.println("board_Num :::"+bvo.getBoard_num());
+		//신고 개수
+		mav.addObject("reportCount", service.reportCount(bvo));
+		//미처리 신고 개수
+		mav.addObject("reportNoCount", service.reportNoCount(bvo));
+		//처리 신고 개수
+		mav.addObject("reportYesCount", service.reportYesCount(bvo));
+		
 		//회원관리-----------------------------------------------------------------------------------------------------------------------------------
 		//전체 회원 수
 		mav.addObject("user_num",service.CountUser(vo));	

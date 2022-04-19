@@ -57,20 +57,57 @@ public class AdminServiceImpl implements AdminService{
 
 	@Override
 	public int memberDel(MemberVO vo) {
-		// TODO Auto-generated method stub
 		return dao.memberDel(vo);
 	}
 
 	@Override
 	public List<BoardVO> reportSelect(BoardVO vo) {
-		// TODO Auto-generated method stub
 		return dao.reportSelect(vo);
 	}
 
 	@Override
 	public int reportOff(int report_num) {
-		// TODO Auto-generated method stub
 		return dao.reportOff(report_num);
+	}
+
+	@Override
+	public int reportCount(BoardVO bvo) {
+		return dao.reportCount(bvo);
+	}
+
+	@Override
+	public int reportNoCount(BoardVO bvo) {
+		return dao.reportNoCount(bvo);
+	}
+
+	@Override
+	public int reportYesCount(BoardVO bvo) {
+		return dao.reportYesCount(bvo);
+	}
+
+	@Override
+	public List<BoardVO> adminOldList(BoardVO bvo) {
+		return dao.adminOldList(bvo);
+	}
+
+	@Override
+	public int saleOldList(BoardVO bvo) {
+		return dao.saleOldList(bvo);
+	}
+
+	@Override
+	public int reserveOldList(BoardVO bvo) {
+		return dao.reserveOldList(bvo);
+	}
+
+	@Override
+	public int completeOldList(BoardVO bvo) {
+		return dao.completeOldList(bvo);
+	}
+
+	@Override
+	public int allOldList(BoardVO bvo) {
+		return dao.allOldList(bvo);
 	}
 
 	

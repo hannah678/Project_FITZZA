@@ -14,16 +14,16 @@
  		<h3>중고거래 관리</h3>
 	 	<ul class="trade_total_status">
  			<li>총 게시물 수&nbsp;&nbsp;&nbsp;&nbsp; : 
- 				<span>xxx 개</span>
+ 				<span>${allOldList } 개</span>
  			</li>
  			<li>판매중&nbsp;&nbsp;&nbsp;&nbsp; : 
- 				<span>xxx 개</span>
+ 				<span>${saleOldList } 개</span>
  			</li>
  			<li>예약중&nbsp;&nbsp;&nbsp;&nbsp; : 
- 				<span>xxx 개</span>
+ 				<span>${reserveOldList } 개</span>
  			</li>
  			<li>거래완료&nbsp;&nbsp;&nbsp;&nbsp; : 
- 				<span>xxx 개</span>
+ 				<span>${completeOldList } 개</span>
  			</li>
  		</ul>
 	 	<form method="get" action="" id="tradeSearchFrm">
@@ -37,9 +37,6 @@
 	  	</form> 		
  		<div class="trade_buttons">
  			<button>게시글 삭제</button>
- 		<!-- 필요 없으면 삭제 -->
- 			<button>게시글 보이기</button>
- 			<button>게시글 숨기기</button>
  		</div>
  		<div class="trade_list_box">
 	 		<ul class="trade_title">
@@ -48,25 +45,28 @@
 	 			<li>내용</li>
 		 		<li>작성자(id)</li>
 		 		<li>작성일</li>
-		 		<li>거래완료일</li>
+		 		<li>거래 완료일</li>
 		 		<li>상태</li>
 	 		</ul>
 	 		<ul class="trade_list">
 	 			<li>
 			 		<ul>
-			 			<li><input type="checkbox" name="adminTradeSelect"></li>
-						<li>제에목</li>
-						<li>yyyyyyyyyyyyyy</li>
-						<li>작성자 아이디</li>
-						<li>작성date</li>
-						<li>거래완료date</li>
-						<li>
-							<select id="trade_status" class="trade_status">
-								<option value="ing" class="ing">판매중</option>
-								<option value="reserv" class="reserv">예약중</option>
-								<option value="compl" class="compl">거래완료</option>
-							</select>
-						</li>
+			 			<c:forEach var="vo" items="${adminOldList}">
+				 			<li><input type="checkbox" name="adminTradeSelect"></li>
+							<li>${vo.title}</li>
+							<li>${vo.content}</li>
+							<li>${vo.user_id}</li>
+							<li>${vo.write_date}</li>
+							<li>${vo.trade_date}</li>
+							<li>
+								<select id="trade_status" class="trade_status">
+									<option value="ing" class="ing">판매중</option>
+									<option value="reserv" class="reserv">예약중</option>
+									<option value="compl" class="compl">거래완료</option>
+								</select>
+							</li>
+							
+						</c:forEach>
 		 			</ul>
 				</li>
 	 		</ul>
