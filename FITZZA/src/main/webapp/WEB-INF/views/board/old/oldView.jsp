@@ -234,7 +234,7 @@ header a {font-size:20px}
 							<form method="post" id="reportForm">
 								<input type="hidden" name="board_num" value="${vo.board_num}" />
 								<ul>
-									<li>신고 이유 &emsp; <select name="category_num">
+									<li>신고 이유 &emsp; <select name="category_num" style="border:1px solid black;">
 											<option value="1">광고</option>
 											<option value="2">사기거래</option>
 											<option value="3">욕설/비방</option>
@@ -243,7 +243,7 @@ header a {font-size:20px}
 									</li>
 									<hr />
 									<li>신고 내용<br /> <textarea name="report_content" rows="5"
-											cols="30"></textarea> <input type='submit' value='신고 접수'
+											cols="30" id="report_content"></textarea> <input type='submit' value='신고 접수'
 										id="reportbtn" />
 									</li>
 								</ul>
