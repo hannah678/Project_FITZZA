@@ -1,5 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
-<mapper namespace="com.team.fitzza.dao.BoardDAO">
+<mapper namespace="com.team.fitzza.dao.AdminDAO">
+	<select id="reportSelect" resultType="BoardVO">
+		SELECT A.report_num, C.category_name, A.board_num, B.title, B.user_id, A.user_id as reported_id, A.report_content, A.report_time, A.state
+		FROM board_report A, board B, report_category C
+		WHERE A.board_num=B.board_num
+		AND A.category_num=C.category_num
+		ORDER BY A.report_num DESC;
+	</select>
+	
+	<update id="reportOff">
+		UPDATE board_report SET state='Y' WHERE report_num=#{param1};
+	</update>
 </mapper>

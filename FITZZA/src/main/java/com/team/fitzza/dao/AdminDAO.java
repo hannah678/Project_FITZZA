@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
+import com.team.fitzza.vo.BoardVO;
 import com.team.fitzza.vo.MemberVO;
 
 @Mapper
@@ -29,4 +30,7 @@ public interface AdminDAO {
 	public List<MemberVO> UserReply(MemberVO vo);	
 	//관리자 권한 부여
 	public int makeAdmin(MemberVO vo);
+	//신고 목록
+	public List<BoardVO> reportSelect(BoardVO vo);
+	public int reportOff(int report_num);
 }

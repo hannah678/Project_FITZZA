@@ -42,6 +42,8 @@ public class BoardVO {
 	private int category_num;	  //1,2,3,4
 	private String category_name; //광고, 사기거래, 욕설/비방, 사칭
 	private String report_time;
+	private String reported_id;
+	private String state;
 	
 	private int heart_type; 
 	private int like_num; 
@@ -60,6 +62,19 @@ public class BoardVO {
 	}
 	public void setLike_num(int like_num) {
 		this.like_num = like_num;
+	}
+	
+	public String getReported_id() {
+		return reported_id;
+	}
+	public void setReported_id(String reported_id) {
+		this.reported_id = reported_id;
+	}
+	public String getState() {
+		return state;
+	}
+	public void setState(String state) {
+		this.state = state;
 	}
 	public int getHeart_type() {
 		return heart_type;

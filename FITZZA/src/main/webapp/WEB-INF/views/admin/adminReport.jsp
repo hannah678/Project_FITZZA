@@ -11,12 +11,15 @@
 <!-- 카테고리 선택 js-->
  <script>
 $(document).ready(function(){
+	
 	$('#tc_btn').addClass('button_toggled');
 	$('#rec_btn').addClass('button_normal');
 	$('#oldb_btn').addClass('button_normal');
 	$('#rev_btn').addClass('button_normal');
 	$('#qna_btn').addClass('button_normal');
 	$('#vote_btn').addClass('button_normal');
+	$('#report_off').addClass('button_normal');
+	
 	$('#todayCodi_box').addClass('report_box_show');
 	$('#recommend_box').addClass('report_box_hide');
 	$('#oldBoard_box').addClass('report_box_hide');
@@ -107,8 +110,8 @@ $(document).ready(function(){
 		    $('#qna_box').removeClass('report_box_show').addClass('report_box_hide');
 		    $('#vote_box').removeClass('report_box_hide').addClass('report_box_show');
 		});
-	
-});
+
+});	
 </script>
 
  <div id="adminReport_container">
@@ -155,101 +158,51 @@ $(document).ready(function(){
  		</div>
  		<div id="todayCodi_box" class="Report_box" style="background-color:red">
 	 		<ul class="report_box_title">
-	 			<li>신고받은<br/>회원 아이디</li>
+	 			<li>신고번호</li>
+	 			<li>신고분류</li>
+	 			<li>신고<br/>게시물 번호</li>
+	 			<li>신고<br/>게시물 제목</li>
+	 			<li>게시자<br/> 아이디</li>
 		 		<li>신고자<br/>아이디</li>
-		 		<li>신고분류</li>
-		 		<li>신고사유</li>
 		 		<li>상세내용</li>
-		 		<li>글<br/>공개여부</li>
-		 		<li>회원분류</li><!-- 블랙리스트 처리 -->
 		 		<li>신고일</li>
 		 		<li>처리상태</li>
+		 		
 	 		</ul>
 	 		<ul class="report_list">
-	 		
+	 			<c:forEach var="vo" items="${reportList}">
+		 			<li>${vo.report_num}</li>		 			
+		 			<li>${vo.category_name}</li>
+		 			<li>${vo.board_num }</li>
+		 			<li>${vo.title }</li>
+			 		<li>${vo.reported_id }</li>
+		 			<li>${vo.user_id }</li>
+			 		<li>${vo.report_content }</li>
+			 		<li>${vo.report_time }</li>
+			 		
+			 		<c:if test="${vo.state !='Y'}">
+			 		<li>${vo.state },<button class="report_off">처리확인</button><input type="hidden" name="${vo.report_num}" value="${vo.report_num}"></li>
+			 		</c:if>
+			 		<c:if test="${vo.state == 'Y'}">
+			 		<li>처리 완료</li>
+			 		</c:if>
+		 		</c:forEach>
 	 		</ul>
  		</div>
- 		<div id="recommend_box" class="Report_box" style="background-color:pink">
-	 		<ul class="report_box_title">
-	 			<li>신고받은<br/>회원 아이디</li>
-		 		<li>신고자<br/>아이디</li>
-		 		<li>신고분류</li>
-		 		<li>신고사유</li>
-		 		<li>상세내용</li>
-		 		<li>글<br/>공개여부</li>
-		 		<li>회원분류</li><!-- 블랙리스트 처리 -->
-		 		<li>신고일</li>
-		 		<li>처리상태</li>
-	 		</ul>
-	 		<ul class="report_list">
-	 		
-	 		</ul>
- 		</div>
- 		<div id="oldBoard_box" class="Report_box" style="background-color:blue">
-	 		<ul class="report_box_title">
-	 			<li>신고받은<br/>회원 아이디</li>
-		 		<li>신고자<br/>아이디</li>
-		 		<li>신고분류</li>
-		 		<li>신고사유</li>
-		 		<li>상세내용</li>
-		 		<li>글<br/>공개여부</li>
-		 		<li>회원분류</li><!-- 블랙리스트 처리 -->
-		 		<li>신고일</li>
-		 		<li>처리상태</li>
-	 		</ul>
-	 		<ul class="report_list">
-	 		
-	 		</ul>
- 		</div>
- 		<div id="review_box" class="Report_box" style="background-color:black">
-	 		<ul class="report_box_title">
-	 			<li>신고받은<br/>회원 아이디</li>
-		 		<li>신고자<br/>아이디</li>
-		 		<li>신고분류</li>
-		 		<li>신고사유</li>
-		 		<li>상세내용</li>
-		 		<li>글<br/>공개여부</li>
-		 		<li>회원분류</li><!-- 블랙리스트 처리 -->
-		 		<li>신고일</li>
-		 		<li>처리상태</li>
-	 		</ul>
-	 		<ul class="report_list">
-	 		
-	 		</ul>
- 		</div>
- 		<div id="qna_box" class="Report_box" style="background-color:purple">
-	 		<ul class="report_box_title">
-	 			<li>신고받은<br/>회원 아이디</li>
-		 		<li>신고자<br/>아이디</li>
-		 		<li>신고분류</li>
-		 		<li>신고사유</li>
-		 		<li>상세내용</li>
-		 		<li>글<br/>공개여부</li>
-		 		<li>회원분류</li><!-- 블랙리스트 처리 -->
-		 		<li>신고일</li>
-		 		<li>처리상태</li>
-	 		</ul>
-	 		<ul class="report_list">
-	 		
-	 		</ul>
- 		</div>
- 		<div id="vote_box" class="Report_box" style="background-color:yellow">
-	 		<ul class="report_box_title">
-	 			<li>신고받은<br/>회원 아이디</li>
-		 		<li>신고자<br/>아이디</li>
-		 		<li>신고분류</li>
-		 		<li>신고사유</li>
-		 		<li>상세내용</li>
-		 		<li>글<br/>공개여부</li>
-		 		<li>회원분류</li><!-- 블랙리스트 처리 -->
-		 		<li>신고일</li>
-		 		<li>처리상태</li>
-	 		</ul>
-	 		<ul class="report_list">
-	 		
-	 		</ul>
- 		</div>
+ 		
  	</div>
  </div>
- 
+ <script>
+ $(".report_off").click(function(){
+		var repo_num = $(this).next().val();
+	 	var reportOffOk = confirm("신고 내용을 확인처리 하시겠습니까?");
+		
+		alert(reportOffOk);
+		
+		if(reportOffOk == true){
+			document.location.href="/admin/adminReportOff?report_num="+repo_num;
+		}
+		document.location.href="/admin/adminHome";
+	});
+ </script>
  

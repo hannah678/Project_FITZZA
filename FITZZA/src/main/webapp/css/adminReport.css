@@ -75,21 +75,22 @@
 	text-align:center;
 	border-bottom:1px solid #b5b5b5;
 	font-size:18px;
+	float:left;
 }
 .report_list li ul li{
 	white-space:nowrap;
 	text-overflow: ellipsis;
 	overflow:hidden;
 }
-.report_list li:nth-child(1) {width:10%}
-.report_list li:nth-child(2) {width:10%}
-.report_list li:nth-child(3) {width:10%}
-.report_list li:nth-child(4) {width:10%}
-.report_list li:nth-child(5) {width:10%}
-.report_list li:nth-child(6) {width:10%}
-.report_list li:nth-child(7) {width:10%}
-.report_listli:nth-child(8) {width:15%}
-.report_list li:nth-child(9) {width:15%}
+.report_list li:nth-child(10n-9) {width:10%}
+.report_list li:nth-child(10n-8) {width:10%}
+.report_list li:nth-child(10n-7) {width:10%}
+.report_list li:nth-child(10n-6) {width:10%}
+.report_list li:nth-child(10n-5) {width:10%}
+.report_list li:nth-child(10n-4) {width:10%}
+.report_list li:nth-child(10n-3) {width:10%}
+.report_list li:nth-child(10n-2) {width:15%}
+.report_list li:nth-child(10n-1) {width:15%}
 
 #reportSearchFrm {
 	float:right;

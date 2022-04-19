@@ -5,7 +5,6 @@ import javax.inject.Inject;
 import org.springframework.stereotype.Service;
 
 import com.team.fitzza.dao.MemberDAO;
-import com.team.fitzza.vo.BoardVO;
 import com.team.fitzza.vo.MemberVO;
 
 @Service
@@ -92,5 +91,4 @@ public class MemberServiceImpl implements MemberService{
 	public int changeProfileImg(MemberVO vo) {
 		return dao.changeProfileImg(vo);
 	}
-
 }

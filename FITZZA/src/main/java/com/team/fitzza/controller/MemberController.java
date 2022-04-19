@@ -251,8 +251,8 @@ public class MemberController {
 		MemberVO vo = service.myPage(log_id);
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("vo", vo);
-		mav.addObject("total_like", Bservice.totalLike(log_id));
 		mav.setViewName("/member/myPage");
+		mav.addObject("total_like", Bservice.totalLike(log_id));
 		return mav;
 		}
 	//마이페이지 더보기페이징(1)

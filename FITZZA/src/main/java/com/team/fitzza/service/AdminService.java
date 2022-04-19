@@ -2,6 +2,7 @@ package com.team.fitzza.service;
 
 import java.util.List;
 
+import com.team.fitzza.vo.BoardVO;
 import com.team.fitzza.vo.MemberVO;
 
 public interface AdminService {
@@ -24,4 +25,7 @@ public interface AdminService {
 	public List<MemberVO> UserReply(MemberVO vo);	
 	//관리자 권한 부여
 	public int makeAdmin(MemberVO vo);
+	//신고 목록
+	public List<BoardVO> reportSelect(BoardVO vo);
+	public int reportOff(int report_num);
 }

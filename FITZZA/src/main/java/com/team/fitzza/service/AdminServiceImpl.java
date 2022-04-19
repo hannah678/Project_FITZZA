@@ -7,6 +7,7 @@ import javax.inject.Inject;
 import org.springframework.stereotype.Service;
 
 import com.team.fitzza.dao.AdminDAO;
+import com.team.fitzza.vo.BoardVO;
 import com.team.fitzza.vo.MemberVO;
 
 @Service
@@ -58,6 +59,18 @@ public class AdminServiceImpl implements AdminService{
 	public int memberDel(MemberVO vo) {
 		// TODO Auto-generated method stub
 		return dao.memberDel(vo);
+	}
+
+	@Override
+	public List<BoardVO> reportSelect(BoardVO vo) {
+		// TODO Auto-generated method stub
+		return dao.reportSelect(vo);
+	}
+
+	@Override
+	public int reportOff(int report_num) {
+		// TODO Auto-generated method stub
+		return dao.reportOff(report_num);
 	}
 
 	

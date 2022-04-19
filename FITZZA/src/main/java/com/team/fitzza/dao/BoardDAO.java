@@ -52,7 +52,6 @@ public interface BoardDAO {
 	public List<ReplyVO> replyWriterSelect(String user_id, PagingVO pvo);
 	//마이페이지 총 추천 수
 	public int totalLike(String user_id);
-	
 	public int LikeCount(BoardVO vo);
 	public void LikeInsert(BoardVO vo);
 	public void LikeDelete(BoardVO vo);

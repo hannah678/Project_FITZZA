@@ -7,12 +7,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.team.fitzza.service.AdminService;
-import com.team.fitzza.service.MemberService;
 import com.team.fitzza.vo.BoardVO;
 import com.team.fitzza.vo.MemberVO;
 
@@ -23,7 +23,12 @@ public class AdminController {
 
 	@GetMapping("/admin/adminHome")
 	public ModelAndView adminHome(MemberVO vo) {
+		BoardVO bvo = new BoardVO();
+		System.out.println("adminHome START");
+		
 		ModelAndView mav = new ModelAndView();
+		mav.addObject("reportList", service.reportSelect(bvo));
+		System.out.println("board_Num :::"+bvo.getBoard_num());
 		//회원관리-----------------------------------------------------------------------------------------------------------------------------------
 		//전체 회원 수
 		mav.addObject("user_num",service.CountUser(vo));	
@@ -40,25 +45,26 @@ public class AdminController {
 	
 	//회원게시물
 	@GetMapping("/admin/adminUserBoard")
-	public ModelAndView adminUserBoard(String user_id, MemberVO vo) {
+	public ModelAndView adminUserBoard() {
+
 		ModelAndView mav = new ModelAndView();
-		//회원 게시물
-		mav.addObject("UserBoardList", service.UserBoard(vo));
-		//회원 댓글
-		mav.addObject("UserReplyList", service.UserReply(vo));
-		
-		
+
 		mav.setViewName("/admin/adminUserBoard");
 		return mav;
 	}
+	
 	//강제 탈퇴
 	@PostMapping("/admin/multiDel")
 	@ResponseBody
 	public String multiDelete(MemberVO vo, HttpSession session) {
+		System.out.println("multiDelete START");
+		System.out.println("memberDelete!");
+		ModelAndView mav = new ModelAndView();
 		service.forcedBye(vo);
 		service.memberDel(vo);
 		return "선택한 회원이 강퇴되었습니다";
 	}
+
 	//관리자 권한 부여
 	@ResponseBody //Ajax
 	@RequestMapping(value = "/admin/multiAdmin", method=RequestMethod.POST)
@@ -70,11 +76,22 @@ public class AdminController {
 		return mav;
 	}
 	
-	
 	//신고관리-----------------------------------------------------------------------------------------------------------------------------------
 	@RequestMapping("/admin/adminReport")
-	public String adminReport() {
-		return "/admin/adminReport";
+	public ModelAndView adminReport(BoardVO vo) {
+		System.out.println("adminReport START!!");
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("reportList", service.reportSelect(vo));
+		mav.setViewName("/admin/adminReport");
+		System.out.println(vo.getBoard_num());
+		return mav;
+	}
+	
+	@ResponseBody
+	@GetMapping("/admin/adminReportOff")
+	public void adminReportOff(@RequestParam(value="report_num", required=false)int report_num) {
+		
+		service.reportOff(report_num);
 	}
 	//중고거래 관리--------------------------------------------------------------------------------------------------------------------------------
 	@RequestMapping("/admin/adminOld")
