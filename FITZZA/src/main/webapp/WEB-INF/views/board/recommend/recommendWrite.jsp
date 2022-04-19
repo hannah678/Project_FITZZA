@@ -1,8 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <link rel="stylesheet" href="/css/recWrite.css" type="text/css">
-<link rel="stylesheet" href="/css/gradientStars.css" type="text/css">
-<script type="text/javascript" src="/js/gradientStars.js"></script>
 <script>
 	$(function(){
 		$("#boardFrm").submit(function(){
@@ -47,7 +45,7 @@
                             <label for="upload_file01">업로드</label>
                             <input type="file" id="upload_file01" name="filename" accept="image/*" style="position:absolute; clip:rect(0, 0, 0, 0);"><br/>
                         </div>
-                        <div class="img2" style="margin-left:230px; margin-bottom: 100px;">
+                        <div class="img2" style="margin-left:170px; margin-bottom: 100px;">
                             <img class="img3" id="img_section2" src="/img/이미지 없음.png"><br/>
                             <input type="text" id="file_route02"  disabled="disabled" value="파일 선택" >
                             <label for="upload_file02">업로드</label>
@@ -59,7 +57,7 @@
                             <label for="upload_file03">업로드</label>
                             <input type="file" id="upload_file03" name="filename" accept="image/*" style="position:absolute; clip:rect(0, 0, 0, 0);"><br/>
                         </div>
-                        <div class="img2" style="margin-left:230px;">
+                        <div class="img2" style="margin-left:170px;">
                             <img class="img3" id="img_section4" src="/img/이미지 없음.png"><br/>
                             <input type="text" id="file_route04"  disabled="disabled" value="파일 선택" >
                             <label for="upload_file04">업로드</label>

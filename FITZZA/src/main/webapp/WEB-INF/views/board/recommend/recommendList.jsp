@@ -75,7 +75,7 @@ window.onload=function(){
 					addListHtml += "<li class='reclist'>";
 					addListHtml += "<a href='/board/recommend/recommendView?board_num="+data[i].board_num+"'><img src='/upload/"+data[i].file1+"' class='rec_img'></a>";
 					addListHtml += "<a href='/board/recommend/recommendView?board_num="+data[i].board_num+"' class='rec_title'>"+data[i].title+"</a><br/>";
-					addListHtml += "<img src='/upload/"+data[i].profile_image+"'id='profile_img'/>"+data[i].user_nickname+"<br/>";
+					addListHtml += "<img src='/upload/"+data[i].profile_image+"'id='profile_img'/>"+data[i].user_nickname+"<br/><br/>";
 					addListHtml += data[i].write_date+" | "+data[i].hit+"</li>";
 				}
 				if(data.length<4){
@@ -123,7 +123,7 @@ $('#moreView').click(function(){
 					addListHtml += "<li class='reclist'>";
 					addListHtml += "<a href='/board/recommend/recommendView?board_num="+data[i].board_num+"'><img src='/upload/"+data[i].file1+"' class='rec_img'></a>";
 					addListHtml += "<a href='/board/recommend/recommendView?board_num="+data[i].board_num+"' class='rec_title'>"+data[i].title+"</a><br/>";
-					addListHtml += "<img src='/upload/"+data[i].profile_image+"'id='profile_img'/>"+data[i].user_nickname+"<br/>";
+					addListHtml += "<img src='/upload/"+data[i].profile_image+"'id='profile_img'/>"+data[i].user_nickname+"<br/><br/>";
 					addListHtml += data[i].write_date+" | "+data[i].hit+"</li>";
 					
 				}
