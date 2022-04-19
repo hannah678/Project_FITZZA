@@ -221,7 +221,7 @@ window.onload=function(){
 							<h2>제목</h2>
 							<p>더 나은곳에 투표하세요</p>
 						</div>
-						<form method="post" id="voteFrm">
+						<form method="post" id="voteFrm" action="#">
 						<ol class="result">
 							<li>
 								<input type="radio" name="1" value="img1"/>
@@ -255,12 +255,6 @@ window.onload=function(){
 		</ul>
 	</div>
 	<hr/>
-	<div id="reviewReply">
-		<form method="post" ><!--  로그인하면 나타나게할거임.. -->
-		<textarea rows="20" cols="80" style="width:75%; height:200px;"></textarea>
-		<input type="submit" value="등록" style="width:20%; height:200px; "/>
-		</form>
-	</div>
 	<div class="reply"><!--  댓글 다는곳 -->
 	 <hr />
 			<b>댓글</b>
@@ -271,13 +265,11 @@ window.onload=function(){
 				<c:if test="${logStatus =='Y'}">
 					<form id="replyFrm">
 						<input type="hidden" name="board_num" value="${vo.board_num}" />
-						<textarea name="coment" id='coment'
-							placeholder=" 댓글 입력"></textarea>
+						<textarea name="coment" id='coment' placeholder=" 댓글 입력"></textarea>
 						<input type="submit" value="등록" id="replybtn" />
 					</form>
 				</c:if>
 	</div>
-</div>
 
 <!-- 신고 모달 -->
 		<div id="reportModal" class="modal">

@@ -17,40 +17,24 @@
 	 }
 	 });
  });
-</script>
-<script>
-						const reader = new FileReader();
-						reader.onload = (readerEvent) => {
-							document.querySelector("#img_section").setAttribute("src", readerEvent.target.result);
-						};
-						document.querySelector("#upload_file01").addEventListener("change", (changeEvent) => {
-							const imgFile = changeEvent.target.files[0];
-							reader.readAsDataURL(imgFile);
-							const fileName = document.getElementById("file_route01");
-							fileName.value = imgFile.name;
-						});
-						
-                        const reader2 = new FileReader();
-						reader2.onload = (readerEvent) => {
-							document.querySelector("#img_section2").setAttribute("src", readerEvent.target.result);
-						};
-						document.querySelector("#upload_file02").addEventListener("change", (changeEvent) => {
-							const imgFile2 = changeEvent.target.files[0];
-							reader2.readAsDataURL(imgFile2);
-							const fileName2 = document.getElementById("file_route02");
-							fileName2.value = imgFile2.name;
-						});
-					</script>
-					
+</script>		
 </head>
 <body>
+</br></br></br></br></br></br></br>
 <div id="review-wrapper"><!--  전체 틀  -->
 <h1>투표 게시판</h1>
 <hr/>
-	<form method="post" action="/board/review/reviewWriteOk" id="reviewFrm" enctype="multipart/form-data">
+	<form method="post" action="/board/vote/voteWriteOk" id="reviewFrm" enctype="multipart/form-data">
   	  	<ul>
-			<li><input type="hidden" name="type_num" value="#"/></li> <!--  게시판 타입num-->
+			<li><input type="hidden" name="type_num" value="6"/></li> <!--  게시판 타입num-->
 			<li><input type="text" name="title" id="title" class="input01" placeholder="제목을 입력해주세요"/></li>
+			<li>의상 종류 &emsp;  
+            	<select id="gender_type" name="gender_type">
+					<option value="W" name="W">여성의류</option>
+					<option value="M" name="M">남성의류</option>
+					<option value="U" name="U">남여공용</option>
+				</select>
+			</li>
 			<li><div id="img_area">
 					<div class="img_up1">
                     	투표대상 1 이미지<br/>
@@ -64,9 +48,9 @@
            	        <div class="img_up2">
                   	    투표대상 2 이미지<br/>
                        		 <div>
-                       		     <img style="width: 500px;" id="img_section" src="/img/이미지 없음.png"><br/>
-                         	     <input type="text" id="file_route01"  disabled="disabled" value="파일 선택" >
-                          	     <label for="upload_file01">업로드</label>
+                       		     <img style="width: 500px;" id="img_section2" src="/img/이미지 없음.png"><br/>
+                         	     <input type="text" id="file_route02"  disabled="disabled" value="파일 선택" >
+                          	     <label for="upload_file02">업로드</label>
                           	     <input type="file" id="upload_file02" name="filename" accept="image/*" required=true style="position:absolute; clip:rect(0, 0, 0, 0);"><br/>
                       	     </div>
                	    </div>
@@ -76,4 +60,27 @@
 				<li style="height:70px;"><input type='submit' value='등록' id="reviewsubmit" class="button01" style="margin-right:20px;"/></li>
 		</ul>
 	</form>
-</div>			
+</div>	
+<script>
+	const reader = new FileReader();
+	reader.onload = (readerEvent) => {
+		document.querySelector("#img_section").setAttribute("src", readerEvent.target.result);
+	};
+	document.querySelector("#upload_file01").addEventListener("change", (changeEvent) => {
+		const imgFile = changeEvent.target.files[0];
+		reader.readAsDataURL(imgFile);
+		const fileName = document.getElementById("file_route01");
+		fileName.value = imgFile.name;
+	});
+	
+	const reader2 = new FileReader();
+	reader2.onload = (readerEvent) => {
+		document.querySelector("#img_section2").setAttribute("src", readerEvent.target.result);
+	};
+	document.querySelector("#upload_file02").addEventListener("change", (changeEvent) => {
+		const imgFile2 = changeEvent.target.files[0];
+		reader2.readAsDataURL(imgFile2);
+		const fileName2 = document.getElementById("file_route02");
+		fileName2.value = imgFile2.name;
+	});
+</script>		
