@@ -51,7 +51,7 @@
 					
 					var tag = "<ul>";
 					$result.each(function(idx, vo){
-                        tag += "<li><div>" + "<img src='/upload/"+vo.profile_image+"' id='reply_profile'/><img src='"+vo.frame_img+"' id='reply_level_frame'/>" + vo.user_id + " (" + vo.reply_date + ") ";
+                        tag += "<li><div>" + "<img src='/upload/"+vo.profile_image+"' id='reply_profile'/><img src='"+vo.frame_img+"' id='reply_level_frame'/>" + vo.user_nickname + " (" + vo.reply_date + ") ";
 	
                         if(vo.user_id == '${logId}'){   // user_id
 							tag += "<input type='button' value='수정' id='reply_edit'/>";
