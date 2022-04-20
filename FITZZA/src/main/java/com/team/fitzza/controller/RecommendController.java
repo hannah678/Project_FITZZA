@@ -353,7 +353,7 @@ public class RecommendController {
 
 			// 글 내용보기로 이동
 			String msg = "<script>alert('오늘의 추천 글이 수정되었습니다.\\n글내용보기로 이동합니다');";
-			msg += "location.href='/board/qna/qnaView?board_num=" + vo.getBoard_num() + "';</script>";
+			msg += "location.href='/board/recommend/recommendView?board_num=" + vo.getBoard_num() + "';</script>";
 
 			entity = new ResponseEntity<String>(msg, headers, HttpStatus.OK);
 
