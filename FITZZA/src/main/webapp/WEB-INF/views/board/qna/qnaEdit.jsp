@@ -16,11 +16,6 @@
 				$("#introduce").focus();
 				return false;
 			}
-			if($("#upload_file").val()==''){
-				alert("이미지를 첨부하세요");
-				$("#upload_file").focus();
-				return false;
-			}
 		});
 	});
 </script> 
@@ -29,7 +24,7 @@
     <div class="boardcontainer">
 		<br><br><br><br><br><br><br><br>
         <h1>질문하기</h1>
-        <form method="post" action="/board/qna/qnaWriteOk" id="boardFrm" enctype="multipart/form-data">
+        <form method="post" action="/board/qna/qnaEditOk" id="boardFrm" enctype="multipart/form-data">
         <input type="hidden" name="type_num" value="5"/>
         <input type="hidden" name="gender_type" value="U">
         <input type="hidden" name="board_num" value="${vo.board_num}"/>
@@ -41,10 +36,10 @@
 					<textarea name="content" id="introduce" rows="10" cols="90" placeholder='	질문 내용을 입력해주세요.'>${vo.content}</textarea>
 				</li>
 				<hr/>
-				<li class="qna_img_area"><span>이미지</span> &emsp; <input type="text" id="file_route" disabled="disabled" value="파일 선택">
+				<li class="qna_img_area"><span>이미지</span> &emsp; <input type="text" id="file_route" disabled="disabled" value="${vo.file1 }">
 					<label for="upload_file" id="upload">업로드</label>
 					<input type="file" id="upload_file" name="filename" accept="image/*"
-						style="position:absolute; clip:rect(0, 0, 0, 0);" value="${vo.file1}">
+						style="position:absolute; clip:rect(0, 0, 0, 0);" value="${vo.file1 }">
 						<img style="width: 300px; height:300px" id="img_section" src="/upload/${vo.file1}">
 					<script>
 						const reader = new FileReader();

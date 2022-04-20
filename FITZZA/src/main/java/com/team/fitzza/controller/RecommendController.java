@@ -232,110 +232,139 @@ public class RecommendController {
 	@PostMapping("/board/recommend/recommendEditOk")
 	public ResponseEntity<String> reviewEditOk(BoardVO vo, HttpSession session, HttpServletRequest req) {
 		System.out.println("recommendEditOk START!!!");
-		vo.setUser_id((String)session.getAttribute("logId"));
+		vo.setUser_id((String) session.getAttribute("logId"));
 		String path = session.getServletContext().getRealPath("/upload");
-		
-			
+
 		ResponseEntity<String> entity = null;
 		HttpHeaders headers = new HttpHeaders();
 		headers.add("Content-Type", "text/html; charset=UTF-8");
-		
-		List<String> fileList = new ArrayList<String>();	// 새로 DB에 업데이트 할 파일명 정리하는 컬렉션
-		List<String> newUpload = new ArrayList<String>();	// 폼에서 온 파일중 게시물에 없는 파일만 고른 컬렉션
+
+		List<String> fileList = new ArrayList<String>(); // 새로 DB에 업데이트 할 파일명 정리하는 컬렉션
+		List<String> newUpload = new ArrayList<String>(); // 폼에서 온 파일중 게시물에 없는 파일만 고른 컬렉션
 		try {
-			//	1. DB에서 파일명 가져오기
+			// 1. DB에서 파일명 가져오기
 			BoardVO dbfileVO = service.getFileName(vo.getBoard_num());
-			fileList.add(dbfileVO.getFile1());
-		
-			//	2. 삭제된 파일이 있을 경우 List에서 같은 파일명을 지운다.
-//					if(vo.getDelFile() != null) {		// null은 삭제파일이 없다
-//						for(String delFile : vo.getDelFile()) {
-//							fileList.remove(delFile);
-//						}
+			// fileList.add(dbfileVO.getFile1());
+
+			// 2. 삭제된 파일이 있을 경우 List에서 같은 파일명을 지운다.
+//				if(vo.getDelFile() != null) {		// null은 삭제파일이 없다
+//					for(String delFile : vo.getDelFile()) {
+//						fileList.remove(delFile);
 //					}
-			
-			//	3. 새로 업로드 하기
-			MultipartHttpServletRequest mr = (MultipartHttpServletRequest)req;
-			
+//				}
+
+			// 3. 새로 업로드 하기
+			MultipartHttpServletRequest mr = (MultipartHttpServletRequest) req;
+
 			// 새로 업로드된 MultipartFile객체를 얻어오기
 			List<MultipartFile> newFileList = mr.getFiles("filename");
-			if(newFileList != null) {	// 새로 업로드 된 파일이 있으면
-				for(int i=0; i<newFileList.size(); i++) {
+			if (newFileList != null) { // 새로 업로드 된 파일이 있으면
+				for (int i = 0; i < newFileList.size(); i++) {
 					MultipartFile newMf = newFileList.get(i);
 					String newUploadFilename = newMf.getOriginalFilename();
-					System.out.println((i+1)+"번째 파일 -> "+newUploadFilename);
+					System.out.println((i + 1) + "번째 파일 -> " + newUploadFilename);
 					// 리네임 작업
-					if(newUploadFilename != null && !newUploadFilename.equals("")) {
+					if (newUploadFilename != null && !newUploadFilename.equals("")) {
 						File f = new File(path, newUploadFilename);
-						if(fileList.contains(newUploadFilename)) {
-							//이미 해당 글에 업로드 된 파일이라면 리네임이나 업로드하지 않음
-						}else {
-							//해당 글에는 없지만 이미 업로드 된 파일이라면
-							//리네임 후 업로드
-							if(f.exists()) {
-								//있으면 여기서 rename
-								for(int n=1;;n++) {
-									int point = newUploadFilename.lastIndexOf(".");
-									String fileNameNoExt = newUploadFilename.substring(0, point);
-									String ext = newUploadFilename.substring(point+1);
-									
-									//새로운 파일명 만들어 존재유무 확인
-									String nf = fileNameNoExt+ " ("+n+")."+ext;
-									f = new File(path, nf);
-									if(!f.exists()) {	//없으면
-										newUploadFilename = nf;
-										break;
-									}
-								}//for
-							}
-							//업로드
-							try {
-								newMf.transferTo(f);
-							}catch(Exception ee) {}
+//							if(fileList.contains(newUploadFilename)) {
+//								//이미 해당 글에 업로드 된 파일이라면 리네임이나 업로드하지 않음
+//							}else {
+						// 해당 글에는 없지만 이미 업로드 된 파일이라면
+						// 리네임 후 업로드
+						if (f.exists()) {
+							// 있으면 여기서 rename
+							for (int n = 1;; n++) {
+								int point = newUploadFilename.lastIndexOf(".");
+								String fileNameNoExt = newUploadFilename.substring(0, point);
+								String ext = newUploadFilename.substring(point + 1);
+
+								// 새로운 파일명 만들어 존재유무 확인
+								String nf = fileNameNoExt + " (" + n + ")." + ext;
+								f = new File(path, nf);
+								if (!f.exists()) { // 없으면
+									newUploadFilename = nf;
+									break;
+								}
+							} // for
 						}
-						
-						//fileList.add(newUploadFilename);	//db에 등록할 파일명에 추가
-						newUpload.add(newUploadFilename);	//새로 업로드 목록 추가		
+						// 업로드
+						try {
+							newMf.transferTo(f);
+							newUpload.add(newUploadFilename);
+						} catch (Exception ee) {
+						}
+
+						if(i==0) {
+							if(dbfileVO.getFile1()!=null) {
+								fileDelete(path, dbfileVO.getFile1());
+							}
+							dbfileVO.setFile1(newUploadFilename);
+						}
+						if(i==1) {
+							if(dbfileVO.getFile2()!=null) {
+								fileDelete(path, dbfileVO.getFile2());
+							}
+							dbfileVO.setFile2(newUploadFilename);
+						}
+						if(i==2) {
+							if(dbfileVO.getFile3()!=null) {
+								fileDelete(path, dbfileVO.getFile3());
+							}
+							dbfileVO.setFile3(newUploadFilename);
+						}
+						if(i==3) {
+							if(dbfileVO.getFile4()!=null) {
+								fileDelete(path, dbfileVO.getFile4());
+							}
+							dbfileVO.setFile4(newUploadFilename);
+						}
+						if(i==4) {
+							if(dbfileVO.getFile5()!=null) {
+								fileDelete(path, dbfileVO.getFile5());
+							}
+							dbfileVO.setFile5(newUploadFilename);
+						}
+						// }
+
+						// fileList.add(newUploadFilename); //db에 등록할 파일명에 추가
+						// newUpload.add(newUploadFilename); //새로 업로드 목록 추가
+						// }
+						// }//for
+					} // if
+					else {
 					}
-				}//for
-			}//if
-			else {
+				}
 			}
-			
 			// fileList에 있는 DB에 등록할 파일명을 filename1, filename2에 셋팅
-			for(int k=0; k<newUpload.size(); k++) {
-				if(k==0) vo.setFile1(newUpload.get(k));
-				if(k==1) vo.setFile2(newUpload.get(k));
-				if(k==2) vo.setFile3(newUpload.get(k));
-				if(k==3) vo.setFile4(newUpload.get(k));
-				if(k==4) vo.setFile5(newUpload.get(k));
-			}
-			
+//				for(int k=0; k<newUpload.size(); k++) {
+//					if(k==0) vo.setFile1(newUpload.get(k));
+//				}
+			dbfileVO.setBoard_num(vo.getBoard_num());
 			// DB update
 			service.BoardUpdate(vo);
-			service.BoardFileUpdate(vo);
-			
-			//				// DB수정되었을 때
-//					if(vo.getDelFile()!=null) {
-//						for(String fname:vo.getDelFile()) {
-//							fileDelete(path, fname);
-//						}
-//					}			
-			
+			service.BoardFileUpdate(dbfileVO);
+
+			// // DB수정되었을 때
+//				if(vo.getDelFile()!=null) {
+//					for(String fname:vo.getDelFile()) {
+//						fileDelete(path, fname);
+//					}
+//				}			
+
 			// 글 내용보기로 이동
 			String msg = "<script>alert('오늘의 추천 글이 수정되었습니다.\\n글내용보기로 이동합니다');";
-			msg += "location.href='/board/recommend/recommendView?board_num="+vo.getBoard_num()+"';</script>";
-			
+			msg += "location.href='/board/qna/qnaView?board_num=" + vo.getBoard_num() + "';</script>";
+
 			entity = new ResponseEntity<String>(msg, headers, HttpStatus.OK);
-			
-		}catch(Exception e) {
+
+		} catch (Exception e) {
 			e.printStackTrace();
-			//DB잘못수정했을때
-			for(String fname:newUpload) {
+			// DB잘못수정했을때
+			for (String fname : newUpload) {
 				fileDelete(path, fname);
 			}
-			
-			//수정페이지로 이동
+
+			// 수정페이지로 이동
 			String msg = "<script>";
 			msg += "alert('글 수정 실패하였습니다'\\n수정폼으로 이동합니다)";
 			msg += "history.back();</script>";
@@ -344,6 +373,6 @@ public class RecommendController {
 		/*
 		 * for(String d:fileList) { System.out.println(d); }
 		 */
-		return entity;		
+		return entity;
 	}
 }

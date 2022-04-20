@@ -165,7 +165,7 @@
 				</c:if>
 				<c:if test="${logId == vo.user_id||logPermission =='admin'}">
 					<li class="edit_delete">
-						<a class="edit" href="/board/recommend/recommendEdit?board_num=${vo.board_num}" style="width:60px; height:30px; border:2px solid #54bab9; border-radius:15px; font-size:18px; display:inline-block; line-height:25px; text-align:center;">수정</a> 
+						<a class="edit" href="/board/qna/qnaEdit?board_num=${vo.board_num}" style="width:60px; height:30px; border:2px solid #54bab9; border-radius:15px; font-size:18px; display:inline-block; line-height:25px; text-align:center;">수정</a> 
 						<a id="del" href="javascript:delCheck()" style="width:60px; height:30px; border:2px solid #54bab9; border-radius:15px; font-size:18px; display:inline-block; line-height:25px; text-align:center; margin-left:20px">삭제</a>
 					</li>
 					<br/>

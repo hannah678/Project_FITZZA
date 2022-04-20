@@ -15,11 +15,6 @@
 				$("#content").focus();
 				return false;
 			}
-            if($("#upload_file01").val()==''){
-				alert("상세이미지를 한 개 이상 첨부하세요");
-				$("#upload_file01").focus();
-				return false;
-			}
 		});
 	});
 </script>
@@ -43,7 +38,7 @@
                     <li id="img2">상세이미지<br/>
                         <div>
                             <img class="img3" id="img_section1" src="/upload/${vo.file1}"><br/>
-                            <input type="text" id="file_route01"  disabled="disabled" value="파일 선택" >
+                            <input type="text" id="file_route01"  disabled="disabled" value="파일 선택" value="${vo.file1 }" >
                             <label for="upload_file01">업로드</label>
                             <input type="file" id="upload_file01" name="filename" accept="image/*" style="position:absolute; clip:rect(0, 0, 0, 0);"><br/>
                         </div>

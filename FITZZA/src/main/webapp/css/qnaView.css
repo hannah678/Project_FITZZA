@@ -12,6 +12,7 @@ body{
 }
 .qnalist{
     padding: 30px;
+    padding-top: 0px;
     border: 1px solid black;
 }
 .qnalist ul:nth-child(2) li:nth-child(2) img {
@@ -50,13 +51,14 @@ body{
     border-radius: 50%;
     margin-top:13px;
     position: relative;
+    left:40px; top:20px;
 }
 #level_frame{
     width: 110px;
     height: 110px;
     border-radius: 70%;
     position:absolute;
-    left:0; top:0;
+    left:40px; top:20px;
 }
 #content{
 	font-size: 2em; min-height:100px;

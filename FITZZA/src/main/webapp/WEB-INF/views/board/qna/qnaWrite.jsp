@@ -16,11 +16,6 @@
 				$("#introduce").focus();
 				return false;
 			}
-			if($("#upload_file").val()==''){
-				alert("이미지를 첨부하세요");
-				$("#upload_file").focus();
-				return false;
-			}
 		});
 	});
 </script> 
