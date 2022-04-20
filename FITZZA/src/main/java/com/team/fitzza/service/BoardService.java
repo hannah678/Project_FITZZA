@@ -18,6 +18,7 @@ public interface BoardService {
 		public List<BoardVO> BoardSelectAll(int type_num);
 		//오늘의코디
 		public List<BoardVO> BoardSelectLike(int type_num, String user_id);
+		public List<BoardVO> BoardSelectLikeOrder(int type_num, String user_id);
 		
 		public BoardVO BoardView(int board_num);
 		

@@ -112,11 +112,11 @@
 		alert("준비 중입니다.")
 	}
 	function notice_popup(href, w, h) {
-		var xPos = (window.screen.width/2) - (1400/2); // 가운데 정렬
+		var xPos = (window.screen.width/2) - (700/2); // 가운데 정렬
 		xPos += window.screenLeft; // 듀얼 모니터일 때
-		var yPos = (window.screen.height/2) - (1080/2);
+		var yPos = (window.screen.height/2) - (540/2);
 
-		window.open("/notice_popup", "공지사항", "width="+1400+", height="+1080+", left="+xPos+", top="+yPos+", menubar=yes, status=yes, titlebar=yes, resizable=yes");
+		window.open("/notice_popup", "공지사항", "width="+700+", height="+540+", left="+xPos+", top="+yPos+", menubar=yes, status=yes, titlebar=yes, resizable=yes");
 	}
 	</script>
 	<script>

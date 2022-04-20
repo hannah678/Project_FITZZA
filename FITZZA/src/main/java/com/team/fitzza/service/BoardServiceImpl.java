@@ -175,6 +175,11 @@ public class BoardServiceImpl implements BoardService{
 		return dao.OneBoardSelectLike(board_num);
 	}
 
+	@Override
+	public List<BoardVO> BoardSelectLikeOrder(int type_num, String user_id) {
+		return dao.BoardSelectLikeOrder(type_num, user_id);
+	}
+
 	
 	
 	

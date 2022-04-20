@@ -29,13 +29,13 @@ public class TodayCodiController {
 	BoardService service;
 	
 	@GetMapping("/board/todayCodi/todayCodiList")
-	public String todayCodiBoardList() {		
+	public String recommendBoardList() {		
 		return "/board/todayCodi/todayCodiList";
 	}
 
 	@ResponseBody //Ajax
 	@RequestMapping(value = "/board/todayCodi/todayCodiLists")
-	public List<BoardVO> todayCodiList(String order_type, HttpSession session) {
+	public List<BoardVO> recommendMoreView(String order_type, HttpSession session) {
 		System.out.println("order_type = "+order_type);
 		String user_id = ((String) session.getAttribute("logId"));
 		if(order_type!=null){
