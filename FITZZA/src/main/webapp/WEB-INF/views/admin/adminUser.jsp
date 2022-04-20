@@ -62,7 +62,7 @@ window.onload=function(){
 			 		addListHtml += "<li onclick=\'UserBoard(\""+data[i].user_id+"\")\'>"+data[i].permission+"</li>"
 			 		addListHtml += "</ul></li>"
 				}
-				if(data.length<8){
+				if(data.length<20){
 					$("#moreViewMember01").remove();
 				} 
 				$(".member_list").append(addListHtml);
@@ -193,7 +193,7 @@ $(document).ready(function(){
 				 	addListHtml += "<li onclick=\'UserBoard(\""+data[i].user_id+"\")\'>"+data[i].permission+"</li>"
 				 	addListHtml += "</ul></li>"
 				}
-				if(data.length<8){
+				if(data.length<20){
 					$("#moreViewMember01").remove();
 				} 
 				$(".member_list").append(addListHtml);

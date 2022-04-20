@@ -4,10 +4,15 @@
 <mapper namespace="com.team.fitzza.dao.AdminDAO">
 	<!-- 신고 관리 -->
 	<select id="reportSelect" resultType="BoardVO">
-		SELECT A.report_num, C.category_name, A.board_num, B.title, B.user_id, A.user_id as reported_id, A.report_content, A.report_time, A.state
-		FROM board_report A, board B, report_category C
-		WHERE A.board_num=B.board_num
-		AND A.category_num=C.category_num
+		SELECT  A.report_num,  A.board_num, A.user_id as reported_id, A.report_content, A.report_time, A.state,B.title, B.user_id, B.type_num, 
+				C.category_name, D.type_name
+		FROM 	board_report A
+		JOIN	board B
+		ON		A.board_num=B.board_num
+		JOIN 	report_category C
+		ON   	A.category_num=C.category_num
+		JOIN	board_type D
+		ON		B.type_num=D.type_num 	
 		ORDER BY A.report_num DESC;
 	</select>
 	

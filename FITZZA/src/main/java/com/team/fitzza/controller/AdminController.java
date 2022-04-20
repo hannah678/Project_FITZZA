@@ -74,7 +74,7 @@ public class AdminController {
 	public List<MemberVO> newsMoreView(PagingVO pvo, @RequestParam(value="startNum", required=false)String startNum) throws Exception {
 		System.out.println("멤버리스트!");
 		pvo.setStart(Integer.parseInt(startNum));
-		pvo.setEnd(8);		
+		pvo.setEnd(20);		
 		//회원 명단
 		return service.AllUser(pvo);
 		}
@@ -100,7 +100,7 @@ public class AdminController {
 	public List<MemberVO> searchMoreView(@RequestParam(value="startNum", required=false)String startNum,
 	String searchKey, String searchWord) throws Exception {
 		int start = Integer.parseInt(startNum);
-		int end = 8;
+		int end = 20;
 		System.out.println("searchKey -> "+searchKey);
 		System.out.println("searchWord -> "+searchWord);
 		return service.memberSearch(searchKey, "%"+searchWord+"%", start, end);
