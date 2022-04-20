@@ -6,8 +6,7 @@
     <style>
     	footer {display:none;}
   	</style>
-  	<script>
-		
+<script>		
   	window.onload=function(){
 		var imgTag='';
 		var url = '/board/todayCodi/todayCodiLists';
@@ -60,28 +59,74 @@
 			}
 		});
 				
-		$(".like_btn").click(function(){
-				var cb = $(this);
-				var heart_click = cb.next().val();
-				var params = {board_num: heart_click};
-				$.ajax({
-					url : '/board/Like',
-					type : 'POST',
-					dataType : 'json',
-					data :params,
-					success : function(data){
-						if(data.cnt==1){
-						    cb.children().first().attr("src", "/img/heart_empty.png");
-						    cb.children().last().text("추천 수 : "+data.like_num);
-						}else{
-						    cb.children().first().attr("src", "/img/heart_fill.png");
-						    cb.children().last().text("추천 수 : "+data.like_num);
-						}	 
-					} 				
-				});
-		})
+		
 	});
-	</script>
+
+	var OType;
+	function change(order_type){
+		if(OType!=order_type){
+			OType = order_type;
+			$("#columns").empty();
+			moreList();
+		}
+	}
+	function moreList(){
+		var imgTag='';
+		var url = '/board/todayCodi/todayCodiLists';
+		var param = {"order_type" : OType};
+	
+		$.ajax({
+			url : url,
+			type : 'POST',
+			dataType : 'json',
+			data :param,
+			success : function(data){
+				for (var i = 0; i < data.length; i++) {
+					console.log(data[i].like_num);
+					imgTag +="<figure>";
+					imgTag += "<img class='tc_upload_img' src='/upload/todayCodi/"+data[i].file1+"'/>";
+					imgTag += "<div class='hover-effect'>";
+					imgTag += "<a href='javascript:;'>";
+					imgTag += "<img src='/upload/"+data[i].profile_image+"'>";
+					imgTag += "<p>"+data[i].user_nickname+"</p>";
+					imgTag += "<span>"+data[i].write_date + data[i].heart_type+"</span>";
+					
+					if(data[i].heart_type==1){
+							imgTag += "<p class='like_btn'><img src='/img/heart_fill.png' class='heart_empty' alt='채운하트'>";
+					}else{
+							imgTag += "<p class='like_btn'><img src='/img/heart_empty.png' class='heart_empty' alt='빈하트'>";
+					}
+					
+					imgTag += "<span>추천 수 : "+data[i].like_num+"</span></p>";
+					imgTag += "<input type='hidden' value='"+data[i].board_num+"'/>";			
+					imgTag += "<div class='buttons'><button>수정</button><button>삭제</button><button>신고</button></div></a></div>";	
+					imgTag +="</figure>";
+				}				
+				$("#columns").append(imgTag);
+			}
+		});
+	}
+	$(document).on('click', '.like_btn', function(){
+		var cb = $(this);
+		var heart_click = cb.next().val();
+		var params = {board_num: heart_click};
+		$.ajax({
+			url : '/board/Like',
+			type : 'POST',
+			dataType : 'json',
+			data :params,
+			success : function(data){
+				if(data.cnt==1){
+				    cb.children().first().attr("src", "/img/heart_empty.png");
+				    cb.children().last().text("추천 수 : "+data.like_num);
+				}else{
+				    cb.children().first().attr("src", "/img/heart_fill.png");
+				    cb.children().last().text("추천 수 : "+data.like_num);
+				}	 
+			} 				
+		});
+	});
+</script>
 <body>
 	<div id="tc_container">
 		<div id="tc_wrap">
@@ -99,49 +144,3 @@
 		</div>
 	</div>
 </body>
-<script>
-var OType;
-function change(order_type){
-	if(OType!=order_type){
-		OType = order_type;
-		$("#columns").empty();
-		moreList();
-	}
-}
-function moreList(){
-	var imgTag='';
-	var url = '/board/todayCodi/todayCodiLists';
-	var param = {"order_type" : OType};
-
-	$.ajax({
-		url : url,
-		type : 'POST',
-		dataType : 'json',
-		data :param,
-		success : function(data){
-			for (var i = 0; i < data.length; i++) {
-				console.log(data[i].like_num);
-				imgTag +="<figure>";
-				imgTag += "<img class='tc_upload_img' src='/upload/todayCodi/"+data[i].file1+"'/>";
-				imgTag += "<div class='hover-effect'>";
-				imgTag += "<a href='javascript:;'>";
-				imgTag += "<img src='/upload/"+data[i].profile_image+"'>";
-				imgTag += "<p>"+data[i].user_nickname+"</p>";
-				imgTag += "<span>"+data[i].write_date + data[i].heart_type+"</span>";
-				
-				if(data[i].heart_type==1){
-						imgTag += "<p class='like_btn'><img src='/img/heart_fill.png' class='heart_empty' alt='채운하트'>";
-				}else{
-						imgTag += "<p class='like_btn'><img src='/img/heart_empty.png' class='heart_empty' alt='빈하트'>";
-				}
-				
-				imgTag += "<span>추천 수 : "+data[i].like_num+"</span></p>";
-				imgTag += "<input type='hidden' value='"+data[i].board_num+"'/>";			
-				imgTag += "<div class='buttons'><button>수정</button><button>삭제</button><button>신고</button></div></a></div>";	
-				imgTag +="</figure>";
-			}				
-			$("#columns").append(imgTag);
-		}
-	});
-}
-</script>
