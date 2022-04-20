@@ -20,6 +20,7 @@ body{
 	font-family: 'Noto Sans KR';
 	font-weight: 600;
     font-size: xx-large;
+    white-space: pre-wrap;
 }
 #file_img{
     float: left;

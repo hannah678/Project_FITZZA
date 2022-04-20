@@ -56,7 +56,7 @@ body{
     position:absolute;
     left:0; top:0;
 }
-#content{font-size: 2em;}
+#content{font-size: 2em;white-space: pre-wrap;}
 li{list-style-type: none;}
 #title{
 	width:750px; min-height:50px;

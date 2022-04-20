@@ -22,8 +22,8 @@ body{
 	z-index:1;
 	background-color:rgba(255,255,255,0.5)	
 }
-
 /* 글 보기 */
+.review_container {background-color:rgba(255,255,255.0.5)}
 .review_container > ul > li {line-height:35px}
 .review_container > ul > li:nth-child(3) {
 	width:400px; height:50px;
@@ -107,7 +107,7 @@ body{
 }
 
 #content{
-	width:100%; height:400px;
+	width:100%; height:200px;
 	font-size:20px;
 }
 #content > strong {

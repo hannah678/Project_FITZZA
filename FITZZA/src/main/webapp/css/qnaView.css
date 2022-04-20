@@ -60,7 +60,8 @@ body{
 }
 #content{
 	font-size: 2em; min-height:100px;
-	margin-bottom:30px
+	margin-bottom:30px;
+	white-space: pre-wrap;
 }
 li{list-style-type: none;}
 #title{
