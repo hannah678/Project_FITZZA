@@ -33,7 +33,7 @@
     </select>
     
     <select id="BoardSelectAllSE" resultType="com.team.fitzza.vo.BoardVO">
-        SELECT   A.board_num, A.title, A.user_id, A.write_date, A.hit, A.content, B.profile_image, B.user_nickname, C.file1
+        SELECT   A.board_num, A.title, A.user_id, A.write_date, A.hit, A.content, B.profile_image, B.user_nickname, C.file1, C.file2
 		FROM     board A, user B, board_common_image C 
 		WHERE    A.user_id=B.user_id 
 		AND 	 A.board_num=C.board_num 
@@ -60,7 +60,7 @@
     
     <!-- reviewView --><!-- TodayView --><!-- QnAView --><!-- 검색 -->
     <select id="boardSearch" resultType="BoardVO">
-      SELECT   A.board_num, A.title, A.user_id, A.write_date, A.hit, C.profile_image, C.user_nickname, D.file1 
+      SELECT   A.board_num, A.title, A.user_id, A.write_date, A.hit, C.profile_image, C.user_nickname, D.file1, D.file2
       FROM     board A, user C, board_common_image D 
       WHERE    A.board_num=D.board_num 
       AND      A.user_id=C.user_id 
@@ -216,5 +216,16 @@
 		</if>
 		ORDER BY A.board_num DESC
 		LIMIT 	 #{param2.start}, #{param2.end}
+    </select>
+    
+    <insert id="votein">
+    	INSERT INTO voted_user(board_num, vote_item_order, user_id)
+    	values (#{board_num}, #{vote_item_order}, #{user_id})
+    </insert>
+    
+    <select id="votecnt" resultType="int">
+    	SELECT COUNT(user_id)
+    	FROM voted_user
+    	WHERE board_num = #{param2.board_num} and vote_item_order=#{param1}
     </select>
 </mapper>

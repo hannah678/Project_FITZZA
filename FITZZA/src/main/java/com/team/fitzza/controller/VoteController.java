@@ -18,6 +18,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
@@ -27,6 +28,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.team.fitzza.service.BoardService;
 import com.team.fitzza.vo.BoardVO;
 import com.team.fitzza.vo.PagingVO;
+import com.team.fitzza.vo.ReplyVO;
 
 
 @Controller
@@ -43,13 +45,12 @@ public class VoteController {
 	
 	@ResponseBody //Ajax
 	@RequestMapping(value = "/board/vote/voteLists")
-	public List<BoardVO> newsMoreView(PagingVO pvo, Model model
-			, @RequestParam(value="startNum", required=false)String startNum) throws Exception {
+	public List<BoardVO> newsMoreView(PagingVO pvo, Model model, @RequestParam(value="startNum", required=false)String startNum) throws Exception {
 		System.out.println("투표 페이지vo"+pvo);
 //		startNum="5";
 		pvo.setStart(Integer.parseInt(startNum));
 		pvo.setEnd(5);
-		return service.BoardSelectAllSE(4,pvo);
+		return service.BoardSelectAllSE(6,pvo);
 		}
 	
 	//검색 기능
@@ -68,7 +69,7 @@ public class VoteController {
 		int end = 5;
 		System.out.println("searchKey -> "+searchKey);
 		System.out.println("searchWord -> "+searchWord);
-		return service.boardSearch(searchKey, "%"+searchWord+"%", start, end, 4);
+		return service.boardSearch(searchKey, "%"+searchWord+"%", start, end, 6);
 		}
 	
 	
@@ -156,6 +157,9 @@ public class VoteController {
 			String user_id = (String)request.getSession().getAttribute("logId");
 			vo.setBoard_num(service.boardNum(user_id));
 			service.BoardFileInsert(vo);
+			
+			
+
 			//레코드 추가 성공
 			String msg = "<script>alert('자료실에 글이 등록되었습니다');location.href='/board/vote/voteList';</script>";
 			entity = new ResponseEntity<String>(msg, headers, HttpStatus.OK);	//200
@@ -189,6 +193,12 @@ public class VoteController {
 		System.out.println("조회수 증가");
 		service.hitCount(board_num); //조회수 증가
 		mav.addObject("vo", service.BoardView(board_num));
+		BoardVO vo = new BoardVO();
+		vo.setBoard_num(board_num);
+		mav.addObject("cnt1", service.votecnt(1,vo));
+		mav.addObject("cnt2", service.votecnt(2,vo));
+		mav.addObject("cnt3", service.votecnt(1,vo)+service.votecnt(2,vo));
+		
 		mav.setViewName("/board/vote/voteView");
 		return mav;
 	}
@@ -302,6 +312,14 @@ public class VoteController {
 			}
 
 			return entity;		
+		}
+		
+		//투표
+		@RequestMapping(value="/vote/votein", method=RequestMethod.POST)
+		@ResponseBody
+		public int votein(BoardVO vo) {
+			return service.votein(vo);
+
 		}
 	
 }

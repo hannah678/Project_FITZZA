@@ -57,7 +57,7 @@
                 </div>
             </li>
 			<li><textarea name="content" id="content" rows="30" cols="100" placeholder="본문입력하세요"></textarea> </li>
-				<li style="height:70px;"><input type='submit' value='등록' id="reviewsubmit" class="button01" style="margin-right:20px;"/></li>
+				<li style="height:70px;"><input type='submit' value='등록' id="votesubmit" class="button01" style="margin-right:20px;"/></li>
 		</ul>
 	</form>
 </div>	

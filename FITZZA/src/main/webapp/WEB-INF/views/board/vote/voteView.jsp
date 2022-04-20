@@ -11,7 +11,6 @@ function delCheck(){
 	}
 }
 
-
 $(function(){
 	//투표제출
 	$("#voteFrm").submit(function(){
@@ -19,9 +18,9 @@ $(function(){
 		var params = $("#voteFrm").serialize();
 		
 		$.ajax({
-			url : '#',
-			data:params,
-			type:'POST',
+			url :'/vote/votein',
+			data: params,
+			type: 'POST',
 			success : function(su){
 				$(".summary").css("display","none");
 				
@@ -31,19 +30,20 @@ $(function(){
 					tag += "<ol class='result'><li>";
 					tag += "<p id='img_1'><strong title='이미지1'>이미지 1</strong><span title='투표수'>~~표</span></p><p class='graph'>";
 					tag += "<span class='box'><span style='width:31%'>&nbsp;</span></span>";
-					tag += "<em title='투표율"'>(~~%)</em></p></li>";
+					tag += "<em title='투표율'>(~~)</em></p></li>";
 					tag += "<li><p id='img_2'><strong title='이미지2'>이미지 2</strong><span title='투표수'>~~표</span></p><p class='graph'>";
 					tag += "<span class='box'><span style='width:31%'>&nbsp;</span></span>";
-					tag += "<em title='투표율"'>(~~%)</em></p></li></ol>";
+					tag += "<em title='투표율'>(~~)</em></p></li></ol>";
 					
-					$("#vote").html(tag);
+					$("#vote2").html(tag);
+					alert("알람");
 
 			},
 			error : function(er){
-				console.log(e.responseText);
+				console.log(er.responseText);
 				alert("투표 에러 발생");
 			}
-		})
+		});
 	});
 	//모달 신고
 	$("#reportForm").submit(function(){
@@ -176,22 +176,22 @@ $(function(){
 });
 
 //프레임 이미지
-window.onload=function(){
-	var exp = ${vo.exp};
-	document.getElementById("level_frame").src="${vo.frame_img}";
-}
+//window.onload=function(){
+//	var exp = ${vo.exp};
+//	document.getElementById("level_frame").src="${vo.frame_img}";
+//}
 </script>
 </head>
 <body>
 <div id = review-wrapper>
 	<div class="review_container">
 		<ul>
-			<li class="Top_menu"><div id="Top_name"><a href=#">제목</a></div><div style="float:right"><a href=#">목록으로</a></div></li>
+			<li class="Top_menu"><div id="Top_name"><a href=#">제목</a></div><div style="float:right"><a href="#">목록으로</a></div></li>
 			<li><div id="main_area">
-					<div class="vote_box"><a href="#"><img src="../images/31.png"></a></div><!-- 이미지와 상품 링크 연동 -->
-					<div class="vote_box"><a href="#"><img src="../images/31.png"></a></div>
+					<div class="vote_box"><a href="#"><img src="#"></a></div><!-- 이미지와 상품 링크 연동 -->
+					<div class="vote_box"><a href="#"><img src="#"></a></div>
 				</div>
-				<div id="vote">
+				<div id="vote2">
 				<!--  결과창 
 						<div class="summary">
 							<h2>제목</h2>
@@ -201,7 +201,7 @@ window.onload=function(){
 							<li>
 								<p id="img_1"><strong title="이미지1">이미지 1</strong><span title="투표수">~~표</span></p>
 								<p class="graph">
-									<span class="box"><span style="width:31%">&nbsp;</span></span><!-- width에 투표율(투표/전체) -->
+									<span class="box"><span style="width:31%">&nbsp;</span></span>
 									<em title="투표율">(~~%)</em>	
 								</p>
 							</li>
@@ -212,8 +212,8 @@ window.onload=function(){
 									<em title="투표율">(~~%)</em>	
 								</p>
 							</li>
-						</ol>
-				</div> -->
+						</ol>-->
+				</div> 
 				<!-- 투표할때 -->
 				<!--  -->
 				<div id="vote">
@@ -221,21 +221,23 @@ window.onload=function(){
 							<h2>제목</h2>
 							<p>더 나은곳에 투표하세요</p>
 						</div>
-						<form method="post" id="voteFrm" action="#">
+						<form method="POST" id="voteFrm">
+						<input type="hidden" name="user_id" value="${vo.user_id}"/>
+						<input type="hidden" name="board_num" value="${vo.board_num}"/>
 						<ol class="result">
 							<li>
-								<input type="radio" name="1" value="img1"/>
+								<input type="radio" name="vote_item_order" value="1"/>
 								<p id="img_1"><strong title="이미지1">이미지 1</strong></p>
 							</li>
 							<li>
-								<input type="radio" name="1" value="img2"/>
+								<input type="radio" name="vote_item_order" value="2"/>
 								<p id="img_2"><strong title="이미지2">이미지 2</strong></p>
 							</li>
 							<li><input type="submit" value="등록"/></li>
 						</ol>
 						</form>
 				</div>
-				<div id="content">본문</div>
+				<div id="content">본문 ${cnt1} ${cnt2} ${cnt3} ${cnt4}</div>
 			</li>
 			<hr>
 			<li class="Top_menu"><div id="reportModal" class="button02">신고</div> <div class="button01">수정</div> <div class="button01">삭제</div></li>
@@ -246,7 +248,7 @@ window.onload=function(){
 				<td colspan='3' style="text-align:center;">작성자 정보</td>
 				</tr>
 					<tr>
-						<td><img src="${vo.profile_image}" alt="프로필 이미지"><img id="level_frame" alt="등급 프레임 이미지"></td>
+						<td><img src="#" alt="프로필 이미지"><img id="level_frame" alt="등급 프레임 이미지"></td>
 						<td>작성자 이름</td>
 						<td>신고받은 횟수</td>
 					</tr>

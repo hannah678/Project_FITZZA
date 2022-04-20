@@ -139,6 +139,16 @@ public class BoardServiceImpl implements BoardService{
 	public void LikeDelete(BoardVO vo) {
 		dao.LikeDelete(vo);
 	}
+	
+	@Override
+	public int votein(BoardVO vo) {
+		return dao.votein(vo);
+	}
+	
+	@Override
+	public int votecnt(int vote_item_order,BoardVO vo){
+		return dao.votecnt(vote_item_order,vo);
+	}
 
 	@Override
 	public List<BoardVO> boardSearch(String searchKey, String string, int start, int end, int type_num) {

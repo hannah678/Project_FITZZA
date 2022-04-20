@@ -49,8 +49,22 @@ public class BoardVO {
 	private int like_num; 
 	private int total_like;
 	
+	private int vote_item_order; //투표 고른 결과
+	private String vote_item_name;
 	
 	
+	public int getVote_item_order() {
+		return vote_item_order;
+	}
+	public void setVote_item_order(int vote_item_order) {
+		this.vote_item_order = vote_item_order;
+	}
+	public String getVote_item_name() {
+		return vote_item_name;
+	}
+	public void setVote_item_name(String vote_item_name) {
+		this.vote_item_name = vote_item_name;
+	}
 	public int getTotal_like() {
 		return total_like;
 	}

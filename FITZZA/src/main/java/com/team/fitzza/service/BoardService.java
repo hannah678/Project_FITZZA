@@ -52,6 +52,9 @@ public interface BoardService {
 		public int LikeCount(BoardVO vo);
 		public void LikeInsert(BoardVO vo);
 		public void LikeDelete(BoardVO vo);
+		
+		public int votein(BoardVO vo);
+		public int votecnt(int vote_item_order, BoardVO vo);
 		//검색
 		public List<BoardVO> boardSearch(String searchKey, String string, int start, int end, int type_num);
 		public List<BoardVO> recommendBoardSelect(int i, PagingVO pvo, String gender_type);

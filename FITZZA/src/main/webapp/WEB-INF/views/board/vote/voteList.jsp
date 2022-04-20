@@ -14,34 +14,16 @@
 	<hr/>
 	<div id="vote_container"><!--  투표 글 들어갈곳 한페이지에 보일건 8개정도-->
 		<ul id="voteListUl">
-		<%--<div class="post_vote"><!--  게시글 하나 -->
-		 	<div class="sum-img">
-		 	 	<a href="#" class="sum-img1"><img src="/img/exampleimg.png" width="130" width="130"/></a> <!--  이미지 들어갈곳 -->
-		 		<a href="#" class="sum-img2"><img src="/img/exampleimg.png" width="130" width="130"/></a> <!--  이미지 들어갈곳 -->
-		 	</div>
-		 	<div class="post">
-	  		     <div class="post_top">
-	  		       <div class="title_area">제목</div><!--  제목 -->
-	  		       <div class="post_status">진행중</div><!-- 진행중 -->
-	  		     </div>
-	  		     <div class="post_bottom"> <!--  작성자 작성일 조회수 등 들어갈곳 -->
-	  		       <img src="/img/exampleimg.png" width="30" width="30"/><!--  프로필 들어갈곳 -->
-	  		       <span>작성자</span><!--  닉네임 -->
-	  		       <span>작성날짜</span><!--  작성일자 -->
-	  		     </div>
-	  		   </div>
-		</div>--%>
-		 
 	</ul>
-	<a id="moreViewReview"><img src="/img/더보기.png" style="width:100px;"></a>
+	<a id="moreViewVote"><img src="/img/더보기.png" style="width:100px;"></a>
 	</div><!--  container -->
 		 
     
         <form method="get" action="/board/vote/search" id="searchFrm">
             <select name="searchKey">
-                <option value="subject">제목</option>
+                <option value="title">제목</option>
                 <option value="content">내용</option>
-                <option value="userid">작성자</option>
+                <option value="user_id">작성자</option>
             </select>
             <input type="text" name="searchWord" id="searchWord"/>
             <input type="submit" value="Search"/>
@@ -58,7 +40,7 @@
        });
    		
        window.onload=function(){
-			var startNum = $(".post_vote").length; 
+			var startNum = $("#voteListUl div").length/5; 
 			var addListHtml = "";
 			 console.log(startNum); 
 			var url;
@@ -68,7 +50,7 @@
 			var word = params.get('searchWord');
 			var pathname = window.location.pathname;
 			var pn = pathname.substring(pathname.lastIndexOf('/')+1);
-			if(pn=='post_vote'){
+			if(pn=='voteList'){
 				url = '/board/vote/voteLists';
 				param = {
 					"startNum" : startNum 
@@ -105,10 +87,10 @@
 			});
        }
    
-       $('#moreViewReview').click(function(){
-			var startNum = $(".post_vote").length; // 
+       $('#moreViewVote').click(function(){
+    	   var startNum = $("#voteListUl div").length/5; 
 			var addListHtml = "";
-			 console.log("moreView START!! :::" + startNum); 
+			 console.log(startNum); 
 			var url;
 			var param;
 			const params = new URL(window.location.href).searchParams;
@@ -116,7 +98,7 @@
 			var word = params.get('searchWord');
 			var pathname = window.location.pathname;
 			var pn = pathname.substring(pathname.lastIndexOf('/')+1);
-			if(pn=='post_vote'){
+			if(pn=='voteList'){
 				url = '/board/vote/voteLists';
 				param = {
 					"startNum" : startNum 
@@ -128,7 +110,7 @@
 					"searchKey" : key,
 					"searchWord" : word
 				};
-				console.log("moreView startNum :: "+startNum);
+				console.log("search이다 : "+startNum);
 			}
 			$.ajax({
 				url : url,
@@ -143,15 +125,13 @@
 						addListHtml += "<div class='post'><div class='post_top'><div class='title_area'>"+data[i].title+"</div><div class='post_status'>진행중</div>";
 						addListHtml += "<div class='post_bottom'><img src='/upload/" + data[i].profile_image + "' width='30' width='30'/>";
 						addListHtml += "<span>"+ data[i].user_nickname+ "</span><span>"+data[i].write_date+"</span></div></div></div>";
+						if(data[i].board_num==0){
+							$("#moreView").remove();
+						} 
 					}
-					if(data.length<5){
-						$("#moreViewReview").remove();
-					} 
 					$("#voteListUl").append(addListHtml);
 					/* console.log(addListHtml); */
 				}
 			});
-		   
-			
 		});
 </script>
