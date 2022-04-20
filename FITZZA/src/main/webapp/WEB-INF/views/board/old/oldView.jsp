@@ -153,6 +153,7 @@ header a {font-size:20px}
 	<div class="oldboard">
 		<br> <br> <br> <br> <br>
 		<div class="oldlist">
+			<a href="/board/old/oldList" style="float:right; color:black; font-size:24px; font-weight:400;">목록으로</a>
 			<ul>
 				<img src="/upload/${vo.file1}" id="file_img" />
 				<br />
@@ -172,11 +173,11 @@ header a {font-size:20px}
 						data-target="#reportModal" data-toggle="modal" /></p>
 				</c:if>
 				<c:if test="${logId == vo.user_id||logPermission =='admin'}">
-					<p style="float: right;">
-						<a href="/board/old/oldEdit?board_num=${vo.board_num}" style="color: blue;">수정</a> 
-						<a id="del" href="javascript:delCheck()" style="color: blue;">삭제</a>
-					</p>
-					<br/><br/>
+					<li class="edit_delete">
+						<a href="/board/old/oldEdit?board_num=${vo.board_num}" style="color:#54bab9; width:60px; height:30px; border:2px solid #54bab9; border-radius:15px; font-size:18px; display:inline-block; line-height:25px; text-align:center;">수정</a> 
+						<a id="del" href="javascript:delCheck()" style="color:#54bab9; width:60px; height:30px; border:2px solid #54bab9; border-radius:15px; font-size:18px; display:inline-block; line-height:25px; text-align:center; margin-left:20px">삭제</a>
+					</li>
+					<br/>
 				</c:if>
 				<hr />
 				<li id="seller"><b>판매자 정보</b>

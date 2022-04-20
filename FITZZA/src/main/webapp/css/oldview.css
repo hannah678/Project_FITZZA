@@ -42,17 +42,20 @@ li{
     border: 0;
 }
 #report{
-    width: 70px;
-    height: 35px;
+    width: 100px; height: 40px;
     font-weight: 600;
-    background-image: url("/img/배경.png");
-    color: red;
-    border: 0;
-    position: relative;
-    top:0px;
-    left: 600px;
-    font-size: 1em;
+    color:red;
+    border: 2px solid red;
+    border-radius:20px;
+    font-size: 1.2em;
     line-height:35px;
+    transition:all 0.5s;
+    float:right;
+    position:relative;
+    bottom:40px;
+}
+.edit_delete {
+	float:right;
 }
 .oldViewId, .oldViewHit {display:block; height:65px;}
 #seller{
