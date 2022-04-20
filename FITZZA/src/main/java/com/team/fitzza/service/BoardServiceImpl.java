@@ -46,7 +46,7 @@ public class BoardServiceImpl implements BoardService{
 		return dao.reportUp(vo);
 	}
 	@Override
-	public int getType_num(int type_num) {
+	public int getType_num(int type_num) { 
 		return dao.getType_num(type_num);
 	}
 
@@ -153,6 +153,12 @@ public class BoardServiceImpl implements BoardService{
 	@Override
 	public int totalLike(String user_id) {
 		return dao.totalLike(user_id);
+	}
+
+	@Override
+	public List<BoardVO> recommendBoardSelect(int i, PagingVO pvo, String gender_type) {
+		// TODO Auto-generated method stub
+		return dao.recommendBoardSelect(i, pvo, gender_type);
 	}
 
 	

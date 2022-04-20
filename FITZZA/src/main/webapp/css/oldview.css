@@ -144,7 +144,9 @@ li{
 	color:blue;
 }
 #replyList #reply_level_frame {margin-right:30px}
-#replyList > ul li div p {margin-top:10px; margin-left:10px;}
+#replyList > ul li div p {
+	margin-top:10px; margin-left:110px;
+}
 
 #pro_img{
     width: 60%;

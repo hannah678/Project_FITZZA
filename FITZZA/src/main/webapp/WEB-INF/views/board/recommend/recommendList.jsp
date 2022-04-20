@@ -1,6 +1,48 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <link rel="stylesheet" href="/css/recList.css" type="text/css">
+<script>
+$(document).ready(function(){
+	$('#rec_a').addClass('button_toggled');
+	$('#rec_m').addClass('button_normal');
+	$('#rec_w').addClass('button_normal');
+	$('#rec_u').addClass('button_normal');
+	$('#user_leave').addClass('user_leave');
+	$('#rec_a').click( function() {
+		if($(this).hasClass('button_normal')) {
+	        $(this).removeClass('button_normal').addClass('button_toggled');
+	        $('#rec_m').removeClass('button_toggled').addClass('button_normal');
+	        $('#rec_w').removeClass('button_toggled').addClass('button_normal');
+	        $('#rec_u').removeClass('button_toggled').addClass('button_normal');
+	    }
+      });
+	$('#rec_m').click( function() {
+		if($(this).hasClass('button_normal')) {
+	        $(this).removeClass('button_normal').addClass('button_toggled');
+	        $('#rec_a').removeClass('button_toggled').addClass('button_normal');
+	        $('#rec_w').removeClass('button_toggled').addClass('button_normal');
+	        $('#rec_u').removeClass('button_toggled').addClass('button_normal');
+	    }
+      });
+	$('#rec_w').click( function() {
+		if($(this).hasClass('button_normal')) {
+	        $(this).removeClass('button_normal').addClass('button_toggled');
+	        $('#rec_m').removeClass('button_toggled').addClass('button_normal');
+	        $('#rec_a').removeClass('button_toggled').addClass('button_normal');
+	        $('#rec_u').removeClass('button_toggled').addClass('button_normal');
+	    }
+      });
+	$('#rec_u').click( function() {
+		if($(this).hasClass('button_normal')) {
+	        $(this).removeClass('button_normal').addClass('button_toggled');
+	        $('#rec_m').removeClass('button_toggled').addClass('button_normal');
+	        $('#rec_w').removeClass('button_toggled').addClass('button_normal');
+	        $('#rec_a').removeClass('button_toggled').addClass('button_normal');
+	    }
+      });
+});
+</script>
+
 <body>
 <div class="recboard">
     <br><br><br><br><br><br><br>
@@ -11,11 +53,11 @@
     <div id="r_write">
         <a href="/board/recommend/recommendWrite">글쓰기</a>
     </div>
-    <div>
-    	<button onclick="change()">전체보기</button>
-    	<button onclick="change('M')">남성의류</button>
-    	<button onclick="change('W')">여성의류</button>
-    	<button onclick="change('U')">남녀공용</button>
+    <div id="rec_btn">
+    	<button onclick="change()" id="rec_a">전체보기</button>
+    	<button onclick="change('M')" id="rec_m">남성의류</button>
+    	<button onclick="change('W')" id="rec_w">여성의류</button>
+    	<button onclick="change('U')" id="rec_u">남녀공용</button>
     </div>
     <div class="recli">
 	    <ul class="recommendlist" id="recommendlist">

@@ -90,3 +90,29 @@ a:link, a:visited, a:hover{
     padding-top:30px
  }
  #searchWord {margin:0 10px}
+  #rec_btn {margin-bottom:50px}
+ #rec_btn button {
+ 	width:100px; height:30px;
+ 	font-size:18px;
+ 	line-height:30px;
+ 	margin-right:30px;
+ 	border-radius:15px;
+ }
+ .button_toggled{
+	width:100px; height:30px;
+	margin:0 10px;
+	border:0;
+	border-radius:15px;
+	color:#fff;
+	cursor:pointer;
+	background-color:#276968;
+}
+.button_normal {
+	width:100px; height:30px;
+	margin:0 10px;
+	border:0;
+	border-radius:15px;
+	background-color:#54bab9;
+	color:#fff;
+	cursor:pointer;
+}

@@ -159,11 +159,11 @@
                 </li>
                 <li id="title">${vo.title}</li>
                 <hr/>
-                <c:if test="${logId != vo.user_id}">
+                <c:if test="${logId != vo.user_id && logPermission !='admin'}">
 					<li><input type="button" value="신고" id="qna_report"
 						data-target="#reportModal" data-toggle="modal" /></li>
 				</c:if>
-				<c:if test="${logId == vo.user_id}">
+				<c:if test="${logId == vo.user_id||logPermission =='admin'}">
 					<li class="edit_delete">
 						<a class="edit" href="/board/recommend/recommendEdit?board_num=${vo.board_num}" style="width:60px; height:30px; border:2px solid #54bab9; border-radius:15px; font-size:18px; display:inline-block; line-height:25px; text-align:center;">수정</a> 
 						<a id="del" href="javascript:delCheck()" style="width:60px; height:30px; border:2px solid #54bab9; border-radius:15px; font-size:18px; display:inline-block; line-height:25px; text-align:center; margin-left:20px">삭제</a>

@@ -167,15 +167,15 @@ header a {font-size:20px}
 				<li class="oldViewHit">조회수 &nbsp; ${vo.hit}<!--hit--> &emsp; &emsp; 게시일 &nbsp;
 					${vo.write_date} <!--enter_date--></li>
 				<li class="oldViewId">${vo.user_id}</li>
-				<c:if test="${logId != vo.user_id}">
-					<li><input type="button" value="신고" id="report"
-						data-target="#reportModal" data-toggle="modal" /></li>
+				<c:if test="${logId != vo.user_id && logPermission !='admin'}">
+					<p><input type="button" value="신고" id="report"
+						data-target="#reportModal" data-toggle="modal" /></p>
 				</c:if>
-				<c:if test="${logId == vo.user_id}">
-					<li style="float: right;">
+				<c:if test="${logId == vo.user_id||logPermission =='admin'}">
+					<p style="float: right;">
 						<a href="/board/old/oldEdit?board_num=${vo.board_num}" style="color: blue;">수정</a> 
 						<a id="del" href="javascript:delCheck()" style="color: blue;">삭제</a>
-					</li>
+					</p>
 					<br/><br/>
 				</c:if>
 				<hr />
