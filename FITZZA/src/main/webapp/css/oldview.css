@@ -44,10 +44,10 @@ li{
 #report{
     width: 100px; height: 40px;
     font-weight: 600;
-    color:red;
+   	color:red;
     border: 2px solid red;
     border-radius:20px;
-    font-size: 1.2em;
+    font-size: 1em;
     line-height:35px;
     transition:all 0.5s;
     float:right;

@@ -153,7 +153,7 @@ header a {font-size:20px}
 	<div class="oldboard">
 		<br> <br> <br> <br> <br>
 		<div class="oldlist">
-			<a href="/board/old/oldList" style="float:right; color:black; font-size:24px; font-weight:400;">목록으로</a>
+			<a href="/board/old/oldList" style="float:right; color:black; font-size:24px; font-weight:400; ">목록으로</a>
 			<ul>
 				<img src="/upload/${vo.file1}" id="file_img" />
 				<br />
