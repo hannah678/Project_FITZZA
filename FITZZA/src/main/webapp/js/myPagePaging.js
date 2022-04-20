@@ -14,7 +14,6 @@ window.onload=function(){
 		dataType : 'json',
 		data :param04,
 		success : function(data){
-			alert(data.length);
 			for (var i = 0; i < data.length; i++) {
 				addListHtml04 += "<li>";
                 addListHtml04 += "<ul>";

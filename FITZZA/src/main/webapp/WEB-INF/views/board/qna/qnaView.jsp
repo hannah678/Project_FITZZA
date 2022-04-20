@@ -30,7 +30,8 @@
 					data: params,
 					type:'POST',
 					success: function(r){
-						alert("전송 성공");
+						alert("신고 접수되었습니다.");
+						$('#reportModal').modal('hide');
 					},
 					error: function(e){
 						console.log(e.responseText);

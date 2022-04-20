@@ -28,7 +28,6 @@
 					data: params,
 					type:'POST',
 					success: function(r){
-						alert("전송 성공");
 					},
 					error: function(e){
 						console.log(e.responseText);
