@@ -113,12 +113,12 @@ public class MemberController {
 		
 		Properties p = System.getProperties();
         p.put("mail.smtp.starttls.enable", "true");
-        p.put("mail.smtp.host", "smtp.naver.com");
+        p.put("mail.smtp.host", "smtp.google.com");
         p.put("mail.smtp.auth","true");
         p.put("mail.smtp.port", "587");
            
-        String id = "메일주소"; //보내는 사람 메일주소
-		String pwd = "비밀번호"; //보내는 사람 비밀번호
+        String id = "fitzzaofficial@gmail.com"; //보내는 사람 메일주소
+		String pwd = "fitzza1234!"; //보내는 사람 비밀번호
 		
         Authenticator auth = new Authenticator() {
         	public PasswordAuthentication getPasswordAuthentication() {

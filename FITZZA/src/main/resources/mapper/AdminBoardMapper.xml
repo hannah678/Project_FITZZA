@@ -26,9 +26,9 @@
 	
 	<!-- 중고 거래 관리 -->
 	<select id="adminOldList" resultType="BoardVO">
-		SELECT A.title, A.content, A.user_id, A.write_date, B.trade_date  
-		FROM board A, trade_detail B 
-		WHERE A.type_num=3 AND A.board_num=B.board_num;
+		SELECT A.title, A.content, A.user_id, A.write_date, B.trade_date, C.state_name  
+		FROM board A, trade_detail B, trade_state C 
+		WHERE A.type_num=3 and A.board_num=B.board_num and C.state_num=B.state_num;
 	</select>
 	<!-- 전체개수 -->
 	<select id="allOldList" resultType="int">

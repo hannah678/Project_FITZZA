@@ -57,4 +57,5 @@ public interface BoardDAO {
 	public void LikeDelete(BoardVO vo);
 	//검색
 	public List<BoardVO> boardSearch(String searchKey, String string, int start, int end, int type_num);
+	public List<BoardVO> recommendBoardSelect(int i, PagingVO pvo, String gender_type);
 }

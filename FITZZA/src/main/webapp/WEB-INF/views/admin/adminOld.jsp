@@ -59,11 +59,7 @@
 							<li>${vo.write_date}</li>
 							<li>${vo.trade_date}</li>
 							<li>
-								<select id="trade_status" class="trade_status">
-									<option value="ing" class="ing">판매중</option>
-									<option value="reserv" class="reserv">예약중</option>
-									<option value="compl" class="compl">거래완료</option>
-								</select>
+								${vo.state_name }
 							</li>
 						</c:forEach>
 		 			</ul>
