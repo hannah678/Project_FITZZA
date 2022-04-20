@@ -203,6 +203,11 @@
 		GROUP BY A.board_num
 		ORDER BY A.board_num DESC;
     </select>
+    <select id="OneBoardSelectLike" resultType="int">
+ 		SELECT   COUNT(user_id) AS like_num
+		FROM     like_clicker
+		WHERE    board_num=#{param1}
+	</select>
     <select id="recommendBoardSelect" resultType="BoardVO">
     	SELECT   A.board_num, A.title, A.user_id, A.write_date, A.hit, A.content, 
     			 B.profile_image, B.user_nickname, C.file1, D.gender_name

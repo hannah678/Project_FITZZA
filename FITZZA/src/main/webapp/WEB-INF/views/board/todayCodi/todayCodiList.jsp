@@ -45,14 +45,12 @@
 					dataType : 'json',
 					data :params,
 					success : function(data){
-						if(data==1){
+						if(data.cnt==1){
 						    cb.children().first().attr("src", "/img/heart_empty.png");
-						    window.location.reload();
-
-
+						    cb.children().last().text("추천 수 : "+data.like_num);
 						}else{
-							cb.children().first().attr("src", "/img/heart_fill.png");
-							window.location.reload();
+						    cb.children().first().attr("src", "/img/heart_fill.png");
+						    cb.children().last().text("추천 수 : "+data.like_num);
 						}	 
 					} 				
 				});

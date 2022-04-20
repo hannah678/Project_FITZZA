@@ -55,6 +55,7 @@ public interface BoardDAO {
 	public int LikeCount(BoardVO vo);
 	public void LikeInsert(BoardVO vo);
 	public void LikeDelete(BoardVO vo);
+	public int OneBoardSelectLike(int board_num);
 	
 	public int votein(BoardVO vo);
 	public int votecnt(int vote_item_order, BoardVO vo);

@@ -1,5 +1,8 @@
 package com.team.fitzza.controller;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
 
@@ -8,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.team.fitzza.service.BoardService;
 import com.team.fitzza.vo.BoardVO;
@@ -20,7 +24,7 @@ public class VoteLikeController {
 	
 	@ResponseBody //Ajax
 	@RequestMapping(value = "/board/Like", method=RequestMethod.POST)
-	public int Like(HttpSession session, @RequestParam("board_num") int board_num) throws Exception {
+	public Map<String, Object> Like(HttpSession session, @RequestParam("board_num") int board_num) throws Exception {
 		BoardVO vo = new BoardVO();
 		vo.setUser_id((String)session.getAttribute("logId"));
 		vo.setBoard_num(board_num);
@@ -32,6 +36,12 @@ public class VoteLikeController {
 		}else {
 			service.LikeDelete(vo);
 		}
-		return cnt;
+		Map<String, Object> retVal = new HashMap<String, Object>();
+        
+        //성공했다고 처리
+        retVal.put("cnt", cnt);
+        retVal.put("like_num", service.OneBoardSelectLike(board_num));
+        
+		return retVal;
 	}
 }

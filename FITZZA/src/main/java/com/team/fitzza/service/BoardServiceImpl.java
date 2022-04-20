@@ -167,8 +167,12 @@ public class BoardServiceImpl implements BoardService{
 
 	@Override
 	public List<BoardVO> recommendBoardSelect(int i, PagingVO pvo, String gender_type) {
-		// TODO Auto-generated method stub
 		return dao.recommendBoardSelect(i, pvo, gender_type);
+	}
+
+	@Override
+	public int OneBoardSelectLike(int board_num) {
+		return dao.OneBoardSelectLike(board_num);
 	}
 
 	
