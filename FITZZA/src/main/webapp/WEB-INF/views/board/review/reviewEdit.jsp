@@ -16,12 +16,6 @@
 			 $("#content").focus();
 			 return false;
 		 }
-		 
-		 if($("#upload_file01").val()==''){
-			alert("이미지를 1개 이상 첨부하세요");
-			$("#upload_file01").focus();
-			return false;
-		}
 	});
 });
 </script>

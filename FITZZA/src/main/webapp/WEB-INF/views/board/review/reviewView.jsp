@@ -187,7 +187,7 @@ window.onload=function(){
 						data-target="#reportModal" data-toggle="modal" /></p>
 				</c:if>
 				<c:if test="${logId == vo.user_id||logPermission =='admin'}">
-					<p style="float: right;">
+					<p style="float: right; margin-right:30px">
 						<a href="/board/review/reviewEdit?board_num=${vo.board_num}" style="color: blue;">수정</a> 
 						<a id="del" href="javascript:delCheck()" style="color: blue;">삭제</a>
 					</p>
@@ -227,7 +227,7 @@ window.onload=function(){
 				<input type="hidden" name="board_num" value="${vo.board_num}" />
 				<c:if test="${logStatus=='Y'}">
 					<textarea name="coment" id='coment'
-						style="width: 1000px; height: 98px; margin:10px 0 -35px 35px; font-size:18px" placeholder=" 댓글 입력"></textarea>
+						style="width: 960px; height: 98px; margin:10px 0 -35px 35px; font-size:18px" placeholder=" 댓글 입력"></textarea>
 					<input type="submit" value="등록" id="replybtn" />
 					<hr />
 				</c:if>

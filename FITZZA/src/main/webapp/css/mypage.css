@@ -156,13 +156,14 @@
 
 /*오늘의 코디*/
 .my_list_title01 li{
-	width:20%; 
 	margin:20px 0;
 	line-height:50px
 }
-.my_list_title01 li:nth-child(2) {width:25%;}
-.my_list_title01 li:nth-child(3) {width:25%;}
+.my_list_title01 li:nth-child(1) {width:20%;}
+.my_list_title01 li:nth-child(2) {width:15%;}
+.my_list_title01 li:nth-child(3) {width:35%;}
 .my_list_title01 li:nth-child(4) {width:10%;}
+.my_list_title01 li:nth-child(5) {width:20%;}
 
 .my_list_contents01 li{
 	font-size:20px;
@@ -171,10 +172,18 @@
 	white-space:nowrap;
 	text-overflow: ellipsis;
 	position:relative;
+	height:250px;
+	line-height:250px
+	
 }
-.my_list_contents01 .my_list_file {width:240px;}/* 20% */
-.my_list_contents01 .my_list_subtitle {width:300px;}/* 25% */
-.my_list_contents01 .my_list_subcontent {width:300px;}/* 25% */
+.my_list_contents01 li:last-child {margin-bottom:50px}
+
+.my_list_contents01 ul li:nth-child(1) {width:240px;}/* 20% */
+.my_list_contents01 .my_list_file {
+	width:200px; margin:auto ; height:210px
+}/* 20% */
+.my_list_contents01 .my_list_subtitle {width:180px;}/* 15% */
+.my_list_contents01 .my_list_subcontent {width:420px;}/* 35% */
 .my_list_contents01 .my_list_hit {width:120px;}/* 10% */
 .my_list_contents01 .my_list_date {width:240px;}/* 20% */
 /*중고게시판*/

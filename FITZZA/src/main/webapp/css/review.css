@@ -49,7 +49,7 @@ body{
 }
 .review_container > ul > li:nth-child(7){
 	display:block;
-	width:100%; height:200px;
+	width:100%; min-height:200px;
 	margin:260px 0 30px 0
 }
 #main_img{
@@ -58,12 +58,14 @@ body{
 	margin:0 auto;
 	
 }
-#main_img img {min-width:400px;}
+#main_img img {margin:0 auto}
+#content_img img {margin:0 auto}
 .Top_menu{
 	font-size:24px;
 	height:100px;
 	border-bottom:1px solid black;
 	margin-bottom:10px;
+
 }
 .Top_menu > div {line-height:100px;}
 #Top_name{
@@ -107,8 +109,9 @@ body{
 }
 
 #content{
-	width:100%; height:200px;
+	width:100%; min-height:200px;
 	font-size:20px;
+	display:block;
 }
 #content > strong {
 	font-weight:400;
@@ -316,8 +319,9 @@ body{
 }
 .img1 div > input {font-size:18px; height:30px}
 .img1 label {cursor:pointer}
-
-.img2_up {margin:0 35px}
+#reviewFrm > ul li:nth-child(6) {margin-left:25px}
+#reviewFrm > ul li:nth-child(6) input {width:150px;height:30px; margin: 10px 10px 0 0}
+.img2_up {margin:0 5px}
 .img2_up >input {font-size:18px}
 .img2_up:nth-child(3) input {width:150px; margin-right:10px; height:30px}
 .img2_up:nth-child(4) input {width:150px; margin-right:10px; height:30px}
@@ -378,8 +382,6 @@ input[type=text]{
 	background-color: #ddd;
  }
 
-
-#content{width:100%;}
 
 #particles-js{
 	width:100%; height:100%;

@@ -11,6 +11,9 @@ a:link {color:#fff; text-decoration: none;}
 a:visited {color:#fff}
 .admin_setting {margin-top:-10px}
 .my_list_title li {font-size:20px; font-weight:600;}
+#logStatus4 > img {vertical-align:top;}
+	#logStatus5 > img {vertical-align:top;}
+	#logStatus3 > a > img {margin-top:-15px}
 </style>
 <script>
 window.onload=function(){
@@ -45,7 +48,7 @@ window.onload=function(){
 			for (var i = 0; i < data.length; i++) {
 				addListHtml01 += "<li>";
                 addListHtml01 += "<ul>";
-                addListHtml01 += "<li><img src='/upload/todayCodi/"+data[i].file1+"' onclick='fnImgPop(this.src)' width='80' height='100'/></li>";
+                addListHtml01 += "<li><img class='my_list_file' src='/upload/todayCodi/"+data[i].file1+"' onclick='fnImgPop(this.src)' width='80' height='100'/></li>";
 				addListHtml01 += "<li class='my_list_subtitle'>"+data[i].title+"</li>";
 				addListHtml01 += "<li class='my_list_subcontent'>"+data[i].content+"</li>";
 				addListHtml01 += "<li class='my_list_hit'>"+data[i].like_num+"</li>";
@@ -316,7 +319,7 @@ function viewMore01(){
 			for (var i = 0; i < data.length; i++) {
 				addListHtml01 += "<li>";
                 addListHtml01 += "<ul>";
-                addListHtml01 += "<li><img src='/upload/todayCodi/"+data[i].file1+"' onclick='fnImgPop(this.src)' width='80' height='100'/></li>";
+                addListHtml01 += "<li><img class='my_list_file' src='/upload/todayCodi/"+data[i].file1+"' onclick='fnImgPop(this.src)' width='80' height='100'/></li>";
 				addListHtml01 += "<li class='my_list_subtitle'>"+data[i].title+"</li>";
 				addListHtml01 += "<li class='my_list_subcontent'>"+data[i].content+"</li>";
 				addListHtml01 += "<li class='my_list_hit'>"+data[i].like_num+"</li>";

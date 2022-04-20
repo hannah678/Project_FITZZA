@@ -51,7 +51,7 @@
 .member_buttons button:active {background-color:#276968;}
 
 .member_list_box {
-	width:96%; height:550px;
+	width:96%; height:600px;
 	background-color:#fff;
 	margin-left:2%;
 	overflow:hidden;
@@ -171,7 +171,7 @@
 
 /* 탈퇴명단 토글 css -start */
 .user_leave{
-	width:96%; height:550px;
+	width:96%; height:600px;
 	background-color:#fff;
 	margin-left:2%;
 	overflow:hidden;
@@ -179,7 +179,7 @@
 	display:none;
 }
 .leave_user_show {
-	width:96%; height:550px;
+	width:96%; height:600px;
 	background-color:#fff;
 	margin-left:2%;
 	overflow:hidden;
@@ -215,3 +215,14 @@
 #user_all li{float:left; width:10%;}
 	
 #user_leaved li{float:left; width:33.33%;}
+
+
+#moreViewMember01{ 
+	width:20px; height:60px;
+	display:block;
+	margin:0 auto 0 auto;
+}
+#moreViewMember01 img {
+	width:20px;
+	margin-left:-10px
+}
