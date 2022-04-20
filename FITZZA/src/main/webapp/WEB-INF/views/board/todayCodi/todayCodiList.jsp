@@ -5,7 +5,9 @@
     <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
     <style>
     	footer {display:none;}
+    	header {margin-top:-50px}
   	</style>
+ 	
 <script>		
   	window.onload=function(){
 		var imgTag='';
@@ -44,18 +46,18 @@
 	}
 	$(document).ready(function(){		
 		//최신순, 좋아요순 정렬
-		$('#new_order').addClass('button_toggled');
-		$('#like_order').addClass('button_normal');
-		$('#new_order').click( function() {
+		$('#order_new').addClass('button_toggled');
+		$('#order_like').addClass('button_normal');
+		$('#order_new').click( function() {
 			if($(this).hasClass('button_normal')) {
 				$(this).removeClass('button_normal').addClass('button_toggled');
 				$('#like_order').removeClass('button_toggled').addClass('button_normal');
 			}
 		});
-		$('#like_order').click( function() {
+		$('#order_like').click( function() {
 			if($(this).hasClass('button_normal')) {
 				 $(this).removeClass('button_normal').addClass('button_toggled');
-				 $('#new_order').removeClass('button_toggled').addClass('button_normal');
+				 $('#order_new').removeClass('button_toggled').addClass('button_normal');
 			}
 		});
 				

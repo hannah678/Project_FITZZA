@@ -116,3 +116,8 @@ a:link, a:visited, a:hover{
 	color:#fff;
 	cursor:pointer;
 }
+#moreView{
+	width:100px; height:125px;
+	display:block;
+	margin:0 auto
+}

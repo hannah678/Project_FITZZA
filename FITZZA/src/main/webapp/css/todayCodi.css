@@ -4,11 +4,14 @@
 
 body {
 	background:url(../img/tc_bg_1.png);
+	overflow-x:hidden;
+	padding-bottom:50px
 }
 #tc_container {
 	width:100%; height:100%;
-	overflow:hidden;
 	background:url(../img/tc_bg_1.png);
+	
+	
 }
 #tc_wrap {
 	width:1920px; height:100%;
@@ -209,3 +212,23 @@ body {
     z-index: -1;    
 }
 /* todayCodiWrite - end */
+
+
+ .button_toggled{
+	width:100px; height:30px;
+	margin:0 10px;
+	border:0;
+	border-radius:15px;
+	color:#fff;
+	cursor:pointer;
+	background-color:#276968;
+}
+.button_normal {
+	width:100px; height:30px;
+	margin:0 10px;
+	border:0;
+	border-radius:15px;
+	background-color:#54bab9;
+	color:#fff;
+	cursor:pointer;
+}
