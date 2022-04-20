@@ -375,7 +375,7 @@
          <li id="Codebox" style="display:none"><input type="text" name="ConfirmCode" id="ConfirmCode" placeholder="인증코드 입력"/></li> 
          <li class="joinbox"><input type="text" name="tel" id="jointel" placeholder="전화번호(000-0000-0000)" class="input01"/></li>
        </ul>
-       <input type="text" id="authorized" value="N"/>
+       <input type="hidden" id="authorized" value="N"/>
         <div class="joinbtn">
          <input type="button" class="button02" value="가입하기"/>
         </div>

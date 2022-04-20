@@ -113,7 +113,7 @@ public class MemberController {
 		
 		Properties p = System.getProperties();
         p.put("mail.smtp.starttls.enable", "true");
-        p.put("mail.smtp.host", "smtp.google.com");
+        p.put("mail.smtp.host", "smtp.gmail.com");
         p.put("mail.smtp.auth","true");
         p.put("mail.smtp.port", "587");
            

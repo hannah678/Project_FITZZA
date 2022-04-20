@@ -195,7 +195,7 @@ window.onload=function(){
 				</c:if>
 			</li>
 			<li>
-				<div id="content"><strong>설명</strong><span>${vo.content}</span></div>
+				<div id="content">${vo.content}</div>
 			</li>
 			<li><div id="main_img"><img src="/upload/${vo.file1}"></div></li>
 			<li>

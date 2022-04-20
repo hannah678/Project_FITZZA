@@ -26,6 +26,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.team.fitzza.service.BoardService;
+import com.team.fitzza.service.MemberService;
 import com.team.fitzza.vo.BoardVO;
 import com.team.fitzza.vo.PagingVO;
 import com.team.fitzza.vo.ReplyVO;
@@ -36,7 +37,8 @@ public class VoteController {
 	
 	@Inject
 	BoardService service;
-	
+	@Inject
+	MemberService Mservice;
 	@GetMapping("/board/vote/voteList")
 	public String voteList() {
 		
@@ -154,6 +156,7 @@ public class VoteController {
 			System.out.println(vo.getFile2());
 			//DB등록
 			service.BoardInsert(vo);
+			Mservice.expUp_board(path);
 			String user_id = (String)request.getSession().getAttribute("logId");
 			vo.setBoard_num(service.boardNum(user_id));
 			service.BoardFileInsert(vo);

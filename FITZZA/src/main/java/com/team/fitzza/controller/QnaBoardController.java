@@ -5,6 +5,7 @@ import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -25,6 +26,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.team.fitzza.service.BoardService;
+import com.team.fitzza.service.MemberService;
 import com.team.fitzza.vo.BoardVO;
 import com.team.fitzza.vo.PagingVO;
 
@@ -33,6 +35,8 @@ public class QnaBoardController {
 	
 	@Autowired
 	BoardService service;
+	@Inject
+	MemberService Mservice;
 
 	@GetMapping("/board/qna/qnaList")
 	public String qnaBoardList() {
@@ -158,6 +162,7 @@ public class QnaBoardController {
 				String user_id = (String)request.getSession().getAttribute("logId");
 				vo.setBoard_num(service.boardNum(user_id));
 				service.BoardFileInsert(vo);
+				Mservice.expUp_board(user_id);
 				//레코드 추가 성공
 				String msg = "<script>alert('자료실에 글이 등록되었습니다');location.href='/board/qna/qnaList';</script>";
 				entity = new ResponseEntity<String>(msg, headers, HttpStatus.OK);	//200

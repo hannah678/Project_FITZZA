@@ -25,6 +25,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.team.fitzza.service.BoardService;
+import com.team.fitzza.service.MemberService;
 import com.team.fitzza.vo.BoardVO;
 import com.team.fitzza.vo.PagingVO;
 
@@ -33,6 +34,8 @@ public class ReviewBoardController {
 	
 	@Inject
 	BoardService service;
+	@Inject
+	MemberService Mservice;
 	
 	@GetMapping("/board/review/reviewList")
 	public String reviewList() {
@@ -161,6 +164,7 @@ public class ReviewBoardController {
 			String user_id = (String)request.getSession().getAttribute("logId");
 			vo.setBoard_num(service.boardNum(user_id));
 			service.BoardFileInsert(vo);
+			Mservice.expUp_board(user_id);
 			//레코드 추가 성공
 			String msg = "<script>alert('자료실에 글이 등록되었습니다');location.href='/board/review/reviewList';</script>";
 			entity = new ResponseEntity<String>(msg, headers, HttpStatus.OK);	//200
