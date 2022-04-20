@@ -90,7 +90,7 @@
 						addListHtml += "<li>"+data[i].write_date+"</li>";
 						addListHtml += "<li>"+data[i].hit+"</li>";
 					}
-					if(data.length<5){
+					if(data.length<10){
 						$("#moreView").remove();
 					} 
 					$("#oldlist").append(addListHtml);
@@ -139,7 +139,7 @@
 						addListHtml += "<li>"+data[i].hit+"</li>";
 						
 					}
-					if(data.length<5){
+					if(data.length<10){
 						$("#moreView").remove();
 					} 
 					$("#oldlist").append(addListHtml);

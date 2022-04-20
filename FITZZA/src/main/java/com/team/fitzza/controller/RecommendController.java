@@ -59,7 +59,7 @@ public class RecommendController {
 		
 		PagingVO pvo = new PagingVO();
 		pvo.setStart(Integer.parseInt(startNum));
-		pvo.setEnd(4);
+		pvo.setEnd(8);
 		
 		return service.recommendBoardSelect(2, pvo, gender_type);
 	}
@@ -79,7 +79,7 @@ public class RecommendController {
 			String searchKey, String searchWord) throws Exception {
 		System.out.println("searchMoreView START!!!");
 		int start = Integer.parseInt(startNum);
-		int end = 5;
+		int end = 8;
 		System.out.println("searchKey -> "+searchKey);
 		System.out.println("searchWord -> "+searchWord);
 		return service.boardSearch(searchKey, "%"+searchWord+"%", start, end, 2);

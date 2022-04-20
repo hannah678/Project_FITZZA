@@ -77,10 +77,11 @@
 						addListHtml += "<div class='post'><div class='post_top'><div class='title_area'>"+data[i].title+"</div><div class='post_status'>진행중</div>";
 						addListHtml += "<div class='post_bottom'><img src='/upload/" + data[i].profile_image + "' width='30' width='30'/>";
 						addListHtml += "<span>"+ data[i].user_nickname+ "</span><span>"+data[i].write_date+"</span></div></div></div>";
-						if(data[i].board_num==0){
-							$("#moreView").remove();
-						} 
-					}
+					} 
+				}
+					if(data.length<8){
+						$("#moreView").remove();
+					} 
 					$("#voteListUl").append(addListHtml);
 					/* console.log(addListHtml); */
 				}
@@ -125,10 +126,11 @@
 						addListHtml += "<div class='post'><div class='post_top'><div class='title_area'>"+data[i].title+"</div><div class='post_status'>진행중</div>";
 						addListHtml += "<div class='post_bottom'><img src='/upload/" + data[i].profile_image + "' width='30' width='30'/>";
 						addListHtml += "<span>"+ data[i].user_nickname+ "</span><span>"+data[i].write_date+"</span></div></div></div>";
-						if(data[i].board_num==0){
-							$("#moreView").remove();
-						} 
+						
 					}
+					if(data.length<8){
+							$("#moreView").remove();
+					} 
 					$("#voteListUl").append(addListHtml);
 					/* console.log(addListHtml); */
 				}

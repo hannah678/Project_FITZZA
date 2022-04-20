@@ -85,7 +85,7 @@ window.onload=function(){
 					addListHtml += "<li>"+data[i].write_date+"</li>";
 					addListHtml += "<li>"+data[i].hit+"</li>";
 				}
-				if(data.length<5){
+				if(data.length<10){
 					$("#moreView").remove();
 				} 
 				$("#qnalist").append(addListHtml);
@@ -134,7 +134,7 @@ $('#moreView').click(function(){
 					addListHtml += "<li>"+data[i].hit+"</li>";
 					
 				}
-				if(data.length<5){
+				if(data.length<10){
 					$("#moreView").remove();
 				} 
 				$("#qnalist").append(addListHtml);

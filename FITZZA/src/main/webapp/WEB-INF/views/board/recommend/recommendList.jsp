@@ -127,7 +127,7 @@ window.onload=function(){
 					addListHtml += "<img src='/upload/"+data[i].profile_image+"'id='profile_img'/>"+data[i].user_nickname+"<br/><br/>";
 					addListHtml += data[i].write_date+" | "+data[i].hit+"</li>";
 				}
-				if(data.length<4){
+				if(data.length<8){
 					$("#moreView").css("display", "none");
 				}else{
 					$("#moreView").css("display", "block");
@@ -188,7 +188,7 @@ function moreList(){
 				addListHtml += data[i].write_date+" | "+data[i].hit+"</li>";
 				
 			}
-			if(data.length<4){
+			if(data.length<8){
 				$("#moreView").css("display", "none");
 			}else{
 				$("#moreView").css("display", "block");

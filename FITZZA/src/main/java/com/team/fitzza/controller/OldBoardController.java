@@ -64,7 +64,7 @@ public class OldBoardController {
 		System.out.println("페이징 브이오다"+pvo);
 //		startNum="5";
 		pvo.setStart(Integer.parseInt(startNum));
-		pvo.setEnd(5);
+		pvo.setEnd(10);
 		return service.oldBoardSelectAll(pvo);
 	}
 	@ResponseBody //Ajax
@@ -72,7 +72,7 @@ public class OldBoardController {
 	public List<BoardVO> searchMoreView(@RequestParam(value="startNum", required=false)String startNum,
 			String searchKey, String searchWord) throws Exception {
 		int start = Integer.parseInt(startNum);
-		int end = 5;
+		int end = 10;
 		System.out.println("searchKey -> "+searchKey);
 		System.out.println("searchWord -> "+searchWord);
 		return service.oldBoardSearch(searchKey, "%"+searchWord+"%", start, end);

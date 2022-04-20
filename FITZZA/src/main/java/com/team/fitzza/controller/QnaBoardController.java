@@ -57,7 +57,7 @@ public class QnaBoardController {
 			System.out.println("qnaMoreView START:::");
 //			startNum="5";
 			pvo.setStart(Integer.parseInt(startNum));
-			pvo.setEnd(5);
+			pvo.setEnd(10);
 			return service.BoardSelectAllSE(5,pvo);
 		}
 		
@@ -77,7 +77,7 @@ public class QnaBoardController {
 				String searchKey, String searchWord) throws Exception {
 			System.out.println("searchMoreView START!!!");
 			int start = Integer.parseInt(startNum);
-			int end = 5;
+			int end = 10;
 			System.out.println("searchKey -> "+searchKey);
 			System.out.println("searchWord -> "+searchWord);
 			return service.boardSearch(searchKey, "%"+searchWord+"%", start, end, 5);
