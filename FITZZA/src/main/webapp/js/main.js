@@ -1,13 +1,13 @@
 /*토글 메뉴*/
 $(document).ready(function(){
     $('#menu_bar').on('click',function(){
-        $('#gnb').removeClass('hide').addClass('show');
+        $('#gnb').removeClass('hide').addClass('menushow');
     }); 
 });
 
 $(document).ready(function(){
     $('#close_btn').on('click',function(){
-        $('#gnb').removeClass('show').addClass('hide');
+        $('#gnb').removeClass('menushow').addClass('hide');
     }); 
 });
 

@@ -188,7 +188,7 @@ header > a {
     line-height: 50px;
 }
 .hide{position:absolute; left: -340px; top: 100px;}
-.show{transform:translateX(340px);}
+.menushow{transform:translateX(340px);}
 /* ************ */
 /* head - end */
 /* ************ */

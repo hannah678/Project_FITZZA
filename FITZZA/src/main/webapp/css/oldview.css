@@ -164,12 +164,11 @@ li{
 }
 /* 모달 */
 .modal {font-size: 20px; text-align:center}
-.modal-backdrop {margin-left:-340px}
 .modal-content {
 	display:block;
 	max-width:1000px; height: 650px;
 	position:absolute; left:50%; top:150px;
-	transform:translateX(-550px);
+	transform:translateX(-250px);
 }
 #report_content{
 	position:relative;

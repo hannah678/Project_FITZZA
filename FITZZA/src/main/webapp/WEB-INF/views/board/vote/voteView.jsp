@@ -3,26 +3,11 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
 <link rel="stylesheet" href="/css/vote.css" type="text/css">
 <style>
-   #logStatus3 > img {vertical-align:top;}
-   #logStatus4 > img {vertical-align:top;}
-   #logStatus5 > img {vertical-align:top;}
-   
-   .button02{
-	position:absolute;
-	right:5px;
-	cursor:pointer;
-	margin-left:15px; 
-	text-align:center;
-	width:90px;
-	height:50px;
-	line-height:50px;
-	font-size:23px;
-	color: #fff;
-	border-radius: 10px;
-	font-family:'Nanum pen script';
-	background-color: rgb( 227, 104, 83);
-	transition:all.15s linear;
-}
+	.admin_setting {vertical-align:top;}
+	#logStatus4 > img {vertical-align:top;}
+	#logStatus5 > img {vertical-align:top;}
+	.modal-dialog {z-index:1050 !important}
+	.modal {display:block}
 </style>
 <script>
 function delCheck(){
@@ -263,7 +248,15 @@ window.onload=function(){
 				<div id="content">${vo.content}</div>
 			</li>
 			
-			<li class="bottom_menu"><c:if test="${logId != vo.user_id && logPermission !='admin'}"><div id="reportModal" class="button02" data-target="#reportModal" data-toggle="modal">신고</div></c:if><c:if test="${logId == vo.user_id||logPermission =='admin'}"><a href="/board/vote/voteEdit?board_num=${vo.board_num}" class="button01">수정</a> <a id="del" href="javascript:delCheck()" class="button01">삭제</a></c:if></li>
+			<li class="bottom_menu">
+				<c:if test="${logId != vo.user_id && logPermission !='admin'}">
+					<div id="reportModal" class="button02" data-target="#reportModal" data-toggle="modal">신고</div>
+				</c:if>
+				<c:if test="${logId == vo.user_id||logPermission =='admin'}">
+					<a href="/board/vote/voteEdit?board_num=${vo.board_num}" class="button01">수정</a>
+					<a id="del" href="javascript:delCheck()" class="button01">삭제</a>
+				</c:if>
+			</li>
 			<li>
 				<ul class="vote_profile">
 					<li>작성자 정보</li>
