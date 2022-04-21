@@ -1,10 +1,16 @@
 package com.team.fitzza.controller;
 
+import java.nio.charset.Charset;
 import java.util.List;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.google.gson.Gson;
 import com.team.fitzza.service.AdminService;
 import com.team.fitzza.service.MemberService;
 import com.team.fitzza.vo.BoardVO;
@@ -147,26 +154,25 @@ public class AdminController {
 	public String adminOld() {
 		return "/admin/adminOld";
 	}
-	
 	//게시글 삭제
-	@PostMapping("/admin/adminOldDel")
-	@ResponseBody
-	public String adminOldDel(BoardVO vo) {
-		
-		service.adminOldDel(vo);
-		return "선택한 게시글이 삭제 되었습니다.";
-	}
-	//게시물 검색
-	@ResponseBody //Ajax
-	@RequestMapping(value = "/admin/adminOld/searchLists")
-	public List<BoardVO> searchOldMoreView(@RequestParam(value="startNum", required=false)String startNum,
-	String searchKey, String searchWord) throws Exception {
-		int start = Integer.parseInt(startNum);
-		int end = 100;
-		System.out.println("searchKey -> "+searchKey);
-		System.out.println("searchWord -> "+searchWord);
-		return service.oldSearch(searchKey, "%"+searchWord+"%", start, end);
-	}
+		@PostMapping("/admin/adminOldDel")
+		@ResponseBody
+		public String adminOldDel(BoardVO vo) {
+			
+			service.adminOldDel(vo);
+			return "선택한 게시글이 삭제 되었습니다.";
+		}
+		//게시물 검색
+		@ResponseBody //Ajax
+		@RequestMapping(value = "/admin/adminOld/searchLists")
+		public List<BoardVO> searchOldMoreView(@RequestParam(value="startNum", required=false)String startNum,
+		String searchKey, String searchWord) throws Exception {
+			int start = Integer.parseInt(startNum);
+			int end = 100;
+			System.out.println("searchKey -> "+searchKey);
+			System.out.println("searchWord -> "+searchWord);
+			return service.oldSearch(searchKey, "%"+searchWord+"%", start, end);
+		}
 	//게시판 관리----------------------------------------------------------------------------------------------------------------------------------
 	@RequestMapping("/admin/adminBoard")
 	public String adminBoard() {
@@ -188,5 +194,29 @@ public class AdminController {
 			model.addAttribute("cnt",cnt);
 			return "/admin/MemberInsertOk";
 		}
-	
+		//공지관리-------------------------------------------------------------------------------------------
+		//공지 top.jspf으로 보내기
+		@ResponseBody //Ajax
+		@RequestMapping(value = "/main/notice", method=RequestMethod.POST)
+		public String noticeSelect(BoardVO bvo) {
+			System.out.println("start!");
+			String gs = new Gson().toJson(service.noticeSelect(bvo));
+			System.out.println(gs);
+			return gs;
+		}
+		
+		//공지 등록하기
+		@PostMapping("/admin/noticeWriteOk")
+		public ResponseEntity<String> boardWriteOk(BoardVO bvo, HttpServletRequest request) {
+			ResponseEntity<String> entity = null;
+			HttpHeaders headers = new HttpHeaders();
+			headers.setContentType(new MediaType("text", "html", Charset.forName("UTF-8")));
+			// DB등록
+			service.NoticeInsert(bvo);
+
+			String msg = "<script>alert('공지사항이 등록되었습니다');location.href='/';</script>";
+			entity = new ResponseEntity<String>(msg, headers, HttpStatus.OK); // 200
+			return entity;
+
+		}
 }

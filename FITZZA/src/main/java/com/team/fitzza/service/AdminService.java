@@ -51,4 +51,8 @@ public interface AdminService {
 	//검색
 	public List<MemberVO> memberSearch(String searchKey, String string, int start, int end);
 	public List<BoardVO> oldSearch(String searchKey, String string, int start, int end);
+	//공지 출력
+	public BoardVO noticeSelect(BoardVO bvo);
+	//공지등록
+	public int NoticeInsert(BoardVO bvo);
 }

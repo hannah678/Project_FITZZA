@@ -37,19 +37,23 @@
 	</select>
 	<!-- 전체개수 -->
 	<select id="allOldList" resultType="int">
-		select count(board_num) from trade_detail;
+		SELECT  COUNT(board_num) 
+		FROM 	trade_detail;
 	</select>
 	<!-- 판매중 -->
 	<select id="saleOldList" resultType="int">
-		select count(board_num) from trade_detail where state_num=1;
+		SELECT  COUNT(board_num) 
+		FROM 	trade_detail where state_num=1;
 	</select>
 	<!-- 예약중 -->
 	<select id="reserveOldList" resultType="int">
-		select count(board_num) from trade_detail where state_num=2;
+		SELECT  COUNT(board_num) 
+		FROM 	trade_detail where state_num=2;
 	</select>
 	<!-- 거래완료 -->
 	<select id="completeOldList" resultType="int">
-		select count(board_num) from trade_detail where state_num=3;
+		SELECT  COUNT(board_num) 
+		FROM 	trade_detail where state_num=3;
 	</select>
 	<!-- 글 삭제 -->
 	<delete id="adminOldDel">
@@ -79,4 +83,15 @@
       ORDER BY A.board_num DESC
       LIMIT #{param3}, #{param4}
 	</select>
+	<!-- 공지 출력 -->
+	<select id="noticeSelect" resultType="BoardVO">
+    	SELECT * from board_notice 
+		ORDER BY notice_num DESC
+		LIMIT 0,1;
+    </select>
+    <!-- 공지 등록 -->
+	<insert id="NoticeInsert">
+		INSERT INTO board_notice (title, content) 
+		VALUES (#{title}, #{content})
+	</insert>
 </mapper>

@@ -117,6 +117,17 @@ public class AdminServiceImpl implements AdminService{
 		return dao.allOldList(bvo);
 	}
 
+	@Override
+	public BoardVO noticeSelect(BoardVO bvo) {
+		return dao.noticeSelect(bvo);
+	}
+
+
+	@Override
+	public int NoticeInsert(BoardVO bvo) {
+		return dao.NoticeInsert(bvo);
+	}
+
 
 	@Override
 	public int adminOldDel(BoardVO vo) {
@@ -126,7 +137,6 @@ public class AdminServiceImpl implements AdminService{
 
 	@Override
 	public List<BoardVO> oldSearch(String searchKey, String string, int start, int end) {
-		// TODO Auto-generated method stub
 		return dao.oldSearch(searchKey, string, start, end);
 	}
 	
