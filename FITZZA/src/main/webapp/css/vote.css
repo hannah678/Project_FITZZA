@@ -210,7 +210,7 @@ body{background:url(../img/tc_bg_1.png);}
 	transition:all.15s linear;
 }
 
-.button02{
+#report{
 	position:absolute;
 	right:5px;
 	cursor:pointer;
@@ -225,6 +225,7 @@ body{background:url(../img/tc_bg_1.png);}
 	font-family:'Nanum pen script';
 	background-color: rgb( 227, 104, 83);
 	transition:all.15s linear;
+	border:0;
 }
 
 /*작성자 정보*/
@@ -514,4 +515,23 @@ input::placeholder{
 	max-width:1000px; height: 650px;
 	position:absolute; left:50%; top:150px;
 	transform:translateX(-250px);
+}
+#report_content{
+	position:relative;
+	left:53px;
+	border:1px solid black;
+}
+#reportbtn{
+	position:relative;
+	top:50px;
+	right:150px;
+}
+#reportForm textarea {margin:20px 0 0 -10px}
+#reportForm ul li:nth-child(1) {
+	display:block;
+	height:80px;
+	line-height:80px;
+}
+#reportForm ul li:nth-child(3) {
+	margin-top:50px
 }

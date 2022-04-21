@@ -6,9 +6,17 @@
 	.admin_setting {vertical-align:top;}
 	#logStatus4 > img {vertical-align:top;}
 	#logStatus5 > img {vertical-align:top;}
-	.modal-dialog {z-index:1050 !important}
-	.modal {display:block}
 </style>
+<script>
+$('#reportModal').on('click',function(){
+	$('.modal').css('display','block');
+	alert("d");
+});
+
+$('.close').on('click',function(){
+	$('.modal').css('display','none');
+});
+</script>
 <script>
 function delCheck(){
 	if(confirm("삭제하시겠습니까?")){
@@ -250,7 +258,8 @@ window.onload=function(){
 			
 			<li class="bottom_menu">
 				<c:if test="${logId != vo.user_id && logPermission !='admin'}">
-					<div id="reportModal" class="button02" data-target="#reportModal" data-toggle="modal">신고</div>
+					<p style="height:50px;"><input type="button" value="신고" id="report"
+						data-target="#reportModal" data-toggle="modal" /></p>
 				</c:if>
 				<c:if test="${logId == vo.user_id||logPermission =='admin'}">
 					<a href="/board/vote/voteEdit?board_num=${vo.board_num}" class="button01">수정</a>
@@ -288,38 +297,38 @@ window.onload=function(){
 	</div>
 </div>
 <!-- 신고 모달 -->
-<div id="reportModal" class="modal">
-	<!-- modal -->
-	<div class="modal-dialog">
-		<div class="modal-content">
-			<div class="modal-header">
-				<h2>게시물 신고</h2>
-				<button class="close" data-dismiss="modal">&times;</button>
-			</div>
-			<div class="modal-body">
-				<c:if test="${logStatus=='Y'}">
-					<form method="post" id="reportForm">
-						<input type="hidden" name="board_num" value="${vo.board_num}" />
-						<ul>
-							<li>신고 이유 &emsp; <select name="category_num">
-									<option value="1">광고</option>
-									<option value="2">사기거래</option>
-									<option value="3">욕설/비방</option>
-									<option value="4">사칭</option>
-							</select>
-							</li>
-							<hr />
-							<li>신고 내용<br /> <textarea name="report_content" rows="5"
-									cols="30"></textarea> <input type='submit' value='신고 접수'
-								id="reportbtn" />
-							</li>
-						</ul>
-					</form>
-				</c:if>
-				<c:if test="${logStatus!='Y'}">
-					<h3>로그인 후에 가능합니다.</h3>
-				</c:if>
+		<div id="reportModal" class="modal">
+			<!-- modal -->
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h2>게시물 신고</h2>
+						<button class="close" data-dismiss="modal">&times;</button>
+					</div>
+					<div class="modal-body">
+						<c:if test="${logStatus=='Y'}">
+							<form method="post" id="reportForm">
+								<input type="hidden" name="board_num" value="${vo.board_num}" />
+								<ul>
+									<li>신고 이유 &emsp; <select name="category_num" style="border:1px solid black;">
+											<option value="1">광고</option>
+											<option value="2">사기거래</option>
+											<option value="3">욕설/비방</option>
+											<option value="4">사칭</option>
+									</select>
+									</li>
+									<hr />
+									<li>신고 내용<br /> <textarea name="report_content" rows="5"
+											cols="30" id="report_content"></textarea> <input type='submit' value='신고 접수'
+										id="reportbtn" />
+									</li>
+								</ul>
+							</form>
+						</c:if>
+						<c:if test="${logStatus!='Y'}">
+							<h3>로그인 후에 가능합니다.</h3>
+						</c:if>
+					</div>
+				</div>
 			</div>
 		</div>
-	</div>
-</div>
