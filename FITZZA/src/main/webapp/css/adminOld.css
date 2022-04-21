@@ -32,9 +32,9 @@
 .trade_total_status li form select {height:25px;}
 .trader_total_status li form input {height:20px;line-height:20px}
 #tradeSearch {height:25px;}
-#tradeSearchFrm {
+#oldSearchFrm {
 	float:right;
-	margin:15px 50px 0 0
+	margin:15px 50px 0 0;
 }
 .trade_buttons {
 	display:inline-block;

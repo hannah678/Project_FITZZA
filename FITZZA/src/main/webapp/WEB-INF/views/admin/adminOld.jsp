@@ -8,8 +8,8 @@
 	header, footer {display:none}
 	#adminOld_container {display:none}
 	#tradeSearch {height:30px; font-size:16px}
-	#tradeSearchFrm select {height:30px; font-size:16px}
-	#tradeSearchFrm input {height:30px; font-size:16px}
+	#oldSearchFrm select {height:30px; font-size:16px}
+	#oldSearchFrm input {height:30px; font-size:16px}
 	a:link {color:#222; text-decoration: none;}
 	a:visited {color:#222 }	
 </style>
