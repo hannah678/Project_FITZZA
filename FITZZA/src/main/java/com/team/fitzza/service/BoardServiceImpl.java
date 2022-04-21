@@ -149,6 +149,16 @@ public class BoardServiceImpl implements BoardService{
 	public int votecnt(int vote_item_order,BoardVO vo){
 		return dao.votecnt(vote_item_order,vo);
 	}
+	
+	@Override
+	public Integer votepercent(int vote_item_order, BoardVO vo) {
+		return dao.votepercent(vote_item_order, vo);
+	}
+	
+	@Override
+	public BoardVO voteuser(String user_id, BoardVO vo) {
+		return dao.voteuser(user_id,vo);
+	}
 
 	@Override
 	public List<BoardVO> boardSearch(String searchKey, String string, int start, int end, int type_num) {
@@ -167,6 +177,7 @@ public class BoardServiceImpl implements BoardService{
 
 	@Override
 	public List<BoardVO> recommendBoardSelect(int i, PagingVO pvo, String gender_type) {
+		// TODO Auto-generated method stub
 		return dao.recommendBoardSelect(i, pvo, gender_type);
 	}
 

@@ -60,6 +60,8 @@ public interface BoardDAO {
 	
 	public int votein(BoardVO vo);
 	public int votecnt(int vote_item_order, BoardVO vo);
+	public Integer votepercent(int vote_item_order, BoardVO vo);
+	public BoardVO voteuser(String user_id, BoardVO vo);
 	
 	//검색
 	public List<BoardVO> boardSearch(String searchKey, String string, int start, int end, int type_num);

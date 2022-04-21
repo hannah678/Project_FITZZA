@@ -203,7 +203,7 @@
 		GROUP BY A.board_num
 		ORDER BY A.board_num DESC;
     </select>
-    <select id="BoardSelectLikeOrder" resultType="com.team.fitzza.vo.BoardVO">
+	<select id="BoardSelectLikeOrder" resultType="com.team.fitzza.vo.BoardVO">
  		SELECT   A.board_num, A.title, A.user_id, A.write_date, B.profile_image, B.user_nickname, C.file1, 
  				 COUNT( case when ifnull(D.user_id, 0)=#{param2} then 1 end) AS heart_type,
  				 COUNT(D.user_id) AS like_num
@@ -243,5 +243,17 @@
     	SELECT COUNT(user_id)
     	FROM voted_user
     	WHERE board_num = #{param2.board_num} and vote_item_order=#{param1}
+    </select>
+    
+    <select id="votepercent" resultType="int">
+    	SELECT (COUNT(vote_item_order)/(SELECT COUNT(user_id) from voted_user where board_num = #{param2.board_num}))*100
+    	FROM voted_user
+    	WHERE board_num = #{param2.board_num} and vote_item_order=#{param1};
+    </select>
+    
+    <select id="voteuser" resultType="com.team.fitzza.vo.BoardVO">
+    	SELECT user_id
+    	FROM voted_user
+    	where user_id=#{param1} and board_num = #{param2.board_num}
     </select>
 </mapper>
