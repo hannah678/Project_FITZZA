@@ -58,11 +58,11 @@ h1, h2, .oldlist>li:nth-child(3), .oldlist>li:nth-child(6n+1), .oldlist>li:nth-c
     background-color: white;
     overflow:hidden;
 }
-.oldlist>li:nth-child(1) {font-size:20px}
-.oldlist>li:nth-child(2) {font-size:20px}
-.oldlist>li:nth-child(4) {font-size:20px}
-.oldlist>li:nth-child(5) {font-size:20px}
-.oldlist>li:nth-child(6) {font-size:20px}
+.oldlist>li:nth-child(1) {font-size:20px; font-weight:600;}
+.oldlist>li:nth-child(2) {font-size:20px; font-weight:600;}
+.oldlist>li:nth-child(4) {font-size:20px; font-weight:600;}
+.oldlist>li:nth-child(5) {font-size:20px; font-weight:600;}
+.oldlist>li:nth-child(6) {font-size:20px; font-weight:600;}
 .oldlist>li:nth-child(6n+4){width:20%}
 .oldlist>li:nth-child(6n+3){
     width: 30%;
@@ -70,7 +70,7 @@ h1, h2, .oldlist>li:nth-child(3), .oldlist>li:nth-child(6n+1), .oldlist>li:nth-c
     overflow: hidden;
     text-overflow: ellipsis;
 }
-.oldlist>li:nth-child(3) {font-size:20px; text-align:center;}
+.oldlist>li:nth-child(3) {font-size:20px; text-align:center; font-weight:600;}
 .oldlist>li:nth-child(6n+5){width: 20%;}
 #product_img{
     width: 80px;

@@ -51,11 +51,11 @@ body{
 	color:black;
 }
 .qnalist > li {overflow:hidden}
-.qnalist > li:nth-child(1) {font-size:20px;}
-.qnalist > li:nth-child(2) {font-size:20px;}
-.qnalist > li:nth-child(3) {font-size:20px;}
-.qnalist > li:nth-child(4) {font-size:20px;}
-.qnalist > li:nth-child(5) {font-size:20px;}
+.qnalist > li:nth-child(1) {font-size:20px; font-weight:600;}
+.qnalist > li:nth-child(2) {font-size:20px; font-weight:600;}
+.qnalist > li:nth-child(3) {font-size:20px; font-weight:600;}
+.qnalist > li:nth-child(4) {font-size:20px; font-weight:600;}
+.qnalist > li:nth-child(5) {font-size:20px; font-weight:600;}
 .qnalist>li{
     float: left;
     height: 80px;
