@@ -67,6 +67,11 @@
 				dataType : 'json',
 				data :param,
 				success : function(data){
+					if(data.length<8){
+						$("#moreViewVote").css("display", "none");
+					}else{
+						$("#moreViewVote").css("display", "block");
+					}
 					for (var i = 0; i < data.length; i++) {
 						addListHtml += "<li><div class='post_vote'><a href='/board/vote/voteView?board_num="+ data[i].board_num +"'><div class='sum-img'>";
 						addListHtml += "<div class='sum-img1'><img src='/upload/"+ data[i].file1 +"' width='130' width='130'/></div>";
@@ -74,10 +79,8 @@
 						addListHtml += "<div class='post'><div class='post_top'><div class='title_area'>"+data[i].title+"</div><div class='post_status'>진행중</div>";
 						addListHtml += "<div class='post_bottom'><img src='/upload/" + data[i].profile_image + "' width='30' width='30'/>";
 						addListHtml += "<span>"+ data[i].user_nickname+ "</span><span>"+data[i].write_date+"</span></div></div></div></li>";
-						if(data[i].board_num==0){
-							$("#moreView").remove();
-						} 
 					}
+					
 					$("#voteListUl").append(addListHtml);
 					/* console.log(addListHtml); */
 				}
@@ -122,10 +125,13 @@
 						addListHtml += "<div class='post'><div class='post_top'><div class='title_area'>"+data[i].title+"</div><div class='post_status'>진행중</div>";
 						addListHtml += "<div class='post_bottom'><img src='/upload/" + data[i].profile_image + "' width='30' width='30'/>";
 						addListHtml += "<span>"+ data[i].user_nickname+ "</span><span>"+data[i].write_date+"</span></div></div></div></li>";
-						if(data[i].board_num==0){
-							$("#moreView").remove();
-						} 
 					}
+					if(data.length<8){
+						$("#moreViewVote").css("display", "none");
+					}else{
+						$("#moreViewVote").css("display", "block");
+					}
+					
 					$("#voteListUl").append(addListHtml);
 					/* console.log(addListHtml); */
 				}
