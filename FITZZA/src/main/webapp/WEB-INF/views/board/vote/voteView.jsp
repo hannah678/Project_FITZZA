@@ -45,29 +45,31 @@ $(function(){
 			}
 		});
 	});
-	//모달 신고
-	$("#reportForm").submit(function(){
-		event.preventDefault(); //form 기본이벤트 제거
-		if($("#report_content").val()==""){
-			alert("신고 내용을 입력해주세요.");
-			return;
-		}else{ //댓글 입력한 경우
-			var params = $("#reportForm").serialize();
-		
-			$.ajax({
-				url: '/board/reportOk',
-				data: params,
-				type:'POST',
-				success: function(r){
-					alert("전송 성공");
-				},
-				error: function(e){
-					console.log(e.responseText);
-					alert("전송 실패");
-				}
-			});
-		}
-	});
+	// 신고------------------------------------------------------------
+	$(function(){
+		$("#reportForm").submit(function(){
+			event.preventDefault(); //form 기본이벤트 제거
+			if($("#report_content").val()==""){
+				alert("신고 내용을 입력해주세요.");
+				return;
+			}else{ //댓글 입력한 경우
+				var params = $("#reportForm").serialize();
+			
+				$.ajax({
+					url: '/board/reportOk',
+					data: params,
+					type:'POST',
+					success: function(r){
+						alert("신고 접수되었습니다.");
+						$('#reportModal').modal('hide');
+					},
+					error: function(e){
+						console.log(e.responseText);
+						alert("전송 실패");
+					}
+				});
+			}
+		});
 	
 	function replyListAll(){
 		var url = "/reply/replyList";   // 댓글 리스트
@@ -240,7 +242,7 @@ $(function(){
 				</c:if>
 				<div id="content">${vo.content}</div>
 			</li>
-			<li class="bottom_menu"><div id="reportModal" class="button02">신고</div> <a href="/board/vote/voteEdit?board_num=${vo.board_num}"><div class="button01">수정</div></a> <a id="del" href="javascript:delCheck()"><div class="button01">삭제</div></a></li>
+			<li class="bottom_menu"><div id="reportModal" class="button02" data-target="#reportModal" data-toggle="modal">신고</div> <a href="/board/vote/voteEdit?board_num=${vo.board_num}"><div class="button01">수정</div></a> <a id="del" href="javascript:delCheck()"><div class="button01">삭제</div></a></li>
 			<li>
 				<ul class="vote_profile">
 					<li>작성자 정보</li>
@@ -257,54 +259,53 @@ $(function(){
 
 	<div class="reply"><!--  댓글 다는곳 -->
 	 <hr />
-			<b>댓글</b>
-			<hr />
-			<div id="replyList"></div>
-				<c:if test="${logStatus =='Y'}">
-					<div id="reply_cmnts">
-					<form id="replyFrm">
-						<input type="hidden" name="board_num" value="${vo.board_num}" />
-						<textarea name="coment" id='coment' placeholder=" 댓글 입력"></textarea>
-						<input type="submit" value="등록" id="replybtn" />
-					</form>
-					</div>
-				</c:if>
-	</div>
-
-<!-- 신고 모달 -->
-		<div id="reportModal" class="modal">
-			<!-- modal -->
-			<div class="modal-dialog">
-				<div class="modal-content">
-					<div class="modal-header">
-						<h2>게시물 신고</h2>
-						<button class="close" data-dismiss="modal">&times;</button>
-					</div>
-					<div class="modal-body">
-						<c:if test="${logStatus=='Y'}">
-							<form method="post" id="reportForm">
-								<input type="hidden" name="board_num" value="${vo.board_num}" />
-								<ul>
-									<li>신고 이유 &emsp; <select name="category_num">
-											<option value="1">광고</option>
-											<option value="2">사기거래</option>
-											<option value="3">욕설/비방</option>
-											<option value="4">사칭</option>
-									</select>
-									</li>
-									<hr />
-									<li>신고 내용<br /> <textarea name="report_content" rows="5"
-											cols="30"></textarea> <input type='submit' value='신고 접수'
-										id="reportbtn" />
-									</li>
-								</ul>
-							</form>
-						</c:if>
-						<c:if test="${logStatus!='Y'}">
-							<h3>로그인 후에 가능합니다.</h3>
-						</c:if>
-					</div>
+		<b>댓글</b>
+		<hr />
+		<div id="replyList"></div>
+			<c:if test="${logStatus =='Y'}">
+				<div id="reply_cmnts">
+				<form id="replyFrm">
+					<input type="hidden" name="board_num" value="${vo.board_num}" />
+					<textarea name="coment" id='coment' placeholder=" 댓글 입력"></textarea>
+					<input type="submit" value="등록" id="replybtn" />
+				</form>
 				</div>
+			</c:if>
+	</div>
+</div>
+<!-- 신고 모달 -->
+<div id="reportModal" class="modal">
+	<!-- modal -->
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h2>게시물 신고</h2>
+				<button class="close" data-dismiss="modal">&times;</button>
+			</div>
+			<div class="modal-body">
+				<c:if test="${logStatus=='Y'}">
+					<form method="post" id="reportForm">
+						<input type="hidden" name="board_num" value="${vo.board_num}" />
+						<ul>
+							<li>신고 이유 &emsp; <select name="category_num">
+									<option value="1">광고</option>
+									<option value="2">사기거래</option>
+									<option value="3">욕설/비방</option>
+									<option value="4">사칭</option>
+							</select>
+							</li>
+							<hr />
+							<li>신고 내용<br /> <textarea name="report_content" rows="5"
+									cols="30"></textarea> <input type='submit' value='신고 접수'
+								id="reportbtn" />
+							</li>
+						</ul>
+					</form>
+				</c:if>
+				<c:if test="${logStatus!='Y'}">
+					<h3>로그인 후에 가능합니다.</h3>
+				</c:if>
 			</div>
 		</div>
 	</div>
+</div>

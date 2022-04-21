@@ -64,16 +64,15 @@ $(document).ready(function(){
 			<p id="adminOldShow"><%@ include file="/WEB-INF/views/admin/adminOld.jsp" %></p>
 			<p id="adminNoticeShow"><%@ include file="/WEB-INF/views/admin/adminNotice.jsp" %></p>
 		</div>
-		 <!-- 신고 모달 -->
+	</div>
+</div>
+		<!-- 신고 모달 -->
 		<div id="reportModal" class="modal">
 			<!-- modal -->
 			<div class="modal-dialog">
-				<div class="modal-content">
-					<div class="modal-header">
-						<h2>신고 내용</h2>
-						<button class="close" data-dismiss="modal">&times;</button>
-					</div>
+				<div class="modal-content">	
 					<div class="modal-body">
+						<button class="close" data-dismiss="modal">&times;</button>
 						<ul>
 							<li id="report_type"></li>
 							<hr/>
@@ -83,15 +82,3 @@ $(document).ready(function(){
 				</div>
 			</div>
 		</div>
-	</div>
-</div>
-<script>
-$(".reportModalList").click(function(){
-	 var Rtype = $(this).parent().prev().text();
-	 var Rcontent = $(this).prev().val();
-	 $("#report_type").text("분류: "+Rtype);
-	 $("#report_content").text(Rcontent);
-	 
-	
-});
-</script>

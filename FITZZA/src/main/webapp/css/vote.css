@@ -219,6 +219,16 @@ body{background:url(../img/tc_bg_1.png);}
 	background-color: rgb( 227, 104, 83);
 	transition:all.15s linear;
 }
+/* 모달 */
+.modal {font-size: 20px; text-align:center}
+.modal-backdrop {margin-left:-340px}
+.modal-content {
+	display:block;
+	max-width:1000px; height: 650px;
+	position:absolute; left:50%; top:150px;
+	transform:translateX(-550px);
+}
+#reportModal{z-index:10 !important}
 
 /*작성자 정보*/
 .vote_profile {

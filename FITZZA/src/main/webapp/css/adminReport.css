@@ -86,22 +86,17 @@
 }
 .report_list > li {width:100%}
 .report_list li ul {position:relative; width:100%}
-.report_list li ul li:nth-child(9n-8) a {
-	display:block; width:100%; height:50px;
-	position:absolute; left:0; top:0px;
-	transition:all 0.5s;
-	z-index:1
-}
+.report_list li a:link {color:black}
+.report_list li a:visited {color:green }
 .report_list li a:hover {background-color:rgba(0,0,0,0.1)}
-.report_list li ul li:nth-child(9n-7) {width:10% !important}
-.report_list li ul li:nth-child(9n-6) {width:10% !important}
-.report_list li ul li:nth-child(9n-5) {width:10% !important}
-.report_list li ul li:nth-child(9n-4) {width:20% !important}
-.report_list li ul li:nth-child(9n-3) {width:10% !important}
-.report_list li ul li:nth-child(9n-2) {width:10% !important}
-.report_list li ul li:nth-child(9n-1) {width:15% !important}
-.report_list li ul li:nth-child(9n) {width:15% !important}
-
+.report_list li ul li:nth-child(8n-7) {width:10% !important}
+.report_list li ul li:nth-child(8n-6) {width:10% !important}
+.report_list li ul li:nth-child(8n-5) {width:10% !important}
+.report_list li ul li:nth-child(8n-4) {width:20% !important; color: black;}
+.report_list li ul li:nth-child(8n-3) {width:10% !important}
+.report_list li ul li:nth-child(8n-2) {width:10% !important}
+.report_list li ul li:nth-child(8n-1) {width:15% !important}
+.report_list li ul li:nth-child(8n) {width:15% !important}
 
 #reportSearchFrm {
 	float:left;

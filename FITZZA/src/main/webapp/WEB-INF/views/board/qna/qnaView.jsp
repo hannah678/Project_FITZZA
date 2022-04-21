@@ -15,7 +15,7 @@
             location.href = "/board/boardDelete?board_num="+${vo.board_num};     // 게시글 삭제
         }
     }
-    // 댓글------------------------------------------------------------
+    // 신고------------------------------------------------------------
 	$(function(){
 		$("#reportForm").submit(function(){
 			event.preventDefault(); //form 기본이벤트 제거
@@ -40,7 +40,8 @@
 				});
 			}
 		});
-		
+	    // 댓글------------------------------------------------------------
+
 		function replyListAll(){
 			var url = "/reply/replyList";   // 댓글 리스트
 			var params = "board_num=${vo.board_num}";    // 게시글 넘버

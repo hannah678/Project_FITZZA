@@ -60,18 +60,17 @@ $(document).ready(function(){
 	 		<ul class="report_list">
 	 			<c:forEach var="vo" items="${reportList}">
 	 				<li><ul>
-	 				<c:choose>
-						<c:when test="${vo.type_num eq 1}"><li><a href="/board/todayCodi/todayCodiView?board_num=${vo.board_num}"></a></li></c:when>
-						<c:when test="${vo.type_num eq 2}"><li><a href="/board/recommend/recommendView?board_num=${vo.board_num}"></a></li></c:when>
-						<c:when test="${vo.type_num eq 3}"><li><a href="/board/old/oldView?board_num=${vo.board_num}"></a></li></c:when>
-						<c:when test="${vo.type_num eq 4}"><li><a href="/board/review/reviewView?board_num=${vo.board_num}"></a></li></c:when>
-						<c:when test="${vo.type_num eq 5}"><li><a href="/board/qna/qnaView?board_num=${vo.board_num}"></a></li></c:when>
-						<c:when test="${vo.type_num eq 6}"><li><a href="/board/vote/voteView?board_num=${vo.board_num}"></a></li></c:when>
-					</c:choose>
 		 			<li class="repoName">${vo.category_name}</li>
 		 			<li><input type="hidden" value="${vo.report_content}"/><input type="button" class="reportModalList" data-target="#reportModal" data-toggle="modal" value="상세"/></li>
 		 			<li>${vo.type_name}</li>
-		 			<li>${vo.title }</li>
+		 			<c:choose>
+						<c:when test="${vo.type_num eq 1}"><li><a href="/board/todayCodi/todayCodiView?board_num=${vo.board_num}">${vo.title }</a></li></c:when>
+						<c:when test="${vo.type_num eq 2}"><li><a href="/board/recommend/recommendView?board_num=${vo.board_num}">${vo.title }</a></li></c:when>
+						<c:when test="${vo.type_num eq 3}"><li><a href="/board/old/oldView?board_num=${vo.board_num}">${vo.title }</a></li></c:when>
+						<c:when test="${vo.type_num eq 4}"><li><a href="/board/review/reviewView?board_num=${vo.board_num}">${vo.title }</a></li></c:when>
+						<c:when test="${vo.type_num eq 5}"><li><a href="/board/qna/qnaView?board_num=${vo.board_num}">${vo.title }</a></li></c:when>
+						<c:when test="${vo.type_num eq 6}"><li><a href="/board/vote/voteView?board_num=${vo.board_num}">${vo.title }</a></li></c:when>
+					</c:choose>
 			 		<li>${vo.reported_id }</li>
 		 			<li>${vo.user_id }</li>			 		
 			 		<li>${vo.report_time }</li>
@@ -85,9 +84,11 @@ $(document).ready(function(){
 			 		</ul></li>
 		 		</c:forEach>
 	 		</ul>
+	 		
  		</div>
  		
  	</div>
+ 	
  </div>
  <script>
  $(".report_off").click(function(){
@@ -95,7 +96,6 @@ $(document).ready(function(){
 	 	var reportOffOk = confirm("신고 내용을 확인처리 하시겠습니까?");
 		
 		if(reportOffOk == true){
-			document.location.href="/admin/adminReportOff?report_num="+repo_num;
 			$.ajax({
 				url : "/admin/adminReportOff",
 				type : "get",
@@ -114,8 +114,6 @@ $(document).ready(function(){
 	 var Rcontent = $(this).prev().val();
 	 $("#report_type").text("분류: "+Rtype);
 	 $("#report_content").text(Rcontent);
-	 
-	
  });
  </script>
  
