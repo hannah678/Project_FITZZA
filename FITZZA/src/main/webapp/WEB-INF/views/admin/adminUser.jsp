@@ -6,6 +6,14 @@
     <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
 <style>
 	header, footer {display:none}
+	#memberSearch {height:30px; font-size:16px}
+	#memberSearchFrm select {height:30px; font-size:16px}
+	#memberSearchFrm input {height:30px;  font-size:16px}
+	#left_member_btn {margin-top:40px}
+	button {font-size:14px !important}
+	#adminUser_wrap {
+	position:relative; z-index:2;
+}
 </style>
 <script>
 $("#membersearchFrm").submit(function() {

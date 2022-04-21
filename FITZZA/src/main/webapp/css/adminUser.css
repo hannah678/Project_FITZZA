@@ -29,13 +29,20 @@
 	padding:0 50px
 }
 .member_status li:nth-child(1) {margin-left:-20%}
+.member_status li:nth-child(2) {
+	height:30px; line-height:30px;
+	margin-top:0px
+}
+.member_status li:nth-child(2) span{
+	height:100px; line-height:100px;
+}
 .member_status li:nth-child(3) {margin-top:-5px}
 .member_status li form select {height:25px;}
 .member_status li form input {height:20px;line-height:20px}
 #memberSearch {height:25px;}
 .member_buttons {
 	display:inline-block;
-	margin:30px 0 30px -23%;
+	margin:15px 0 30px -23%;
 	position:relative; z-index:1;
 }
 .member_buttons button {
@@ -100,7 +107,7 @@
 	line-height:50px;
 	text-align:center;
 	border-bottom:1px solid #b5b5b5;
-	font-size:18px;
+	font-size:16px;
 }
 .member_list li ul li{
 	white-space:nowrap;
@@ -121,7 +128,7 @@
 
 #memberSearchFrm {
 	float:right;
-	margin:30px 50px 0 0
+	margin:15px 50px 0 0
 }
 .user_lists {
 	cursor:pointer;

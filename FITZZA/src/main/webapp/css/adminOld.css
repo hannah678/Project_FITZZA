@@ -34,11 +34,11 @@
 #tradeSearch {height:25px;}
 #tradeSearchFrm {
 	float:right;
-	margin:30px 50px 0 0
+	margin:15px 50px 0 0
 }
 .trade_buttons {
 	display:inline-block;
-	margin:30px 0 30px -23%;
+	margin:15px 0 30px -23%;
 	position:relative; z-index:1;
 }
 .trade_buttons button {
@@ -53,10 +53,11 @@
 .trade_buttons button:active {background-color:#276968;}
 
 .trade_list_box {
-	width:96%; height:550px;
+	width:96%; height:600px;
 	background-color:#fff;
 	margin-left:2%;
-	overflow:hidden;
+	overflow-x:hidden;
+	overflow-y:auto;
 	position:absolute; left:0; top:300px;
 }
 .trade_title {
@@ -96,19 +97,19 @@
 	display:block;
 	line-height:50px;
 	text-align:center;
-	border-bottom:1px solid #b5b5b5;
-	font-size:18px;
+	font-size:16px;
 }
 .trade_list li ul li{
 	white-space:nowrap;
 	text-overflow: ellipsis;
 	overflow:hidden;
+	border-bottom:1px solid #b5b5b5;
 }
 
-.trade_list li ul li:nth-child(1) {width:2%;}
-.trade_list li ul li:nth-child(2) {width:15%;}
-.trade_list li ul li:nth-child(3) {width:33%;}
-.trade_list li ul li:nth-child(4) {width:10%}
-.trade_list li ul li:nth-child(5) {width:15%}
-.trade_list li ul li:nth-child(6) {width:15%}
-.trade_list li ul li:nth-child(7) {width:10%}
+.trade_list li ul li:nth-child(7n-6) {width:2%;}
+.trade_list li ul li:nth-child(7n-5) {width:15%;}
+.trade_list li ul li:nth-child(7n-4) {width:33%;}
+.trade_list li ul li:nth-child(7n-3) {width:10%}
+.trade_list li ul li:nth-child(7n-2) {width:15%}
+.trade_list li ul li:nth-child(7n-1) {width:15%}
+.trade_list li ul li:nth-child(7n) {width:10%}

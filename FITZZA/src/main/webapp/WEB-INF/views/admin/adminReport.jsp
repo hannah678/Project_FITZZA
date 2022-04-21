@@ -9,6 +9,9 @@
 <style>
 	header, footer {display:none}
 	#adminReport_container {display:none}
+	#reportSearch {height:30px; font-size:16px}
+	#reportSearchFrm select {height:30px; font-size:16px}
+	#reportSearchFrm input {height:30px; font-size:16px}
 </style>
 <!-- 카테고리 선택 js-->
  <script>
@@ -56,13 +59,14 @@ $(document).ready(function(){
 	 		</ul>
 	 		<ul class="report_list">
 	 			<c:forEach var="vo" items="${reportList}">
+	 				<li><ul>
 	 				<c:choose>
-						<c:when test="${vo.type_num eq 1}"><a href="/board/todayCodi/todayCodiView?board_num=${vo.board_num}"></a></c:when>
-						<c:when test="${vo.type_num eq 2}"><a href="/board/recommend/recommendView?board_num=${vo.board_num}"></a></c:when>
-						<c:when test="${vo.type_num eq 3}"><a href="/board/old/oldView?board_num=${vo.board_num}"></a></c:when>
-						<c:when test="${vo.type_num eq 4}"><a href="/board/review/reviewView?board_num=${vo.board_num}"></a></c:when>
-						<c:when test="${vo.type_num eq 5}"><a href="/board/qna/qnaView?board_num=${vo.board_num}"></a></c:when>
-						<c:when test="${vo.type_num eq 6}"><a href="/board/vote/voteView?board_num=${vo.board_num}"></a></c:when>
+						<c:when test="${vo.type_num eq 1}"><li><a href="/board/todayCodi/todayCodiView?board_num=${vo.board_num}"></a></li></c:when>
+						<c:when test="${vo.type_num eq 2}"><li><a href="/board/recommend/recommendView?board_num=${vo.board_num}"></a></li></c:when>
+						<c:when test="${vo.type_num eq 3}"><li><a href="/board/old/oldView?board_num=${vo.board_num}"></a></li></c:when>
+						<c:when test="${vo.type_num eq 4}"><li><a href="/board/review/reviewView?board_num=${vo.board_num}"></a></li></c:when>
+						<c:when test="${vo.type_num eq 5}"><li><a href="/board/qna/qnaView?board_num=${vo.board_num}"></a></li></c:when>
+						<c:when test="${vo.type_num eq 6}"><li><a href="/board/vote/voteView?board_num=${vo.board_num}"></a></li></c:when>
 					</c:choose>
 		 			<li class="repoName">${vo.category_name}</li>
 		 			<li><input type="hidden" value="${vo.report_content}"/><input type="button" class="reportModalList" data-target="#reportModal" data-toggle="modal" value="상세"/></li>
@@ -73,36 +77,18 @@ $(document).ready(function(){
 			 		<li>${vo.report_time }</li>
 			 		
 			 		<c:if test="${vo.state !='Y'}">
-			 		<li id="repo_state"><button class="report_off">처리확인</button><input type="hidden" name="${vo.report_num}" value="${vo.report_num}"></li>
+			 			<li id="repo_state"><button class="report_off">처리확인</button><input type="hidden" name="${vo.report_num}" value="${vo.report_num}"></li>
 			 		</c:if>
-			 		<c:if test="${vo.state == 'Y'}">
+			 			<c:if test="${vo.state == 'Y'}">
 			 		<li>처리 완료</li>
 			 		</c:if>
+			 		</ul></li>
 		 		</c:forEach>
 	 		</ul>
  		</div>
  		
  	</div>
  </div>
- <!-- 신고 모달 -->
-<div id="reportModal" class="modal">
-	<!-- modal -->
-	<div class="modal-dialog">
-		<div class="modal-content">
-			<div class="modal-header">
-				<h2>신고 내용</h2>
-				<button class="close" data-dismiss="modal">&times;</button>
-			</div>
-			<div class="modal-body">
-				<ul>
-					<li id="report_type"></li>
-					<hr/>
-					<li id="report_content"></li>
-				</ul>
-			</div>
-		</div>
-	</div>
-</div>
  <script>
  $(".report_off").click(function(){
 		var repo_num = $(this).next().val();

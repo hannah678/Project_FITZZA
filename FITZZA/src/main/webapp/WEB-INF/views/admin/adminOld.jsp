@@ -7,6 +7,9 @@
 <style>
 	header, footer {display:none}
 	#adminOld_container {display:none}
+	#tradeSearch {height:30px; font-size:16px}
+	#tradeSearchFrm select {height:30px; font-size:16px}
+	#tradeSearchFrm input {height:30px; font-size:16px}
 </style>
  <div id="adminOld_container">
  	<h1 class="hidden">회원관리</h1>
