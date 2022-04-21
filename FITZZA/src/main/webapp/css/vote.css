@@ -153,11 +153,13 @@ body{background:url(../img/tc_bg_1.png);}
 }
 
 .bottom_menu{
+	position:relative;
 	height:60px;
 	line-height: 60px;
 	padding: 0 30px;
 	margin-bottom:10px;
 	margin-top:20px;
+	border:1px solid red;
 }
 
 #Top_name{
@@ -188,16 +190,20 @@ body{background:url(../img/tc_bg_1.png);}
 	border:1px solid #d3d1d1; /*임시경계선*/
 }
 
+.button01 a:hover,a:visited,a:link{
+	color:white;
+	text-decoration: none;
+}
 .button01{
 	float:right;
 	cursor:pointer;
+	color:white;
 	margin-left:15px; 
 	text-align:center;
 	width:90px;
 	height:50px;
 	line-height:50px;
-	font-size:18px;
-	color: #fff;
+	font-size:23px;
 	border-radius: 10px;
 	font-family:'Nanum pen script';
 	background-color: rgb( 244, 156, 21);
@@ -205,14 +211,15 @@ body{background:url(../img/tc_bg_1.png);}
 }
 
 .button02{
-	float:right;
+	position:absolute;
+	right:5px;
 	cursor:pointer;
 	margin-left:15px; 
 	text-align:center;
 	width:90px;
 	height:50px;
 	line-height:50px;
-	font-size:18px;
+	font-size:23px;
 	color: #fff;
 	border-radius: 10px;
 	font-family:'Nanum pen script';

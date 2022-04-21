@@ -1,52 +1,71 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<!DOCTYPE html>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
 <link rel="stylesheet" href="/css/vote.css" type="text/css">
-
+<style>
+   #logStatus3 > img {vertical-align:top;}
+   #logStatus4 > img {vertical-align:top;}
+   #logStatus5 > img {vertical-align:top;}
+   
+   .button02{
+	position:absolute;
+	right:5px;
+	cursor:pointer;
+	margin-left:15px; 
+	text-align:center;
+	width:90px;
+	height:50px;
+	line-height:50px;
+	font-size:23px;
+	color: #fff;
+	border-radius: 10px;
+	font-family:'Nanum pen script';
+	background-color: rgb( 227, 104, 83);
+	transition:all.15s linear;
+}
+</style>
 <script>
 function delCheck(){
 	if(confirm("삭제하시겠습니까?")){
 		location.href = "/board/boardDelete?board_num="+${vo.board_num};     // 게시글 삭제 매핑
 	}
-}
+}//del
 
 $(function(){
 	//투표제출
-	$("#voteFrm").submit(function(){
-		event.preventDefault(); 
-		var params = $("#voteFrm").serialize();
-		
-		$.ajax({
-			url :'/vote/votein',
-			data: params,
-			type: 'POST',
-			success : function(su){
-				$("#vote22").css("display","none");
-				
-				
-				
-				var tag ="<div class='summary'>";
-					tag += "<p>총 투표수 : "+su.cnt3+"</p></div>";
-					tag += "<ol class='result2'><li>";
-					tag += "<p id='img_5'>이미지 1 : <span title='투표수'>"+su.cnt1+"표</span></p><p class='graph'>";
-					tag += "<span class='graphbox'><span style='width:"+su.cnt4+"%''>&nbsp;</span></span>";
-					tag += "<em title='투표율'>("+su.cnt4+"%)</em></p></li>";
-					tag += "<li><p id='img_6'>이미지 2 : <span title='투표수'>"+su.cnt2+"표</span></p><p class='graph'>";
-					tag += "<span class='graphbox'><span style='width:"+su.cnt5+"%''>&nbsp;</span></span>";
-					tag += "<em title='투표율'>("+su.cnt5+"%)</em></p></li></ol>";
-					
-					$("#vote24").html(tag);
-					$("#vote24").css("display","block");
-			},
-			error : function(er){
-				console.log(er.responseText);
-				alert("투표 에러 발생");
-			}
+		$("#voteFrm").submit(function(){
+				event.preventDefault(); 
+				var params = $("#voteFrm").serialize();
+			
+				$.ajax({
+					url :'/vote/votein',
+					data: params,
+					type: 'POST',
+					success : function(su){
+						$("#vote22").css("display","none");
+						
+						
+						
+						var tag ="<div class='summary'>";
+							tag += "<p>총 투표수 : "+su.cnt3+"</p></div>";
+							tag += "<ol class='result2'><li>";
+							tag += "<p id='img_5'>이미지 1 : <span title='투표수'>"+su.cnt1+"표</span></p><p class='graph'>";
+							tag += "<span class='graphbox'><span style='width:"+su.cnt4+"%''>&nbsp;</span></span>";
+							tag += "<em title='투표율'>("+su.cnt4+"%)</em></p></li>";
+							tag += "<li><p id='img_6'>이미지 2 : <span title='투표수'>"+su.cnt2+"표</span></p><p class='graph'>";
+							tag += "<span class='graphbox'><span style='width:"+su.cnt5+"%''>&nbsp;</span></span>";
+							tag += "<em title='투표율'>("+su.cnt5+"%)</em></p></li></ol>";
+							
+							$("#vote24").html(tag);
+							$("#vote24").css("display","block");
+					},
+					error : function(er){
+						console.log(er.responseText);
+						alert("투표 에러 발생");
+					}
+				});//ajax
 		});
-	});
 	// 신고------------------------------------------------------------
-	$(function(){
 		$("#reportForm").submit(function(){
 			event.preventDefault(); //form 기본이벤트 제거
 			if($("#report_content").val()==""){
@@ -177,10 +196,11 @@ $(function(){
 });
 
 //프레임 이미지
-//window.onload=function(){
-//	var exp = ${vo.exp};
-//	document.getElementById("level_frame").src="${vo.frame_img}";
-//}
+window.onload=function(){
+	var exp = ${vo.exp};
+	document.getElementById("level_frame").src="${vo.frame_img}";
+}
+
 </script>
 </head>
 <body>
@@ -242,7 +262,8 @@ $(function(){
 				</c:if>
 				<div id="content">${vo.content}</div>
 			</li>
-			<li class="bottom_menu"><div id="reportModal" class="button02" data-target="#reportModal" data-toggle="modal">신고</div> <a href="/board/vote/voteEdit?board_num=${vo.board_num}"><div class="button01">수정</div></a> <a id="del" href="javascript:delCheck()"><div class="button01">삭제</div></a></li>
+			
+			<li class="bottom_menu"><c:if test="${logId != vo.user_id && logPermission !='admin'}"><div id="reportModal" class="button02" data-target="#reportModal" data-toggle="modal">신고</div></c:if><c:if test="${logId == vo.user_id||logPermission =='admin'}"><a href="/board/vote/voteEdit?board_num=${vo.board_num}" class="button01">수정</a> <a id="del" href="javascript:delCheck()" class="button01">삭제</a></c:if></li>
 			<li>
 				<ul class="vote_profile">
 					<li>작성자 정보</li>

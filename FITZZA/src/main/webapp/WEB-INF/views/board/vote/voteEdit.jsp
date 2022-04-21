@@ -5,7 +5,7 @@
 
 <script>
  $(function(){
-	 $("#reviewFrm").submit(function(){
+	 $("#voteFrm").submit(function(){
 	 if($("#title").val()==''){
 		 alert("제목을 입력해주세요");
 		 return false;
@@ -24,7 +24,7 @@
 	<div class="vote_container">
 		<h1 class="Top_menu">글쓰기</h1>
 			<div id="vmain_container">
-				<form method="post" action="/board/vote/voteWriteOk" id="reviewFrm" enctype="multipart/form-data">
+				<form method="post" action="/board/vote/voteEditOk" id="voteFrm" enctype="multipart/form-data">
 					<input type="hidden" name="board_num" value="${vo.board_num}"/>
 				  	  	<ul>
 							<li><input type="hidden" name="type_num" value="6"/></li> <!--  게시판 타입num-->
@@ -41,18 +41,18 @@
 				                    	<p style="text-align: center;">투표대상 1 이미지<p>
 				                    	    <div>
 				                         	   <img style="width: 450px;" id="img_section" src="/upload/${vo.file1}"><br/>
-				                            	<input type="text" id="file_route01"  disabled="disabled" value="${vo.file1}" >
+				                            	<input type="text" id="file_route01"  name="file1" readonly="readonly" value="${vo.file1}" >
 				                           	 	<label for="upload_file01">업로드</label>
-				                            	<input type="file" id="upload_file01" name="filename" accept="image/*" required=true style="position:absolute; clip:rect(0, 0, 0, 0);"><br/>
+				                            	<input type="file" id="upload_file01" name="filename" accept="image/*" style="position:absolute; clip:rect(0, 0, 0, 0);"><br/>
 				                       		</div>
 				             	    </div>
 				           	        <div class="img_up2">
 				                  	    <p style="text-align: center;">투표대상 2 이미지</p>
 				                       		 <div>
 				                       		     <img style="width: 450px;" id="img_section2" src="/upload/${vo.file2}"><br/>
-				                         	     <input type="text" id="file_route02"  disabled="disabled" value="${vo.file2}" >
+				                         	     <input type="text" id="file_route02"  readonly="readonly" name="file2" value="${vo.file2}" >
 				                          	     <label for="upload_file02">업로드</label>
-				                          	     <input type="file" id="upload_file02" name="filename" accept="image/*" required=true style="position:absolute; clip:rect(0, 0, 0, 0);"><br/>
+				                          	     <input type="file" id="upload_file02" name="filename" accept="image/*" style="position:absolute; clip:rect(0, 0, 0, 0);"><br/>
 				                      	     </div>
 				               	    </div>
 				                </div>
