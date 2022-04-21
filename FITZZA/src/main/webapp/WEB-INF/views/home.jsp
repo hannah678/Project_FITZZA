@@ -34,7 +34,7 @@
         <article id="todaysCodi" class="article">
 	        <div class="wrap">
 	            <h1>패션 피플들의 데일리룩</h1>
-	            <h2><a href="">오늘의 코디</a></h2>
+	            <h2><a href="/board/todayCodi/todayCodiList">오늘의 코디</a></h2>
 	            <div id="lookTop3">
 	                <p>TOP 3</p>
 	                <ul>
@@ -71,7 +71,7 @@
         <article id="style_reco" class="article">
 	        <div class="wrap">
 	        	<h1>다양한 패션을 나누고 싶다면</h1>
-	        	<h2><a href="">스타일 추천</a></h2>
+	        	<h2><a href="/board/recommend/recommendList">스타일 추천</a></h2>
 	        	<ul id="text_effect">
 	        		<li class="text">click the people !</li>
 	        		<li class="text_before">click the people !</li>
@@ -91,7 +91,7 @@
         <article id="trade" class="article">
 	        <div class="wrap">
 	        	<h1>패션피플들의 스타일리쉬한 아이템 !</h1>
-	        	<h2><a href="">중고거래</a></h2>
+	        	<h2><a href="/board/old/oldList">중고거래</a></h2>
 	        	<ul>
 	        		<li><img src="img/trade_item1.png" alt="패션아이템1"></li>
 	        		<li><img src="img/trade_item2.png" alt="패션아이템2"></li>
@@ -107,7 +107,7 @@
         <article id="review" class="article">
         	<div class="wrap">
         		<h1>구매한 물건을 소개하고,<br/>고마운 마음을 전하고 싶을 땐</h1>
-	        	<h2><a href="">구매후기</a></h2>
+	        	<h2><a href="/board/review/reviewList">구매후기</a></h2>
 	        	<div class="bg">
 	        		<img src="img/review_bg.png" alt="배경이미지">
 	        		<img src="img/review_frame.png" alt="프레임이미지">
@@ -119,7 +119,7 @@
         <article id="QnA" class="article">
         	<div class="wrap">
         		<h1>패션 관련 그 어떤 질문이라도 궁금하면 뭐든지</h1>
-	        	<h2><a href="">QnA</a></h2>
+	        	<h2><a href="/board/qna/qnaList">QnA</a></h2>
 	        	<div class="wrapper">
 					<p data-heading="다 물어봐">다 물어봐</p>
 				</div>
@@ -133,7 +133,7 @@
         <article id="vote" class="article">
         	<div class="wrap">
         		<h1>어떤 코디가 더 어울릴까 고민되면 물어봐 !</h1>
-	        	<h2><a href="">오늘뭐입지?</a></h2>
+	        	<h2><a href="/board/vote/voteList">오늘뭐입지?</a></h2>
         	</div>
         	<ul id="vote_frame">
         		<li id="frame1">
