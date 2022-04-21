@@ -116,6 +116,19 @@ public class AdminServiceImpl implements AdminService{
 	public int allOldList(BoardVO bvo) {
 		return dao.allOldList(bvo);
 	}
+
+
+	@Override
+	public int adminOldDel(BoardVO vo) {
+		return dao.adminOldDel(vo);
+	}
+
+
+	@Override
+	public List<BoardVO> oldSearch(String searchKey, String string, int start, int end) {
+		// TODO Auto-generated method stub
+		return dao.oldSearch(searchKey, string, start, end);
+	}
 	
 	
 }

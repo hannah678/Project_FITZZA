@@ -143,7 +143,7 @@ $(document).ready(function(){
 				$.ajax({
 					url : '/admin/multiAdmin',
 					type : 'POST',
-					dataType : 'json',
+					dataType : 'text',
 					data :params,
 					success : function(data){
 						alert("관리자 권한이 부여되었습니다.");

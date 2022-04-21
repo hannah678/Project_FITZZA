@@ -110,8 +110,6 @@ public class AdminController {
 	@PostMapping("/admin/multiDel")
 	@ResponseBody
 	public String multiDelete(MemberVO vo, HttpSession session) {
-		System.out.println("multiDelete START");
-		System.out.println("memberDelete!");
 		service.forcedBye(vo);
 		service.memberDel(vo);
 		return "선택한 회원이 강퇴되었습니다";
@@ -148,6 +146,26 @@ public class AdminController {
 	@RequestMapping("/admin/adminOld")
 	public String adminOld() {
 		return "/admin/adminOld";
+	}
+	
+	//게시글 삭제
+	@PostMapping("/admin/adminOldDel")
+	@ResponseBody
+	public String adminOldDel(BoardVO vo) {
+		
+		service.adminOldDel(vo);
+		return "선택한 게시글이 삭제 되었습니다.";
+	}
+	//게시물 검색
+	@ResponseBody //Ajax
+	@RequestMapping(value = "/admin/adminOld/searchLists")
+	public List<BoardVO> searchOldMoreView(@RequestParam(value="startNum", required=false)String startNum,
+	String searchKey, String searchWord) throws Exception {
+		int start = Integer.parseInt(startNum);
+		int end = 100;
+		System.out.println("searchKey -> "+searchKey);
+		System.out.println("searchWord -> "+searchWord);
+		return service.oldSearch(searchKey, "%"+searchWord+"%", start, end);
 	}
 	//게시판 관리----------------------------------------------------------------------------------------------------------------------------------
 	@RequestMapping("/admin/adminBoard")

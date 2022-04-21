@@ -46,6 +46,9 @@ public interface AdminService {
 	public int reserveOldList(BoardVO bvo);
 	//거래완료 개수
 	public int completeOldList(BoardVO bvo);
+	//중고 게시물 삭제
+	public int adminOldDel(BoardVO vo);
 	//검색
 	public List<MemberVO> memberSearch(String searchKey, String string, int start, int end);
+	public List<BoardVO> oldSearch(String searchKey, String string, int start, int end);
 }

@@ -52,7 +52,16 @@ public class BoardVO {
 	private int vote_item_order; //투표 고른 결과
 	private String vote_item_name;
 	
+	private List<Integer> adminOldSelect;
 	
+	
+	
+	public List<Integer> getAdminOldSelect() {
+		return adminOldSelect;
+	}
+	public void setAdminOldSelect(List<Integer> adminOldSelect) {
+		this.adminOldSelect = adminOldSelect;
+	}
 	public int getVote_item_order() {
 		return vote_item_order;
 	}
