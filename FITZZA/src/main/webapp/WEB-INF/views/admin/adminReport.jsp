@@ -65,14 +65,7 @@ $(document).ready(function(){
 			 			<li class="repoName">${vo.category_name}</li>
 			 			<li><input type="hidden" value="${vo.report_content}"/><input type="button" class="reportModalList" data-target="#reportModal" data-toggle="modal" value="상세"/></li>
 			 			<li>${vo.type_name}</li>
-			 			<c:choose>
-							<c:when test="${vo.type_num eq 1}"><li><a href="/board/todayCodi/todayCodiView?board_num=${vo.board_num}">${vo.title }</a></li></c:when>
-							<c:when test="${vo.type_num eq 2}"><li><a href="/board/recommend/recommendView?board_num=${vo.board_num}">${vo.title }</a></li></c:when>
-							<c:when test="${vo.type_num eq 3}"><li><a href="/board/old/oldView?board_num=${vo.board_num}">${vo.title }</a></li></c:when>
-							<c:when test="${vo.type_num eq 4}"><li><a href="/board/review/reviewView?board_num=${vo.board_num}">${vo.title }</a></li></c:when>
-							<c:when test="${vo.type_num eq 5}"><li><a href="/board/qna/qnaView?board_num=${vo.board_num}">${vo.title }</a></li></c:when>
-							<c:when test="${vo.type_num eq 6}"><li><a href="/board/vote/voteView?board_num=${vo.board_num}">${vo.title }</a></li></c:when>
-						</c:choose>
+			 			<li class="report_title"><input type="hidden" value="${vo.type_num}"/><input type="hidden" value="${vo.board_num}"/>${vo.title }</li>
 				 		<li>${vo.reported_id }</li>
 			 			<li>${vo.user_id }</li>			 		
 				 		<li>${vo.report_time }</li>
@@ -93,6 +86,30 @@ $(document).ready(function(){
  	
  </div>
  <script>
+ $(".report_title").click(function(){
+		var repo_type = $(this).children().first().val();
+		var board_num = $(this).children().last().val();
+		var xPos = (window.screen.width/2) - (1300/2); // 가운데 정렬
+		xPos += window.screenLeft; // 듀얼 모니터일 때
+		var yPos = (window.screen.height/2) - (900/2);
+		var board_size = "width="+1300+", height="+800+", left="+xPos+", top="+yPos+", menubar=yes, status=yes, titlebar=yes, resizable=yes";
+		console.log(repo_type);
+		console.log(board_num);
+		console.log(board_size);
+		if(repo_type == 1){
+			window.open("/board/todayCodi/todayCodiView?board_num="+board_num, '신고된 게시글 확인', board_size);
+		}else if(repo_type == 2){
+			window.open("/board/recommend/recommendView?board_num="+board_num, '신고된 게시글 확인', board_size);
+		}else if(repo_type == 3){
+			window.open("/board/old/oldView?board_num="+board_num, '신고된 게시글 확인', board_size);
+		}else if(repo_type == 4){
+			window.open("/board/review/reviewView?board_num="+board_num, '신고된 게시글 확인', board_size);
+		}else if(repo_type == 5){
+			window.open("/board/qna/qnaView?board_num="+board_num, '신고된 게시글 확인', board_size);
+		}else if(repo_type == 6){
+			window.open("/board/vote/voteCodiView?board_num="+board_num, '신고된 게시글 확인', board_size);
+		}
+	});
  $(".report_off").click(function(){
 		var repo_num = $(this).next().val();
 	 	var reportOffOk = confirm("신고 내용을 확인처리 하시겠습니까?");
