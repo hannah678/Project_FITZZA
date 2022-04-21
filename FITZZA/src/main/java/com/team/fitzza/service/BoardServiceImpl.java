@@ -191,6 +191,24 @@ public class BoardServiceImpl implements BoardService{
 		return dao.BoardSelectLikeOrder(type_num, user_id);
 	}
 
+	@Override
+	public String codifile1st(BoardVO vo) {
+		// TODO Auto-generated method stub
+		return dao.codifile1st(vo);
+	}
+
+	@Override
+	public String codifile2nd(BoardVO vo) {
+		// TODO Auto-generated method stub
+		return dao.codifile2nd(vo);
+	}
+
+	@Override
+	public String codifile3rd(BoardVO vo) {
+		// TODO Auto-generated method stub
+		return dao.codifile3rd(vo);
+	}
+
 	
 	
 	

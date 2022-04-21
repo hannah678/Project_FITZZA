@@ -38,17 +38,17 @@
 	            <div id="lookTop3">
 	                <p>TOP 3</p>
 	                <ul>
-	                    <li>
+	                    <li style="background-image: url(/upload/todayCodi/${codifile1st});">
 	                        <span>1st</span>
 	                        <img src="img/crown_gold.png">
 	                        <p class="codi_hover"><a href="">자세히 보기</a></p>
 	                    </li>
-	                    <li>
+	                    <li style="background-image: url(/upload/todayCodi/${codifile2nd});">
 	                        <span>2nd</span>
 	                        <img src="img/crown_silver.png">
 	                        <p class="codi_hover"><a href="">자세히 보기</a></p>
 	                    </li>
-	                    <li>
+	                    <li style="background-image: url(/upload/todayCodi/${codifile3rd});">
 	                        <span>3rd</span>
 	                        <img src="img/crown_bronze.png">
 	                        <p class="codi_hover"><a href="">자세히 보기</a></p>

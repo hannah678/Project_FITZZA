@@ -273,18 +273,15 @@ video::-webkit-media-controls-volume-slider {display: none !important;}
     border-top-left-radius: 175px; border-top-right-radius: 175px;
     position: absolute; left:32.5%; top: -110px;
     /* 임시 사진 */
-    background: url(../img/todays_codi_1st.png) no-repeat 0 0;
     background-size: 365px;
 }
 #lookTop3 li:nth-child(2) {
     margin-right: 450px;
     /* 임시 사진 */
-    background: url(../img/todays_codi_2nd.png) no-repeat 0 0;
     background-size: 270px;
 }
 #lookTop3 li:nth-child(3) {
     /* 임시 사진 */
-    background: url(../img/todays_codi_3rd.png) no-repeat -45px -20px;
     background-size: 365px;
 }
 #lookTop3 span {

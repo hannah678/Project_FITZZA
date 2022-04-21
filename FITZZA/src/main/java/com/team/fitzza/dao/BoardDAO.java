@@ -66,4 +66,8 @@ public interface BoardDAO {
 	//검색
 	public List<BoardVO> boardSearch(String searchKey, String string, int start, int end, int type_num);
 	public List<BoardVO> recommendBoardSelect(int i, PagingVO pvo, String gender_type);
+	//오늘의 코디 top3
+	public String codifile1st(BoardVO vo);
+	public String codifile2nd(BoardVO vo);
+	public String codifile3rd(BoardVO vo);
 }
