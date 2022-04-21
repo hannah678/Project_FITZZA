@@ -22,8 +22,8 @@ body{
 	z-index:1;
 	background-color:rgba(255,255,255,0.5)	
 }
+
 /* 글 보기 */
-.review_container {background-color:rgba(255,255,255.0.5)}
 .review_container > ul > li {line-height:35px}
 .review_container > ul > li:nth-child(3) {
 	width:400px; height:50px;
@@ -49,7 +49,7 @@ body{
 }
 .review_container > ul > li:nth-child(7){
 	display:block;
-	width:100%; min-height:200px;
+	width:100%; height:200px;
 	margin:260px 0 30px 0
 }
 #main_img{
@@ -58,16 +58,21 @@ body{
 	margin:0 auto;
 	
 }
-#main_img img {margin:0 auto}
-#content_img img {margin:0 auto}
+#main_img img {min-width:400px;}
 .Top_menu{
 	font-size:24px;
 	height:100px;
 	border-bottom:1px solid black;
 	margin-bottom:10px;
-
 }
 .Top_menu > div {line-height:100px;}
+
+#gender_type{
+	width:100px;
+	height:40px;
+	font-size: 17px;
+}
+
 #Top_name{
 	float:left;
 	overflow:hidden;
@@ -109,9 +114,8 @@ body{
 }
 
 #content{
-	width:100%; min-height:200px;
+	width:100%; height:200px;
 	font-size:20px;
-	display:block;
 }
 #content > strong {
 	font-weight:400;
@@ -251,8 +255,8 @@ body{
 }
 #replybtn{
     position: relative;
-    right: 3px;
-    bottom: 2px;
+    left: 1046px;
+    bottom: 71px;
     width: 100px;
     height: 98px;
     border: 2px solid black;
@@ -303,9 +307,9 @@ body{
 #gender_type {margin:30px 0}
 #content {margin-bottom:50px}
 #reviewFrm label{
-	width:80px; height:30px;font-size:16px;
+	width:60px; height:31px;font-size:16px;
 	display:inline-block;
-	text-align:center; line-height:30px;
+	text-align:center; line-height:34px;
 	margin-left:-0px
 }
 #reviewFrm > ul > li > input {font-size:20px}
@@ -319,14 +323,13 @@ body{
 }
 .img1 div > input {font-size:18px; height:30px}
 .img1 label {cursor:pointer}
-#reviewFrm > ul li:nth-child(6) {margin-left:25px}
-#reviewFrm > ul li:nth-child(6) input {width:150px;height:30px; margin: 10px 10px 0 0}
-.img2_up {margin:0 5px}
+
+.img2_up {margin:0 35px}
 .img2_up >input {font-size:18px}
-.img2_up:nth-child(3) input {width:150px; margin-right:10px; height:30px}
-.img2_up:nth-child(4) input {width:150px; margin-right:10px; height:30px}
-.img2_up:nth-child(5) input {width:150px; margin-right:10px; height:30px}
-.img2_up:nth-child(6) input {width:150px; margin-right:10px; height:30px}
+.img2_up:nth-child(3) input {width:170px; margin-right:5px; height:30px;}
+.img2_up:nth-child(4) input {width:170px; margin-right:5px; height:30px}
+.img2_up:nth-child(5) input {width:170px; margin-right:5px; height:30px}
+.img2_up:nth-child(6) input {width:170px; margin-right:5px; height:30px}
 .img2_up > label {cursor:pointer}
 #title{
 	width:100%;
@@ -358,9 +361,9 @@ input[type=text]{
 	float:left;
 	display:table;
 	position:relative;
-	width:250px;
+	width:240px;
 	table-layout : fixed;
-	margin-left : 15px;
+	margin-left : 10px;
 }
 
 .img2_up > img, .img2_up > input{
@@ -382,6 +385,8 @@ input[type=text]{
 	background-color: #ddd;
  }
 
+
+#content{width:100%;}
 
 #particles-js{
 	width:100%; height:100%;

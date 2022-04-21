@@ -22,22 +22,22 @@ $(function(){
 			data: params,
 			type: 'POST',
 			success : function(su){
-				$(".summary").css("display","none");
+				$("#vote22").css("display","none");
+				
+				
 				
 				var tag ="<div class='summary'>";
-					tag += "<h2>제목</h2>";
-					tag += "<p>총 투표수</p></div>";
-					tag += "<ol class='result'><li>";
-					tag += "<p id='img_1'><strong title='이미지1'>이미지 1</strong><span title='투표수'>~~표</span></p><p class='graph'>";
-					tag += "<span class='box'><span style='width:31%'>&nbsp;</span></span>";
-					tag += "<em title='투표율'>(~~)</em></p></li>";
-					tag += "<li><p id='img_2'><strong title='이미지2'>이미지 2</strong><span title='투표수'>~~표</span></p><p class='graph'>";
-					tag += "<span class='box'><span style='width:31%'>&nbsp;</span></span>";
-					tag += "<em title='투표율'>(~~)</em></p></li></ol>";
+					tag += "<p>총 투표수 : "+su.cnt3+"</p></div>";
+					tag += "<ol class='result2'><li>";
+					tag += "<p id='img_5'>이미지 1 : <span title='투표수'>"+su.cnt1+"표</span></p><p class='graph'>";
+					tag += "<span class='graphbox'><span style='width:"+su.cnt4+"%''>&nbsp;</span></span>";
+					tag += "<em title='투표율'>("+su.cnt4+"%)</em></p></li>";
+					tag += "<li><p id='img_6'>이미지 2 : <span title='투표수'>"+su.cnt2+"표</span></p><p class='graph'>";
+					tag += "<span class='graphbox'><span style='width:"+su.cnt5+"%''>&nbsp;</span></span>";
+					tag += "<em title='투표율'>("+su.cnt5+"%)</em></p></li></ol>";
 					
-					$("#vote2").html(tag);
-					alert("알람");
-
+					$("#vote24").html(tag);
+					$("#vote24").css("display","block");
 			},
 			error : function(er){
 				console.log(er.responseText);
@@ -59,8 +59,7 @@ $(function(){
 				data: params,
 				type:'POST',
 				success: function(r){
-					alert("신고 접수되었습니다.");
-					$('#reportModal').modal('hide');
+					alert("전송 성공");
 				},
 				error: function(e){
 					console.log(e.responseText);
@@ -127,7 +126,6 @@ $(function(){
 				type:'POST',
 				success:function(r){
 					$("#coment").val("");
-					alert("댓글 등록 완료");
 					replyListAll();
 				},error:function(e){
 					console.log(e.responseText);
@@ -184,93 +182,92 @@ $(function(){
 </script>
 </head>
 <body>
-<div id = review-wrapper>
-	<div class="review_container">
+<div id = vote-wrapper>
+	<div class="vote_container">
 		<ul>
-			<li class="Top_menu"><div id="Top_name"><a href=#">제목</a></div><div style="float:right"><a href="#">목록으로</a></div></li>
-			<li><div id="main_area">
-					<div class="vote_box"><a href="#"><img src="#"></a></div><!-- 이미지와 상품 링크 연동 -->
-					<div class="vote_box"><a href="#"><img src="#"></a></div>
+			<li class="Top_menu"><div id="Top_name">${vo.title }</div><div style="float:right;"><a href="/board/vote/voteList" style="color:black">목록으로</a></div></li>
+			<li id="vmain_container"><div id="main_area">
+					<div class="vote_box img_11"><img src="/upload/${vo.file1}"><div style="clear:both"> 이미지 1</div></div>
+					<div class="vote_box img_12"><img src="/upload/${vo.file2}"><div> 이미지 2</div></div>
 				</div>
-				<div id="vote2">
-				<!--  결과창 
+				<div id="vote24" style="display:none">
+				</div>
+				<c:if test="${us.user_id != null}">
+				<div id="vote23">
 						<div class="summary">
-							<h2>제목</h2>
-							<p>총 투표수</p>4
+							<p>총 투표수 : ${cnt3}</p>
 						</div>
-						<ol class="result">
+						<ol class="result2">
 							<li>
-								<p id="img_1"><strong title="이미지1">이미지 1</strong><span title="투표수">~~표</span></p>
+								<p id="img_3">이미지 1 : <span title="투표수">${cnt1}표</span></p>
 								<p class="graph">
-									<span class="box"><span style="width:31%">&nbsp;</span></span>
-									<em title="투표율">(~~%)</em>	
+									<span class="graphbox"><span style="width:${cnt4}%">&nbsp;</span></span>
+									<em title="투표율">(${cnt4}%)</em>	
 								</p>
 							</li>
 							<li>
-								<p id="img_2"><strong title="이미지2">이미지 2</strong><span title="투표수">~~표</span></p>
+								<p id="img_4">이미지 2 : <span title="투표수">${cnt2}표</span></p>
 								<p class="graph">
-									<span class="box"><span style="width:51%">&nbsp;</span></span>
-									<em title="투표율">(~~%)</em>	
+									<span class="graphbox"><span style="width:${cnt5}%">&nbsp;</span></span>
+									<em title="투표율">(${cnt5}%)</em>	
 								</p>
 							</li>
-						</ol>-->
+						</ol>
 				</div> 
+				</c:if>
 				<!-- 투표할때 -->
-				<!--  -->
-				<div id="vote">
+				<c:if test="${us.user_id == null}">
+				<div id="vote22"  style="display:block">
 						<div class="summary">
-							<h2>제목</h2>
-							<p>더 나은곳에 투표하세요</p>
+							<p style="font-size: 16px;">더 나은곳에 투표하세요</p>
 						</div>
 						<form method="POST" id="voteFrm">
 						<input type="hidden" name="user_id" value="${vo.user_id}"/>
 						<input type="hidden" name="board_num" value="${vo.board_num}"/>
 						<ol class="result">
 							<li>
-								<input type="radio" name="vote_item_order" value="1"/>
-								<p id="img_1"><strong title="이미지1">이미지 1</strong></p>
+								<input type="radio" name="vote_item_order" value="1" class="rbtn"/>
+								<p id="img_1">이미지 1</p>
 							</li>
 							<li>
-								<input type="radio" name="vote_item_order" value="2"/>
-								<p id="img_2"><strong title="이미지2">이미지 2</strong></p>
+								<input type="radio" name="vote_item_order" value="2" class="rbtn"/>
+								<p id="img_2">이미지 2</p>
 							</li>
-							<li><input type="submit" value="등록"/></li>
+							<li style="border-bottom:none"><input type="submit" value="등록" id="subbtn"/></li>
 						</ol>
 						</form>
 				</div>
-				<div id="content">본문 ${cnt1} ${cnt2} ${cnt3} ${cnt4}</div>
+				</c:if>
+				<div id="content">${vo.content}</div>
 			</li>
-			<hr>
-			<li class="Top_menu"><div id="reportModal" class="button02">신고</div> <div class="button01">수정</div> <div class="button01">삭제</div></li>
-			<hr>
-			<li><table>
-				<tbody>
-				<tr>
-				<td colspan='3' style="text-align:center;">작성자 정보</td>
-				</tr>
-					<tr>
-						<td><img src="#" alt="프로필 이미지"><img id="level_frame" alt="등급 프레임 이미지"></td>
-						<td>작성자 이름</td>
-						<td>신고받은 횟수</td>
-					</tr>
-				</tbody>
-			</table></li>
+			<li class="bottom_menu"><div id="reportModal" class="button02">신고</div> <a href="/board/vote/voteEdit?board_num=${vo.board_num}"><div class="button01">수정</div></a> <a id="del" href="javascript:delCheck()"><div class="button01">삭제</div></a></li>
+			<li>
+				<ul class="vote_profile">
+					<li>작성자 정보</li>
+					<li>
+						<img src="/upload/${vo.profile_image}" alt="프로필 이미지" id="profile_frame">
+						<img src="${vo.frame_img}" id="level_frame" alt="등급 프레임 이미지" >
+					</li>
+					<li>작성자 : ${vo.user_nickname}</li>
+					<li>신고받은 횟수 : ${vo.report_hit}</li>
+				</ul>
+				</li>
 		</ul>
 	</div>
-	<hr/>
+
 	<div class="reply"><!--  댓글 다는곳 -->
 	 <hr />
 			<b>댓글</b>
 			<hr />
-				<div></div>
-			<hr />
 			<div id="replyList"></div>
 				<c:if test="${logStatus =='Y'}">
+					<div id="reply_cmnts">
 					<form id="replyFrm">
 						<input type="hidden" name="board_num" value="${vo.board_num}" />
 						<textarea name="coment" id='coment' placeholder=" 댓글 입력"></textarea>
 						<input type="submit" value="등록" id="replybtn" />
 					</form>
+					</div>
 				</c:if>
 	</div>
 
@@ -310,3 +307,4 @@ $(function(){
 				</div>
 			</div>
 		</div>
+	</div>

@@ -2,7 +2,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <link rel="stylesheet" href="/css/voteList.css" type="text/css">
 
-<br/><br/><br/><br/></br>
 <div id="vote-wrapper">
 	 <div id="sub-title">
 		<h1>투표게시판</h1>
@@ -17,8 +16,6 @@
 	</ul>
 	<a id="moreViewVote"><img src="/img/더보기.png" style="width:100px;"></a>
 	</div><!--  container -->
-		 
-    
         <form method="get" action="/board/vote/search" id="searchFrm">
             <select name="searchKey">
                 <option value="title">제목</option>
@@ -40,7 +37,7 @@
        });
    		
        window.onload=function(){
-			var startNum = $("#voteListUl div").length/5; 
+			var startNum = $(".post_vote").length; 
 			var addListHtml = "";
 			 console.log(startNum); 
 			var url;
@@ -71,17 +68,16 @@
 				data :param,
 				success : function(data){
 					for (var i = 0; i < data.length; i++) {
-						addListHtml += "<div class='post_vote'><a href='/board/vote/voteView?board_num="+ data[i].board_num +"'><div class='sum-img'>";
+						addListHtml += "<li><div class='post_vote'><a href='/board/vote/voteView?board_num="+ data[i].board_num +"'><div class='sum-img'>";
 						addListHtml += "<div class='sum-img1'><img src='/upload/"+ data[i].file1 +"' width='130' width='130'/></div>";
 						addListHtml += "<div class='sum-img2'><img src='/upload/"+ data[i].file2 +"' width='130' width='130'/></div></div></a>";
 						addListHtml += "<div class='post'><div class='post_top'><div class='title_area'>"+data[i].title+"</div><div class='post_status'>진행중</div>";
 						addListHtml += "<div class='post_bottom'><img src='/upload/" + data[i].profile_image + "' width='30' width='30'/>";
-						addListHtml += "<span>"+ data[i].user_nickname+ "</span><span>"+data[i].write_date+"</span></div></div></div>";
-					} 
-				}
-					if(data.length<8){
-						$("#moreView").remove();
-					} 
+						addListHtml += "<span>"+ data[i].user_nickname+ "</span><span>"+data[i].write_date+"</span></div></div></div></li>";
+						if(data[i].board_num==0){
+							$("#moreView").remove();
+						} 
+					}
 					$("#voteListUl").append(addListHtml);
 					/* console.log(addListHtml); */
 				}
@@ -89,7 +85,7 @@
        }
    
        $('#moreViewVote').click(function(){
-    	   var startNum = $("#voteListUl div").length/5; 
+    	   var startNum = $(".post_vote").length; 
 			var addListHtml = "";
 			 console.log(startNum); 
 			var url;
@@ -120,17 +116,16 @@
 				data :param,
 				success : function(data){
 					for (var i = 0; i < data.length; i++) {
-						addListHtml += "<div class='post_vote'><a href='/board/vote/voteView?board_num="+ data[i].board_num +"'><div class='sum-img'>";
+						addListHtml += "<li><div class='post_vote'><a href='/board/vote/voteView?board_num="+ data[i].board_num +"'><div class='sum-img'>";
 						addListHtml += "<div class='sum-img1'><img src='/upload/"+ data[i].file1 +"' width='130' width='130'/></div>";
 						addListHtml += "<div class='sum-img2'><img src='/upload/"+ data[i].file2 +"' width='130' width='130'/></div></div></a>";
 						addListHtml += "<div class='post'><div class='post_top'><div class='title_area'>"+data[i].title+"</div><div class='post_status'>진행중</div>";
 						addListHtml += "<div class='post_bottom'><img src='/upload/" + data[i].profile_image + "' width='30' width='30'/>";
-						addListHtml += "<span>"+ data[i].user_nickname+ "</span><span>"+data[i].write_date+"</span></div></div></div>";
-						
-					}
-					if(data.length<8){
+						addListHtml += "<span>"+ data[i].user_nickname+ "</span><span>"+data[i].write_date+"</span></div></div></div></li>";
+						if(data[i].board_num==0){
 							$("#moreView").remove();
-					} 
+						} 
+					}
 					$("#voteListUl").append(addListHtml);
 					/* console.log(addListHtml); */
 				}

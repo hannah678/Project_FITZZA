@@ -34,8 +34,7 @@ $(function(){
 				data: params,
 				type:'POST',
 				success: function(r){
-					alert("신고 접수되었습니다.");
-					$('#reportModal').modal('hide');
+					alert("전송 성공");
 				},
 				error: function(e){
 					console.log(e.responseText);
@@ -188,15 +187,15 @@ window.onload=function(){
 						data-target="#reportModal" data-toggle="modal" /></p>
 				</c:if>
 				<c:if test="${logId == vo.user_id||logPermission =='admin'}">
-					<p style="float: right; margin-right:30px">
-						<a href="/board/review/reviewEdit?board_num=${vo.board_num}" style="color: blue;">수정</a> 
-						<a id="del" href="javascript:delCheck()" style="color: blue;">삭제</a>
+					<p style="float: right;">
+						<a href="/board/review/reviewEdit?board_num=${vo.board_num}" style="width:60px; height:30px; border:2px solid #54bab9; border-radius:15px; font-size:18px; display:inline-block; line-height:25px; text-align:center;color:#54bab9">수정</a> 
+						<a id="del" href="javascript:delCheck()" style="width:60px; height:30px; border:2px solid #54bab9; border-radius:15px; font-size:18px; display:inline-block; line-height:25px; text-align:center;color:#54bab9;margin-right:40px;">삭제</a>
 					</p>
 					<br/><br/>
 				</c:if>
 			</li>
 			<li>
-				<div id="content">${vo.content}</div>
+				<div id="content"><strong>설명</strong><span>${vo.content}</span></div>
 			</li>
 			<li><div id="main_img"><img src="/upload/${vo.file1}"></div></li>
 			<li>
@@ -224,17 +223,16 @@ window.onload=function(){
 			<li style="font-size: 24px;"><b>댓글</b></li>
 			<hr />
 			<!--댓글수정필요-->
+			<div id="replyList"></div>
 			<form id="replyFrm">
 				<input type="hidden" name="board_num" value="${vo.board_num}" />
 				<c:if test="${logStatus=='Y'}">
 					<textarea name="coment" id='coment'
-						style="width: 960px; height: 98px; margin:10px 0 -35px 35px; font-size:18px" placeholder=" 댓글 입력"></textarea>
+						style="width: 1000px; height: 98px; margin:10px 0 -35px 35px; font-size:18px" placeholder=" 댓글 입력"></textarea>
 					<input type="submit" value="등록" id="replybtn" />
 					<hr />
 				</c:if>
 			</form>
-			<div></div>
-			<div id="replyList"></div>
 		</div>
 </div>
 

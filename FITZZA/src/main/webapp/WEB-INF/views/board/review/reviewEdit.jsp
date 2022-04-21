@@ -16,6 +16,12 @@
 			 $("#content").focus();
 			 return false;
 		 }
+		 
+		 if($("#upload_file01").val()==''){
+			alert("이미지를 1개 이상 첨부하세요");
+			$("#upload_file01").focus();
+			return false;
+		}
 	});
 });
 </script>
@@ -33,7 +39,7 @@
                     대표이미지<br/>
                         <div>
                             <img style="width: 500px;" id="img_section" src="/upload/${vo.file1}"><br/>
-                            <input type="text" id="file_route01"  disabled="disabled" value="${vo.file1 }" >
+                            <input type="text" id="file_route01"  disabled="disabled" value="${vo.file1}" >
                             <label for="upload_file01">업로드</label>
                             <input type="file" id="upload_file01" name="filename" accept="image/*" style="position:absolute; clip:rect(0, 0, 0, 0);"><br/>
                         </div>

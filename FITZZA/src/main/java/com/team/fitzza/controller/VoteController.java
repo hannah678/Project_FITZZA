@@ -3,7 +3,9 @@ package com.team.fitzza.controller;
 import java.io.File;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
@@ -29,7 +31,6 @@ import com.team.fitzza.service.BoardService;
 import com.team.fitzza.service.MemberService;
 import com.team.fitzza.vo.BoardVO;
 import com.team.fitzza.vo.PagingVO;
-import com.team.fitzza.vo.ReplyVO;
 
 
 @Controller
@@ -39,6 +40,7 @@ public class VoteController {
 	BoardService service;
 	@Inject
 	MemberService Mservice;
+	
 	@GetMapping("/board/vote/voteList")
 	public String voteList() {
 		
@@ -49,7 +51,7 @@ public class VoteController {
 	@RequestMapping(value = "/board/vote/voteLists")
 	public List<BoardVO> newsMoreView(PagingVO pvo, Model model, @RequestParam(value="startNum", required=false)String startNum) throws Exception {
 		System.out.println("투표 페이지vo"+pvo);
-//		startNum="5";
+//		startNum="9";
 		pvo.setStart(Integer.parseInt(startNum));
 		pvo.setEnd(8);
 		return service.BoardSelectAllSE(6,pvo);
@@ -68,7 +70,7 @@ public class VoteController {
 	public List<BoardVO> searchMoreView(@RequestParam(value="startNum", required=false)String startNum,
 			String searchKey, String searchWord) throws Exception {
 		int start = Integer.parseInt(startNum);
-		int end = 8;
+		int end = 5;
 		System.out.println("searchKey -> "+searchKey);
 		System.out.println("searchWord -> "+searchWord);
 		return service.boardSearch(searchKey, "%"+searchWord+"%", start, end, 6);
@@ -191,19 +193,27 @@ public class VoteController {
 	
 	//글 내용보기
 	@GetMapping("/board/vote/voteView")
-	public ModelAndView voteBoardView(int board_num) {
+	public ModelAndView voteBoardView(int board_num, HttpServletRequest request) throws Exception{
 		ModelAndView mav = new ModelAndView();
 		System.out.println("조회수 증가");
 		service.hitCount(board_num); //조회수 증가
 		mav.addObject("vo", service.BoardView(board_num));
 		BoardVO vo = new BoardVO();
 		vo.setBoard_num(board_num);
-		mav.addObject("cnt1", service.votecnt(1,vo));
-		mav.addObject("cnt2", service.votecnt(2,vo));
-		mav.addObject("cnt3", service.votecnt(1,vo)+service.votecnt(2,vo));
+		mav.addObject("us", service.voteuser((String)request.getSession().getAttribute("logId"),vo));
+		Integer a = service.votecnt(1,vo);
+		Integer b = service.votecnt(2,vo);
+		Integer c = service.votepercent(1, vo);
+		Integer d = service.votepercent(2, vo);
+		mav.addObject("cnt1", a);
+		mav.addObject("cnt2", b);
+		mav.addObject("cnt3", a+b);
+		mav.addObject("cnt4", c);
+		mav.addObject("cnt5", d);
 		
 		mav.setViewName("/board/vote/voteView");
 		return mav;
+		
 	}
 	
 	//글 수정폼
@@ -320,9 +330,20 @@ public class VoteController {
 		//투표
 		@RequestMapping(value="/vote/votein", method=RequestMethod.POST)
 		@ResponseBody
-		public int votein(BoardVO vo) {
-			return service.votein(vo);
-
+		public Map<String, Integer> votein(BoardVO vo, HttpServletRequest request) {
+			vo.setUser_id((String)request.getSession().getAttribute("logId"));
+			 service.votein(vo);
+			 Map<String, Integer> map = new HashMap<String, Integer>();
+			 Integer a = service.votecnt(1,vo);
+			 Integer b = service.votecnt(2,vo);
+			 Integer c = service.votepercent(1, vo);
+				Integer d = service.votepercent(2, vo);
+				map.put("cnt1", a);
+				map.put("cnt2", b);
+				map.put("cnt3", a+b);
+				map.put("cnt4", c);
+				map.put("cnt5", d);
+			return map;
 		}
 	
 }

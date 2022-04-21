@@ -25,9 +25,10 @@
 		<h1 class="Top_menu">글쓰기</h1>
 			<div id="vmain_container">
 				<form method="post" action="/board/vote/voteWriteOk" id="reviewFrm" enctype="multipart/form-data">
+					<input type="hidden" name="board_num" value="${vo.board_num}"/>
 				  	  	<ul>
 							<li><input type="hidden" name="type_num" value="6"/></li> <!--  게시판 타입num-->
-							<li><input type="text" name="title" id="title" class="input01" placeholder="제목을 입력해주세요"/></li>
+							<li><input type="text" name="title" id="title" class="input01" placeholder="제목을 입력해주세요" value='${vo.title}'/></li>
 							<li class="Top_menu">의상 종류 &emsp;  
 				            	<select id="gender_type" name="gender_type">
 									<option value="W" name="W">여성의류</option>
@@ -39,8 +40,8 @@
 									<div class="img_up1">
 				                    	<p style="text-align: center;">투표대상 1 이미지<p>
 				                    	    <div>
-				                         	   <img style="width: 450px;" id="img_section" src="/img/이미지 없음.png"><br/>
-				                            	<input type="text" id="file_route01"  disabled="disabled" value="파일 선택" >
+				                         	   <img style="width: 450px;" id="img_section" src="/upload/${vo.file1}"><br/>
+				                            	<input type="text" id="file_route01"  disabled="disabled" value="${vo.file1}" >
 				                           	 	<label for="upload_file01">업로드</label>
 				                            	<input type="file" id="upload_file01" name="filename" accept="image/*" required=true style="position:absolute; clip:rect(0, 0, 0, 0);"><br/>
 				                       		</div>
@@ -48,15 +49,15 @@
 				           	        <div class="img_up2">
 				                  	    <p style="text-align: center;">투표대상 2 이미지</p>
 				                       		 <div>
-				                       		     <img style="width: 450px;" id="img_section2" src="/img/이미지 없음.png"><br/>
-				                         	     <input type="text" id="file_route02"  disabled="disabled" value="파일 선택" >
+				                       		     <img style="width: 450px;" id="img_section2" src="/upload/${vo.file2}"><br/>
+				                         	     <input type="text" id="file_route02"  disabled="disabled" value="${vo.file2}" >
 				                          	     <label for="upload_file02">업로드</label>
 				                          	     <input type="file" id="upload_file02" name="filename" accept="image/*" required=true style="position:absolute; clip:rect(0, 0, 0, 0);"><br/>
 				                      	     </div>
 				               	    </div>
 				                </div>
 				           	 	</li>
-								<li><textarea name="content" id="content" rows="30" cols="100" placeholder="본문입력하세요"></textarea> </li>
+								<li><textarea name="content" id="content" rows="30" cols="100" placeholder="본문입력하세요">${vo.content}</textarea></li>
 								<li style="height:70px;"><input type='submit' value='등록' id="votesubmit" class="button01" style="margin-right:20px;"/></li>
 						</ul>
 				</form>

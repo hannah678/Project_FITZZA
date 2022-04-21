@@ -1,10 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <link rel="stylesheet" href="/css/reviewList.css" type="text/css">
-<style>
-a:link {color:#222}
-a:visited {color:#222}
-</style>
+
 <br/><br/><br/><br/><br/>
 <div id="review-wrapper"><!-- 전체 틀 -->
  	<div id="sub-title">
@@ -73,8 +70,8 @@ a:visited {color:#222}
 					for (var i = 0; i < data.length; i++) {
 						addListHtml += "<li class='reviewList'><div class='post_area'><div class='sum-img'>";
 						addListHtml += "<a href='/board/review/reviewView?board_num="+ data[i].board_num +"'><img src='/upload/"+ data[i].file1 +"' width='130' height='130'/></a>";
-						addListHtml += "</div><div class='post'><div class='post_top'><a href='/board/review/reviewView?board_num="+data[i].board_num+"'>";
-						addListHtml += "<div class='title_area'>"+ data[i].title +"</div><div class='txt'>" + data[i].content + "</div></div></a>";
+						addListHtml += "</div><div class='post'><div class='post_top'>";
+						addListHtml += "<div class='title_area'>"+ data[i].title +"</div><div class='txt'>" + data[i].content + "</div></div>";
 						addListHtml += "<div class='post_bottom'>";
 						addListHtml += "<span><img src='/upload/" + data[i].profile_image + "' />"+ data[i].user_nickname+ "</span>";
 						addListHtml += "<span>조회수 : " + data[i].hit + "</span><span>날짜: "+data[i].write_date+"</span>";
@@ -123,8 +120,8 @@ a:visited {color:#222}
 					for (var i = 0; i < data.length; i++) {
 						addListHtml += "<li class='reviewList'><div class='post_area'><div class='sum-img'>";
 						addListHtml += "<a href='/board/review/reviewView?board_num="+ data[i].board_num +"'><img src='/upload/"+ data[i].file1 +"' width='130' height='130'/></a>";
-						addListHtml += "</div><div class='post'><div class='post_top'><a href='/board/review/reviewView?board_num="+data[i].board_num+"'>";
-						addListHtml += "<div class='title_area'>"+ data[i].title +"</div><div class='txt'>" + data[i].content + "</div></div></a>";
+						addListHtml += "</div><div class='post'><div class='post_top'>";
+						addListHtml += "<div class='title_area'>"+ data[i].title +"</div><div class='txt'>" + data[i].content + "</div></div>";
 						addListHtml += "<div class='post_bottom'>";
 						addListHtml += "<span><img src='/upload/" + data[i].profile_image + "' />"+ data[i].user_nickname+ "</span>";
 						addListHtml += "<span>조회수 : " + data[i].hit + "</span><span>날짜: "+data[i].write_date+"</span>";
