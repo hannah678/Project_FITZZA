@@ -6,6 +6,8 @@ import com.team.fitzza.vo.MemberVO;
 public interface MemberService{
 	
 	public int memberInsert(MemberVO vo);
+	// 강제탈퇴 회원 확인
+	public int Isforced(String email);
 	public MemberVO loginCheck(MemberVO vo);
 	public MemberVO memberSelect(String user_id);
 	public int memberUpdate(MemberVO vo);

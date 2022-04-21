@@ -3,7 +3,9 @@ package com.team.fitzza.controller;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Properties;
 import java.util.Random;
 
@@ -33,6 +35,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.google.gson.Gson;
 import com.team.fitzza.service.BoardService;
 import com.team.fitzza.service.MemberService;
 import com.team.fitzza.vo.BoardVO;
@@ -106,58 +109,76 @@ public class MemberController {
 	@PostMapping("/member/mailAuth")
 	@ResponseBody
 	public String sendMail(String mail) throws Exception {
-		String authcode = "";
-		Random random = new Random();
+		int forced = service.Isforced(mail);
+		
+		Map<Object, Object> map = new HashMap<Object, Object>();
+		 map.put("forced", forced);
 
-		authcode += random.nextInt(9000) + 1000;
-		
-		Properties p = System.getProperties();
-        p.put("mail.smtp.starttls.enable", "true");
-        p.put("mail.smtp.host", "smtp.gmail.com");
-        p.put("mail.smtp.auth","true");
-        p.put("mail.smtp.port", "587");
-           
-        String id = "fitzzaofficial@gmail.com"; //보내는 사람 메일주소
-		String pwd = "fitzza1234!"; //보내는 사람 비밀번호
-		
-        Authenticator auth = new Authenticator() {
-        	public PasswordAuthentication getPasswordAuthentication() {
-    	        return new PasswordAuthentication(id, pwd);
-    	    }
-		};
-        //session 생성 및  MimeMessage생성
-        Session session = Session.getInstance(p, auth);
-        MimeMessage msg = new MimeMessage(session);
-         
-        try{
-            //메일 전송시간
-            msg.setSentDate(new Date());
-            
-            //보내는 사람
-            InternetAddress from = new InternetAddress(id);
-            msg.setFrom(from);
-            
-            //받는 사람
-            InternetAddress to = new InternetAddress(mail);
-            msg.setRecipient(Message.RecipientType.TO, to);
-            //제목
-            msg.setSubject("FITZZA에 오신것을 환영합니다! 가입 완료를 위해서 인증코드를 입력해 주세요", "UTF-8");
-            //내용
-            msg.setText("인증코드는 ["+authcode+"] 입니다", "UTF-8");
-            //헤더
-            msg.setHeader("content-Type", "text/html");
-            //메일보내기
-            javax.mail.Transport.send(msg, msg.getAllRecipients());
-             
-        }catch (AddressException addr_e) {
-            addr_e.printStackTrace();
-        }catch (MessagingException msg_e) {
-            msg_e.printStackTrace();
-        }catch (Exception msg_e) {
-            msg_e.printStackTrace();
-        }
-		
-		return authcode;
+		if(forced==0) {
+			
+			String authcode = "";
+			Random random = new Random();
+	
+			authcode += random.nextInt(9000) + 1000;
+			
+			Properties p = System.getProperties();
+	        p.put("mail.smtp.starttls.enable", "true");
+	        p.put("mail.smtp.host", "smtp.gmail.com");
+	        p.put("mail.smtp.auth","true");
+	        p.put("mail.smtp.port", "587");
+	           
+	        String id = "fitzzaofficial@gmail.com"; //보내는 사람 메일주소
+			String pwd = "fitzza1234!"; //보내는 사람 비밀번호
+			
+	        Authenticator auth = new Authenticator() {
+	        	public PasswordAuthentication getPasswordAuthentication() {
+	    	        return new PasswordAuthentication(id, pwd);
+	    	    }
+			};
+	        //session 생성 및  MimeMessage생성
+	        Session session = Session.getInstance(p, auth);
+	        MimeMessage msg = new MimeMessage(session);
+	         
+	        try{
+	            //메일 전송시간
+	            msg.setSentDate(new Date());
+	            
+	            //보내는 사람
+	            InternetAddress from = new InternetAddress(id);
+	            msg.setFrom(from);
+	            
+	            //받는 사람
+	            InternetAddress to = new InternetAddress(mail);
+	            msg.setRecipient(Message.RecipientType.TO, to);
+	            //제목
+	            msg.setSubject("FITZZA에 오신것을 환영합니다! 가입 완료를 위해서 인증코드를 입력해 주세요", "UTF-8");
+	            //내용
+	            msg.setText("인증코드는 ["+authcode+"] 입니다", "UTF-8");
+	            //헤더
+	            msg.setHeader("content-Type", "text/html");
+	            //메일보내기
+	            javax.mail.Transport.send(msg, msg.getAllRecipients());
+	            
+	            map.put("authcode", authcode);
+
+	        }catch (AddressException addr_e) {
+	            addr_e.printStackTrace();
+	        }catch (MessagingException msg_e) {
+	            msg_e.printStackTrace();
+	        }catch (Exception msg_e) {
+	            msg_e.printStackTrace();
+	        }
+					
+		}else {//강제 탈퇴된 회원일 때
+			System.out.println("강제탈퇴된 회원");
+			
+			String msg="";
+			msg += "강제탈퇴된 회원은 재가입 할 수 없습니다.";
+			
+			map.put("msg", msg);
+			
+		}
+		return new Gson().toJson(map);
 	}
 	
 	// 회원등록

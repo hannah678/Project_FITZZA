@@ -14,6 +14,8 @@ public interface MemberDAO {
 	
 	// 회원등록 
 	public int memberInsert(MemberVO vo);
+	// 강제탈퇴 회원 확인
+	public int Isforced(String email);
 	// 로그인
 	public MemberVO loginCheck(MemberVO vo);
 	// 회원정보수정 폼

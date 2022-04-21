@@ -91,4 +91,9 @@ public class MemberServiceImpl implements MemberService{
 	public int changeProfileImg(MemberVO vo) {
 		return dao.changeProfileImg(vo);
 	}
+
+	@Override
+	public int Isforced(String email) {
+		return dao.Isforced(email);
+	}
 }

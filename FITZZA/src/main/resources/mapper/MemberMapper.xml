@@ -7,6 +7,13 @@
   		SELECT user_id, user_nickname, permission FROM user
   		WHERE user_id=#{user_id} AND user_pwd=#{user_pwd}
  	</select>
+ 	<!-- 강제 탈퇴회원 확인 -->
+ 	<select id="Isforced" resultType="int">
+ 		SELECT  COUNT(email) 
+ 		FROM 	user_leave
+ 		WHERE   leave_forced='Y'
+ 		AND		email=#{param}
+ 	</select>
  	<!-- 회원등록 -->
  	<insert id="memberInsert">
  		INSERT INTO user(user_name, user_id, user_pwd, user_nickname, tel, email, profile_image)

@@ -292,7 +292,7 @@
 		  if(email1=='' || email2==''){
 			  alert('인증을 위해 이메일을 입력해 주세요');
 		  }else{
-			  $('#Codebox').css('display','block');
+			
 			  var email = email1+"@"+email2;
 			  
 			  $.ajax({
@@ -302,15 +302,21 @@
 					 "mail":email
 				 },
 				 dataType:'json',
-				 success:function(result){
-					 alert('인증코드가 발송되었습니다. 메일을 확인해 주세요');
-					 $("#ConfirmCode").on("propertychange change keyup paste input", function(){
-						 if($("#ConfirmCode").val()==result){
-							 $("#authorized").val("Y");
-						 }else{
-							 $("#authorized").val("N");
-						 }
-					 });
+				 success:function(data){
+					 if(data.forced==0){
+						 alert('인증코드가 발송되었습니다. 메일을 확인해 주세요');
+						 $('#Codebox').css('display','block');
+						 $("#ConfirmCode").on("propertychange change keyup paste input", function(){
+							 if($("#ConfirmCode").val()==data.authcode){
+								 $("#authorized").val("Y");
+							 }else{
+								 $("#authorized").val("N");
+							 }
+						 });
+					 }else{
+						 alert(data.msg);
+						 $("#ConfirmCode").css("display", "none");
+					 }
 				 }
 			  });
 		  }
