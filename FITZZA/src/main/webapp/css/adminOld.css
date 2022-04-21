@@ -113,3 +113,6 @@
 .trade_list li ul li:nth-child(7n-2) {width:15%}
 .trade_list li ul li:nth-child(7n-1) {width:15%}
 .trade_list li ul li:nth-child(7n) {width:10%}
+.trade_list li a:link {color:black}
+.trade_list li a:visited {color:green }
+.trade_list li a:hover {background-color:rgba(0,0,0,0.1)}

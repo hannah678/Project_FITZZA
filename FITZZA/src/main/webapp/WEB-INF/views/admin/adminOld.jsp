@@ -56,8 +56,8 @@
 			 		<ul>
 			 			<c:forEach var="vo" items="${adminOldList}">
 				 			<li><input type="checkbox" name="adminTradeSelect"></li>
-							<li>${vo.title}</li>
-							<li>${vo.content}</li>
+							<li><a href="/board/old/oldView?board_num=${vo.board_num}">${vo.title }</a></li>
+							<li><a href="/board/old/oldView?board_num=${vo.board_num}">${vo.content}</a></li>
 							<li>${vo.user_id}</li>
 							<li>${vo.write_date}</li>
 							<li>${vo.trade_date}</li>
