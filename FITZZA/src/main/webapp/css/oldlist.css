@@ -57,7 +57,6 @@ h1, h2, .oldlist>li:nth-child(3), .oldlist>li:nth-child(6n+1), .oldlist>li:nth-c
     width: 10%;
     background-color: white;
     overflow:hidden;
-    text-align:center;
 }
 .oldlist>li:nth-child(1) {font-size:20px}
 .oldlist>li:nth-child(2) {font-size:20px}
@@ -66,7 +65,6 @@ h1, h2, .oldlist>li:nth-child(3), .oldlist>li:nth-child(6n+1), .oldlist>li:nth-c
 .oldlist>li:nth-child(6) {font-size:20px}
 .oldlist>li:nth-child(6n+4){width:20%}
 .oldlist>li:nth-child(6n+3){
-	text-align:center;
     width: 30%;
     white-space: nowrap;
     overflow: hidden;
