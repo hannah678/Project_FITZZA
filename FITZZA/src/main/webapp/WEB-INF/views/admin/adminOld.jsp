@@ -57,15 +57,33 @@
 	 			<c:forEach var="vo" items="${adminOldList}">
 					<li><ul>
 						<li><input type="checkbox" name="adminTradeSelect"></li>
-						<li><a href="/board/old/oldView?board_num=${vo.board_num}">${vo.title }</a></li>
-						<li><a href="/board/old/oldView?board_num=${vo.board_num}">${vo.content}</a></li>
+						<li class="oldboardlink"><input type="hidden" value="${vo.board_num}"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${vo.title }</li>
+						<li class="oldboardlink"><input type="hidden" value="${vo.board_num}"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${vo.content}</li>
 						<li>${vo.user_id}</li>
 						<li>${vo.write_date}</li>
-						<li>${vo.trade_date}</li>
+						<c:if test="${vo.state_num eq 1 || vo.state_num eq 2}">
+							<li>-</li>
+						</c:if>
+						<c:if test="${vo.state_num eq 3}">
+							<li>${vo.trade_date}</li>
+						</c:if>
 						<li>${vo.state_name }</li>
-					</li></ul>
+					</ul></li>
 				</c:forEach>
 		 	</ul>
  		</div>
  	</div>
  </div>
+ <script>
+ $(".oldboardlink").click(function(){
+		var board_num = $(this).children().first().val();
+		var xPos = (window.screen.width/2) - (1300/2); // 가운데 정렬
+		xPos += window.screenLeft; // 듀얼 모니터일 때
+		var yPos = (window.screen.height/2) - (900/2);
+		
+		console.log(board_num);
+		
+		window.open("/board/old/oldView?board_num="+board_num, '중고 게시글 확인', "width="+1300+", height="+800+", left="+xPos+", top="+yPos+", menubar=yes, status=yes, titlebar=yes, resizable=yes");
+		
+	});
+ </script>

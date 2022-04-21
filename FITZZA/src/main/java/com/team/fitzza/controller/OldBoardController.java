@@ -334,7 +334,7 @@ public class OldBoardController {
 			service.oldBoardStateUpdate(vo);	
 			
 			// 글 내용보기로 이동
-			String msg = "<script>alert('자료실 글이 수정되었습니다.\\n글내용보기로 이동합니다');";
+			String msg = "<script>alert('중고거래 글이 수정되었습니다.);";
 			msg += "location.href='/board/old/oldView?board_num="+vo.getBoard_num()+"';</script>";
 			
 			entity = new ResponseEntity<String>(msg, headers, HttpStatus.OK);
@@ -348,7 +348,7 @@ public class OldBoardController {
 			
 			//수정페이지로 이동
 			String msg = "<script>";
-			msg += "alert('글 수정 실패하였습니다'\\n수정폼으로 이동합니다)";
+			msg += "alert('글 수정 실패하였습니다')";
 			msg += "history.back();</script>";
 			entity = new ResponseEntity<String>(msg, headers, HttpStatus.BAD_REQUEST);
 		}
