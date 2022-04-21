@@ -51,5 +51,32 @@
 	<select id="completeOldList" resultType="int">
 		select count(board_num) from trade_detail where state_num=3;
 	</select>
+	<!-- 글 삭제 -->
+	<delete id="adminOldDel">
+	DELETE FROM board
+	<where>
+		<foreach item="item" collection="adminOldSelect" open="board_num in (" separator="," close=")">
+			#{item}
+		</foreach>
+	</where>
+	</delete>
 	
+	<select id="oldSearch" resultType="BoardVO">
+	SELECT A.board_num, A.title, A.content, A.user_id, A.write_date, B.trade_date, C.state_name  
+	FROM board A, trade_detail B, trade_state C 
+	WHERE A.type_num=3 and A.board_num=B.board_num and C.state_num=B.state_num;
+    <choose>
+         <when test="param1.equals('title')">
+            AND A.title like #{param2}
+         </when>
+         <when test="param1.equals('content')">
+            AND A.content like #{param2}
+         </when>
+         <when test="param1.equals('user_id')">
+            AND A.user_id like #{param2}
+         </when>
+      </choose>
+      ORDER BY A.board_num DESC
+      LIMIT #{param3}, #{param4}
+	</select>
 </mapper>
