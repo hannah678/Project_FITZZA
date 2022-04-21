@@ -10,6 +10,8 @@
 	#tradeSearch {height:30px; font-size:16px}
 	#tradeSearchFrm select {height:30px; font-size:16px}
 	#tradeSearchFrm input {height:30px; font-size:16px}
+	a:link {color:#222; text-decoration: none;}
+	a:visited {color:#222 }	
 </style>
  <div id="adminOld_container">
  	<h1 class="hidden">회원관리</h1>
@@ -52,22 +54,18 @@
 		 		<li>상태</li>
 	 		</ul>
 	 		<ul class="trade_list">
-	 			<li>
-			 		<ul>
-			 			<c:forEach var="vo" items="${adminOldList}">
-				 			<li><input type="checkbox" name="adminTradeSelect"></li>
-							<li><a href="/board/old/oldView?board_num=${vo.board_num}">${vo.title }</a></li>
-							<li><a href="/board/old/oldView?board_num=${vo.board_num}">${vo.content}</a></li>
-							<li>${vo.user_id}</li>
-							<li>${vo.write_date}</li>
-							<li>${vo.trade_date}</li>
-							<li>
-								${vo.state_name }
-							</li>
-						</c:forEach>
-		 			</ul>
-				</li>
-	 		</ul>
+	 			<c:forEach var="vo" items="${adminOldList}">
+					<li><ul>
+						<li><input type="checkbox" name="adminTradeSelect"></li>
+						<li><a href="/board/old/oldView?board_num=${vo.board_num}">${vo.title }</a></li>
+						<li><a href="/board/old/oldView?board_num=${vo.board_num}">${vo.content}</a></li>
+						<li>${vo.user_id}</li>
+						<li>${vo.write_date}</li>
+						<li>${vo.trade_date}</li>
+						<li>${vo.state_name }</li>
+					</li></ul>
+				</c:forEach>
+		 	</ul>
  		</div>
  	</div>
  </div>

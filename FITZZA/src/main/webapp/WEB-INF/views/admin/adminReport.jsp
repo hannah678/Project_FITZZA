@@ -12,6 +12,8 @@
 	#reportSearch {height:30px; font-size:16px}
 	#reportSearchFrm select {height:30px; font-size:16px}
 	#reportSearchFrm input {height:30px; font-size:16px}
+	a:link {color:#222; text-decoration: none;}
+	a:visited {color:#222 }
 </style>
 <!-- 카테고리 선택 js-->
  <script>
@@ -60,27 +62,27 @@ $(document).ready(function(){
 	 		<ul class="report_list">
 	 			<c:forEach var="vo" items="${reportList}">
 	 				<li><ul>
-		 			<li class="repoName">${vo.category_name}</li>
-		 			<li><input type="hidden" value="${vo.report_content}"/><input type="button" class="reportModalList" data-target="#reportModal" data-toggle="modal" value="상세"/></li>
-		 			<li>${vo.type_name}</li>
-		 			<c:choose>
-						<c:when test="${vo.type_num eq 1}"><li><a href="/board/todayCodi/todayCodiView?board_num=${vo.board_num}">${vo.title }</a></li></c:when>
-						<c:when test="${vo.type_num eq 2}"><li><a href="/board/recommend/recommendView?board_num=${vo.board_num}">${vo.title }</a></li></c:when>
-						<c:when test="${vo.type_num eq 3}"><li><a href="/board/old/oldView?board_num=${vo.board_num}">${vo.title }</a></li></c:when>
-						<c:when test="${vo.type_num eq 4}"><li><a href="/board/review/reviewView?board_num=${vo.board_num}">${vo.title }</a></li></c:when>
-						<c:when test="${vo.type_num eq 5}"><li><a href="/board/qna/qnaView?board_num=${vo.board_num}">${vo.title }</a></li></c:when>
-						<c:when test="${vo.type_num eq 6}"><li><a href="/board/vote/voteView?board_num=${vo.board_num}">${vo.title }</a></li></c:when>
-					</c:choose>
-			 		<li>${vo.reported_id }</li>
-		 			<li>${vo.user_id }</li>			 		
-			 		<li>${vo.report_time }</li>
-			 		
-			 		<c:if test="${vo.state !='Y'}">
-			 			<li id="repo_state"><button class="report_off">처리확인</button><input type="hidden" name="${vo.report_num}" value="${vo.report_num}"></li>
-			 		</c:if>
-			 			<c:if test="${vo.state == 'Y'}">
-			 		<li>처리 완료</li>
-			 		</c:if>
+			 			<li class="repoName">${vo.category_name}</li>
+			 			<li><input type="hidden" value="${vo.report_content}"/><input type="button" class="reportModalList" data-target="#reportModal" data-toggle="modal" value="상세"/></li>
+			 			<li>${vo.type_name}</li>
+			 			<c:choose>
+							<c:when test="${vo.type_num eq 1}"><li><a href="/board/todayCodi/todayCodiView?board_num=${vo.board_num}">${vo.title }</a></li></c:when>
+							<c:when test="${vo.type_num eq 2}"><li><a href="/board/recommend/recommendView?board_num=${vo.board_num}">${vo.title }</a></li></c:when>
+							<c:when test="${vo.type_num eq 3}"><li><a href="/board/old/oldView?board_num=${vo.board_num}">${vo.title }</a></li></c:when>
+							<c:when test="${vo.type_num eq 4}"><li><a href="/board/review/reviewView?board_num=${vo.board_num}">${vo.title }</a></li></c:when>
+							<c:when test="${vo.type_num eq 5}"><li><a href="/board/qna/qnaView?board_num=${vo.board_num}">${vo.title }</a></li></c:when>
+							<c:when test="${vo.type_num eq 6}"><li><a href="/board/vote/voteView?board_num=${vo.board_num}">${vo.title }</a></li></c:when>
+						</c:choose>
+				 		<li>${vo.reported_id }</li>
+			 			<li>${vo.user_id }</li>			 		
+				 		<li>${vo.report_time }</li>
+				 		
+				 		<c:if test="${vo.state !='Y'}">
+				 			<li id="repo_state"><button class="report_off">처리확인</button><input type="hidden" name="${vo.report_num}" value="${vo.report_num}"></li>
+				 		</c:if>
+				 			<c:if test="${vo.state == 'Y'}">
+				 		<li>처리 완료</li>
+				 		</c:if>
 			 		</ul></li>
 		 		</c:forEach>
 	 		</ul>

@@ -263,7 +263,7 @@ video::-webkit-media-controls-volume-slider {display: none !important;}
 #lookTop3 li {
     width: 270px; height: 335px;
     border-top-left-radius: 125px; border-top-right-radius: 125px;
-    background-color: red;
+    background-color: black;
     float: left;
     position: relative; top:0px;
     z-index: 2;

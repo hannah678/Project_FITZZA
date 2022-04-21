@@ -1,5 +1,7 @@
 @charset "UTF-8";
 
+a:link {color:#222; text-decoration: none;}
+a:visited {color:#222 }
 
 #adminReport_container {width:80vw; height:100vh}
 #adminReport_wrap {
@@ -84,11 +86,13 @@
 	overflow:hidden;
 	line-height:50px;
 }
+.report_list li ul {display:block; height:50px}
+.report_list > li > ul:hover {
+	background-color:rgba(0,0,0,0.1);
+	transition:all 0.5s;
+}
 .report_list > li {width:100%}
 .report_list li ul {position:relative; width:100%}
-.report_list li a:link {color:black}
-.report_list li a:visited {color:green }
-.report_list li a:hover {background-color:rgba(0,0,0,0.1)}
 .report_list li ul li:nth-child(8n-7) {width:10% !important}
 .report_list li ul li:nth-child(8n-6) {width:10% !important}
 .report_list li ul li:nth-child(8n-5) {width:10% !important}
