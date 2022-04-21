@@ -57,8 +57,10 @@ li{
 }
 .edit_delete {
 	float:right;
+	height:30px;
 }
-.oldViewId, .oldViewHit {display:block; height:65px;}
+.oldViewHit{display:block; height:50px;}
+.oldViewId{display:block; height:35px;}
 #seller{
 	font-size:1.2em;
 	font-weight: 200;

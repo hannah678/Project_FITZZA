@@ -168,7 +168,7 @@ header a {font-size:20px}
 					${vo.write_date} <!--enter_date--></li>
 				<li class="oldViewId">${vo.user_id}</li>
 				<c:if test="${logId != vo.user_id && logPermission !='admin'}">
-					<p><input type="button" value="신고" id="report"
+					<p style="height:50px;"><input type="button" value="신고" id="report"
 						data-target="#reportModal" data-toggle="modal" /></p>
 				</c:if>
 				<c:if test="${logId == vo.user_id||logPermission =='admin'}">
@@ -203,7 +203,7 @@ header a {font-size:20px}
 							<img src="/upload/${vo.file5}" height="300" />
 						</c:if>
 					</div>
-					<div id="pro_con">${vo.content}</div></li>
+					<div id="pro_con" style="white-space: pre-wrap;">${vo.content}</div></li>
 			</ul>
 		</div>
 		<div class="reply">
