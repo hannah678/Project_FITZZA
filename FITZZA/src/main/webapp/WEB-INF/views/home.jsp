@@ -1,6 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-
+<style>
+	h2 a {line-height:50px;}
+	a:link {color:#fff; text-decoration: none;}
+	a:visited {color:#fff}
+	#vote_frame {margin-top:-50px}
+	#logStatus4 > img {vertical-align:top;}
+	#logStatus5 > img {vertical-align:top;}
+	#logStatus3 > a > img {margin-top:-15px}
+</style>
 <div id="container">
 	<script>
 		/*스크롤 무빙*/
