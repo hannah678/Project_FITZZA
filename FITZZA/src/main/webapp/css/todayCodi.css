@@ -64,6 +64,8 @@ body {
 	background-color:rgba(0,0,0,0.4);
 }
 #columns figure > div:hover {opacity:1}
+a:link {color:#fff; text-decoration: none;}
+a:visited {color:#fff}
 #columns figure > div > a {
  	width:350px; height:400px;
  	display:block;
@@ -78,7 +80,7 @@ body {
   }
 #columns figure > div > a > p {margin-bottom:30px}
 #columns figure > div > a > span {
-	position:absolute; right:20px; top:280px
+	position:absolute; right:80px; top:280px
 }
 .like_btn .heart_empty {
 	display:block; margin:0 auto;
@@ -92,7 +94,7 @@ body {
 	margin-top:100px;
 }
 .buttons button {
-	width:50px; height:30px;
+	height:30px;
 	border:2px solid #fff;
 	border-radius:10px;
 	margin:0 10px;

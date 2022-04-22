@@ -44,8 +44,8 @@ a:link, a:visited, a:hover{
 }
 .reclist{
     padding:20px 30px;
-    width: 237px;
-    height: 470px;
+    width: 300px;
+    height: 500px;
     float: left;
     background-color:#fff;
     border: 1px solid #bfbfbf;
@@ -84,7 +84,7 @@ a:link, a:visited, a:hover{
 	margin-top:-5px
 }
 #searchFrm{
-    width:324px; height:50px;
+    height:50px;
     margin:30px auto;
     display: table;
     padding-top:30px
@@ -117,7 +117,7 @@ a:link, a:visited, a:hover{
 	cursor:pointer;
 }
 #moreView{
-	width:100px; height:125px;
+	width:7px; height:125px;
 	display:block;
 	margin:0 auto
 }

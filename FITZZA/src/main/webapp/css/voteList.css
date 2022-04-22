@@ -174,10 +174,12 @@ body{background:url(../img/tc_bg_1.png);}
     font-weight:bold;
 }
 #searchFrm{
-    width:304px;
-    margin-bottom:30px;
-    display: table; margin-left: auto; margin-right: auto;
-}
+    height:50px;
+    margin:30px auto;
+    display: table;
+    padding-top:30px
+ }
+ #searchWord {margin:0 10px}
 #moreViewVote img {
 	display:block; width:100; height:125px;
 	margin:0 auto
