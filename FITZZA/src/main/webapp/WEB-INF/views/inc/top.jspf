@@ -186,8 +186,7 @@
         <div id="notice_bar">
             <img src="/img/speaker.png">
                 <MARQUEE scrollamount="10" data-target="#noticeModal" data-toggle="modal" id="notice_marquee">
-                	<input type="hidden" value="${vo.notice_date}"/>
-                	<input type="hidden" value="${vo.content}"/></MARQUEE>
+                </MARQUEE>
         </div>
    </header> 
 <!-- 공지 모달 -->
