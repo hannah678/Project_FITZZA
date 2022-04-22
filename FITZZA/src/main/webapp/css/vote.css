@@ -89,7 +89,7 @@ body{background:url(../img/tc_bg_1.png);}
 
 #content{
 	width:100%;
-	height:400px;
+	height:auto;
 	font-size: 26px;
 	margin-top:50px;
 	white-space: pre-wrap;
