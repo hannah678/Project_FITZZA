@@ -1,0 +1,151 @@
+@import url('https://fonts.googleapis.com/css2?family=Kaushan+Script&family=Nanum+Pen+Script&display=swap');
+
+.cb_container {
+	width:100%; height:100%;
+	padding-top:150px;
+	text-align:center;
+	overflow:hidden;
+	background:url(../img/qna_bg.png);
+	background-color:#e9dac1
+}
+
+#dropzone_wrap button{
+	width:100px; height:40px;
+	position:absolute;
+	left:0; top:180px;
+	background-color:#54bab9;
+	color:#fff;
+	border:2px solid  #276968;
+	border-radius:20px;
+	line-height:40px;
+	font-size:18px
+}
+#dropzone_wrap button:nth-child(1){left:750px}
+#dropzone_wrap button:nth-child(2){left:900px}
+#dropzone {
+	width:55%; height:750px;
+	float:left;
+	position:relative;
+	overflow:hidden;
+	margin-top:100px;
+	background-color:rgba(255,255,255,0.8)
+}
+#dropzone img {width:200px; height:100px}
+#cb_img_wrap > img {
+	width:150px; height:150px; 
+	float:left;
+}
+#cb_img_wrap {
+	width:45%; height:800px; 
+	float:left;
+}
+.cb_drag {cursor:pointer; cursor:hand;}
+.droped_img {width:150px;cursor:move;}
+
+#man_dress, #woman_dress {
+	width:100%; height:800px;
+}
+
+#man_dress > label {
+	width:150px; height:80px;
+	border-radius:40px;
+	line-height:80px;
+	position:absolute; right:450px; top:500px;
+	z-index:1
+}
+#woman_dress > label {
+	width:150px; height:80px;
+	border-radius:40px;
+	line-height:80px;
+	position:absolute; right:250px; top:500px;
+	z-index:1;
+}
+#cb_img_wrap label {cursor:pointer}
+#cb_img_wrap input {display:none;}
+#cb_img_wrap input:checked ~ div {display:block;}
+#cb_img_wrap > ul > li > div {display:none}
+
+#cb_man_box, #cb_woman_box {
+	width:45%; height:850px;
+	position:absolute; right:0; top:150px;
+	overflow:hidden;
+	z-index:2;
+	background-color:rgba(239,236,230,0.8)
+}
+
+#cb_man_box label, #cb_woman_box label {
+	width:80px;height:30px;
+	background-color:#54bab9;
+	border-radius:20px;
+	position:absolute; right:0; top:35px;
+	z-index:3;
+	line-height:30px; color:#fff;
+	font-size:18px
+}
+label[for='cb_man'], label[for='cb_woman'] {
+	width:80px;height:30px;
+	background-color:#54bab9;
+	line-height:30px; color:#fff;
+}
+/* 남성 - s */
+#cb_man_box div:nth-child(1) label {right:750px}
+#cb_man_box div:nth-child(2) label {right:650px}
+#cb_man_box div:nth-child(3) label {right:550px}
+#cb_man_box div:nth-child(4) label {right:450px}
+#cb_man_box div:nth-child(5) label {
+	width:120px; right:310px
+}
+
+#cb_man_box > div > ul {
+	width:100%; height:750px;
+	position:absolute; right:0; top:100px;
+	padding:50px 30px;
+	display:none;
+	overflow-y:auto;
+}
+
+#cb_man_box input:checked ~ ul {display:block;}
+#cb_man_box > div > ul > li {
+	float:left;
+	width:180px; height:220px;
+}
+#cb_man_box > div > ul > li > img {
+	width:150px; height:180px;
+}
+#cb_man_box input:checked + label {background-color: #276968}
+/* 남성 - e */
+
+/* 여성 - s */
+#cb_woman_box div:nth-child(1) label {
+	width:100px; right:730px;
+	font-size:16px
+}
+#cb_woman_box div:nth-child(2) label {right:630px}
+#cb_woman_box div:nth-child(3) label {right:530px}
+#cb_woman_box div:nth-child(4) label {right:430px}
+#cb_woman_box div:nth-child(5) label {right:330px}
+#cb_woman_box div:nth-child(6) label {right:230px}
+#cb_woman_box div:nth-child(7) label {right:130px}
+#cb_woman_box div:nth-child(8) label {
+	width:100px; right:10px;
+	font-size:16px
+}
+
+#cb_woman_box > div > ul {
+	width:100%; height:750px;
+	position:absolute; right:0; top:50px;
+	padding:50px 30px;
+	display:none;
+	overflow-y:auto;
+}
+
+#cb_woman_box input:checked ~ ul {display:block;}
+#cb_woman_box > div > ul > li {
+	float:left;
+	width:180px; height:220px;
+}
+#cb_woman_box > div > ul > li > img {
+	width:150px; height:180px;
+}
+#cb_woman_box input:checked + label {background-color: #276968}
+/* 여성 - e */
