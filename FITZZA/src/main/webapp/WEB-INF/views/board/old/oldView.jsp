@@ -175,8 +175,8 @@ header a {font-size:20px}
 				</c:if>
 				<c:if test="${logId == vo.user_id||logPermission =='admin'}">
 					<li class="edit_delete">
-						<a href="/board/old/oldEdit?board_num=${vo.board_num}" style="color:#54bab9; width:60px; height:30px; border:2px solid #54bab9; border-radius:15px; font-size:18px; display:inline-block; line-height:25px; text-align:center;">수정</a> 
-						<a id="del" href="javascript:delCheck()" style="color:#54bab9; width:60px; height:30px; border:2px solid #54bab9; border-radius:15px; font-size:18px; display:inline-block; line-height:25px; text-align:center; margin-left:20px">삭제</a>
+						<a href="/board/old/oldEdit?board_num=${vo.board_num}" style="color:#54bab9; width:60px; height:30px; border:2px solid #54bab9; border-radius:15px; font-size:18px; display:inline-block; line-height:25px; text-align:center;text-decoration:none;">수정</a> 
+						<a id="del" href="javascript:delCheck()" style="color:#54bab9; width:60px; height:30px; border:2px solid #54bab9; border-radius:15px; font-size:18px; display:inline-block; line-height:25px; text-align:center; margin-left:20px;text-decoration:none;">삭제</a>
 					</li>
 					<br/>
 				</c:if>
