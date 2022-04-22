@@ -76,9 +76,9 @@
 						addListHtml += "<li><div class='post_vote'><a href='/board/vote/voteView?board_num="+ data[i].board_num +"'><div class='sum-img'>";
 						addListHtml += "<div class='sum-img1'><img src='/upload/"+ data[i].file1 +"' width='130' width='130'/></div>";
 						addListHtml += "<div class='sum-img2'><img src='/upload/"+ data[i].file2 +"' width='130' width='130'/></div></div></a>";
-						addListHtml += "<div class='post'><div class='post_top'><div class='title_area'>"+data[i].title+"</div><div class='post_status'>진행중</div>";
+						addListHtml += "<div class='post'><div class='post_top'><div class='title_area'>"+data[i].title+"</div>";
 						addListHtml += "<div class='post_bottom'><img src='/upload/" + data[i].profile_image + "' width='30' width='30'/>";
-						addListHtml += "<span>"+ data[i].user_nickname+ "</span><span>"+data[i].write_date+"</span></div></div></div></li>";
+						addListHtml += "<span style='width:77px; overflow:hidden;text-overflow:ellipsis;'>"+ data[i].user_nickname+ "</span><span>"+data[i].write_date+"</span></div></div></div></li>";
 					}
 					
 					$("#voteListUl").append(addListHtml);
@@ -122,9 +122,9 @@
 						addListHtml += "<li><div class='post_vote'><a href='/board/vote/voteView?board_num="+ data[i].board_num +"'><div class='sum-img'>";
 						addListHtml += "<div class='sum-img1'><img src='/upload/"+ data[i].file1 +"' width='130' width='130'/></div>";
 						addListHtml += "<div class='sum-img2'><img src='/upload/"+ data[i].file2 +"' width='130' width='130'/></div></div></a>";
-						addListHtml += "<div class='post'><div class='post_top'><div class='title_area'>"+data[i].title+"</div><div class='post_status'>진행중</div>";
+						addListHtml += "<div class='post'><div class='post_top'><div class='title_area'>"+data[i].title+"</div>";
 						addListHtml += "<div class='post_bottom'><img src='/upload/" + data[i].profile_image + "' width='30' width='30'/>";
-						addListHtml += "<span>"+ data[i].user_nickname+ "</span><span>"+data[i].write_date+"</span></div></div></div></li>";
+						addListHtml += "<span style='width:77px; overflow:hidden;text-overflow:ellipsis;'>"+ data[i].user_nickname+ "</span><span>"+data[i].write_date+"</span></div></div></div></li>";
 					}
 					if(data.length<8){
 						$("#moreViewVote").css("display", "none");
