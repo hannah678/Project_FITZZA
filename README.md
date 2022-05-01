@@ -1,10 +1,14 @@
 # 2022 삼성 멀티캠퍼스 지능형 웹서비스 풀스택 개발
 
-<h2>7팀 세미 프로젝트</h2>
+7팀 세미 프로젝트
 
 - [기획서 PPT](https://github.com/hyeyoung-dev/Project_FITZZA/blob/main/%EB%AC%B8%EC%84%9C/7%ED%8C%80_%EA%B8%B0%ED%9A%8D%EC%84%9C.pdf)
+- [프로젝트 결과 PPT](https://github.com/hyeyoung-dev/Project_FITZZA/blob/main/%EB%AC%B8%EC%84%9C/FITZZA%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%20%EA%B2%B0%EA%B3%BC.pdf)
 
-<h3>프로젝트 결과</h3>
+----
+
+
+<h2> FITZZA 프로젝트 결과</h2>
 
 ![발표자료](https://github.com/hyeyoung-dev/Project_FITZZA/blob/main/%EB%AC%B8%EC%84%9C/img/FITZZA_%EB%B0%9C%ED%91%9C%EC%9E%90%EB%A3%8C%20(0).png)
 ![발표자료](https://github.com/hyeyoung-dev/Project_FITZZA/blob/main/%EB%AC%B8%EC%84%9C/img/FITZZA_%EB%B0%9C%ED%91%9C%EC%9E%90%EB%A3%8C%20(1).png)
